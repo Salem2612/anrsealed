@@ -16,7 +16,7 @@ function View(jsons, version) {
   this.mJSONs = {nbFiles:jsons.length};
   for (var json of jsons) {
     // Request the JSON file asynchronously
-    this.requestJSON('json/' + 'v'+version+'/' + json + '.json', this.mJSONs, json, this.onFileLoaded, this);
+    this.requestJSON('json/' + json + '.json', this.mJSONs, json, this.onFileLoaded, this);
   }
 
 }//end View
