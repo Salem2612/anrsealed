@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="ANR Sealed generates the Sealed Packs for your Android: Netrunner Sealed party games">
+    <meta name="author" content="Samuel BUGGIA">
+    <meta http-equiv="cache-control" content="no-cache, must-revalidate, post-check=0, pre-check=0">
+    <meta http-equiv="expires" content="Sat, 31 Oct 2014 00:00:00 GMT">
+    <meta http-equiv="pragma" content="no-cache">
+    <link rel="icon" href="images/favicon.png">
+
+    <title>Android: Netrunner Sealed</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-67432837-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="modal fade"  id="modalChanges" tabindex="-1" role="dialog" aria-labelledby="modalChangesLabel">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> Changes</h4>
+          </div>
+          <div class="modal-body">
+
+            <legend>[13 Oct 2015] v1.4.1</legend>
+            <h4>General Changes</h4>
+            <ul>
+              <li>Add French translation of the <b>Data and Destiny Deluxe Box</b>. Thank you Mister Yo :)</li>
+            </ul>
+            
+            <legend>[08 Nov 2015] v1.4.0</legend>
+            <h4>General Changes</h4>
+            <ul>
+              <li>Agenda Points : Try to play with 18-19 Agenda Points for 45-49 cards Corp decks.</li>
+              <li>Algorithm : Pick at least 2 Ambushes COMMON in each Corp Starter.</li>
+              <li>Algorithm : Pick at least 5 Barriers, 5 Code Gates and 5 Sentries in each Corp Starter.</li>
+            </ul>
+            <h4>Rarity Changes</h4>
+            <ul>
+              <li><b>Base Set</b>
+              <ul>
+                <li>Hostile Takeover - BANNED -> COMMON.</li>
+                <li>Braintrust - RARE -> COMMON.</li>
+                <li>Project Atlas - RARE -> COMMON.</li>
+                <li>Project Vitruvius - RARE -> COMMON.</li>
+                <li>Enigma - FIXED.</li>
+                <li>Wall of Static - FIXED.</li>
+                <li>Guard - FIXED.</li>
+                <li>Rainbow - FIXED.</li>
+                <li>Rework - FIXED.</li>
+                <li>Breaking News - BANNED -> RARE.</li>
+                <li>Multithreader - COMMON -> RARE.</li>
+                <li>Executive Retreat - COMMON -> UNCO.</li>
+                <li>Project Wotan - COMMON -> UNCO.</li>
+                <li>Minelayer - COMMON -> UNCO.</li>
+                <li>Tenma Line - COMMON -> UNCO.</li>
+                <li>Security Subcontract - COMMON -> UNCO.</li>
+                <li>Bug - COMMON -> UNCO.</li>
+                <li>Exploratory Romp - COMMON -> UNCO.</li>
+                <li>Cell Portal - COMMON -> BANNED.</li>
+                <li>Bullfrog - COMMON -> BANNED.</li>
+                <li>Salvage - COMMON -> BANNED.</li>
+                <li>Burke Bugs - COMMON -> BANNED.</li>
+                <li>Rebranding Team - COMMON -> BANNED.</li>
+                <li>Oracle May - UNCO -> BANNED.</li>
+              </ul>
+            </ul>
+
+            <legend>[23 Oct 2015] v1.3.1</legend>
+            <h4>General Changes</h4>
+            <ul>
+              <li>Add the <b><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Checker</b> window to check your Deck with your Sealed Pack, and generate your Omnileague Reserve.</li>
+            </ul>
+
+            <legend>[19 Oct 2015] v1.3.0</legend>
+            <h4>General Changes</h4>
+            <ul>
+              <li>Add French translation of all the <b>SanSan Cycle</b>. Thank you Mister Yo :)</li>
+              <li>Add Thanks in the About window.</li>
+            </ul>
+
+            <h4>Rarity Changes</h4>
+            <ul>
+              <li><b>Base Set</b>
+              <ul>
+                <li>Wall of Thorns - UNCO -> COMMON.</li>
+                <li>Ichi 2.0 - UNCO -> COMMON.</li>
+                <li>Guard - UNCO -> COMMON.</li>
+                <li>Medical Breakthrough - BANNED -> UNCO.</li>
+                <li>NeoTokyo Grid - BANNED -> UNCO.</li>
+                <li>Kati Jones - RARE -> UNCO.</li>
+                <li>Darwin - RARE -> UNCO.</li>
+                <li>Oracle May - COMMON -> UNCO.</li>
+                <li>Stimhack - UNCO -> RARE.</li>
+                <li>Victoria Jenkins - UNCO -> RARE.</li>
+                <li>Theophilius Bagbiter - COMMON -> BANNED.</li>
+                <li>Donut Taganes - COMMON -> BANNED.</li>
+              </ul>
+              <li><b>Spin</b></li>
+              <ul>
+                <li>Fenris - UNCO -> COMMON.</li>
+              </ul>
+              <li><b>Lunar</b></li>
+              <ul>
+                <li>Zona Sul Shipping - UNCO -> COMMON.</li>
+              </ul>
+            </ul>
+<!--
+            <legend>[05 Oct 2015] v1.2.0</legend>
+            <h4>Rarity Changes</h4>
+            <ul>
+              <li><b>Base Set</b>
+              <ul>
+                <li>Precognition - UNCO -> COMMON.</li>
+                <li>Neural Katana - UNCO -> COMMON.</li>
+                <li>Rainbow - UNCO -> COMMON.</li>
+                <li>Shannon Claire - UNCO -> COMMON.</li>
+                <li>Builder - BANNED -> UNCO.</li>
+                <li>Housekeeping - UNCO -> RARE.</li>
+                <li>Lemuria Codecracker - BANNED -> UNCO.</li>
+                <li>Monolith - COMMON -> BANNED.</li>
+                <li>Qianju PT - RARE -> UNCO.</li>
+              </ul>
+              <li><b>Spin</b></li>
+              <ul>
+                <li>Bishop - UNCO -> COMMON.</li>
+                <li>Queen's Gambit - UNCO -> COMMON.</li>
+                <li>Deep Red - BANNED -> UNCO.</li>
+                <li>Tallie Perrault - BANNED -> UNCO.</li>
+                <li>Corporate Shuffle - UNCO -> COMMON.</li>
+                <li>Grim - RARE -> UNCO.</li>
+                <li>Clone Retirement - BANNED -> RARE.</li>
+                <li>Interns - UNCO -> RARE.</li>
+              </ul>
+              <li><b>Lunar</b></li>
+              <ul>
+                <li>Paper Tripping - COMMON -> UNCO.</li>
+                <li>NEXT Silver - UNCO -> COMMON.</li>
+                <li>Paywall Implementation - UNCO -> COMMON.</li>
+                <li>Universal Connectivity Fee - UNCO -> COMMON.</li>
+                <li>Markus 1.0 - UNCO -> COMMON.</li>
+                <li>Turtlebacks - UNCO -> COMMON.</li>
+                <li>Mother Goddess - COMMON -> UNCO.</li>
+                <li>Encrypted Portals - COMMON -> UNCO.</li>
+                <li>Targeted Marketing - BANNED -> UNCO.</li>
+                <li>Wendigo - COMMON -> UNCO.</li>
+                <li>Chronos Project - BANNED -> UNCO.</li>
+                <li>Domestic Sleepers - BANNED -> RARE.</li>
+                <li>Enhanced Login Protocol - UNCO -> RARE.</li>
+                <li>Lag Time - UNCO -> RARE.</li>
+                <li>Manhunt - UNCO -> RARE.</li>
+                <li>Ashigaru - UNCO -> RARE.</li>
+                <li>Reversed Accounts - BANNED -> RARE.</li>
+                <li>License Acquisition - COMMON -> RARE.</li>
+                <li>Sealed Vault - UNCO -> BANNED.</li>
+              </ul>
+            </ul>
+
+            <legend>[30 Sept 2015] v1.1.1</legend>
+            <h4>General Changes</h4>
+            <ul>
+              <li>Add <b>The Shadow: Pulling the Strings</b> at the top of the Corp files sorted by alphabetical order to improve importing into NetrunnerDB.</li>
+            </ul>
+
+            <legend>[28 Sept 2015] v1.1.0</legend>
+            <h4>General Changes</h4>
+            <ul>
+              <li>All information are in the <b><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Help</b> window.</li>
+              <li>Please play with <b><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> 1 Starter</b> and <b><span class="glyphicon glyphicon-tags" aria-hidden="true"></span> 4 Boosters</b> to balance the Algorithm Changes.</li>
+            </ul>
+            <h4>Algorithm Changes</h4>
+            <ul>
+              <li><b><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Base Set Starter</b></li>
+              <ul>
+                <li><b>1 copy</b> of each card per Base Set Starter instead of <b>2</b>.</li>
+                <li>Pick at least <b>3 FRACTER</b> instead of <b>2</b>.</li>
+                <li>Pick at least <b>3 DECODER</b> instead of <b>2</b>.</li>
+                <li>Pick at least <b>3 KILLER</b> instead of <b>2</b>.</li>
+              </ul>
+              <li><b><span class="glyphicon glyphicon-tags" aria-hidden="true"></span> All Boosters</b></li>
+              <ul>
+                <li><b>4 COMMON</b> per Booster instead of <b>5</b>. <small>The Boosters now contain 14 cards (7 Runner and 7 Corp : 4 COMMON, 2 UNCO, 1 RARE).</small></li>
+              </ul>
+              <li><b><span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Base Set Booster</b></li>
+              <ul>
+                <li><b>2 copies</b> of each card for the Base Set Boosters instead of <b>1</b>.</li>
+              </ul>
+            </ul>
+
+            <legend>v1.0.11</legend>
+            <h4>Rarity Changes</h4>
+            <ul>
+              <li><b>Base Set</b>
+              <ul>
+                <li>Joshua B - BANNED -> UNCO.</li>
+                <li>Scrubber - COMMON -> UNCO.</li>
+                <li>Commercialization - BANNED -> UNCO.</li>
+                <li>Sherlock 1.0 - COMMON -> UNCO.</li>
+                <li>Flare - COMMON -> UNCO.</li>
+                <li>Uroboros - COMMON -> UNCO.</li>
+                <li>Haas Arcology AI - BANNED -> COMMON.</li>
+              </ul>
+              <li><b>Spin</b> (Many rarity changes to balance the number of COMMON, UNCO and RARE cards in this Cycle)</li>
+              <ul>
+                <li>Hemorrhage - UNCO -> RARE.</li>
+                <li>Bishop - COMMON -> UNCO.</li>
+                <li>John Masaroni : UNCO -> RARE.</li>
+                <li>Expert Schedule Analyzer : UNCO -> RARE.</li>
+                <li>Gorman Drip v1 : UNCO -> RARE.</li>
+                <li>Frame Job - COMMON -> UNCO.</li>
+                <li>Elizabeth Mills - UNCO -> COMMON.</li>
+                <li>Motivation - BANNED -> COMMON.</li>
+                <li>Muckraker - UNCO -> RARE.</li>
+                <li>Eureka - BANNED -> UNCO.</li>
+                <li>Grim - UNCO -> RARE.</li>
+                <li>Ireress - COMMON -> BANNED.</li>
+              </ul>
+            </ul>
+
+            <legend>v1.0.10</legend>
+            <h4>General Changes</h4>
+            <ul>
+              <li>Add French translation of Chrome City and The Underway.</li>
+            </ul>
+            <h4>Rarity Changes</h4>
+            <ul>
+              <li>Hivemind (UNCO -> BANNED) : Useless without enough viruses.</li>
+              <li>Brain Chip (UNCO -> RARE) : Very strong gain of MU and hand size.</li>
+            </ul>
+
+            <legend>v1.0.9</legend>
+            <h4>General Changes</h4>
+            <ul>
+              <li>Add this window.</li>
+              <li>Add the <b><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> Algorithm</b> window.</li>
+              <li>Modify the algorithm to enhance the diversity of the decks. There is no more fixed (<b>VITAL</b>) cards.  The <b>VITAL</b> cards are now <b>COMMON</b>. See the new <b><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> Algorithm</b> window for more details.</li>
+              <li>Create the <b>ECO</b> type for cards that have a pure gain of credits (Sure Gamble, Private Contracts...).</li>
+              <li>Create the <b>ECO_DERIVED</b> type for cards that have a derived gain of credits (Recurring credits, Lowering install cost, Link...)</li>
+            </ul>
+-->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class="modal fade"  id="modalAlgorithm" tabindex="-1" role="dialog" aria-labelledby="modalAlgorithmLabel">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Help</h4>
+          </div>
+          <div class="modal-body">
+
+            <h3><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> How to use anrsealed.com ?</h3>
+            <ol>
+              <li>Choose the <b><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Number of players</b>.</li>
+              <li>Select the Number of <b><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Starters</b> and <b><span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Boosters</b> for each player.</li>
+              <li>Click on <b><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Generate & Download</b>.</li>
+              <li>The <b><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Zip file</b> <i>Sealed Packs.zip</i> should have been downloaded.</li>
+              <li>Read the <b><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Sealed Rules</b> bellow to play.</li>
+            </ol>
+
+            <h3><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Zip file</h3>
+            <p>The downloaded <b><span class="glyphicon glyphicon-folder-close" aria-hidden="true"></span> Zip file</b> contains the following folders:</p>
+            <ul>
+              <li><b>All</b>: All files of the other folders. Usefull for a tournament organisator. Send the files to the corresponding players.</li>
+              <li><b>Sorted by Alphabetical Order</b>: Useful to import to <a href="http://netrunnerdb.com/en/deck/import" target="_blank"><span class="glyphicon glyphicon-link" aria-hidden="true"></span>NetrunnerDB</a> or <a href="http://www.jinteki.net/deckbuilder" target="_blank"><span class="glyphicon glyphicon-tree-deciduous" aria-hidden="true"></span>Jinteki.net</a>.</li>
+              <li><b>Sorted by Rarity</b>: Useful to see your best cards.</li>
+              <li><b>Sorted by Starter and Boosters</b>: Useful to see which cards come from which Starter and Boosters.</li>
+            </ul>
+
+            <h3><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Sealed Rules</h3>
+              <h4>Formats</h4>
+              <ul>
+                <li><b>One Shot</b></li>
+                <ul>
+                  <li>The One Shot is the classic format for one game or one day tournament.</li>
+                  <li>Each player plays a One Shot with <b>1 <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Starter</b> and <b>4 <span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Boosters</b>.</li>
+                </ul>
+                <li><b>Omni-league</b></li>
+                <ul>
+                  <li>The Omni-league is a tournament that lasts many weeks or months.</li>
+                  <li>Each player starts the Omni-league with <b>1 <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Starter</b> and <b>3 <span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Boosters</b>.</li>
+                  <li>The Winner of a game can take a card from the unused cards of its opponent's Sealed pack.</li>
+                  <li>Each player wins <b>1 <span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Booster</b> between each round and can modify its decks.</li>
+                </ul>
+              </ul>
+              <h4>Deckbuilding rules</h4>
+              <ul>
+                <li>Each player receives:
+                  <ul>
+                    <li>1 Corp Sealed Pack: <b>Sealed Pack - Player x - Corp.txt</b></li>
+                    <li>1 Runner Sealed Pack: <b>Sealed Pack - Player x - Runner.txt</b></li>
+                    <li><i>Optionnaly: The players can Copy/Paste their Sealed Packs to <a href="http://netrunnerdb.com/en/deck/import" target="_blank"><span class="glyphicon glyphicon-link" aria-hidden="true"></span>NetrunnerDB</a> or <a href="http://www.jinteki.net/deckbuilder" target="_blank"><span class="glyphicon glyphicon-tree-deciduous" aria-hidden="true"></span>Jinteki.net</a> for better readability.</i></li>
+                  </ul>
+                <li>Each player builds <b>1 Corp deck</b> and <b>1 Runner deck</b> only with the cards in its Sealed Packs.</li>
+                <li>Each player has an Identity card with <b>no Faction</b>, <b>45 Cards minimum</b>, <b>no Influence limit</b> and a <b>blank text box</b> for its Corp and Runner decks. <small>(Mix any cards, even Agendas for the Corp deck)</small></li>
+                <li>Agenda points</li>
+                <ul>
+                  <li>45-49 cards: <b>18-19</b> Agenda points</li>
+                  <li>50-54 cards: 20-21 Agenda points</li>
+                  <li>etc...</li>
+                </ul>
+              </ul>
+
+              <h4>Win conditions <small>Same as in the base game</small></h4>
+              <ul>
+                <li><b>7</b> Agenda Points</li>
+                <li>The Runner is <b>flatlined</b></li>
+                <li>The Corp <b>can't draw</b> at the start of its turn</li>
+              </ul>
+
+            <h3><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Identity cards</h3>
+            <p>Use these <b><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Identity cards</b> for your Sealed games.</p>
+            <div class="row">
+              <div class="col-md-3 col-xs-4">
+                <a href="images/id_corp.jpg" target="_blank"><img src="images/id_corp.jpg" alt="" class="img-responsive img-rounded" /></a>
+              </div>
+              <div class="col-md-3 col-xs-4">
+                <a href="images/id_runner.jpg" target="_blank"><img src="images/id_runner.jpg" alt="" class="img-responsive img-rounded" /></a>
+              </div>
+            </div>
+            <p></p>
+
+            <h3><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Starter</h3>
+              <ul>
+                <li>Each <b><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Starter</b> contains 60 Corp cards and 60 Runner Cards. <small>(46 COMMON, 12 UNCO and 2 RARE per side)</small></li>
+                <li>Each card can be picked only 1 time in the <b><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Base Set Starter</b>.</li>
+                <li>Few cards of the <b><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Starter</b> are picked randomly by completing some constraints given below:<li>
+              </ul>
+              <div class="row">
+                <div class="col-md-6">
+                  <b>Runner</b>
+                    <ul>
+                      <li>Exactly <b>2 RARE</b></li>
+                      <li>Exactly <b>12 UNCO</b></li>
+                      <li>Exactly <b>46 COMMON</b></li>
+                      <li>Among the <b>COMMON</b> cards :</li>
+                      <ul>
+                        <li>At least <b>3 FRACTER</b></li>
+                        <li>At least <b>3 DECODER</b></li>
+                        <li>At least <b>3 KILLER</b></li>
+                        <li>At least <b>1 TUTOR</b></li>
+                        <li>At least <b>4 ECO</b></li>
+                        <li>At least <b>8 ECO_DERIVED</b></li>
+                      </ul>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                  <b>Corp</b>
+                    <ul>
+                      <li>Exactly <b>2 RARE</b></li>
+                      <li>Exactly <b>12 UNCO</b></li>
+                      <li>Exactly <b>46 COMMON</b></li>
+                      <li>Among the <b>COMMON</b> cards :</li>
+                      <ul>
+                        <li>At least <b>12 AGENDA</b></li>
+                        <li>At least <b>15 ICE</b></li>
+                        <li>At least <b>5 BARRIER</b></li>
+                        <li>At least <b>5 CODE_GATE</b></li>
+                        <li>At least <b>5 SENTRY</b></li>
+                        <li>At least <b>4 ECO</b></li>
+                        <li>At least <b>6 ECO_DERIVED</b></li>
+                        <li>At least <b>2 AMBUSH</b></li>
+                      </ul>
+                    </ul>
+                </div>
+              </div>
+
+            <h3><span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Booster</h3>
+              <ul>
+                <li>Each <b><span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Booster</b> contains 7 Corp cards and 7 Runner Cards. <small>(4 COMMON, 2 UNCO and 1 RARE per side)</small></li>
+                <li>Each card can be picked 1 or 2 times in the <b><span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Boosters</b>.</li>
+              </ul>
+
+            <h3><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> Base Set</h3>
+              <ul>
+                <li>The <b><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Base Set Starter</b> and <b><span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Base Set Boosters</b> contain cards from the <b>Core Set</b>, <b>all Deluxes</b> and the <b>Genesis Cycle</b>.</li>
+              </ul>
+
+            <h3><span class="glyphicon glyphicon-list" aria-hidden="true"></span> List of Cards</h3>
+              <p>The <b><a href="https://docs.google.com/spreadsheets/d/1iODcruMiN18QsMhlUhh8vzwSrZUXHVB_TKxhVQNRNdM/edit?usp=sharing" target="_blank"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> List of Cards</a></b> is available in a Google Sheet.<br/><small>You can write comments in the cells to give your opinion on the rarities.</small></p>
+
+              <h4>Rarities</h4>
+                <ul>
+                  <li><b>BANNED</b> : Cards that have been judged too strong (2/1 Agendas), or too useless in Sealed format (Hivemind...).</li>
+                  <li><b>RARE</b> : Powerful cards. You should play your RARE cards.</li>
+                  <li><b>UNCO</b> : Good cards. You should play many of your UNCO cards.</li>
+                  <li><b>COMMON</b> : Ordinary cards.</li>
+                </ul>
+
+              <h4>Custom Types</h4>
+                <ul>
+                  <li><b>ECO</b> : Cards that have a pure gain of credits (Sure Gamble, Private Contracts...).</li>
+                  <li><b>ECO_DERIVED</b> : Cards that have a derived gain of credits (Recurring credits, Lowering install cost, Link...)</li>
+                </ul>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class="modal fade"  id="modalAbout" tabindex="-1" role="dialog" aria-labelledby="modalAboutLabel">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> About</h4>
+          </div>
+          <div class="modal-body">
+            <h4>Authors</h4>
+            <p>
+              <b>Android: Netrunner Sealed</b> has been created by <a href="mailto:qasu.contact@gmail.com"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Samuel Buggia</a> and <a href="http://www.run4games.com/forum/" target="_blank"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Ludovic Schmidt</a>. Contact us if you find a bug or if you have any question.
+            </p>
+
+            <h4>Modules</h4>
+            <p>
+              <b>anrsealed.com</b> uses the following modules:
+              <ul>
+                <li><a href="https://jquery.com/" target="_blank">JQuery</a></li>
+                <li><a href="http://getbootstrap.com/" target="_blank">Bootstrap</a></li>
+                <li><a href="http://glyphicons.com/" target="_blank">Glyphicons</a></li>
+                <li><a href="https://github.com/janl/mustache.js" target="_blank">Mustache JS</a></li>
+                <li><a href="https://stuk.github.io/jszip/" target="_blank">JSZip</a></li>
+                <li><a href="https://github.com/eligrey/FileSaver.js/" target="_blank">FileSaver</a></li>
+              </ul>
+            </p>
+
+            <h4>Thanks</h4>
+            <p>
+              <ul>
+                <li><b>Mister Yo</b> for the french translation of the SanSan Cycle and Data and Destiny.</li>
+                <li><b>Reju</b>, <b>Pyjam</b> and the <b>Run4Games community</b> for the comments about the rarities and the algorithm.</li>
+              </ul>
+            </p>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class="modal fade"  id="modalChecker" tabindex="-1" role="dialog" aria-labelledby="modalCheckerLabel">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Checker</h4>
+          </div>
+          <div class="modal-body">
+            <p>This tool is used to :
+              <ul>
+                <li>Check the consistency between a deck and a Sealed Pack.</li>
+                <li>Generate the Reserve for Omnileague. (A Reserve is the list of cards that a player has in its Sealed Pack but does not use in its deck).</li>
+              </ul>
+            </p>
+            <div class="row">
+              <div class="col-md-6">
+                <h4>Sealed Pack <small>(File sorted by alphabetical order)</small></h4>
+                <div class="form-group">
+                  <textarea id="textarea_checker_sealed_pack" class="form-control" style="resize:none" rows="6" placeholder="Paste your Sealed Pack here (without any rarities in parenthesis). Use the file sorted by alphabetical order. Example : 2x Access to Globalsec"></textarea>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <h4>Deck</h4>
+                <div class="form-group">
+                  <textarea id="textarea_checker_deck" class="form-control" style="resize:none" rows="6" placeholder="Paste your deck here (without any rarities in parenthesis). Example : 2x Access to Globalsec"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <h4>Status</h4>
+                <div class="form-group">
+                  <textarea id="textarea_checker_status" class="form-control" style="resize:none" rows="5" readonly placeholder="Paste you Sealed Pack and Deck above, then click on the Check button. The Status of the check will appear here."></textarea>
+                </div>
+                <div class="form-group">
+                  <div class="btn-group" role="group">
+                  <button id="button_checker_check" type="button" class="btn btn-primary btn-lg">
+                    <span class="glyphicon glyphicon-check" aria-hidden="true"></span> Check
+                  </button>
+                  <button id="button_checker_erase" type="button" class="btn btn-danger btn-lg">
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Erase Status and Reserve
+                  </button>
+                </div>
+                </div>
+
+              </div>
+              <div class="col-md-6">
+                <h4>Omnileague Reserve</h4>
+                <div class="form-group">
+                  <textarea id="textarea_checker_reserve" class="form-control" style="resize:none" rows="5" readonly placeholder="Paste you Sealed Pack and Deck above, then click on the Check button. The Omnileague Reserve will appear here."></textarea>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!-- Nav Bar -->
+    <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> Android: Netrunner Sealed</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" aria-expanded="false" style="height: 1px;">
+          <ul class="nav navbar-nav">
+            <li><a href="#" data-toggle="modal" data-target="#modalChecker"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Checker</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#" data-toggle="modal" data-target="#modalAlgorithm"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Help</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#modalAbout"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> About</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v1.4.1</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div>
+    </nav> <!-- /.Nav Bar -->
+
+    <div class="container-fluid">
+
+      <!-- Body -->
+      <div class="row">
+
+        <!-- Panel Left -->
+        <div class="col-md-3">
+          <p class="well well-sm"><b>Android: Netrunner Sealed</b> is a free tool. It generates the Sealed Packs of the players for your Sealed games. Please read <b><a href="#" data-toggle="modal" data-target="#modalAlgorithm"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Help</a></b> for more information.</p>
+
+          <div class="well well-sm">
+            <h4><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> Breaking News</h4>
+            <b>[09 Nov 2015] v1.4.1 is now available.</b>
+            <ul>
+              <li>See <b><a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v1.4.1</a></b> for more details.</li>
+              <li><b>Important</b> : The Corp decks must contain 18-19 Agenda Points (instead of 20-21) for 40-49 cards.</li>
+            </ul>
+            <!--<li><b>[Sept-Oct 2015] Base Set Update</b>: This month we are adjusting the <b>Base Set</b>. For a better Sealed experience, please play with the <b><span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Base Set Boosters</b>. The others Sets will be adjusted later.</li>-->
+            <h4><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Known issues</h4>
+            <ul>
+              <li><b>Mac users</b>: Download does not work on <b>Safari</b>, please use <b>Chrome</b>.</li>
+            </ul>
+          </div>
+
+        </div> <!-- Panel Left -->
+
+        <!-- Panel Middle -->
+        <div class="col-md-6">
+
+          <!-- Starters and Generate -->
+          <div class="row">
+
+            <!-- Generate -->
+            <div class="col-sm-6 col-sm-push-6 col-xs-12">
+              <h4><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Generate</h4>
+
+              <!-- Number of players -->
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label class="control-label" for="text_nb_players">Number of players</label>
+                    <div class="input-group">
+                      <span class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
+                      <input id="text_nb_players" type="text" class="form-control" placeholder="Enter the number of players" aria-describedby="text_nb_players_addon" value="2">
+                      <span class="input-group-addon" id="text_nb_players_addon">players</span>
+                    </div>
+                  </div>
+                </div>
+              </div> <!-- /.Number of players -->
+
+              <!-- Generate & Download -->
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <!-- <div class="btn-group" role="group"> -->
+                      <button id="button_generate_and_download" type="button" class="btn btn-success btn-lg">
+                        <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Generate & Download
+                      </button>
+                    <!-- </div> -->
+                  </div>
+                </div>
+              </div> <!-- /.Generate & Download -->
+
+              <!-- Status -->
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <textarea id="textarea_status" class="form-control" style="resize:none" rows="5" readonly placeholder="Select the Number of Players, Starters and Boosters then click on Generate & Download."></textarea>
+                  </div>
+                </div>
+              </div>
+            </div> <!-- /.Status -->
+
+            <!-- Starters -->
+            <div class="col-sm-6 col-sm-pull-6 col-xs-12">
+              <h4><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Starter <small>(for each player)</small></h4>
+              <div class="row" id="div_starters">
+              </div>
+            </div> <!-- ./Starters -->
+
+          </div> <!-- ./Starters and Generate -->
+
+          <!-- Boosters -->
+          <div class="row">
+            <div class="col-md-12">
+              <h4><span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Boosters <small>(for each player)</small></h4>
+              <div class="row" id="div_boosters">
+              </div>
+            </div>
+          </div> <!-- /.Boosters -->
+
+        </div> <!-- /.Panel Middle -->
+
+        <!-- Panel Left -->
+        <div class="col-md-3">
+          <div class="row">
+
+            <!-- Season -->
+<!--             <div class="col-md-12 col-xs-6">
+              <div class="row">
+                <div class="col-md-12">
+                  <legend><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Sealed Season</legend>
+                  <h4>Autumn: Base Set</h4>
+                  <p>Since the launch of anrsealed.com we are focusing and adjusting the <b>Base Set</b>. For a better Sealed experience, please play with the <b>Base Set Boosters</b>. The others Sets will be adjusted later.</p>
+                  <div class="row">
+                    <div class="col-xs-offset-4 col-xs-4">
+                      <img src="images/base_set_booster.jpg" alt="" class="img-responsive img-rounded" /><p></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+ -->
+            <!-- Partnership -->
+            <!-- <div class="col-md-12 col-xs-6"> TODO: Sealed Season -->
+            <div class="col-md-12 col-xs-12">
+              <div class="row">
+                <div class="col-md-12">
+                  <legend><span class="glyphicon glyphicon-link" aria-hidden="true"></span> Partnership</legend>
+                  <div class="row">
+                    <div class="col-md-12 col-xs-6">
+                      <h4>Run4Games</h4>
+                      <p>Discuss about Android: Netrunner at <a href="http://run4games.com/" target="_blank">Run4Games</a>.</p>
+                      <div class="row">
+                        <!-- <div class="col-lg-6 col-md-8 col-xs-12"> TODO: Sealed Season -->
+                        <div class="col-lg-6 col-md-8 col-sm-8 col-xs-12">
+                          <a href="http://run4games.com/" target="_blank"><img src="images/r4g.jpg" alt="" class="img-responsive img-rounded" /></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12 col-xs-6">
+                      <h4>Ludiworld</h4>
+                      <p>Buy the complete Sealed Pools at <a href="http://ludiworld.com/newshop/" target="_blank">Ludiworld</a>.</p>
+                      <div class="row">
+                        <!-- <div class="col-lg-6 col-md-8 col-xs-12"> TODO: Sealed Season -->
+                        <div class="col-lg-6 col-md-8 col-sm-8 col-xs-12">
+                          <a href="http://ludiworld.com/newshop/" target="_blank"><img src="images/ludiworld.jpg" alt="" class="img-responsive img-rounded" /></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>  <!-- Partnership -->
+
+          </div>
+        </div> <!-- /.Panel Left -->
+
+      </div> <!-- /.Body -->
+    </div> <!-- /.container -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.0/mustache.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="dist/js/bootstrap.min.js"></script>
+    <script src="dist/js/jszip.min.js"></script>
+    <script src="dist/js/FileSaver.min.js"></script>
+    <script src="js/Card.js"></script>
+    <script src="js/CardPool.js"></script>
+    <script src="js/Cards.js"></script>
+    <script src="js/CardType.js"></script>
+    <script src="js/Constraint.js"></script>
+    <script src="js/Constraints.js"></script>
+    <script src="js/Database.js"></script>
+    <script src="js/ProcessingStatus.js"></script>
+    <script src="js/Sealed.js"></script>
+    <script src="js/Pack.js"></script>
+    <script src="js/Player.js"></script>
+    <script src="js/Side.js"></script>
+    <script src="js/View.js"></script>
+    <script>
+      $(function() {
+
+        // Global variables
+        var mView = new View(['cards', 'cardpools'], '1.4.1');
+
+        /**
+          * Handler of the text_nb_players on click event.
+          *
+          * return  void
+          */
+        $('#text_nb_players').on('click', function(e) {
+          $('#text_nb_players').select();
+        });
+
+        /**
+          * Handler of the button_generate_and_download on click event.
+          *
+          * return  void
+          */
+        $('#button_generate_and_download').on('click', function(e) {
+          mView.generateAndDownloadSealed();
+        });
+
+        /**
+          * Handler of the button_checker_check on click event.
+          *
+          * return  void
+          */
+        $('#button_checker_check').on('click', function(e) {
+          mView.checkAndGenerateReserve();
+        });
+
+        /**
+          * Handler of the button_checker_erase on click event.
+          *
+          * return  void
+          */
+        $('#button_checker_erase').on('click', function(e) {
+          $('#textarea_checker_status').val("");
+          $('#textarea_checker_reserve').val("");
+        });
+
+      });
+    </script>
+
+    <!-- Templates - Booster -->
+    <script id="tmpl_pack" type="x-tmpl-mustache">
+      <div class="{{width}}">
+        <div class="well well-sm">
+          <!-- Image -->
+          <div class="row">
+            <div class="col-sm-12">
+              <img src="{{imagePath}}" alt="" class="img-responsive img-rounded" />
+            </div>
+          </div>
+          <p></p>
+          <!-- Number of Packs -->
+          <div class="row">
+            <div class="col-sm-offset-3 col-sm-6">
+              <input id="text_cardpool_{{index}}_nb_packs" type="text" min="0" class="form-control text-center" value="{{nbPacks}}">
+            </div>
+          </div>
+        </div>
+      </div>
+    </script>
+
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <!-- <script src="assets/js/vendor/holder.js"></script> -->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
