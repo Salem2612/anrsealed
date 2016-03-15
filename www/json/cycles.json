@@ -1,11 +1,11 @@
 [
-{"id":1, "cycleNo":1, "nameEn":"Core Set", "nameFr":"Jeu de Base", "type":"CORE_SET"},
-{"id":2, "cycleNo":2, "nameEn":"Genesis", "nameFr":"Genèse", "type":"DATA_PACKS"},
-{"id":3, "cycleNo":3, "nameEn":"Creation and Control", "nameFr":"Création et Controle", "type":"DELUXE"},
-{"id":4, "cycleNo":4, "nameEn":"Spin", "nameFr":"Distorsions", "type":"DATA_PACKS"},
-{"id":5, "cycleNo":5, "nameEn":"Honor and Profit", "nameFr":"Honneur et Profit", "type":"DELUXE"},
-{"id":6, "cycleNo":6, "nameEn":"Lunar", "nameFr":"Lunaire", "type":"DATA_PACKS"},
-{"id":7, "cycleNo":7, "nameEn":"Order and Chaos", "nameFr":"Ordre et Chaos", "type":"DELUXE"},
-{"id":8, "cycleNo":8, "nameEn":"SanSan", "nameFr":"SanSan", "type":"DATA_PACKS"},
-{"id":9, "cycleNo":9, "nameEn":"Data and Destiny", "nameFr":"Data and Destiny", "type":"DELUXE"}
-]
+{"cycleNo":1, "nameEn":"Core Set", "nameFr":"Jeu de Base", "type":"CORE_SET"},
+{"cycleNo":2, "nameEn":"Genesis", "nameFr":"Genèse", "type":"DATA_PACKS"},
+{"cycleNo":3, "nameEn":"Creation and Control", "nameFr":"Création et Controle", "type":"DELUXE"},
+{"cycleNo":4, "nameEn":"Spin", "nameFr":"Distorsions", "type":"DATA_PACKS"},
+{"cycleNo":5, "nameEn":"Honor and Profit", "nameFr":"Honneur et Profit", "type":"DELUXE"},
+{"cycleNo":6, "nameEn":"Lunar", "nameFr":"Lunaire", "type":"DATA_PACKS"},
+{"cycleNo":7, "nameEn":"Order and Chaos", "nameFr":"Ordre et Chaos", "type":"DELUXE"},
+{"cycleNo":8, "nameEn":"SanSan", "nameFr":"SanSan", "type":"DATA_PACKS"},
+{"cycleNo":9, "nameEn":"Data and Destiny", "nameFr":"Destinée et Données", "type":"DELUXE"},
+{"cycleNo":10, "nameEn":"Mumbad", "nameFr":"Mumbad", "type":"DATA_PACKS"}]
