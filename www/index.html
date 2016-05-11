@@ -61,7 +61,7 @@
               <li>Add Business First</li>
               <li>Big refactoring of the site</li>
             </ul>
-            
+
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -341,7 +341,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" aria-expanded="false" style="height: 1px;">
           <ul class="nav navbar-nav">
-          
+
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#" data-toggle="modal" data-target="#modalChecker"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Check Deck</a></li>
@@ -377,13 +377,13 @@
         </div> <!-- Panel Left -->
 
         <!-- Panel Middle -->
-        <div class="col-md-6">
+        <div class="col-md-9">
 
-          <!-- Starters and Generate -->
+          <!-- Core Set, Deluxes and Generate -->
           <div class="row">
 
             <!-- Generate -->
-            <div class="col-sm-6 col-sm-push-6 col-xs-12">
+            <div class="col-lg-4 col-lg-push-8 col-md-12">
               <h4><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Generate</h4>
 
               <!-- Number of players -->
@@ -400,15 +400,47 @@
                 </div>
               </div> <!-- /.Number of players -->
 
+              <!-- Number of cards -->
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label class="control-label" for="text_nb_cards">Number of cards</label>
+                    <div class="input-group" id="text_nb_cards">
+                      <div class="radio">
+                        <label><input type="radio" name="optradio_nb_cards" id="radio_nb_cards_60">60 cards (30 cards per deck / 6 Agenda points)</label>
+                      </div>
+                      <div class="radio">
+                        <label><input type="radio" name="optradio_nb_cards"  id="radio_nb_cards_80" checked>80 cards (45 cards per deck / 7 Agenda points)</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> <!-- /.Number of cards -->
+
+              <!-- Ownership -->
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label class="control-label" for="text_ownership">Ownership</label>
+                    <div class="input-group" id="text_ownership">
+                      <div class="radio">
+                        <label><input type="radio" name="optradio_ownership" id="radio_ownership_each" checked>Each player plays with its own cards</label>
+                      </div>
+                      <div class="radio">
+                        <label><input type="radio" name="optradio_ownership"  id="radio_ownership_one">One player shares its cards</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> <!-- /.Ownership -->
+
               <!-- Generate & Download -->
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
-                    <!-- <div class="btn-group" role="group"> -->
-                      <button id="button_generate_and_download" type="button" class="btn btn-success btn-lg">
-                        <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Generate & Download
-                      </button>
-                    <!-- </div> -->
+                    <button id="button_generate_and_download" type="button" class="btn btn-success btn-lg">
+                      <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Generate & Download
+                    </button>
                   </div>
                 </div>
               </div> <!-- /.Generate & Download -->
@@ -417,74 +449,255 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
-                    <textarea id="textarea_status" class="form-control" style="resize:none" rows="5" readonly placeholder="Select the Number of Players, Starters and Boosters then click on Generate & Download."></textarea>
+                    <textarea id="textarea_status" class="form-control" style="resize:none" rows="5" readonly placeholder="Select the expansions, the number of players, the number of cards per player, then click on Generate & Download."></textarea>
                   </div>
                 </div>
-              </div>
-            </div> <!-- /.Status -->
+              </div>  <!-- /.Status -->
+            </div>  <!-- /.Generate -->
 
-            <!-- Starters -->
-            <div class="col-sm-6 col-sm-pull-6 col-xs-12">
-              <h4><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Starter <small>(for each player)</small></h4>
-              <div class="row" id="div_starters">
-              </div>
-            </div> <!-- ./Starters -->
+            <!-- Boxes -->
+            <div class="col-lg-8 col-lg-pull-4 col-md-12">
 
-          </div> <!-- ./Starters and Generate -->
-
-          <!-- Boosters -->
-          <div class="row">
-            <div class="col-md-12">
-              <h4><span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Boosters <small>(for each player)</small></h4>
-              <div class="row" id="div_boosters">
-              </div>
-            </div>
-          </div> <!-- /.Boosters -->
-
-        </div> <!-- /.Panel Middle -->
-
-        <!-- Panel Left -->
-        <div class="col-md-3">
-          <div class="row">
-
-            <!-- Season -->
-<!--             <div class="col-md-12 col-xs-6">
+              <!-- Buttons Check/Uncheck all -->
               <div class="row">
-                <div class="col-md-12">
-                  <legend><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Sealed Season</legend>
-                  <h4>Autumn: Base Set</h4>
-                  <p>Since the launch of anrsealed.com we are focusing and adjusting the <b>Base Set</b>. For a better Sealed experience, please play with the <b>Base Set Boosters</b>. The others Sets will be adjusted later.</p>
-                  <div class="row">
-                    <div class="col-xs-offset-4 col-xs-4">
-                      <img src="images/base_set_booster.jpg" alt="" class="img-responsive img-rounded" /><p></p>
+                <div class="col-sm-12">
+                  <div class="btn-group">
+                    <button id="button_check_all" type="button" class="btn btn-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Check all</button>
+                    <button id="button_uncheck_all" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Uncheck all</button>
+                  </div>
+                </div>
+              </div>  <!-- ./Buttons Check/Uncheck all -->
+
+              <!-- Core Set and Deluxes -->
+              <div class="row">
+                <!-- Core Set -->
+                <div class="col-sm-6">
+                  <h4><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Core Set</h4>
+                  <div class="well well-sm">
+                    <div class="row">
+                      <!-- Image -->
+                      <div class="col-xs-5">
+                        <img src="images/Core Set.png" alt="" class="img-responsive img-rounded" />
+                      </div> <!-- /.Image -->
+                      <!-- Radio -->
+                      <div class="col-xs-7">
+                        <div class="form-group">
+                          <label class="control-label" for="text_nb_core_set">Core Set</label>
+                          <div class="input-group" id="text_nb_core_set">
+                            <div class="radio">
+                              <label><input type="radio" name="optradio_nb_core_set" id="radio_nb_core_set_0">No core set</label>
+                            </div>
+                            <div class="radio">
+                              <label><input type="radio" name="optradio_nb_core_set" id="radio_nb_core_set_1">1 core set</label>
+                            </div>
+                            <div class="radio">
+                              <label><input type="radio" name="optradio_nb_core_set" id="radio_nb_core_set_2">2 core sets</label>
+                            </div>
+                            <div class="radio">
+                              <label><input type="radio" name="optradio_nb_core_set" id="radio_nb_core_set_3" checked>3 core sets</label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>  <!-- /.Radio -->
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
- -->
-            <!-- Partnership -->
-            <!-- <div class="col-md-12 col-xs-6"> TODO: Sealed Season -->
-            <div class="col-md-12 col-xs-12">
+                </div>  <!-- ./Core Set -->
+
+                <!-- Deluxes -->
+                <div class="col-sm-6">
+                  <div class="well well-sm">
+                    <div class="row">
+                      <!-- Image -->
+                      <div class="col-xs-5">
+                        <img src="images/Deluxes.png" alt="" class="img-responsive img-rounded" />
+                      </div> <!-- /.Image -->
+                      <!-- Check -->
+                      <div class="col-xs-7">
+                        <div class="form-group">
+                          <div class="checkbox">
+                            <label><input type="checkbox" value="" id="checkbox_deluxes" checked><strong>Deluxes</strong></label>
+                          </div>
+                          <div class="input-group">
+                            <div class="checkbox"><label><input type="checkbox" id="checkbox_creation_and_control" checked>Creation and Control</label></div>
+                            <div class="checkbox"><label><input type="checkbox" id="checkbox_honor_and_profit" checked>Honor and Profit</label></div>
+                            <div class="checkbox"><label><input type="checkbox" id="checkbox_order_and_chaos" checked>Order and Chaos</label></div>
+                            <div class="checkbox"><label><input type="checkbox" id="checkbox_data_and_destiny" checked>Data and Destiny</label></div>
+                          </div>
+                        </div>
+                      </div>  <!-- /.Check -->
+                    </div>
+                  </div>
+                </div>  <!-- ./Deluxes -->
+              </div>  <!-- ./Core Set and Deluxes -->
+
+              <!-- Cycles -->
               <div class="row">
-                <div class="col-md-12">
+                <div class="col-sm-12">
+                  <h4><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Cycles</h4>
+                  <div class="row">
+
+                    <!-- Genesis -->
+                    <div class="col-sm-6">
+                      <div class="well well-sm">
+                        <div class="row">
+                          <!-- Image -->
+                          <div class="col-xs-5">
+                            <img src="images/01 Genesis.png" alt="" class="img-responsive img-rounded" />
+                          </div> <!-- /.Image -->
+                          <!-- Check -->
+                          <div class="col-xs-7">
+                            <div class="form-group">
+                              <div class="checkbox">
+                                <label><input type="checkbox" value="" id="checkbox_genesis" checked><strong>Genesis</strong></label>
+                              </div>
+                              <div class="input-group">
+                                <div class="checkbox"><label><input type="checkbox" id="checkbox_what_lies_ahead" checked>What Lies Ahead</label></div>
+                                <div class="checkbox"><label><input type="checkbox" id="checkbox_trace_amount" checked>Trace Amount</label></div>
+                                <div class="checkbox"><label><input type="checkbox" id="checkbox_cyber_exodus" checked>Cyber Exodus</label></div>
+                                <div class="checkbox"><label><input type="checkbox" id="checkbox_a_study_in_static" checked>A Study in Static</label></div>
+                                <div class="checkbox"><label><input type="checkbox" id="checkbox_humanitys_shadow" checked>Humanity's Shadow</label></div>
+                                <div class="checkbox"><label><input type="checkbox" id="checkbox_future_proof" checked>Future Proof</label></div>
+                              </div>
+                            </div>
+                          </div>  <!-- /.Check -->
+                        </div>
+                      </div>
+                    </div>  <!-- ./Genesis -->
+
+                    <!-- Spin -->
+                    <div class="col-sm-6">
+                      <div class="well well-sm">
+                        <div class="row">
+                          <!-- Image -->
+                          <div class="col-xs-5">
+                            <img src="images/02 Spin.png" alt="" class="img-responsive img-rounded" />
+                          </div> <!-- /.Image -->
+                          <!-- Check -->
+                          <div class="col-xs-7">
+                            <div class="form-group">
+                              <div class="checkbox">
+                                <label><input type="checkbox" value="" id="checkbox_spin" checked><strong>Spin</strong></label>
+                              </div>
+                              <div class="input-group">
+                                <div class="checkbox"><label><input type="checkbox" id="checkbox_opening_move" checked>Opening Move</label></div>
+                                <div class="checkbox"><label><input type="checkbox" id="checkbox_second_though" checked>Second Though</label></div>
+                                <div class="checkbox"><label><input type="checkbox" id="checkbox_mala_tempora" checked>Mala Tempora</label></div>
+                                <div class="checkbox"><label><input type="checkbox" id="checkbox_true_colors" checked>True Colors</label></div>
+                                <div class="checkbox"><label><input type="checkbox" id="checkbox_fear_and_loathing" checked>Fear and Loathing</label></div>
+                                <div class="checkbox"><label><input type="checkbox" id="checkbox_double_time" checked>Double Time</label></div>
+                              </div>
+                            </div>
+                          </div>  <!-- /.Check -->
+                        </div>
+                      </div>
+                    </div>  <!-- ./Spin -->
+
+                    <!-- Lunar -->
+                    <div class="col-sm-6">
+                      <div class="well well-sm">
+                        <div class="row">
+                          <!-- Image -->
+                          <div class="col-xs-5">
+                            <img src="images/03 Lunar.png" alt="" class="img-responsive img-rounded" />
+                          </div> <!-- /.Image -->
+                          <!-- Check -->
+                          <div class="col-xs-7">
+                            <div class="form-group">
+                              <div class="checkbox">
+                                <label><input type="checkbox" value="" id="checkbox_lunar" checked><strong>Lunar</strong></label>
+                              </div>
+                              <div class="input-group">
+                                <div class="checkbox"><label><input type="checkbox" id="checkbox_upstalk" checked>Upstalk</label></div>
+                                <div class="checkbox"><label><input type="checkbox" id="checkbox_the_spaces_between" checked>The Spaces Between</label></div>
+                                <div class="checkbox"><label><input type="checkbox" id="checkbox_first_contact" checked>First Contact</label></div>
+                                <div class="checkbox"><label><input type="checkbox" id="checkbox_up_and_over" checked>Up and Over</label></div>
+                                <div class="checkbox"><label><input type="checkbox" id="checkbox_all_that_remains" checked>All That Remains</label></div>
+                                <div class="checkbox"><label><input type="checkbox" id="checkbox_the_source" checked>The Source</label></div>
+                              </div>
+                            </div>
+                          </div>  <!-- /.Check -->
+                        </div>
+                      </div>
+                    </div>  <!-- ./Lunar -->
+
+                    <!-- SanSan -->
+                    <div class="col-sm-6">
+                      <div class="well well-sm">
+                        <div class="row">
+                          <!-- Image -->
+                          <div class="col-xs-5">
+                            <img src="images/04 SanSan.png" alt="" class="img-responsive img-rounded" />
+                          </div> <!-- /.Image -->
+                          <!-- Check -->
+                          <div class="col-xs-7">
+                            <div class="form-group">
+                              <div class="checkbox">
+                                <label><input type="checkbox" value="" id="checkbox_sansan" checked><strong>SanSan</strong></label>
+                              </div>
+                              <div class="input-group">
+                                <div class="checkbox"><label><input type="checkbox" id="checkbox_the_valley" checked>The Valley</label></div>
+                                <div class="checkbox"><label><input type="checkbox" id="checkbox_breaker_bay" checked>Breaker Bay</label></div>
+                                <div class="checkbox"><label><input type="checkbox" id="checkbox_chrome_city" checked>Chrome City</label></div>
+                                <div class="checkbox"><label><input type="checkbox" id="checkbox_the_underway" checked>The Underway</label></div>
+                                <div class="checkbox"><label><input type="checkbox" id="checkbox_old_hollywood" checked>Old Hollywood</label></div>
+                                <div class="checkbox"><label><input type="checkbox" id="checkbox_the_universe_of_tomorrow" checked>The Universe of Tomorrow</label></div>
+                              </div>
+                            </div>
+                          </div>  <!-- /.Check -->
+                        </div>
+                      </div>
+                    </div>  <!-- ./SanSan -->
+
+                    <!-- Mumbad -->
+                    <div class="col-sm-6">
+                      <div class="well well-sm">
+                        <div class="row">
+                          <!-- Image -->
+                          <div class="col-xs-5">
+                            <img src="images/05 Mumbad.png" alt="" class="img-responsive img-rounded" />
+                          </div> <!-- /.Image -->
+                          <!-- Check -->
+                          <div class="col-xs-7">
+                            <div class="form-group">
+                              <div class="checkbox">
+                                <label><input type="checkbox" value="" id="checkbox_mumbad" checked><strong>Mumbad</strong></label>
+                              </div>
+                              <div class="input-group">
+                                <div class="checkbox"><label><input type="checkbox" id="checkbox_khala_ghoda" checked>Khala Ghoda</label></div>
+                                <div class="checkbox"><label><input type="checkbox" id="checkbox_business_first" checked>Business First</label></div>
+                                <div class="checkbox"><label><input type="checkbox" id="checkbox_democracy_and_dogma" checked>Democracy and Dogma</label></div>
+                                <div class="checkbox"><label><input type="checkbox" id="checkbox_salsette_island" checked>Salsette Island</label></div>
+                                <div class="checkbox"><label><input type="checkbox" id="checkbox_the_liberated_mind" checked>The Liberated Mind</label></div>
+                                <div class="checkbox"><label><input type="checkbox" id="checkbox_fear_the_masses" checked>Fear the Masses</label></div>
+                              </div>
+                            </div>
+                          </div>  <!-- /.Check -->
+                        </div>
+                      </div>
+                    </div>  <!-- ./Mumbad -->
+
+                  </div>
+                </div>
+              </div>  <!-- ./Cycles -->
+              
+              <!-- Partnership -->
+              <div class="row">
+                <div class="col-lg-12 col-sm-12">
                   <legend><span class="glyphicon glyphicon-link" aria-hidden="true"></span> Partnership</legend>
                   <div class="row">
-                    <div class="col-md-12 col-xs-6">
+                    <div class="col-sm-6 col-xs-12">
                       <h4>Run4Games</h4>
                       <p>Discuss about Android: Netrunner at <a href="http://run4games.com/" target="_blank">Run4Games</a>.</p>
                       <div class="row">
-                        <!-- <div class="col-lg-6 col-md-8 col-xs-12"> TODO: Sealed Season -->
                         <div class="col-lg-6 col-md-8 col-sm-8 col-xs-12">
                           <a href="http://run4games.com/" target="_blank"><img src="images/r4g.jpg" alt="" class="img-responsive img-rounded" /></a>
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-12 col-xs-6">
+                    <div class="col-sm-6 col-xs-12">
                       <h4>Ludiworld</h4>
                       <p>Buy the complete Sealed Pools at <a href="http://ludiworld.com/newshop/" target="_blank">Ludiworld</a>.</p>
                       <div class="row">
-                        <!-- <div class="col-lg-6 col-md-8 col-xs-12"> TODO: Sealed Season -->
                         <div class="col-lg-6 col-md-8 col-sm-8 col-xs-12">
                           <a href="http://ludiworld.com/newshop/" target="_blank"><img src="images/ludiworld.jpg" alt="" class="img-responsive img-rounded" /></a>
                         </div>
@@ -492,11 +705,13 @@
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>  <!-- Partnership -->
+              </div>  <!-- Partnership -->
+            
+            </div> <!-- ./Boxes -->
 
-          </div>
-        </div> <!-- /.Panel Left -->
+          </div> <!-- ./Core Set, Deluxes and Generate -->
+
+        </div> <!-- /.Panel Middle -->
 
       </div> <!-- /.Body -->
     </div> <!-- /.container -->
