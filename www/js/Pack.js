@@ -5,11 +5,10 @@ console.log('Pack.js loaded');
   *
   * Pack of Cards of a Side.
   */
-function Pack(name, cardPool) {
+function Pack(cardPool) {
 
   // CONSTRUCTOR
   this.mCardPool = cardPool;    // Pool of available Cards to generate the Sealed Pack
-  this.mName = name;            // Name of the Sealed Pack
   this.mType = cardPool.mType;  // Type of the Sealed Pack (STARTER or BOOSTER)
   this.mSide = cardPool.mSide;  // Side of the Sealed Pack
   this.mConstraints = cardPool.mConstraints.clone();  // Constraints of the Sealed Pack

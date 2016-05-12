@@ -5,11 +5,12 @@ console.log('Sealed.js loaded');
   *
   * Manage the Sealed Game
   */
-function Sealed(nbPlayers, sidesCardPools, version) {
+function Sealed(nbPlayers, cardPools, useOneCardPool, version) {
 
   // CONSTRUCTOR
 	this.mNbPlayers = nbPlayers;  // Number of Players
-  this.mSidesCardPools = sidesCardPools; // Available CardPools in the Sealed
+  this.mCardPools = cardPools; // Available CardPools in the Sealed
+  this.mUseOneCardPool = useOneCardPool; // true : Use only one cardpool for all players. false : Use one cardpool per player
   this.mPlayers = []; // Players in the Sealed
   this.mVersion = version;
 
@@ -24,20 +25,27 @@ Sealed.prototype = {
     */
   generate : function() {
     var processingStatus = new ProcessingStatus();
-
+    
     // Generate the Sealed Packs of all players
     for (iPlayer = 0; iPlayer < this.mNbPlayers; iPlayer++) {
-      // Clone the SidesCardPools
-      var sidesCardPools = {};
-      for (var side in Side) {
-        sidesCardPools[side] = [];
-        for (var iCardPool = 0; iCardPool < this.mSidesCardPools[side].length; iCardPool++)
-        {
-          sidesCardPools[side].push(this.mSidesCardPools[side][iCardPool].clone());
+
+      // Manage the cardpools
+      var cardPools = {};
+      if (this.mUseOneCardPool)
+      {
+        // Use the same cards
+        cardPools = this.mCardPools;
+      }
+      else
+      {
+        // Clone the cards and the constraint for the current player
+        for (var side in Side) {
+          cardPools[side] = this.mCardPools[side].clone();
         }
       }
+
       // Create the current Player
-      this.mPlayers[iPlayer] = new Player("Player " + (iPlayer+1), sidesCardPools);
+      this.mPlayers[iPlayer] = new Player("Player " + (iPlayer+1), cardPools);
       // Generate the current Player
       processingStatus.process(this.mPlayers[iPlayer].generate());
     }

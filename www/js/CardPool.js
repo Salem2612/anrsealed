@@ -5,34 +5,27 @@ console.log('CardPool.js loaded');
   *
   * Pool of Cards and the Constraints to create the Packs
   */
-function CardPool(side, nbPacks, nbCardCopies, cardPoolJSON, database) {
+function CardPool(side, sets, useAllCards, constraintsJSON, database) {
 
   // CONSTRUCTOR
   // Initialize members
-	this.mName              = cardPoolJSON.type[0].toUpperCase() + cardPoolJSON.type.substr(1).toLowerCase() + " - " + cardPoolJSON.edition[0].toUpperCase() + cardPoolJSON.edition.substr(1).toLowerCase();  // Name of the CardPool
-	this.mType              = cardPoolJSON.type;          // Type of the CardPool (See CardPool.TYPE)
-	this.mEdition           = cardPoolJSON.edition;       // Edition of the CardPool
-	this.mSide              = side;                       // Side of the CardPool
-  this.mNbPacks           = nbPacks;                    // Number of Copies of the Packs
-  this.mImagePath         = cardPoolJSON.imagePath;     // Image of the CardPool
-  this.mCycleIds          = cardPoolJSON.cycleIds;      // IDs of the cycles of the CardPool
-  this.mNbCardCopies      = nbCardCopies;               // Number of Copies of each Card in the CardPool
-  this.mConstraints       = new Constraints(cardPoolJSON.sidesConstraints[this.mSide]); // Constraints to generate Packs from the CardPool
-  this.mCards             = new Cards([]);              // Cards in the CardPool
-  this.mCardPoolJSON      = cardPoolJSON;
-  this.mDatabase          = database;
+	this.mSide                = side; // Side of the CardPool
+  this.mUseAllCards         = useAllCards;  // true : Use nbOfficialCopies. false : use nbCopies.
+  this.mSets                = sets; // array of {"cycleNo" : X, "setNo" : X, "nbSets" : X}
+  this.mConstraints         = new Constraints(constraintsJSON[this.mSide]); // Constraints to generate Packs from the CardPool
+  this.mCards               = new Cards([]);  // Cards in the CardPool
+  this.mConstraintsJSON     = constraintsJSON;
+  this.mDatabase            = database;
 
-  // Add the Cards in the CardPool
-  for (var iCycle = 0; iCycle < this.mCycleIds.length; iCycle++) {
-    // Retrieve the Cards of the current Cycle from the database
-    var cards = database.cloneCards(this.mCycleIds[iCycle], this.mSide);
-    // Add the Cards in the CardPool
-    for (var iCard = 0; iCard < cards.mItems.length; iCard++) {
-      var card = cards.mItems[iCard];
-      // Set the number of copies of the card
-      card.mNbCopies = this.mNbCardCopies;
-      // Add the current Card
-      this.mCards.add(card);
+  // Add the Cards of the Sets in the CardPool
+  for (var iSet = 0; iSet < this.mSets.length; iSet++) {
+    var set = this.mSets[iSet];
+    if(set.nbSets > 0)
+    {
+      // Retrieve the Cards of the current Set from the database
+      var cards = this.mDatabase.cloneCards(this.mSide, set.cycleNo, set.setNo, this.mUseAllCards, set.nbSets);
+      // Add the Cards in the CardPool
+      Array.prototype.push.apply(this.mCards.mItems, cards.mItems);
     }
   }
 
@@ -41,16 +34,8 @@ function CardPool(side, nbPacks, nbCardCopies, cardPoolJSON, database) {
 CardPool.prototype = {
 
   clone : function() {
-    var clone = new CardPool(this.mSide, this.mNbPacks, this.mNbCardCopies, this.mCardPoolJSON, this.mDatabase);
+    var clone = new CardPool(this.mSide, this.mSets, this.mUseAllCards, this.mConstraintsJSON, this.mDatabase);
     return clone;
   }
 
-};
-
-/**
-  * Enum TYPE
-  */
-CardPool.TYPE = {
-  STARTER:'STARTER',
-  BOOSTER:'BOOSTER'
 };

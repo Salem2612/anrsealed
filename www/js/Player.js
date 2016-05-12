@@ -5,11 +5,11 @@ console.log('Player.js loaded');
   *
   * Manage the cards of a Player
   */
-function Player(name, sidesCardPools) {
+function Player(name, cardPools) {
 
   // CONSTRUCTOR
 	this.mName = name;  // Name of the Player
-  this.mSidesCardPools = sidesCardPools;  // Pool of available cards
+  this.mCardPools = cardPools;  // Pool of available cards
   this.mSealedPools = {}; // Packs
 
 }//end Player
@@ -23,20 +23,10 @@ Player.prototype = {
     var processingStatus = new ProcessingStatus();
     // Generate the SealedPools of each Side
     for (var side in Side) {
-      this.mSealedPools[side] = [];
-      var sealedPool = this.mSealedPools[side];
-      var cardPools = this.mSidesCardPools[side];
-      // Generate the Packs for each CardPool
-      for (iCardPool = 0; iCardPool < cardPools.length; iCardPool++) {
-        var cardPool = cardPools[iCardPool];
-        // Generate the Packs of the current CardPool
-        for (iPack = 0; iPack < cardPool.mNbPacks; iPack++) {
-          // Generate the current Pack with the current CardPool
-          var pack = new Pack(cardPool.mName + " #" + (iPack+1), cardPool);
-          processingStatus.process(pack.generate());
-          sealedPool.push(pack);
-        }
-      }
+      // Generate the current Pack with the current CardPool
+      var pack = new Pack(this.mCardPools[side]);
+      processingStatus.process(pack.generate());
+      this.mSealedPools[side] = pack;
     }
     return processingStatus.mValue;
   },

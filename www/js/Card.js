@@ -8,16 +8,17 @@ console.log('Card.js loaded');
 function Card(cardJSON) {
 
   // CONSTRUCTOR
-	this.mId        = cardJSON.id;
-	this.mCycleNo   = cardJSON.cycleNo;
-	this.mSetNo     = cardJSON.setNo;
-	this.mCardNo    = cardJSON.cardNo;
-	this.mNameEn    = cardJSON.nameEn;
-	this.mNameFr    = cardJSON.nameFr;
-  this.mSide      = cardJSON.side;
-  this.mTypes     = cardJSON.types;
-	this.mNbCopies  = cardJSON.nbCopies;
-	this.mScore     = 0;
+	this.mId              = cardJSON.id;
+	this.mCycleNo         = cardJSON.cycleNo;
+	this.mSetNo           = cardJSON.setNo;
+	this.mCardNo          = cardJSON.cardNo;
+	this.mNameEn          = cardJSON.nameEn;
+	this.mNameFr          = cardJSON.nameFr;
+  this.mSide            = cardJSON.side;
+  this.mTypes           = cardJSON.types;
+	this.mNbCopies        = cardJSON.nbCopies;
+	this.mNbOffialCopies  = cardJSON.nbOfficialCopies;
+	this.mScore           = 0;
 
 }//end Card
 
@@ -33,7 +34,8 @@ Card.prototype = {
       'nameFr':this.mNameFr,
       'side':this.mSide,
       'types':this.mTypes,
-      'nbCopies':this.mNbCopies
+      'nbCopies':this.mNbCopies,
+      'nbOfficialCopies':this.mNbOffialCopies
     });
     clone.mScore = this.mScore;
     return clone;
@@ -132,7 +134,7 @@ Card.prototype = {
       // Add the Number of Copies to the score to give more priority to the Cards that are not picked
       // this.mScore += (30 * this.mNbCopies);  TODO 1_CARD_COPY
       // Calculate the score of the cards with each constraint
-      for (iConstraint = 0; iConstraint < constraints.mItems.length; iConstraint++) {
+      for (var iConstraint = 0; iConstraint < constraints.mItems.length; iConstraint++) {
         // Try to meet the current constraint
         var score = constraints.mItems[iConstraint].tryMeet(this);
         // Check if the Card meet an already complete Constraint

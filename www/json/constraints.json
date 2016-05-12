@@ -1,11 +1,11 @@
 {
-  "nbCards60":
+  "60":
   {
     "RUNNER":
     [
       {"type":"BANNED","min":0,"max":0,"score":0},
       {"type":"FIXED","min":0,"max":0,"score":400000},
-      {"type":"COMMON","min":0,"max":60,"score":300000},
+      {"type":"COMMON","min":60,"max":60,"score":300000},
       {"type":"UNCO","min":0,"max":0,"score":200000},
       {"type":"RARE","min":0,"max":0,"score":100000},
       {"type":"FRACTER","min":2,"max":60,"score":1},
@@ -32,12 +32,12 @@
       {"type":"AMBUSH","min":1,"max":60,"score":1}
     ]
   },
-  "nbCards80":
+  "80":
   {
     "RUNNER":
     [
       {"type":"BANNED","min":0,"max":0,"score":0},
-      {"type":"COMMON","min":0,"max":80,"score":300000},
+      {"type":"COMMON","min":80,"max":80,"score":300000},
       {"type":"UNCO","min":0,"max":0,"score":200000},
       {"type":"RARE","min":0,"max":0,"score":100000},
       {"type":"FRACTER","min":3,"max":80,"score":1},
@@ -50,18 +50,18 @@
     "CORP":
     [
       {"type":"BANNED","min":0,"max":0,"score":0},
-      {"type":"FIXED","min":5,"max":5,"score":400000},
-      {"type":"COMMON","min":0,"max":80,"score":300000},
+      {"type":"FIXED","min":0,"max":0,"score":400000},
+      {"type":"COMMON","min":80,"max":80,"score":300000},
       {"type":"UNCO","min":0,"max":0,"score":200000},
       {"type":"RARE","min":0,"max":0,"score":100000},
       {"type":"AGENDA","min":12,"max":80,"score":1},
-      {"type":"ICE","min":20,"max":80,"score":1},
-      {"type":"BARRIER","min":6,"max":80,"score":1},
-      {"type":"CODE_GATE","min":6,"max":80,"score":1},
-      {"type":"SENTRY","min":6,"max":80,"score":1},
+      {"type":"ICE","min":22,"max":80,"score":1},
+      {"type":"BARRIER","min":5,"max":80,"score":1},
+      {"type":"CODE_GATE","min":5,"max":80,"score":1},
+      {"type":"SENTRY","min":5,"max":80,"score":1},
       {"type":"ECO","min":4,"max":80,"score":1},
       {"type":"ECO_DERIVED","min":8,"max":80,"score":1},
       {"type":"AMBUSH","min":2,"max":80,"score":1}
-    }
+    ]
   }
 }

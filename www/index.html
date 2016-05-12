@@ -434,6 +434,23 @@
                 </div>
               </div> <!-- /.Ownership -->
 
+              <!-- Cardpool -->
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label class="control-label" for="text_cardpool">Cardpool</label>
+                    <div class="input-group" id="text_cardpool">
+                      <div class="radio">
+                        <label><input type="radio" name="optradio_cardpool" id="radio_cardpool_specific" checked>Use the cards selected by anrsealed</label>
+                      </div>
+                      <div class="radio">
+                        <label><input type="radio" name="optradio_cardpool"  id="radio_cardpool_all">Use all the cards (Recommended for small collections)</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> <!-- /.Cardpool -->
+
               <!-- Generate & Download -->
               <div class="row">
                 <div class="col-md-12">
@@ -470,6 +487,7 @@
 
               <!-- Core Set and Deluxes -->
               <div class="row">
+
                 <!-- Core Set -->
                 <div class="col-sm-6">
                   <h4><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Core Set</h4>
@@ -505,6 +523,7 @@
 
                 <!-- Deluxes -->
                 <div class="col-sm-6">
+                  <h4><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Deluxe Expansions</h4>
                   <div class="well well-sm">
                     <div class="row">
                       <!-- Image -->
@@ -513,21 +532,20 @@
                       </div> <!-- /.Image -->
                       <!-- Check -->
                       <div class="col-xs-7">
-                        <div class="form-group">
-                          <div class="checkbox">
-                            <label><input type="checkbox" value="" id="checkbox_deluxes" checked><strong>Deluxes</strong></label>
-                          </div>
-                          <div class="input-group">
-                            <div class="checkbox"><label><input type="checkbox" id="checkbox_creation_and_control" checked>Creation and Control</label></div>
-                            <div class="checkbox"><label><input type="checkbox" id="checkbox_honor_and_profit" checked>Honor and Profit</label></div>
-                            <div class="checkbox"><label><input type="checkbox" id="checkbox_order_and_chaos" checked>Order and Chaos</label></div>
-                            <div class="checkbox"><label><input type="checkbox" id="checkbox_data_and_destiny" checked>Data and Destiny</label></div>
-                          </div>
+                        <div class="checkbox">
+                          <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_deluxes" checked><strong>Deluxe Expansions</strong></label>
+                        </div>
+                        <div class="input-group">
+                          <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_deluxes" id="checkbox_creation_and_control" checked>Creation and Control</label></div>
+                          <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_deluxes" id="checkbox_honor_and_profit" checked>Honor and Profit</label></div>
+                          <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_deluxes" id="checkbox_order_and_chaos" checked>Order and Chaos</label></div>
+                          <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_deluxes" id="checkbox_data_and_destiny" checked>Data and Destiny</label></div>
                         </div>
                       </div>  <!-- /.Check -->
                     </div>
                   </div>
                 </div>  <!-- ./Deluxes -->
+
               </div>  <!-- ./Core Set and Deluxes -->
 
               <!-- Cycles -->
@@ -548,15 +566,15 @@
                           <div class="col-xs-7">
                             <div class="form-group">
                               <div class="checkbox">
-                                <label><input type="checkbox" value="" id="checkbox_genesis" checked><strong>Genesis</strong></label>
+                                <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_genesis" checked><strong>Genesis</strong></label>
                               </div>
                               <div class="input-group">
-                                <div class="checkbox"><label><input type="checkbox" id="checkbox_what_lies_ahead" checked>What Lies Ahead</label></div>
-                                <div class="checkbox"><label><input type="checkbox" id="checkbox_trace_amount" checked>Trace Amount</label></div>
-                                <div class="checkbox"><label><input type="checkbox" id="checkbox_cyber_exodus" checked>Cyber Exodus</label></div>
-                                <div class="checkbox"><label><input type="checkbox" id="checkbox_a_study_in_static" checked>A Study in Static</label></div>
-                                <div class="checkbox"><label><input type="checkbox" id="checkbox_humanitys_shadow" checked>Humanity's Shadow</label></div>
-                                <div class="checkbox"><label><input type="checkbox" id="checkbox_future_proof" checked>Future Proof</label></div>
+                                <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_genesis" id="checkbox_what_lies_ahead" checked>What Lies Ahead</label></div>
+                                <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_genesis" id="checkbox_trace_amount" checked>Trace Amount</label></div>
+                                <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_genesis" id="checkbox_cyber_exodus" checked>Cyber Exodus</label></div>
+                                <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_genesis" id="checkbox_a_study_in_static" checked>A Study in Static</label></div>
+                                <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_genesis" id="checkbox_humanitys_shadow" checked>Humanity's Shadow</label></div>
+                                <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_genesis" id="checkbox_future_proof" checked>Future Proof</label></div>
                               </div>
                             </div>
                           </div>  <!-- /.Check -->
@@ -576,15 +594,15 @@
                           <div class="col-xs-7">
                             <div class="form-group">
                               <div class="checkbox">
-                                <label><input type="checkbox" value="" id="checkbox_spin" checked><strong>Spin</strong></label>
+                                <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_spin" checked><strong>Spin</strong></label>
                               </div>
                               <div class="input-group">
-                                <div class="checkbox"><label><input type="checkbox" id="checkbox_opening_move" checked>Opening Move</label></div>
-                                <div class="checkbox"><label><input type="checkbox" id="checkbox_second_though" checked>Second Though</label></div>
-                                <div class="checkbox"><label><input type="checkbox" id="checkbox_mala_tempora" checked>Mala Tempora</label></div>
-                                <div class="checkbox"><label><input type="checkbox" id="checkbox_true_colors" checked>True Colors</label></div>
-                                <div class="checkbox"><label><input type="checkbox" id="checkbox_fear_and_loathing" checked>Fear and Loathing</label></div>
-                                <div class="checkbox"><label><input type="checkbox" id="checkbox_double_time" checked>Double Time</label></div>
+                                <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_spin" id="checkbox_opening_move" checked>Opening Move</label></div>
+                                <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_spin" id="checkbox_second_though" checked>Second Though</label></div>
+                                <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_spin" id="checkbox_mala_tempora" checked>Mala Tempora</label></div>
+                                <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_spin" id="checkbox_true_colors" checked>True Colors</label></div>
+                                <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_spin" id="checkbox_fear_and_loathing" checked>Fear and Loathing</label></div>
+                                <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_spin" id="checkbox_double_time" checked>Double Time</label></div>
                               </div>
                             </div>
                           </div>  <!-- /.Check -->
@@ -604,15 +622,15 @@
                           <div class="col-xs-7">
                             <div class="form-group">
                               <div class="checkbox">
-                                <label><input type="checkbox" value="" id="checkbox_lunar" checked><strong>Lunar</strong></label>
+                                <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_lunar" checked><strong>Lunar</strong></label>
                               </div>
                               <div class="input-group">
-                                <div class="checkbox"><label><input type="checkbox" id="checkbox_upstalk" checked>Upstalk</label></div>
-                                <div class="checkbox"><label><input type="checkbox" id="checkbox_the_spaces_between" checked>The Spaces Between</label></div>
-                                <div class="checkbox"><label><input type="checkbox" id="checkbox_first_contact" checked>First Contact</label></div>
-                                <div class="checkbox"><label><input type="checkbox" id="checkbox_up_and_over" checked>Up and Over</label></div>
-                                <div class="checkbox"><label><input type="checkbox" id="checkbox_all_that_remains" checked>All That Remains</label></div>
-                                <div class="checkbox"><label><input type="checkbox" id="checkbox_the_source" checked>The Source</label></div>
+                                <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_lunar" id="checkbox_upstalk" checked>Upstalk</label></div>
+                                <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_lunar" id="checkbox_the_spaces_between" checked>The Spaces Between</label></div>
+                                <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_lunar" id="checkbox_first_contact" checked>First Contact</label></div>
+                                <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_lunar" id="checkbox_up_and_over" checked>Up and Over</label></div>
+                                <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_lunar" id="checkbox_all_that_remains" checked>All That Remains</label></div>
+                                <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_lunar" id="checkbox_the_source" checked>The Source</label></div>
                               </div>
                             </div>
                           </div>  <!-- /.Check -->
@@ -632,15 +650,15 @@
                           <div class="col-xs-7">
                             <div class="form-group">
                               <div class="checkbox">
-                                <label><input type="checkbox" value="" id="checkbox_sansan" checked><strong>SanSan</strong></label>
+                                <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_sansan" checked><strong>SanSan</strong></label>
                               </div>
                               <div class="input-group">
-                                <div class="checkbox"><label><input type="checkbox" id="checkbox_the_valley" checked>The Valley</label></div>
-                                <div class="checkbox"><label><input type="checkbox" id="checkbox_breaker_bay" checked>Breaker Bay</label></div>
-                                <div class="checkbox"><label><input type="checkbox" id="checkbox_chrome_city" checked>Chrome City</label></div>
-                                <div class="checkbox"><label><input type="checkbox" id="checkbox_the_underway" checked>The Underway</label></div>
-                                <div class="checkbox"><label><input type="checkbox" id="checkbox_old_hollywood" checked>Old Hollywood</label></div>
-                                <div class="checkbox"><label><input type="checkbox" id="checkbox_the_universe_of_tomorrow" checked>The Universe of Tomorrow</label></div>
+                                <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_sansan" id="checkbox_the_valley" checked>The Valley</label></div>
+                                <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_sansan" id="checkbox_breaker_bay" checked>Breaker Bay</label></div>
+                                <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_sansan" id="checkbox_chrome_city" checked>Chrome City</label></div>
+                                <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_sansan" id="checkbox_the_underway" checked>The Underway</label></div>
+                                <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_sansan" id="checkbox_old_hollywood" checked>Old Hollywood</label></div>
+                                <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_sansan" id="checkbox_the_universe_of_tomorrow" checked>The Universe of Tomorrow</label></div>
                               </div>
                             </div>
                           </div>  <!-- /.Check -->
@@ -660,15 +678,15 @@
                           <div class="col-xs-7">
                             <div class="form-group">
                               <div class="checkbox">
-                                <label><input type="checkbox" value="" id="checkbox_mumbad" checked><strong>Mumbad</strong></label>
+                                <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_mumbad" checked><strong>Mumbad</strong></label>
                               </div>
                               <div class="input-group">
-                                <div class="checkbox"><label><input type="checkbox" id="checkbox_khala_ghoda" checked>Khala Ghoda</label></div>
-                                <div class="checkbox"><label><input type="checkbox" id="checkbox_business_first" checked>Business First</label></div>
-                                <div class="checkbox"><label><input type="checkbox" id="checkbox_democracy_and_dogma" checked>Democracy and Dogma</label></div>
-                                <div class="checkbox"><label><input type="checkbox" id="checkbox_salsette_island" checked>Salsette Island</label></div>
-                                <div class="checkbox"><label><input type="checkbox" id="checkbox_the_liberated_mind" checked>The Liberated Mind</label></div>
-                                <div class="checkbox"><label><input type="checkbox" id="checkbox_fear_the_masses" checked>Fear the Masses</label></div>
+                                <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_mumbad" id="checkbox_khala_ghoda" checked>Khala Ghoda</label></div>
+                                <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_mumbad" id="checkbox_business_first" checked>Business First</label></div>
+                                <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_mumbad" id="checkbox_democracy_and_dogma" checked>Democracy and Dogma</label></div>
+                                <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_mumbad" id="checkbox_salsette_island" checked>Salsette Island</label></div>
+                                <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_mumbad" id="checkbox_the_liberated_mind" checked>The Liberated Mind</label></div>
+                                <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_mumbad" id="checkbox_fear_the_masses" checked>Fear the Masses</label></div>
                               </div>
                             </div>
                           </div>  <!-- /.Check -->
@@ -679,7 +697,7 @@
                   </div>
                 </div>
               </div>  <!-- ./Cycles -->
-              
+
               <!-- Partnership -->
               <div class="row">
                 <div class="col-lg-12 col-sm-12">
@@ -706,7 +724,7 @@
                   </div>
                 </div>
               </div>  <!-- Partnership -->
-            
+
             </div> <!-- ./Boxes -->
 
           </div> <!-- ./Core Set, Deluxes and Generate -->
@@ -741,7 +759,93 @@
       $(function() {
 
         // Global variables
-        var mView = new View(['cards', 'cardpools'], '1.4.1');
+        var mView = new View(['cards', 'constraints'], '2.0.0');
+
+        /**
+          *
+          */
+        areAllCheckboxesChecked = function(checkboxValue) {
+          // Retrieve the list of the checkboxes with a value equal to the given checkboxValue
+          var checkboxes = $(':checkbox[value="' + checkboxValue + '"]');
+          // Create the result. Begin true if there is at least one checkbox
+          var bAreAllCheckboxesChecked = (checkboxes.length > 0);
+          // Check if all checkboxes are checked
+          for(iCheckbox = 0; iCheckbox < checkboxes.length; iCheckbox++)
+          {
+            bAreAllCheckboxesChecked &= checkboxes[iCheckbox].checked;
+          }
+          return bAreAllCheckboxesChecked;
+        }
+
+        /**
+          *
+          */
+        checkTitle = function(checkboxTitleId, checkboxItemsValue) {
+          if(areAllCheckboxesChecked(checkboxItemsValue))
+          {
+            $('#' + checkboxTitleId).prop("checked", true);
+          }
+          else
+          {
+            $('#' + checkboxTitleId).prop("checked", false);
+          }
+        }
+
+        /**
+          *
+          */
+        checkAllItems = function(checkboxTitleId, checkboxItemsValue) {
+          if($('#'+ checkboxTitleId).is(':checked'))
+          {
+            $(':checkbox[value="'+ checkboxItemsValue +'"]').prop("checked", true);
+          }
+          else
+          {
+            $(':checkbox[value="'+ checkboxItemsValue +'"]').prop("checked", false);
+          }
+        }
+
+        /**
+          * Handler of the button on click event.
+          *
+          * return  void
+          */
+        $('#button_check_all').on('click', function(e) {
+          $('#radio_nb_core_set_3').prop("checked", true);
+          $(':checkbox[value="checkbox_cycle_title"]').prop("checked", true);
+          $(':checkbox[value^="checkbox_cycle_item"]').prop("checked", true);
+        });
+
+        /**
+          * Handler of the button on click event.
+          *
+          * return  void
+          */
+        $('#button_uncheck_all').on('click', function(e) {
+          $('#radio_nb_core_set_0').prop("checked", true);
+          $(':checkbox[value="checkbox_cycle_title"]').prop("checked", false);
+          $(':checkbox[value^="checkbox_cycle_item"]').prop("checked", false);
+        });
+
+        /**
+          *
+          */
+        $('#checkbox_deluxes').change(function() {checkAllItems(this.id, "checkbox_cycle_item_deluxes");});
+        $('#checkbox_genesis').change(function() {checkAllItems(this.id, "checkbox_cycle_item_genesis");});
+        $('#checkbox_spin').change(function() {checkAllItems(this.id, "checkbox_cycle_item_spin");});
+        $('#checkbox_lunar').change(function() {checkAllItems(this.id, "checkbox_cycle_item_lunar");});
+        $('#checkbox_sansan').change(function() {checkAllItems(this.id, "checkbox_cycle_item_sansan");});
+        $('#checkbox_mumbad').change(function() {checkAllItems(this.id, "checkbox_cycle_item_mumbad");});
+
+        /**
+          *
+          */
+        $(':checkbox[value="checkbox_cycle_item_deluxes"]').change(function() {checkTitle("checkbox_deluxes", this.value);});
+        $(':checkbox[value="checkbox_cycle_item_genesis"]').change(function() {checkTitle("checkbox_genesis", this.value);});
+        $(':checkbox[value="checkbox_cycle_item_spin"]').change(function() {checkTitle("checkbox_spin", this.value);});
+        $(':checkbox[value="checkbox_cycle_item_lunar"]').change(function() {checkTitle("checkbox_lunar", this.value);});
+        $(':checkbox[value="checkbox_cycle_item_sansan"]').change(function() {checkTitle("checkbox_sansan", this.value);});
+        $(':checkbox[value="checkbox_cycle_item_mumbad"]').change(function() {checkTitle("checkbox_mumbad", this.value);});
 
         /**
           * Handler of the text_nb_players on click event.
@@ -781,27 +885,6 @@
         });
 
       });
-    </script>
-
-    <!-- Templates - Booster -->
-    <script id="tmpl_pack" type="x-tmpl-mustache">
-      <div class="{{width}}">
-        <div class="well well-sm">
-          <!-- Image -->
-          <div class="row">
-            <div class="col-sm-12">
-              <img src="{{imagePath}}" alt="" class="img-responsive img-rounded" />
-            </div>
-          </div>
-          <p></p>
-          <!-- Number of Packs -->
-          <div class="row">
-            <div class="col-sm-offset-3 col-sm-6">
-              <input id="text_cardpool_{{index}}_nb_packs" type="text" min="0" class="form-control text-center" value="{{nbPacks}}">
-            </div>
-          </div>
-        </div>
-      </div>
     </script>
 
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
