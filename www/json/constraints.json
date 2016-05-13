@@ -4,16 +4,19 @@
     "RUNNER":
     [
       {"type":"BANNED","min":0,"max":0,"score":0},
-      {"type":"FIXED","min":0,"max":0,"score":400000},
       {"type":"COMMON","min":60,"max":60,"score":300000},
       {"type":"UNCO","min":0,"max":0,"score":200000},
       {"type":"RARE","min":0,"max":0,"score":100000},
+      {"type":"EVENT","min":8,"max":60,"score":1},
+      {"type":"HARDWARE","min":4,"max":60,"score":1},
+      {"type":"CONSOLE","min":1,"max":60,"score":1},
+      {"type":"RESOURCE","min":4,"max":60,"score":1},
+      {"type":"PROGRAM","min":8,"max":15,"score":1},
       {"type":"FRACTER","min":2,"max":60,"score":1},
       {"type":"DECODER","min":2,"max":60,"score":1},
       {"type":"KILLER","min":2,"max":60,"score":1},
-      {"type":"TUTOR","min":0,"max":60,"score":1},
-      {"type":"ECO","min":2,"max":60,"score":1},
-      {"type":"ECO_DERIVED","min":4,"max":60,"score":1}
+      {"type":"ECO","min":3,"max":60,"score":1},
+      {"type":"ECO_DERIVED","min":5,"max":60,"score":1}
     ],
     "CORP":
     [
@@ -22,13 +25,16 @@
       {"type":"COMMON","min":60,"max":60,"score":300000},
       {"type":"UNCO","min":0,"max":0,"score":200000},
       {"type":"RARE","min":0,"max":0,"score":100000},
-      {"type":"AGENDA","min":9,"max":60,"score":1},
-      {"type":"ICE","min":10,"max":60,"score":1},
+      {"type":"AGENDA","min":10,"max":15,"score":1},
+      {"type":"ASSET","min":6,"max":60,"score":1},
+      {"type":"UPGRADE","min":4,"max":60,"score":1},
+      {"type":"OPERATION","min":8,"max":60,"score":1},
+      {"type":"ICE","min":12,"max":60,"score":1},
       {"type":"BARRIER","min":3,"max":60,"score":1},
       {"type":"CODE_GATE","min":3,"max":60,"score":1},
       {"type":"SENTRY","min":3,"max":60,"score":1},
-      {"type":"ECO","min":2,"max":60,"score":1},
-      {"type":"ECO_DERIVED","min":4,"max":60,"score":1},
+      {"type":"ECO","min":3,"max":60,"score":1},
+      {"type":"ECO_DERIVED","min":5,"max":60,"score":1},
       {"type":"AMBUSH","min":1,"max":60,"score":1}
     ]
   },
@@ -40,11 +46,15 @@
       {"type":"COMMON","min":80,"max":80,"score":300000},
       {"type":"UNCO","min":0,"max":0,"score":200000},
       {"type":"RARE","min":0,"max":0,"score":100000},
+      {"type":"EVENT","min":10,"max":80,"score":1},
+      {"type":"HARDWARE","min":5,"max":80,"score":1},
+      {"type":"CONSOLE","min":2,"max":80,"score":1},
+      {"type":"RESOURCE","min":5,"max":80,"score":1},
+      {"type":"PROGRAM","min":10,"max":15,"score":1},
       {"type":"FRACTER","min":3,"max":80,"score":1},
       {"type":"DECODER","min":3,"max":80,"score":1},
       {"type":"KILLER","min":3,"max":80,"score":1},
-      {"type":"TUTOR","min":0,"max":80,"score":1},
-      {"type":"ECO","min":3,"max":80,"score":1},
+      {"type":"ECO","min":4,"max":80,"score":1},
       {"type":"ECO_DERIVED","min":6,"max":80,"score":1}
     ],
     "CORP":
@@ -54,13 +64,16 @@
       {"type":"COMMON","min":80,"max":80,"score":300000},
       {"type":"UNCO","min":0,"max":0,"score":200000},
       {"type":"RARE","min":0,"max":0,"score":100000},
-      {"type":"AGENDA","min":12,"max":80,"score":1},
-      {"type":"ICE","min":22,"max":80,"score":1},
+      {"type":"AGENDA","min":12,"max":18,"score":1},
+      {"type":"ASSET","min":7,"max":80,"score":1},
+      {"type":"UPGRADE","min":5,"max":80,"score":1},
+      {"type":"OPERATION","min":10,"max":80,"score":1},
+      {"type":"ICE","min":20,"max":30,"score":1},
       {"type":"BARRIER","min":5,"max":80,"score":1},
       {"type":"CODE_GATE","min":5,"max":80,"score":1},
       {"type":"SENTRY","min":5,"max":80,"score":1},
       {"type":"ECO","min":4,"max":80,"score":1},
-      {"type":"ECO_DERIVED","min":8,"max":80,"score":1},
+      {"type":"ECO_DERIVED","min":6,"max":80,"score":1},
       {"type":"AMBUSH","min":2,"max":80,"score":1}
     ]
   }

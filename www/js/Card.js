@@ -116,14 +116,6 @@ Card.prototype = {
   },
 
   /**
-    * Get the URL of the Card on NetrunnerDB
-    */
-  getTextWithRarity : function(locale) {
-    var text = this.mNbCopies + "x " + this.getName(locale) + " (" + this.getRarity() + ")" + "\r\n";
-    return text;
-  },
-
-  /**
     * Calculate the Score of the Card with the specified Constraint
     */
   calculateScore : function(constraints) {

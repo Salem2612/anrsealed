@@ -53,12 +53,15 @@ Pack.prototype = {
   /**
     * Generate and return the Sealed Pack as Text
     */
-  generateTextFile : function(locale) {
-    var textFile = "[" + this.mName + "]\r\n";
+  generateTextFileSortedByCardType : function(locale) {
+    var textFile = "";
     // List the types to sort the Cards in the Text File
     var types = (this.mSide == Side.CORP) ? [CardType.AGENDA, CardType.ASSET, CardType.UPGRADE, CardType.OPERATION, CardType.ICE] : [CardType.EVENT, CardType.HARDWARE, CardType.RESOURCE, CardType.PROGRAM]
 
-    // Calculate the statistics of the Sealed Pool
+    // Sort the Sealed Pack by Name
+    this.mCards.sortByName(locale);
+
+    // Calculate the statistics of the Sealed Pack
     var statistics = {};
     for (var iType in types) {
       var type = types[iType];
@@ -82,12 +85,50 @@ Pack.prototype = {
         for (iCard = 0; iCard < this.mCards.mItems.length; iCard++) {
           var card = this.mCards.mItems[iCard];
           if (card.hasType(type)) {
-            textFile += card.getTextWithRarity(locale);
+            textFile += card.getText(locale);
           }
         }
         // Print a blank line in the Text File
         textFile += "\r\n";
       }
+    }
+    return textFile;
+  },
+
+  /**
+    * Generate the Text File of the Sealed Pack sorted by alphabetical order
+    */
+  generateTextFileSortedByAlphabeticalOrder : function(locale) {
+    // Create the Text File of the Sealed Pack
+    var textFile = "";
+
+    // Sort the Sealed Pack by Name
+    this.mCards.sortByName(locale);
+
+    // Add "The Shadow: Pulling the Strings" or "The Masque" to improve importing in Netrunner DB
+    if (Side.CORP == this.mSide) {
+      textFile = "The Shadow: Pulling the Strings\r\n\r\n";
+    }
+    else if (Side.RUNNER == this.mSide) {
+      textFile = "The Masque\r\n\r\n";
+    }
+
+    // Create the Text File
+    for (iCard = 0; iCard < this.mCards.mItems.length; iCard++) {
+      var card = this.mCards.mItems[iCard];
+      // Add a new line between each letter
+      if (iCard != 0) {
+        // Retrieve the first letter of the previous Card
+        var firstLetterPrev = this.mCards.mItems[iCard-1].getName(locale).toLocaleLowerCase().charAt(0);
+        // Retrieve the first letter of the current Card
+        var firstLetterCurrent = card.getName(locale).toLocaleLowerCase().charAt(0);
+        // Compare the first letters of the 2 Cards
+        if (firstLetterPrev != firstLetterCurrent) {
+          textFile += "\r\n";
+        }
+      }
+      // Add the card in the text file
+      textFile += card.getText(locale);
     }
     return textFile;
   }

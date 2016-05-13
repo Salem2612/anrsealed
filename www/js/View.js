@@ -199,24 +199,21 @@ View.prototype = {
       var player = this.mSealed.mPlayers[iPlayer];
       for (var side in Side) {
         // Print Current Sealed Pool
-        var sealedPool = player.mSealedPools[side];
-        for (var iPack = 0; iPack < sealedPool.length; iPack++) {
-          var text = "";
-          // Print Current Pack
-          var pack = sealedPool[iPack];
-          var packStatus = (true === pack.mConstraints.areMet()) ? ProcessingStatus.OK : ProcessingStatus.KO;
-          if (packStatus === ProcessingStatus.KO) {
-            text += " - [Player " + (iPlayer+1) +"] [" + side + "] [" + pack.mName + "] : " + packStatus + "\n";
-            for (var iConstraint = 0; iConstraint < pack.mConstraints.mItems.length; iConstraint++) {
-              // Print Current Constraint
-              var constraint = pack.mConstraints.mItems[iConstraint];
-              if (!constraint.isMet()) {
-                text += "    - " + constraint.mNbCurrent + " " + constraint.mType + " is out of range [" + constraint.mNbMin + ";" + constraint.mNbMax + "]\n";
-              }
+        var sealedPack = player.mSealedPacks[side];
+        var text = "";
+        // Print Current Pack
+        var packStatus = (true === sealedPack.mConstraints.areMet()) ? ProcessingStatus.OK : ProcessingStatus.KO;
+        if (packStatus === ProcessingStatus.KO) {
+          text += " - [Player " + (iPlayer+1) +"] [" + side + "] : " + packStatus + "\n";
+          for (var iConstraint = 0; iConstraint < sealedPack.mConstraints.mItems.length; iConstraint++) {
+            // Print Current Constraint
+            var constraint = sealedPack.mConstraints.mItems[iConstraint];
+            if (!constraint.isMet()) {
+              text += "    - Only " + constraint.mNbCurrent + " " + constraint.mType + " available. At least " + constraint.mNbMin + " needed.\n";
             }
           }
-          $('#textarea_status').val($('#textarea_status').val() + text);
         }
+        $('#textarea_status').val($('#textarea_status').val() + text);
       }
     }
   },

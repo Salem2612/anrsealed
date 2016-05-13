@@ -57,5 +57,5 @@ ProcessingStatus.OK = "Success";
 ProcessingStatus.KO = "Fail";
 
 ProcessingStatus.DETAIL = {};
-ProcessingStatus.DETAIL.NOT_ENOUGH_PLAYERS = "Not enough players (min 1 Player)";
-ProcessingStatus.DETAIL.NOT_ENOUGH_CARDS = "Not enough cards (0 to 2 Starters. 0 to 10 Base Set, Spin or Lunar Boosters. 0 to 4 SanSan Boosters.)";
+ProcessingStatus.DETAIL.NOT_ENOUGH_PLAYERS = "There are not enough players (min 1 Player)";
+ProcessingStatus.DETAIL.NOT_ENOUGH_CARDS = "There are not enough cards in your cardpool. Please select 'Use all the cards', instead of 'Use the cards selected by anrsealed'.";
