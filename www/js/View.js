@@ -16,7 +16,7 @@ function View(jsons, version) {
   this.mJSONs = {nbFiles:jsons.length};
   for (var json of jsons) {
     // Request the JSON file asynchronously
-    this.requestJSON('json/' + json + '.json', this.mJSONs, json, this.onFileLoaded, this);
+    this.requestJSON('json/' + json + '_v' + this.mVersion + '.json', this.mJSONs, json, this.onFileLoaded, this);
   }
 
 }//end View
@@ -39,31 +39,6 @@ View.prototype = {
       // Create the Database
       this.mDatabase = new Database(this.mJSONs);
 
-      // Render the Starters and Boosters on the View
-      var starters = [];
-      var boosters = [];
-      for (var iCardPool = 0; iCardPool < this.mJSONs.cardpools.length; iCardPool++) {
-        var cardPoolJSON = this.mJSONs.cardpools[iCardPool];
-        // Add the {{imagePath}} attribut
-        cardPoolJSON.imagePath = "images/" + cardPoolJSON.edition.split(' ').join('_').toLowerCase() + "_" + cardPoolJSON.type.toLowerCase() + ".jpg";
-        // Add the {{index}} attribut
-        cardPoolJSON.index = iCardPool;
-        // Add the {{width}} attribut
-        switch (cardPoolJSON.type) {
-          case CardPool.TYPE.STARTER :
-            cardPoolJSON.width = "col-xs-12";
-            starters.push(cardPoolJSON);
-            break;
-          case CardPool.TYPE.BOOSTER :
-            cardPoolJSON.width = "col-lg-3 col-md-4 col-sm-3 col-xs-4";
-            boosters.push(cardPoolJSON);
-            break;
-        }
-      }
-      // Render the Starters
-      this.renderTemplate(starters, '#tmpl_pack', '#div_starters');
-      // Render the Boosters
-      this.renderTemplate(boosters, '#tmpl_pack', '#div_boosters');
       // Set the text inputs selectable
       $('input[type="text"]').on('click', function(e) {
         this.select();
@@ -135,28 +110,67 @@ View.prototype = {
     var nbPlayers = parseInt($('#text_nb_players').val());
     processingStatus.checkNbPlayers(nbPlayers);
 
-    // Create the CardPools of each Side
-    var cardPoolsJSON = this.mJSONs.cardpools;
-    var sidesCardPools = {};
+    // Retrieve the number of cards from the view
+    var nbCards = $('#radio_nb_cards_60').is(':checked') ? 60 :
+                  $('#radio_nb_cards_80').is(':checked') ? 80 : 0;
+
+    // Retrieve the ownership from the view
+    var useOneCardPool = $('#radio_ownership_one').is(':checked');
+
+    // Retrieve the cardpool choice from the view
+    var useAllCards = $('#radio_cardpool_all').is(':checked');
+
+    // Retrieve the available sets of the view
+    var nbCoreSets =  $('#radio_nb_core_set_0').is(':checked') ? 0 :
+                      $('#radio_nb_core_set_1').is(':checked') ? 1 :
+                      $('#radio_nb_core_set_2').is(':checked') ? 2 :
+                      $('#radio_nb_core_set_3').is(':checked') ? 3 : 0;
+    var sets = [
+      {"cycleNo" : 1,   "setNo" : 1, "nbSets" : nbCoreSets},
+      {"cycleNo" : 2,   "setNo" : 1, "nbSets" : $('#checkbox_what_lies_ahead').is(':checked') ? 1 : 0},
+      {"cycleNo" : 2,   "setNo" : 2, "nbSets" : $('#checkbox_trace_amount').is(':checked') ? 1 : 0},
+      {"cycleNo" : 2,   "setNo" : 3, "nbSets" : $('#checkbox_cyber_exodus').is(':checked') ? 1 : 0},
+      {"cycleNo" : 2,   "setNo" : 4, "nbSets" : $('#checkbox_a_study_in_static').is(':checked') ? 1 : 0},
+      {"cycleNo" : 2,   "setNo" : 5, "nbSets" : $('#checkbox_humanitys_shadow').is(':checked') ? 1 : 0},
+      {"cycleNo" : 2,   "setNo" : 6, "nbSets" : $('#checkbox_future_proof').is(':checked') ? 1 : 0},
+      {"cycleNo" : 3,   "setNo" : 1, "nbSets" : $('#checkbox_creation_and_control').is(':checked') ? 1 : 0},
+      {"cycleNo" : 4,   "setNo" : 1, "nbSets" : $('#checkbox_opening_move').is(':checked') ? 1 : 0},
+      {"cycleNo" : 4,   "setNo" : 2, "nbSets" : $('#checkbox_second_though').is(':checked') ? 1 : 0},
+      {"cycleNo" : 4,   "setNo" : 3, "nbSets" : $('#checkbox_mala_tempora').is(':checked') ? 1 : 0},
+      {"cycleNo" : 4,   "setNo" : 4, "nbSets" : $('#checkbox_true_colors').is(':checked') ? 1 : 0},
+      {"cycleNo" : 4,   "setNo" : 5, "nbSets" : $('#checkbox_fear_and_loathing').is(':checked') ? 1 : 0},
+      {"cycleNo" : 4,   "setNo" : 6, "nbSets" : $('#checkbox_double_time').is(':checked') ? 1 : 0},
+      {"cycleNo" : 5,   "setNo" : 1, "nbSets" : $('#checkbox_honor_and_profit').is(':checked') ? 1 : 0},
+      {"cycleNo" : 6,   "setNo" : 1, "nbSets" : $('#checkbox_upstalk').is(':checked') ? 1 : 0},
+      {"cycleNo" : 6,   "setNo" : 2, "nbSets" : $('#checkbox_the_spaces_between').is(':checked') ? 1 : 0},
+      {"cycleNo" : 6,   "setNo" : 3, "nbSets" : $('#checkbox_first_contact').is(':checked') ? 1 : 0},
+      {"cycleNo" : 6,   "setNo" : 4, "nbSets" : $('#checkbox_up_and_over').is(':checked') ? 1 : 0},
+      {"cycleNo" : 6,   "setNo" : 5, "nbSets" : $('#checkbox_all_that_remains').is(':checked') ? 1 : 0},
+      {"cycleNo" : 6,   "setNo" : 6, "nbSets" : $('#checkbox_the_source').is(':checked') ? 1 : 0},
+      {"cycleNo" : 7,   "setNo" : 1, "nbSets" : $('#checkbox_order_and_chaos').is(':checked') ? 1 : 0},
+      {"cycleNo" : 8,   "setNo" : 1, "nbSets" : $('#checkbox_the_valley').is(':checked') ? 1 : 0},
+      {"cycleNo" : 8,   "setNo" : 2, "nbSets" : $('#checkbox_breaker_bay').is(':checked') ? 1 : 0},
+      {"cycleNo" : 8,   "setNo" : 3, "nbSets" : $('#checkbox_chrome_city').is(':checked') ? 1 : 0},
+      {"cycleNo" : 8,   "setNo" : 4, "nbSets" : $('#checkbox_the_underway').is(':checked') ? 1 : 0},
+      {"cycleNo" : 8,   "setNo" : 5, "nbSets" : $('#checkbox_old_hollywood').is(':checked') ? 1 : 0},
+      {"cycleNo" : 8,   "setNo" : 6, "nbSets" : $('#checkbox_the_universe_of_tomorrow').is(':checked') ? 1 : 0},
+      {"cycleNo" : 9,   "setNo" : 1, "nbSets" : $('#checkbox_data_and_destiny').is(':checked') ? 1 : 0},
+      {"cycleNo" : 10,  "setNo" : 1, "nbSets" : $('#checkbox_khala_ghoda').is(':checked') ? 1 : 0},
+      {"cycleNo" : 10,  "setNo" : 2, "nbSets" : $('#checkbox_business_first').is(':checked') ? 1 : 0},
+      {"cycleNo" : 10,  "setNo" : 3, "nbSets" : $('#checkbox_democracy_and_dogma').is(':checked') ? 1 : 0},
+      {"cycleNo" : 10,  "setNo" : 4, "nbSets" : $('#checkbox_salsette_island').is(':checked') ? 1 : 0},
+      {"cycleNo" : 10,  "setNo" : 5, "nbSets" : $('#checkbox_the_liberated_mind').is(':checked') ? 1 : 0},
+      {"cycleNo" : 10,  "setNo" : 6, "nbSets" : $('#checkbox_fear_the_masses').is(':checked') ? 1 : 0}
+    ];
+
+    // Create the CardPools of each Side from the available sets
+    var cardPools = {};
     for (var side in Side) {
-      sidesCardPools[side] = [];
-      var cardPools = sidesCardPools[side];
-      // Create the CardPools of the current Side
-      for (var iCardPool = 0; iCardPool < cardPoolsJSON.length; iCardPool++)
-      {
-        // Retrieve the current CardPool from the JSON file
-        var cardPoolJSON = cardPoolsJSON[iCardPool];
-        // Retrieve the Number of Copies of Packs from the view
-        var nbPacks = parseInt($('#text_cardpool_'+iCardPool+'_nb_packs').val());
-        // Create the current CardPool Object
-        var cardPool = new CardPool(side, nbPacks, cardPoolJSON.nbCardCopies, cardPoolJSON, this.mDatabase);
-        // Add the current CardPool to the Array of CardPools
-        cardPools.push(cardPool);
-      }
+      cardPools[side] = new CardPool(side, sets, useAllCards, this.mJSONs.constraints[nbCards], this.mDatabase);
     }
 
     // GENERATE THE SEALED
-    this.mSealed = new Sealed(nbPlayers, sidesCardPools, this.mVersion);
+    this.mSealed = new Sealed(nbPlayers, cardPools, useOneCardPool, this.mVersion);
     processingStatus.process(this.mSealed.generate());
 
     // PRINT STATUS
@@ -185,24 +199,21 @@ View.prototype = {
       var player = this.mSealed.mPlayers[iPlayer];
       for (var side in Side) {
         // Print Current Sealed Pool
-        var sealedPool = player.mSealedPools[side];
-        for (var iPack = 0; iPack < sealedPool.length; iPack++) {
-          var text = "";
-          // Print Current Pack
-          var pack = sealedPool[iPack];
-          var packStatus = (true === pack.mConstraints.areMet()) ? ProcessingStatus.OK : ProcessingStatus.KO;
-          if (packStatus === ProcessingStatus.KO) {
-            text += " - [Player " + (iPlayer+1) +"] [" + side + "] [" + pack.mName + "] : " + packStatus + "\n";
-            for (var iConstraint = 0; iConstraint < pack.mConstraints.mItems.length; iConstraint++) {
-              // Print Current Constraint
-              var constraint = pack.mConstraints.mItems[iConstraint];
-              if (!constraint.isMet()) {
-                text += "    - " + constraint.mNbCurrent + " " + constraint.mType + " is out of range [" + constraint.mNbMin + ";" + constraint.mNbMax + "]\n";
-              }
+        var sealedPack = player.mSealedPacks[side];
+        var text = "";
+        // Print Current Pack
+        var packStatus = (true === sealedPack.mConstraints.areMet()) ? ProcessingStatus.OK : ProcessingStatus.KO;
+        if (packStatus === ProcessingStatus.KO) {
+          text += " - [Player " + (iPlayer+1) +"] [" + side + "] : " + packStatus + "\n";
+          for (var iConstraint = 0; iConstraint < sealedPack.mConstraints.mItems.length; iConstraint++) {
+            // Print Current Constraint
+            var constraint = sealedPack.mConstraints.mItems[iConstraint];
+            if (!constraint.isMet()) {
+              text += "    - Only " + constraint.mNbCurrent + " " + constraint.mType + " available. At least " + constraint.mNbMin + " needed.\n";
             }
           }
-          $('#textarea_status').val($('#textarea_status').val() + text);
         }
+        $('#textarea_status').val($('#textarea_status').val() + text);
       }
     }
   },
@@ -320,7 +331,7 @@ View.prototype = {
 
   parseCardList : function(cardList) {
     var cardArray = [];
-    
+
     // Parse each line of text and add the cards into the array
     var re = /^(\d+)(x|\s)\s*(\S.*)/;
     var lines = cardList.split('\n');
@@ -332,7 +343,7 @@ View.prototype = {
         var card = {nb : parseInt(elems[1], 10), name : elems[3]};
         cardArray.push(card);
       }
-    }    
+    }
     return cardArray;
   },
 

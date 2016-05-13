@@ -5,12 +5,12 @@ console.log('Player.js loaded');
   *
   * Manage the cards of a Player
   */
-function Player(name, sidesCardPools) {
+function Player(name, cardPools) {
 
   // CONSTRUCTOR
 	this.mName = name;  // Name of the Player
-  this.mSidesCardPools = sidesCardPools;  // Pool of available cards
-  this.mSealedPools = {}; // Packs
+  this.mCardPools = cardPools;  // Pool of available cards
+  this.mSealedPacks = {}; // Sealed Packs
 
 }//end Player
 
@@ -21,113 +21,32 @@ Player.prototype = {
     */
   generate : function() {
     var processingStatus = new ProcessingStatus();
-    // Generate the SealedPools of each Side
+    // Generate the SealedPack of each Side
     for (var side in Side) {
-      this.mSealedPools[side] = [];
-      var sealedPool = this.mSealedPools[side];
-      var cardPools = this.mSidesCardPools[side];
-      // Generate the Packs for each CardPool
-      for (iCardPool = 0; iCardPool < cardPools.length; iCardPool++) {
-        var cardPool = cardPools[iCardPool];
-        // Generate the Packs of the current CardPool
-        for (iPack = 0; iPack < cardPool.mNbPacks; iPack++) {
-          // Generate the current Pack with the current CardPool
-          var pack = new Pack(cardPool.mName + " #" + (iPack+1), cardPool);
-          processingStatus.process(pack.generate());
-          sealedPool.push(pack);
-        }
-      }
+      // Generate the current Pack with the current CardPool
+      var sealedPack = new Pack(this.mCardPools[side]);
+      processingStatus.process(sealedPack.generate());
+      this.mSealedPacks[side] = sealedPack;
     }
     return processingStatus.mValue;
   },
 
   /**
-    * Generate the Text File of a Sealed Pool of the Player sorted by Starter and Boosters
+    * Generate the Text File of a Sealed Pack of the Player sorted by Card Type
     */
-  generateTextFileSorted : function(side, locale) {
-    var sealedPool = this.mSealedPools[side];
-    var textFile = "";
-    // Retrieve the compacted list of cards in the Sealed Pool
-    for (var iPack = 0; iPack < sealedPool.length; iPack++) {
-      var sealedPack = sealedPool[iPack];
-      // Generate the Text File of the current Pack
-      textFile += sealedPack.generateTextFile(locale);
-      textFile += "-------------------------------------------\r\n";
-    }
-    return textFile;
-  },
-
-
-  /**
-    * Generate the Text File of a Sealed Pool of the Player sorted by Rarity
-    */
-  generateTextFileRarity : function(side, locale) {
-    var compactedCards = this.compactSealedPool(side, locale);
-
-    // Sort the Compacted Cards by Rarity
-    compactedCards.sortByRarity(locale);
-
-    // Create the Text File of the Compacted Cards
-    var textFile = "";
-    for (iCard = 0; iCard < compactedCards.mItems.length; iCard++) {
-      var card = compactedCards.mItems[iCard];
-      textFile += card.getTextWithRarity(locale);
-    }
+  generateTextFileSortedByCardType : function(side, locale) {
+    // Generate the Text File of the current Pack
+    var textFile = this.mSealedPacks[side].generateTextFileSortedByCardType(locale);
     return textFile;
   },
 
   /**
-    * Generate the Text File of a Sealed Pool of the Player sorted by alphabetical order
+    * Generate the Text File of a Sealed Pack of the Player sorted by alphabetical order
     */
-  generateTextFileAlphabetical : function(side, locale) {
-    var compactedCards = this.compactSealedPool(side, locale);
-
-    // Sort the Compacted Cards by Rarity
-    compactedCards.sortByName(locale);
-
-    // Create the Text File of the Compacted Cards
-    var textFile = "";
-    // Add "The Shadow: Pulling the Strings" or "The Masque" to improve importing
-    if (Side.CORP == side) {
-      textFile = "The Shadow: Pulling the Strings\r\n\r\n";
-    }
-    else if (Side.RUNNER == side) {
-      textFile = "The Masque\r\n\r\n";
-    }
-    // Create the Text File
-    for (iCard = 0; iCard < compactedCards.mItems.length; iCard++) {
-      var card = compactedCards.mItems[iCard];
-      // Add a new line between each letter
-      if (iCard != 0) {
-        // Retrieve the first letter of the previous Card
-        var firstLetterPrev = compactedCards.mItems[iCard-1].getName(locale).toLocaleLowerCase().charAt(0);
-        // Retrieve the first letter of the current Card
-        var firstLetterCurrent = card.getName(locale).toLocaleLowerCase().charAt(0);
-        // Compare the first letters of the 2 Cards
-        if (firstLetterPrev != firstLetterCurrent) {
-          textFile += "\r\n";
-        }
-      }
-      // Add the card in the text file
-      textFile += card.getText(locale);
-    }
+  generateTextFileSortedByAlphabeticalOrder : function(side, locale) {
+    // Generate the Text File of the current Pack
+    var textFile = this.mSealedPacks[side].generateTextFileSortedByAlphabeticalOrder(locale);
     return textFile;
-  },
-
-  /**
-    * Compact a Sealed Pool
-    */
-  compactSealedPool : function(side, locale) {
-    var sealedPool = this.mSealedPools[side];
-    var compactedCards = new Cards({});
-    // Compact each Pack
-    for (var iPack = 0; iPack < sealedPool.length; iPack++) {
-      var cards = sealedPool[iPack].mCards.clone();
-      for (var iCard = 0; iCard < cards.mItems.length; iCard++) {
-        compactedCards.add(cards.mItems[iCard]);
-      }
-    }
-    return compactedCards;
   }
 
 };
