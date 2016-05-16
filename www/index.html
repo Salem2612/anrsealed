@@ -54,7 +54,7 @@
           </div>
           <div class="modal-body">
 
-            <legend>[13 May 2016] v2.0.1</legend>
+            <legend>[16 May 2016] v2.0.2</legend>
             <h4>General Changes</h4>
             <ul>
               <li>Big refactoring of the site</li>
@@ -340,7 +340,7 @@
             <li><a href="#" data-toggle="modal" data-target="#modalChecker"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Check Deck</a></li>
             <li><a href="#" data-toggle="modal" data-target="#modalHelp"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Help</a></li>
             <li><a href="#" data-toggle="modal" data-target="#modalAbout"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> About</a></li>
-            <li><a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.0.1</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.0.2</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div>
@@ -357,9 +357,9 @@
 
           <div class="well well-sm">
             <h4><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> Breaking News</h4>
-            <b>[13 May 2016] v2.0.1 is now available.</b>
+            <b>[13 May 2016] v2.0.2 is now available.</b>
             <ul>
-              <li>See <b><a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.0.1</a></b> for more details.</li>
+              <li>See <b><a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.0.2</a></b> for more details.</li>
             </ul>
             <h4><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Known issues</h4>
             <ul>
@@ -400,10 +400,10 @@
                     <label class="control-label" for="text_nb_cards">Number of cards</label>
                     <div class="input-group" id="text_nb_cards">
                       <div class="radio">
-                        <label><input type="radio" name="optradio_nb_cards" id="radio_nb_cards_60">60 cards (30 cards per deck / 6 Agenda points)</label>
+                        <label><input type="radio" name="optradio_nb_cards"  id="radio_nb_cards_80" checked>80 cards (45 cards per deck / 7 Agenda points)</label>
                       </div>
                       <div class="radio">
-                        <label><input type="radio" name="optradio_nb_cards"  id="radio_nb_cards_80" checked>80 cards (45 cards per deck / 7 Agenda points)</label>
+                        <label><input type="radio" name="optradio_nb_cards" id="radio_nb_cards_60">60 cards (30 cards per deck / 6 Agenda points)</label>
                       </div>
                     </div>
                   </div>
@@ -735,24 +735,30 @@
     <script src="dist/js/bootstrap.min.js"></script>
     <script src="dist/js/jszip.min.js"></script>
     <script src="dist/js/FileSaver.min.js"></script>
+
+    <script src="js/ProcessingStatus.js"></script>
+    <script src="js/Side.js"></script>
+    <script src="js/CardType.js"></script>
+
     <script src="js/Card.js"></script>
     <script src="js/CardPool.js"></script>
     <script src="js/Cards.js"></script>
-    <script src="js/CardType.js"></script>
     <script src="js/Constraint.js"></script>
     <script src="js/Constraints.js"></script>
+    <script src="js/Cycle.js"></script>
+    <script src="js/Cycles.js"></script>
     <script src="js/Database.js"></script>
-    <script src="js/ProcessingStatus.js"></script>
     <script src="js/Sealed.js"></script>
     <script src="js/Pack.js"></script>
     <script src="js/Player.js"></script>
-    <script src="js/Side.js"></script>
+    <script src="js/Set.js"></script>
+    <script src="js/Sets.js"></script>
     <script src="js/View.js"></script>
     <script>
       $(function() {
 
         // Global variables
-        var mView = new View(['cards', 'constraints'], '2.0.1');
+        var mView = new View(['cards', 'constraints', 'cycles', 'sets'], '2.0.2');
 
         /**
           *

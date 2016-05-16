@@ -9,12 +9,11 @@
       {"type":"HARDWARE","min":4,"max":60,"score":1},
       {"type":"CONSOLE","min":1,"max":60,"score":1},
       {"type":"RESOURCE","min":4,"max":60,"score":1},
-      {"type":"PROGRAM","min":8,"max":15,"score":1},
+      {"type":"PROGRAM","min":0,"max":20,"score":1},
       {"type":"FRACTER","min":2,"max":60,"score":1},
       {"type":"DECODER","min":2,"max":60,"score":1},
       {"type":"KILLER","min":2,"max":60,"score":1},
-      {"type":"ECO","min":3,"max":60,"score":1},
-      {"type":"ECO_DERIVED","min":5,"max":60,"score":1}
+      {"type":"ECO","min":8,"max":60,"score":1}
     ],
     "CORP":
     [
@@ -28,8 +27,7 @@
       {"type":"BARRIER","min":3,"max":60,"score":1},
       {"type":"CODE_GATE","min":3,"max":60,"score":1},
       {"type":"SENTRY","min":3,"max":60,"score":1},
-      {"type":"ECO","min":3,"max":60,"score":1},
-      {"type":"ECO_DERIVED","min":5,"max":60,"score":1},
+      {"type":"ECO","min":8,"max":60,"score":1},
       {"type":"AMBUSH","min":1,"max":60,"score":1}
     ]
   },
@@ -43,12 +41,11 @@
       {"type":"HARDWARE","min":5,"max":80,"score":1},
       {"type":"CONSOLE","min":2,"max":80,"score":1},
       {"type":"RESOURCE","min":5,"max":80,"score":1},
-      {"type":"PROGRAM","min":10,"max":15,"score":1},
+      {"type":"PROGRAM","min":0,"max":25,"score":1},
       {"type":"FRACTER","min":3,"max":80,"score":1},
       {"type":"DECODER","min":3,"max":80,"score":1},
       {"type":"KILLER","min":3,"max":80,"score":1},
-      {"type":"ECO","min":4,"max":80,"score":1},
-      {"type":"ECO_DERIVED","min":6,"max":80,"score":1}
+      {"type":"ECO","min":10,"max":80,"score":1}
     ],
     "CORP":
     [
@@ -62,9 +59,8 @@
       {"type":"BARRIER","min":5,"max":80,"score":1},
       {"type":"CODE_GATE","min":5,"max":80,"score":1},
       {"type":"SENTRY","min":5,"max":80,"score":1},
-      {"type":"ECO","min":5,"max":80,"score":1},
-      {"type":"ECO_DERIVED","min":5,"max":80,"score":1},
-      {"type":"AMBUSH","min":2,"max":80,"score":1}
+      {"type":"ECO","min":10,"max":80,"score":1},
+      {"type":"AMBUSH","min":1,"max":80,"score":1}
     ]
   }
 }

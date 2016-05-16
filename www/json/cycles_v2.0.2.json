@@ -1,11 +1,11 @@
 [
 {"cycleNo":1, "nameEn":"Core Set", "nameFr":"Jeu de Base", "type":"CORE_SET"},
-{"cycleNo":2, "nameEn":"Genesis", "nameFr":"Genèse", "type":"DATA_PACKS"},
+{"cycleNo":2, "nameEn":"Genesis Cycle", "nameFr":"Cycle de la Genèse", "type":"DATA_PACKS"},
 {"cycleNo":3, "nameEn":"Creation and Control", "nameFr":"Création et Controle", "type":"DELUXE"},
-{"cycleNo":4, "nameEn":"Spin", "nameFr":"Distorsions", "type":"DATA_PACKS"},
+{"cycleNo":4, "nameEn":"Spin Cycle", "nameFr":"Cycle des Distorsions", "type":"DATA_PACKS"},
 {"cycleNo":5, "nameEn":"Honor and Profit", "nameFr":"Honneur et Profit", "type":"DELUXE"},
-{"cycleNo":6, "nameEn":"Lunar", "nameFr":"Lunaire", "type":"DATA_PACKS"},
+{"cycleNo":6, "nameEn":"Lunar Cycle", "nameFr":"Cycle Lunaire", "type":"DATA_PACKS"},
 {"cycleNo":7, "nameEn":"Order and Chaos", "nameFr":"Ordre et Chaos", "type":"DELUXE"},
-{"cycleNo":8, "nameEn":"SanSan", "nameFr":"SanSan", "type":"DATA_PACKS"},
+{"cycleNo":8, "nameEn":"SanSan Cycle", "nameFr":"Cycle SanSan", "type":"DATA_PACKS"},
 {"cycleNo":9, "nameEn":"Data and Destiny", "nameFr":"Destinée et Données", "type":"DELUXE"},
-{"cycleNo":10, "nameEn":"Mumbad", "nameFr":"Mumbad", "type":"DATA_PACKS"}]
+{"cycleNo":10, "nameEn":"Mumbad Cycle", "nameFr":"Cycle Mumbad", "type":"DATA_PACKS"}]

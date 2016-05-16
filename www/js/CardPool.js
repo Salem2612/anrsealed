@@ -13,9 +13,9 @@ function CardPool(side, sets, useAllCards, constraintsJSON, database) {
   this.mUseAllCards         = useAllCards;  // true : Use nbOfficialCopies. false : use nbCopies.
   this.mSets                = sets; // array of {"cycleNo" : X, "setNo" : X, "nbSets" : X}
   this.mConstraints         = new Constraints(constraintsJSON[this.mSide]); // Constraints to generate Packs from the CardPool
-  this.mCards               = new Cards([]);  // Cards in the CardPool
   this.mConstraintsJSON     = constraintsJSON;
   this.mDatabase            = database;
+  this.mCards               = new Cards([], this.mDatabase.mSets);  // Cards in the CardPool
 
   // Add the Cards of the Sets in the CardPool
   for (var iSet = 0; iSet < this.mSets.length; iSet++) {

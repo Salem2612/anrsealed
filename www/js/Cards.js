@@ -5,14 +5,18 @@ console.log('Cards.js loaded');
   *
   * Array of Cards
   */
-function Cards(cardsJSON) {
+function Cards(cardsJSON, sets) {
 
   // CONSTRUCTOR
   this.mItems = [];
+  this.mSets  = sets;
 
   // Create Card Objects from Card JSON
   for (var iCard = 0; iCard < cardsJSON.length; iCard++) {
-    this.mItems.push(new Card(cardsJSON[iCard]));
+    var cardJSON = cardsJSON[iCard];
+    var set = this.mSets.getSet(cardJSON.cycleNo, cardJSON.setNo);
+    var card = new Card(cardJSON, set);
+    this.mItems.push(card);
   }
 
 }//end Cards
@@ -20,29 +24,12 @@ function Cards(cardsJSON) {
 Cards.prototype = {
 
   clone : function() {
-    var clone = new Cards([]);
+    var clone = new Cards([], this.mSets);
     clone.mItems = this.mItems.map(function(card) {
       return card.clone();
     });
     return clone;
   },
-
-  /**
-    *
-    */
-	getName : function(cardId) {
-    var name = "";
-    // Search the ID of the card and return its name
-    for (var iCard = 0; iCard < this.mItems.length; iCard++) {
-      // Compare the ID of the current Card with the specified ID
-      if (this.mItems[iCard].id == cardId) {
-        // Card found
-        name = this.mItems[iCard].nameEn;
-        break;  // Stop searching
-      }
-    }
-    return name;
-	},
 
   /**
     * Calculate the score of the Cards with the specified constraints and return the High Score.
@@ -186,19 +173,34 @@ Cards.prototype = {
   sortByName : function(locale) {
     // Sort the Cards by Rarity
     this.mItems.sort(function(card1, card2) {
-      // Retrieve the names of the cards
-      var name1 = card1.getName(locale);
-      var name2 = card2.getName(locale);
       // Compare the names of the cards
-      if (name1 < name2) {
-        return -1;
-      }
-      else if (name1 > name2) {
-        return 1;
-      }
-      else {
-        return 0;
-      }
+      return card1.getName(locale).localeCompare(card2.getName(locale));
+    });
+  },
+
+  /**
+    * Sort by faction
+    *
+    * return  void
+    */
+  sortByFaction : function() {
+    // Sort the Cards by Rarity
+    this.mItems.sort(function(card1, card2) {
+      // Compare the factions of the cards
+      return card1.mFaction.localeCompare(card2.mFaction);
+    });
+  },
+
+  /**
+    * Sort by faction
+    *
+    * return  void
+    */
+  sortByType : function(types) {
+    // Sort the Cards by Rarity
+    this.mItems.sort(function(card1, card2) {
+      // Compare the Types of the cards
+      return card1.findType(types).localeCompare(card2.findType(types));
     });
   },
 

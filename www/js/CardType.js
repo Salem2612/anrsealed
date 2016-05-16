@@ -29,3 +29,10 @@ CardType.COMMON = "COMMON";
 CardType.UNCO = "UNCO";
 CardType.RARE = "RARE";
 CardType.BANNED = "BANNED";
+
+function CardTypes() {
+
+}//end CardTypes
+
+CardTypes[Side.CORP] = [CardType.AGENDA, CardType.ASSET, CardType.UPGRADE, CardType.OPERATION, CardType.ICE];
+CardTypes[Side.RUNNER] = [CardType.EVENT, CardType.HARDWARE, CardType.RESOURCE, CardType.PROGRAM];

@@ -5,16 +5,18 @@ console.log('Card.js loaded');
   *
   * Definition of a Card
   */
-function Card(cardJSON) {
+function Card(cardJSON, set) {
 
   // CONSTRUCTOR
 	this.mId              = cardJSON.id;
 	this.mCycleNo         = cardJSON.cycleNo;
 	this.mSetNo           = cardJSON.setNo;
+  this.mSet             = set;
 	this.mCardNo          = cardJSON.cardNo;
 	this.mNameEn          = cardJSON.nameEn;
 	this.mNameFr          = cardJSON.nameFr;
   this.mSide            = cardJSON.side;
+  this.mFaction         = cardJSON.faction;
   this.mTypes           = cardJSON.types;
 	this.mNbCopies        = cardJSON.nbCopies;
 	this.mNbOffialCopies  = cardJSON.nbOfficialCopies;
@@ -25,18 +27,21 @@ function Card(cardJSON) {
 Card.prototype = {
 
   clone : function() {
-    var clone = new Card({
-      'id':this.mId,
-      'cycleNo':this.mCycleNo,
-      'setNo':this.mSetNo,
-      'cardNo':this.mCardNo,
-      'nameEn':this.mNameEn,
-      'nameFr':this.mNameFr,
-      'side':this.mSide,
-      'types':this.mTypes,
-      'nbCopies':this.mNbCopies,
-      'nbOfficialCopies':this.mNbOffialCopies
-    });
+    var clone = new Card(
+      {
+        'id':this.mId,
+        'cycleNo':this.mCycleNo,
+        'setNo':this.mSetNo,
+        'cardNo':this.mCardNo,
+        'nameEn':this.mNameEn,
+        'nameFr':this.mNameFr,
+        'side':this.mSide,
+        'faction':this.mFaction,
+        'types':this.mTypes,
+        'nbCopies':this.mNbCopies,
+        'nbOfficialCopies':this.mNbOffialCopies
+      },
+      this.mSet);
     clone.mScore = this.mScore;
     return clone;
   },
@@ -53,6 +58,20 @@ Card.prototype = {
       }
     }
     return hasType;
+  },
+  
+  /**
+    * Find the Type of the Card among the specified Type
+    */
+  findType : function(types) {
+    var foundType = "";
+    for (var type of types) {
+      if (this.hasType(type)) {
+        foundType = type;
+        break; // Stop searching
+      }
+    }
+    return foundType;
   },
 
   /**
@@ -108,10 +127,18 @@ Card.prototype = {
   },
 
   /**
-    * Get the URL of the Card on NetrunnerDB
+    * Get the text of the Card
     */
   getText : function(locale) {
     var text = this.mNbCopies + "x " + this.getName(locale) + "\r\n";
+    return text;
+  },
+
+  /**
+    * Get the full text of the Card
+    */
+  getFullText : function(locale) {
+    var text = this.mNbCopies + "x " + this.getName(locale) + " (" + this.mSet.getCycleAndSetNames(locale) + " / " + this.mFaction + " / " + this.getTextTypes() + ")\r\n";
     return text;
   },
 

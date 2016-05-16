@@ -72,20 +72,34 @@ Sealed.prototype = {
         for (var side in Side) {
           var sideName = side[0].toUpperCase() + side.substr(1).toLowerCase();
           var fileName = "Sealed Pack - " + player.mName + " - " + sideName + ".txt";
-          var sortedByCardTypeFileName = "Sealed Pack - " + player.mName + " - Sorted by card type - " + locale + " - " + sideName +".txt";
-          var alphabeticalFileName = "Sealed Pack - " + player.mName + " - Sorted by alphabetical order - " + locale + " - " + sideName +".txt";
+          var sortedByCardTypeFileName = "Sealed Pack - " + player.mName + " - Sorted by Card Type - " + locale + " - " + sideName +".txt";
+          var alphabeticalFileName = "Sealed Pack - " + player.mName + " - Sorted by Alphabetical order - " + locale + " - " + sideName +".txt";
+          var fullInformationFileName = "Sealed Pack - " + player.mName + " - All Information - " + locale + " - " + sideName +".txt";
+          var factionTypeFileName = "Sealed Pack - " + player.mName + " - Sorted by Faction then by Card Type - " + locale + " - " + sideName +".txt";
 
           // Generate the file sorted by card type
-          var textFile = player.generateTextFileSortedByCardType(side, locale);
+          var textFile = player.mSealedPacks[side].generateTextFileSortedByCardType(locale);
           // Add the Text File to the ZIP file
-          zip.file("Sorted by card type/" + locale + "/" + fileName, textFile);
-          zip.file("All/" + player.mName + "/" + sortedByCardTypeFileName, textFile);
+          zip.file("Sorted by Card Type/" + locale + "/" + fileName, textFile);
+          zip.file("Sorted by Player/" + player.mName + "/" + sortedByCardTypeFileName, textFile);
 
           // Generate the Sealed Pack File sorted Alphabetically
-          var textFile = player.generateTextFileSortedByAlphabeticalOrder(side, locale);
+          var textFile = player.mSealedPacks[side].generateTextFileSortedByAlphabeticalOrder(locale);
           // Add the Text File to the ZIP file
-          zip.file("Sorted by alphabetical order/" + locale + "/" + fileName, textFile);
-          zip.file("All/" + player.mName + "/" + alphabeticalFileName, textFile);
+          zip.file("Sorted by Alphabetical order (Import into NetrunnerDB or Jinteki.net)/" + locale + "/" + fileName, textFile);
+          zip.file("Sorted by Player/" + player.mName + "/" + alphabeticalFileName, textFile);
+
+          // Generate the full Sealed Pack File
+          var textFile = player.mSealedPacks[side].generateTextFileFull(locale);
+          // Add the Text File to the ZIP file
+          zip.file("All Information/" + locale + "/" + fileName, textFile);
+          zip.file("Sorted by Player/" + player.mName + "/" + fullInformationFileName, textFile);
+          
+          // Generate the Sealed Pack File sorted
+          var textFile = player.mSealedPacks[side].generateTextFileSortedByFactionType(locale);
+          // Add the Text File to the ZIP file
+          zip.file("Sorted by Faction then by Card Type/" + locale + "/" + fileName, textFile);
+          zip.file("Sorted by Player/" + player.mName + "/" + factionTypeFileName, textFile);
         }
       }
     }

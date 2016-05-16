@@ -29,24 +29,6 @@ Player.prototype = {
       this.mSealedPacks[side] = sealedPack;
     }
     return processingStatus.mValue;
-  },
-
-  /**
-    * Generate the Text File of a Sealed Pack of the Player sorted by Card Type
-    */
-  generateTextFileSortedByCardType : function(side, locale) {
-    // Generate the Text File of the current Pack
-    var textFile = this.mSealedPacks[side].generateTextFileSortedByCardType(locale);
-    return textFile;
-  },
-
-  /**
-    * Generate the Text File of a Sealed Pack of the Player sorted by alphabetical order
-    */
-  generateTextFileSortedByAlphabeticalOrder : function(side, locale) {
-    // Generate the Text File of the current Pack
-    var textFile = this.mSealedPacks[side].generateTextFileSortedByAlphabeticalOrder(locale);
-    return textFile;
   }
 
 };

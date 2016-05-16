@@ -8,7 +8,9 @@ console.log('Database.js loaded');
 function Database(databaseJSON) {
 
   // CONSTRUCTOR
-  this.mCards = new Cards(databaseJSON.cards);
+  this.mCycles = new Cycles(databaseJSON.cycles);
+  this.mSets = new Sets(databaseJSON.sets, this.mCycles);
+  this.mCards = new Cards(databaseJSON.cards, this.mSets);
 }//end Database
 
 Database.prototype = {
@@ -22,7 +24,7 @@ Database.prototype = {
     // Clone the Cards of the Database to not modify the Database
     var clonedCards = this.mCards.clone();
     // Create an empty pool of Cards
-    var cards = new Cards([]);
+    var cards = new Cards([], this.mSets);
     // Put all Cards with the specified Cycle No and Set No and Side
     cards.mItems = clonedCards.mItems.filter(function(card) {
       // Check if use the official or specified number of copies, according to the number of available copies

@@ -12,7 +12,7 @@ function Pack(cardPool) {
   this.mType = cardPool.mType;  // Type of the Sealed Pack (STARTER or BOOSTER)
   this.mSide = cardPool.mSide;  // Side of the Sealed Pack
   this.mConstraints = cardPool.mConstraints.clone();  // Constraints of the Sealed Pack
-  this.mCards = new Cards([]);  // Cards in the Sealed Pack
+  this.mCards = new Cards([], cardPool.mDatabase.mSets);  // Cards in the Sealed Pack
 
 }
 
@@ -56,9 +56,9 @@ Pack.prototype = {
   generateTextFileSortedByCardType : function(locale) {
     var textFile = "";
     // List the types to sort the Cards in the Text File
-    var types = (this.mSide == Side.CORP) ? [CardType.AGENDA, CardType.ASSET, CardType.UPGRADE, CardType.OPERATION, CardType.ICE] : [CardType.EVENT, CardType.HARDWARE, CardType.RESOURCE, CardType.PROGRAM]
+    var types = CardTypes[this.mSide];
 
-    // Sort the Sealed Pack by Name
+    // Sort the Sealed Pack by Card Name
     this.mCards.sortByName(locale);
 
     // Calculate the statistics of the Sealed Pack
@@ -106,12 +106,7 @@ Pack.prototype = {
     this.mCards.sortByName(locale);
 
     // Add "The Shadow: Pulling the Strings" or "The Masque" to improve importing in Netrunner DB
-    if (Side.CORP == this.mSide) {
-      textFile = "The Shadow: Pulling the Strings\r\n\r\n";
-    }
-    else if (Side.RUNNER == this.mSide) {
-      textFile = "The Masque\r\n\r\n";
-    }
+    textFile = (Side.CORP == this.mSide) ? "The Shadow: Pulling the Strings\r\n\r\n" : "The Masque\r\n\r\n";
 
     // Create the Text File
     for (iCard = 0; iCard < this.mCards.mItems.length; iCard++) {
@@ -125,6 +120,63 @@ Pack.prototype = {
         // Compare the first letters of the 2 Cards
         if (firstLetterPrev != firstLetterCurrent) {
           textFile += "\r\n";
+        }
+      }
+      // Add the card in the text file
+      textFile += card.getText(locale);
+    }
+    return textFile;
+  },
+
+  /**
+    * Generate the Text File of the Sealed Pack with all information of the cards
+    */
+  generateTextFileFull : function(locale) {
+    // Create the Text File of the Sealed Pack
+    var textFile = "";
+
+    // Sort the Sealed Pack by Name
+    this.mCards.sortByName(locale);
+    this.mCards.sortByType(locale);
+
+    // Create the Text File
+    for (iCard = 0; iCard < this.mCards.mItems.length; iCard++) {
+      var card = this.mCards.mItems[iCard];
+      // Add the card in the text file
+      textFile += card.getFullText(locale);
+    }
+    return textFile;
+  },
+
+  /**
+    * Generate the Text File of the Sealed Pack sorted by Faction then by Card Type
+    */
+  generateTextFileSortedByFactionType : function(locale) {
+    // Create the Text File of the Sealed Pack
+    var textFile = "";
+
+    // Sort the Sealed Pack by Name
+    this.mCards.sortByName(locale);
+    var types = CardTypes[this.mSide];
+    this.mCards.sortByType(types);
+    this.mCards.sortByFaction();
+
+    // Create the Text File
+    for (iCard = 0; iCard < this.mCards.mItems.length; iCard++) {
+      var card = this.mCards.mItems[iCard];
+      // Add the Faction and Type title
+      if (iCard == 0)
+      {
+        // Always print the Faction and Type title for the first Card
+        textFile += card.mFaction + " / " + card.findType(types) + "\r\n";
+      }
+      else
+      {
+        prevCard = this.mCards.mItems[iCard-1];
+        // Print the Faction and Type title if the faction or the Type are different
+        if ((prevCard.mFaction != card.mFaction) || (prevCard.findType(types) != card.findType(types)))
+        {
+          textFile += "\r\n" + card.mFaction + " / " + card.findType(types) + "\r\n";
         }
       }
       // Add the card in the text file
