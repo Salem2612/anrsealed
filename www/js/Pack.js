@@ -156,10 +156,8 @@ Pack.prototype = {
     var textFile = "";
 
     // Sort the Sealed Pack by Name
-    this.mCards.sortByName(locale);
     var types = CardTypes[this.mSide];
-    this.mCards.sortByType(types);
-    this.mCards.sortByFaction();
+    this.mCards.sortByFactionThenTypeThenName(types, locale);
 
     // Create the Text File
     for (iCard = 0; iCard < this.mCards.mItems.length; iCard++) {
