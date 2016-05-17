@@ -46,25 +46,65 @@
   <body>
 
     <div class="modal fade"  id="modalChanges" tabindex="-1" role="dialog" aria-labelledby="modalChangesLabel">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title"><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> Changes</h4>
+            <h4 class="modal-title"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.0.3</h4>
           </div>
           <div class="modal-body">
+            <div class="row">
+              <!-- Left -->
+              <div class="col-md-6 col-sm-12">
+                <h4>Authors</h4>
+                <p>
+                  <b>Android: Netrunner Sealed</b> has been created by <a href="mailto:qasu.contact@gmail.com"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Samuel Buggia</a> and <a href="http://www.run4games.com/forum/" target="_blank"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Ludovic Schmidt</a>. Contact us if you find a bug or if you have any question.
+                </p>
 
-            <legend>[16 May 2016] v2.0.2</legend>
-            <h4>General Changes</h4>
-            <ul>
-              <li>Big refactoring of the site</li>
-              <li>Add Khala Ghoda</li>
-              <li>Add Business First</li>
-              <li>Add Democracy and Dogma (yet in english, french translation is comming soon)</li>
-              <li>Add Salsette Island (yet in english, french translation is comming soon)</li>
-            </ul>
+                <h4>Modules</h4>
+                <p>
+                  <b>anrsealed.com</b> uses the following modules:
+                  <ul>
+                    <li><a href="https://jquery.com/" target="_blank">JQuery</a></li>
+                    <li><a href="http://getbootstrap.com/" target="_blank">Bootstrap</a></li>
+                    <li><a href="http://glyphicons.com/" target="_blank">Glyphicons</a></li>
+                    <li><a href="https://github.com/janl/mustache.js" target="_blank">Mustache JS</a></li>
+                    <li><a href="https://stuk.github.io/jszip/" target="_blank">JSZip</a></li>
+                    <li><a href="https://github.com/eligrey/FileSaver.js/" target="_blank">FileSaver</a></li>
+                  </ul>
+                </p>
 
-          </div>
+                <h4>Thanks</h4>
+                <p>
+                  <ul>
+                    <li><b>Mister Yo</b> for the french translation of the SanSan Cycle and Data and Destiny.</li>
+                    <li>The <b>Run4Games community</b> for the comments about the selected cards and the algorithm.</li>
+                  </ul>
+                </p>
+              </div>  <!-- Left -->
+
+              <!-- Right -->
+              <div class="col-md-6 col-sm-12">
+                <h4>[17 May 2016] v2.0.3</h4>
+                <ul>
+                  <li>Big refactoring of the site</li>
+                  <ul>
+                    <li>Replace rarities by a number of copies of each card.</li>
+                    <li>Remove Starters and Boosters. Replace them by allowing the choice of each Data Pack.</li>
+                    <li>Add 2 formats : 80 cards per Sealed Pack (45 cards per deck / 7 Agenda points to win), 60 cards per Sealed Pack (30 cards per deck / 6 Agenda points to win).</li>
+                    <li>Allow collection sharing.</li>
+                    <li>Add a text file sorted by faction and card type in the downloaded zip file.</li>
+                    <li>Add a text file sorted by Data Pack in the downloaded zip file.</li>
+                  </ul>
+                  <li>Add Khala Ghoda.</li>
+                  <li>Add Business First.</li>
+                  <li>Add Democracy and Dogma (yet in english, french translation is comming soon).</li>
+                  <li>Add Salsette Island (yet in english, french translation is comming soon).</li>
+                </ul>
+
+              </div>  <!-- Right -->
+            </div>
+          </div> <!-- modal-body -->
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
@@ -339,8 +379,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#" data-toggle="modal" data-target="#modalChecker"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Check Deck</a></li>
             <li><a href="#" data-toggle="modal" data-target="#modalHelp"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Help</a></li>
-            <li><a href="#" data-toggle="modal" data-target="#modalAbout"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> About</a></li>
-            <li><a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.0.2</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.0.3</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div>
@@ -357,9 +396,9 @@
 
           <div class="well well-sm">
             <h4><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> Breaking News</h4>
-            <b>[13 May 2016] v2.0.2 is now available.</b>
+            <b>[13 May 2016] v2.0.3 is now available.</b>
             <ul>
-              <li>See <b><a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.0.2</a></b> for more details.</li>
+              <li>See <b><a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.0.3</a></b> for more details.</li>
             </ul>
             <h4><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Known issues</h4>
             <ul>
@@ -758,7 +797,7 @@
       $(function() {
 
         // Global variables
-        var mView = new View(['cards', 'constraints', 'cycles', 'sets'], '2.0.2');
+        var mView = new View(['cards', 'constraints', 'cycles', 'sets'], '2.0.3');
 
         /**
           *

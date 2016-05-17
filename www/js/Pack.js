@@ -183,6 +183,58 @@ Pack.prototype = {
       textFile += card.getText(locale);
     }
     return textFile;
+  },
+
+  /**
+    * Generate the Text File of the Sealed Pack sorted by Cycle then by Set
+    */
+  generateTextFileSortedByCycleSet : function(locale) {
+    // Create the Text File of the Sealed Pack
+    var textFile = "";
+
+    // Sort the Sealed Pack by Name
+    this.mCards.sortByCardId();
+
+    // Create the Text File
+    for (iCard = 0; iCard < this.mCards.mItems.length; iCard++) {
+      var card = this.mCards.mItems[iCard];
+      // Add the Cycle and Set title
+      if (iCard == 0)
+      {
+        // Always print the Cycle and Set title for the first Card
+        var cycleName = card.mSet.mCycle.getName(locale);
+        var setName = card.mSet.getName(locale);
+        if (cycleName != setName)
+        {
+          textFile += cycleName + " / " + setName + "\r\n";
+        }
+        else
+        {
+          textFile += cycleName + "\r\n";
+        }
+      }
+      else
+      {
+        prevCard = this.mCards.mItems[iCard-1];
+        // Print the Cycle and Set title if the sets are different
+        var cycleName = card.mSet.mCycle.getName(locale);
+        var setName = card.mSet.getName(locale);
+        if (prevCard.mSet.getName(locale) != setName)
+        {
+          if (cycleName != setName)
+          {
+            textFile += "\r\n" + cycleName + " / " + setName + "\r\n";
+          }
+          else
+          {
+            textFile += "\r\n" + cycleName + "\r\n";
+          }
+        }
+      }
+      // Add the card in the text file
+      textFile += card.getText(locale);
+    }
+    return textFile;
   }
 
 };

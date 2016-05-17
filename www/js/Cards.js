@@ -192,7 +192,7 @@ Cards.prototype = {
   },
 
   /**
-    * Sort by faction
+    * Sort by Card Type
     *
     * return  void
     */
@@ -201,6 +201,19 @@ Cards.prototype = {
     this.mItems.sort(function(card1, card2) {
       // Compare the Types of the cards
       return card1.findType(types).localeCompare(card2.findType(types));
+    });
+  },
+
+  /**
+    * Sort by cardId
+    *
+    * return  void
+    */
+  sortByCardId : function(types) {
+    // Sort the Cards by Rarity
+    this.mItems.sort(function(card1, card2) {
+      // Compare the Types of the cards
+      return card1.mId.localeCompare(card2.mId);
     });
   },
 

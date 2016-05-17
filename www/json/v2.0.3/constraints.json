@@ -51,7 +51,7 @@
     [
       {"type":"CARD","min":80,"max":80,"score":1},
       {"type":"IDENTITY","min":0,"max":0,"score":0},
-      {"type":"AGENDA","min":12,"max":18,"score":1},
+      {"type":"AGENDA","min":14,"max":18,"score":1},
       {"type":"ASSET","min":7,"max":80,"score":1},
       {"type":"UPGRADE","min":5,"max":80,"score":1},
       {"type":"OPERATION","min":10,"max":80,"score":1},

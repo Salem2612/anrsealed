@@ -76,6 +76,7 @@ Sealed.prototype = {
           var alphabeticalFileName = "Sealed Pack - " + player.mName + " - Sorted by Alphabetical order - " + locale + " - " + sideName +".txt";
           var fullInformationFileName = "Sealed Pack - " + player.mName + " - All Information - " + locale + " - " + sideName +".txt";
           var factionTypeFileName = "Sealed Pack - " + player.mName + " - Sorted by Faction then by Card Type - " + locale + " - " + sideName +".txt";
+          var cycleSetFileName = "Sealed Pack - " + player.mName + " - Sorted by Data Pack - " + locale + " - " + sideName +".txt";
 
           // Generate the file sorted by card type
           var textFile = player.mSealedPacks[side].generateTextFileSortedByCardType(locale);
@@ -89,17 +90,23 @@ Sealed.prototype = {
           zip.file("Sorted by Alphabetical order (Import into NetrunnerDB or Jinteki.net)/" + locale + "/" + fileName, textFile);
           zip.file("Sorted by Player/" + player.mName + "/" + alphabeticalFileName, textFile);
 
-          // Generate the full Sealed Pack File
+          // Generate the full text Sealed Pack File
           var textFile = player.mSealedPacks[side].generateTextFileFull(locale);
           // Add the Text File to the ZIP file
           zip.file("All Information/" + locale + "/" + fileName, textFile);
           zip.file("Sorted by Player/" + player.mName + "/" + fullInformationFileName, textFile);
           
-          // Generate the Sealed Pack File sorted
+          // Generate the Sealed Pack File sorted by Faction then by Card Type
           var textFile = player.mSealedPacks[side].generateTextFileSortedByFactionType(locale);
           // Add the Text File to the ZIP file
           zip.file("Sorted by Faction then by Card Type/" + locale + "/" + fileName, textFile);
           zip.file("Sorted by Player/" + player.mName + "/" + factionTypeFileName, textFile);
+          
+          // Generate the Sealed Pack File sorted by Cycle then by Set
+          var textFile = player.mSealedPacks[side].generateTextFileSortedByCycleSet(locale);
+          // Add the Text File to the ZIP file
+          zip.file("Sorted by Data Pack/" + locale + "/" + fileName, textFile);
+          zip.file("Sorted by Player/" + player.mName + "/" + cycleSetFileName, textFile);
         }
       }
     }
