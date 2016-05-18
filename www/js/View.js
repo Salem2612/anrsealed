@@ -5,14 +5,16 @@ console.log('View.js loaded');
   *
   * Treatments on the view.
   */
-function View(jsons, version) {
+function View(jsons, versionMajor, versionMinor) {
 
   // CONSTRUCTOR
   // Initialize members
   this.mNbJSONsLoaded = 0;
   this.mDatabase = {};
   this.mSealed = {};
-  this.mVersion = version;
+  this.mVersionMajor = versionMajor;
+  this.mVersionMinor = versionMinor;
+  this.mVersion = versionMajor + '.' + versionMinor;
   this.mJSONs = {nbFiles:jsons.length};
   for (var json of jsons) {
     // Request the JSON file asynchronously
@@ -170,7 +172,7 @@ View.prototype = {
     }
 
     // GENERATE THE SEALED
-    this.mSealed = new Sealed(nbPlayers, cardPools, useOneCardPool, this.mVersion);
+    this.mSealed = new Sealed(nbPlayers, cardPools, useOneCardPool, this.mVersionMajor);
     processingStatus.process(this.mSealed.generate());
 
     // PRINT STATUS
