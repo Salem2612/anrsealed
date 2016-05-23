@@ -70,6 +70,7 @@ Cards.prototype = {
     card.mNbCopies = 1;
     // Decrease the amount of that Card in the Array
     this.mItems[iCard].mNbCopies--;
+    this.mItems[iCard].mNbAvailableCopies--;
     return card;
   },
 

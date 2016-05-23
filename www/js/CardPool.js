@@ -36,6 +36,15 @@ CardPool.prototype = {
   clone : function() {
     var clone = new CardPool(this.mSide, this.mSets, this.mUseAllCards, this.mConstraintsJSON, this.mDatabase);
     return clone;
+  },
+
+  fill : function() {
+    for (var card of this.mCards.mItems)
+    {
+      // Fill the number of copies of the card
+      card.mNbCopies = Math.min(card.mNbMaxCopiesPerPlayer, card.mNbAvailableCopies);
+    }
+    return this;
   }
 
 };

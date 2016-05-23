@@ -93,6 +93,7 @@ View.prototype = {
   generateAndDownloadSealed : function() {
     // Generate the Sealed
     var generateStatus = this.generateSealed();
+    $('#button_generate_and_download')[0].lastChild.nodeValue = " Generate & Download";
     if (ProcessingStatus.OK == generateStatus) {
       // Download the Sealed
       var downloadStatus = this.downloadSealed();
@@ -110,7 +111,6 @@ View.prototype = {
 
     // Retrieve the number of players from the view
     var nbPlayers = parseInt($('#text_nb_players').val());
-    processingStatus.checkNbPlayers(nbPlayers);
 
     // Retrieve the number of cards from the view
     var nbCards = $('#radio_nb_cards_60').is(':checked') ? 60 :
@@ -165,15 +165,22 @@ View.prototype = {
       {"cycleNo" : 10,  "setNo" : 6, "nbSets" : $('#checkbox_fear_the_masses').is(':checked') ? 1 : 0}
     ];
 
-    // Create the CardPools of each Side from the available sets
-    var cardPools = {};
-    for (var side in Side) {
-      cardPools[side] = new CardPool(side, sets, useAllCards, this.mJSONs.constraints[nbCards], this.mDatabase);
-    }
+    //
+    for (var iGen = 0; (iGen < 20) && ((processingStatus.mValue == ProcessingStatus.NOT_DONE) || processingStatus.mValue == ProcessingStatus.KO); iGen++)
+    {
+      // Check the number of players
+      processingStatus.checkNbPlayers(nbPlayers);
 
-    // GENERATE THE SEALED
-    this.mSealed = new Sealed(nbPlayers, cardPools, useOneCardPool, this.mVersionMajor);
-    processingStatus.process(this.mSealed.generate());
+      // Create the CardPools of each Side from the available sets
+      var cardPools = {};
+      for (var side in Side) {
+        cardPools[side] = new CardPool(side, sets, useAllCards, this.mJSONs.constraints[nbCards], this.mDatabase);
+      }
+
+      // GENERATE THE SEALED
+      this.mSealed = new Sealed(nbPlayers, cardPools, useOneCardPool, this.mVersionMajor);
+      processingStatus.process(this.mSealed.generate());
+    }
 
     // PRINT STATUS
     this.printStatus(processingStatus);

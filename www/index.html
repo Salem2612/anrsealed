@@ -209,18 +209,17 @@
                       <li>At least <b>5 HARDWARE</b></li>
                       <li>At least <b>2 CONSOLE</b></li>
                       <li>At least <b>5 RESOURCE</b></li>
-                      <li>Between <b>10 and 15 PROGRAM</b></li>
+                      <li>Between <b>9 and 25 PROGRAM</b></li>
                       <li>At least <b>3 FRACTER</b></li>
                       <li>At least <b>3 DECODER</b></li>
                       <li>At least <b>3 KILLER</b></li>
-                      <li>At least <b>4 ECO</b></li>
-                      <li>At least <b>6 ECO_DERIVED</b></li>
+                      <li>At least <b>10 ECO</b></li>
                     </ul>
                 </div>
                 <div class="col-md-6">
                   <h4>Corp</h4>
                     <ul>
-                      <li>Between <b>12 and 18 AGENDA</b></li>
+                      <li>Between <b>14 and 18 AGENDA</b></li>
                       <li>At least <b>7 ASSET</b></li>
                       <li>At least <b>5 UPGRADE</b></li>
                       <li>At least <b>10 OPERATION</b></li>
@@ -228,9 +227,8 @@
                       <li>At least <b>5 BARRIER</b></li>
                       <li>At least <b>5 CODE_GATE</b></li>
                       <li>At least <b>5 SENTRY</b></li>
-                      <li>At least <b>4 ECO</b></li>
-                      <li>At least <b>6 ECO_DERIVED</b></li>
-                      <li>At least <b>2 AMBUSH</b></li>
+                      <li>At least <b>10 ECO</b></li>
+                      <li>At least <b>1 AMBUSH</b></li>
                     </ul>
                 </div>
               </div>
@@ -900,7 +898,8 @@
           * return  void
           */
         $('#button_generate_and_download').on('click', function(e) {
-          mView.generateAndDownloadSealed();
+          this.lastChild.nodeValue = " Generating...";
+          setTimeout(function(){ mView.generateAndDownloadSealed(); }, 100);
         });
 
         /**

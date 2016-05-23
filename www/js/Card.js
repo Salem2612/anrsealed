@@ -8,19 +8,21 @@ console.log('Card.js loaded');
 function Card(cardJSON, set) {
 
   // CONSTRUCTOR
-	this.mId              = cardJSON.id;
-	this.mCycleNo         = cardJSON.cycleNo;
-	this.mSetNo           = cardJSON.setNo;
-  this.mSet             = set;
-	this.mCardNo          = cardJSON.cardNo;
-	this.mNameEn          = cardJSON.nameEn;
-	this.mNameFr          = cardJSON.nameFr;
-  this.mSide            = cardJSON.side;
-  this.mFaction         = cardJSON.faction;
-  this.mTypes           = cardJSON.types;
-	this.mNbCopies        = cardJSON.nbCopies;
-	this.mNbOffialCopies  = cardJSON.nbOfficialCopies;
-	this.mScore           = 0;
+	this.mId                    = cardJSON.id;
+	this.mCycleNo               = cardJSON.cycleNo;
+	this.mSetNo                 = cardJSON.setNo;
+  this.mSet                   = set;
+	this.mCardNo                = cardJSON.cardNo;
+	this.mNameEn                = cardJSON.nameEn;
+	this.mNameFr                = cardJSON.nameFr;
+  this.mSide                  = cardJSON.side;
+  this.mFaction               = cardJSON.faction;
+  this.mTypes                 = cardJSON.types;
+	this.mNbCopies              = cardJSON.nbCopies;
+	this.mNbMaxCopiesPerPlayer  = cardJSON.nbCopies;
+	this.mNbOffialCopies        = cardJSON.nbOfficialCopies;
+	this.mNbAvailableCopies     = cardJSON.nbOfficialCopies;
+	this.mScore                 = 0;
 
 }//end Card
 
@@ -38,7 +40,7 @@ Card.prototype = {
         'side':this.mSide,
         'faction':this.mFaction,
         'types':this.mTypes,
-        'nbCopies':this.mNbCopies,
+        'nbCopies':this.mNbMaxCopiesPerPlayer,
         'nbOfficialCopies':this.mNbOffialCopies
       },
       this.mSet);
@@ -150,8 +152,6 @@ Card.prototype = {
     this.mScore = 0;
     // Check if the Card is available
     if (this.mNbCopies > 0) {
-      // Add the Number of Copies to the score to give more priority to the Cards that are not picked
-      // this.mScore += (30 * this.mNbCopies);  TODO 1_CARD_COPY
       // Calculate the score of the cards with each constraint
       for (var iConstraint = 0; iConstraint < constraints.mItems.length; iConstraint++) {
         // Try to meet the current constraint
