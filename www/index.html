@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="ANR Sealed generates the Sealed Packs for your Android: Netrunner Sealed party games">
+    <meta name="description" content="anrsealed generates the Sealed Packs for your Android: Netrunner Sealed party games">
     <meta name="author" content="Samuel BUGGIA">
     <meta http-equiv="cache-control" content="no-cache, must-revalidate, post-check=0, pre-check=0">
     <meta http-equiv="expires" content="Sat, 31 Oct 2014 00:00:00 GMT">
     <meta http-equiv="pragma" content="no-cache">
     <link rel="icon" href="images/favicon.png">
 
-    <title>Android: Netrunner Sealed</title>
+    <title>anrsealed</title>
 
     <!-- Bootstrap core CSS -->
     <link href="dist/css/bootstrap.min.css" rel="stylesheet">
@@ -50,7 +50,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.0.4</h4>
+            <h4 class="modal-title"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.1.0</h4>
           </div>
           <div class="modal-body">
             <div class="row">
@@ -58,7 +58,7 @@
               <div class="col-md-6 col-sm-12">
                 <h4>Authors</h4>
                 <p>
-                  <b>Android: Netrunner Sealed</b> has been created by <a href="mailto:qasu.contact@gmail.com"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Samuel Buggia</a> and <a href="http://www.run4games.com/forum/" target="_blank"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Ludovic Schmidt</a>. Contact us if you find a bug or if you have any question.
+                  <b>anrsealed</b> has been created by <a href="mailto:qasu.contact@gmail.com"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Samuel Buggia</a> and <a href="http://www.run4games.com/forum/" target="_blank"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Ludovic Schmidt</a>. Contact us if you find a bug or if you have any question.
                 </p>
 
                 <h4>Modules</h4>
@@ -85,6 +85,14 @@
 
               <!-- Right -->
               <div class="col-md-6 col-sm-12">
+                <h4>[23 May 2016] v2.1</h4>
+                <ul>
+                  <li>Fix Sage, Chameleon and Rainbow that were automatically picked.</li>
+                  <li>Fix Sage and Chameleon that were automatically picked.</li>
+                  <li>Add The Liberated Mind (English only).</li>
+                  <li>Add Fear the Masses (English only).</li>
+                </ul>
+
                 <h4>[18 May 2016] v2.0</h4>
                 <ul>
                   <li>Big refactoring of the site</li>
@@ -134,11 +142,14 @@
             </ol>
 
             <h3><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Zip file</h3>
-            <p>The downloaded <b><span class="glyphicon glyphicon-folder-close" aria-hidden="true"></span> Zip file</b> contains the following folders:</p>
+            <p>The downloaded <b><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Zip file</b> contains the following folders:</p>
             <ul>
-              <li><b>All</b>: All files of the other folders. Usefull for a tournament organisator. Zip each player folder and send them to the corresponding players.</li>
-              <li><b>Sorted by Alphabetical Order</b>: Useful to import to <a href="http://netrunnerdb.com/en/deck/import" target="_blank"><span class="glyphicon glyphicon-link" aria-hidden="true"></span>NetrunnerDB</a> or <a href="http://www.jinteki.net/deckbuilder" target="_blank"><span class="glyphicon glyphicon-tree-deciduous" aria-hidden="true"></span>Jinteki.net</a> with a simple Copy/Paste.</li>
-              <li><b>Sorted by Card Type</b>: Useful to read your Sealed Pack.</li>
+              <li><b>All information</b>: Usefull for debugging.</li>
+              <li><b>Sorted by Alphabetical order</b>: Simply Copy/Paste the content of these files to import them into <a href="http://netrunnerdb.com/en/deck/import" target="_blank"><span class="glyphicon glyphicon-link" aria-hidden="true"></span>NetrunnerDB</a> or <a href="http://www.jinteki.net/deckbuilder" target="_blank"><span class="glyphicon glyphicon-tree-deciduous" aria-hidden="true"></span>Jinteki.net</a>.</li>
+              <li><b>Sorted by Card Type</b>: Useful to read your Sealed Pack as in a Deckbuilder.</li>
+              <li><b>Sorted by Data Pack</b>: Useful if you sort your cards by Data Pack.</li>
+              <li><b>Sorted by Faction then by Card Type</b>: Useful if you sort your cards by Faction, then by Card Type.</li>
+              <li><b>Sorted by Player</b>: Each player folder contains all the previous files. Useful for a tournament organisator : Zip each player folder and send one to each player.</li>
             </ul>
 
             <h3><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Sealed Rules</h3>
@@ -186,6 +197,44 @@
                 <li>The Corp <b>can't draw</b> at the start of its turn</li>
               </ul>
 
+            <h3><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Algorithm</h3>
+            <p>All cards of a Sealed Pack are picked randomly by completing the constraints given below. These constraints are given for the 80 cards format. For the 60 cards format, the constraints are 75% of the 80 cards format.</p>
+            </ul>
+            <div class="row">
+              <div class="col-md-6">
+                <h4>Runner</h4>
+                  <ul>
+                    <li>At least <b>10 EVENT</b></li>
+                    <li>At least <b>5 HARDWARE</b></li>
+                    <li>At least <b>2 CONSOLE</b></li>
+                    <li>At least <b>5 RESOURCE</b></li>
+                    <li>Between <b>10 and 25 PROGRAM</b></li>
+                    <li>At least <b>3 FRACTER</b></li>
+                    <li>At least <b>3 DECODER</b></li>
+                    <li>At least <b>3 KILLER</b></li>
+                    <li>At least <b>10 ECO</b></li>
+                  </ul>
+              </div>
+              <div class="col-md-6">
+                <h4>Corp</h4>
+                  <ul>
+                    <li>Between <b>14 and 18 AGENDA</b></li>
+                    <li>At least <b>7 ASSET</b></li>
+                    <li>At least <b>5 UPGRADE</b></li>
+                    <li>At least <b>10 OPERATION</b></li>
+                    <li>Between <b>20 and 30 ICE</b></li>
+                    <li>At least <b>5 BARRIER</b></li>
+                    <li>At least <b>5 CODE_GATE</b></li>
+                    <li>At least <b>5 SENTRY</b></li>
+                    <li>At least <b>10 ECO</b></li>
+                    <li>At least <b>1 AMBUSH</b></li>
+                  </ul>
+              </div>
+            </div>
+
+            <h3><span class="glyphicon glyphicon-list" aria-hidden="true"></span> List of Cards</h3>
+            <p>The <b><a href="https://docs.google.com/spreadsheets/d/1iODcruMiN18QsMhlUhh8vzwSrZUXHVB_TKxhVQNRNdM/edit?usp=sharing" target="_blank"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> List of Cards</a></b> is available in a Google Sheet.<br/><small>You can write comments in the cells to give your opinion on the rarities.</small></p>
+
             <h3><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Identity cards</h3>
             <p>Use these <b><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Identity cards</b> for your Sealed games.</p>
             <div class="row">
@@ -196,95 +245,6 @@
                 <a href="images/id_runner.jpg" target="_blank"><img src="images/id_runner.jpg" alt="" class="img-responsive img-rounded" /></a>
               </div>
             </div>
-            <p></p>
-
-            <h3><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Algorithm</h3>
-              <p>All cards of a Sealed Pack are picked randomly by completing the constraints given below. These constraints are given for the 80 cards format. For the 60 cards format, the constraints are 75% of the 80 cards format.</p>
-              </ul>
-              <div class="row">
-                <div class="col-md-6">
-                  <h4>Runner</h4>
-                    <ul>
-                      <li>At least <b>10 EVENT</b></li>
-                      <li>At least <b>5 HARDWARE</b></li>
-                      <li>At least <b>2 CONSOLE</b></li>
-                      <li>At least <b>5 RESOURCE</b></li>
-                      <li>Between <b>10 and 15 PROGRAM</b></li>
-                      <li>At least <b>3 FRACTER</b></li>
-                      <li>At least <b>3 DECODER</b></li>
-                      <li>At least <b>3 KILLER</b></li>
-                      <li>At least <b>4 ECO</b></li>
-                      <li>At least <b>6 ECO_DERIVED</b></li>
-                    </ul>
-                </div>
-                <div class="col-md-6">
-                  <h4>Corp</h4>
-                    <ul>
-                      <li>Between <b>12 and 18 AGENDA</b></li>
-                      <li>At least <b>7 ASSET</b></li>
-                      <li>At least <b>5 UPGRADE</b></li>
-                      <li>At least <b>10 OPERATION</b></li>
-                      <li>Between <b>20 and 30 ICE</b></li>
-                      <li>At least <b>5 BARRIER</b></li>
-                      <li>At least <b>5 CODE_GATE</b></li>
-                      <li>At least <b>5 SENTRY</b></li>
-                      <li>At least <b>4 ECO</b></li>
-                      <li>At least <b>6 ECO_DERIVED</b></li>
-                      <li>At least <b>2 AMBUSH</b></li>
-                    </ul>
-                </div>
-              </div>
-
-            <h3><span class="glyphicon glyphicon-list" aria-hidden="true"></span> List of Cards</h3>
-              <p>The <b><a href="https://docs.google.com/spreadsheets/d/1iODcruMiN18QsMhlUhh8vzwSrZUXHVB_TKxhVQNRNdM/edit?usp=sharing" target="_blank"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> List of Cards</a></b> is available in a Google Sheet.<br/><small>You can write comments in the cells to give your opinion on the rarities.</small></p>
-
-              <h4>Custom Types</h4>
-                <ul>
-                  <li><b>ECO</b> : Cards that have a pure gain of credits (Sure Gamble, Private Contracts...).</li>
-                  <li><b>ECO_DERIVED</b> : Cards that have a derived gain of credits (Recurring credits, Lowering install cost, Link...)</li>
-                </ul>
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
-    <div class="modal fade"  id="modalAbout" tabindex="-1" role="dialog" aria-labelledby="modalAboutLabel">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> About</h4>
-          </div>
-          <div class="modal-body">
-            <h4>Authors</h4>
-            <p>
-              <b>Android: Netrunner Sealed</b> has been created by <a href="mailto:qasu.contact@gmail.com"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Samuel Buggia</a> and <a href="http://www.run4games.com/forum/" target="_blank"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Ludovic Schmidt</a>. Contact us if you find a bug or if you have any question.
-            </p>
-
-            <h4>Modules</h4>
-            <p>
-              <b>anrsealed.com</b> uses the following modules:
-              <ul>
-                <li><a href="https://jquery.com/" target="_blank">JQuery</a></li>
-                <li><a href="http://getbootstrap.com/" target="_blank">Bootstrap</a></li>
-                <li><a href="http://glyphicons.com/" target="_blank">Glyphicons</a></li>
-                <li><a href="https://github.com/janl/mustache.js" target="_blank">Mustache JS</a></li>
-                <li><a href="https://stuk.github.io/jszip/" target="_blank">JSZip</a></li>
-                <li><a href="https://github.com/eligrey/FileSaver.js/" target="_blank">FileSaver</a></li>
-              </ul>
-            </p>
-
-            <h4>Thanks</h4>
-            <p>
-              <ul>
-                <li><b>Mister Yo</b> for the french translation of the SanSan Cycle and Data and Destiny.</li>
-                <li><b>Reju</b>, <b>Pyjam</b> and the <b>Run4Games community</b> for the comments about the rarities and the algorithm.</li>
-              </ul>
-            </p>
 
           </div>
           <div class="modal-footer">
@@ -368,7 +328,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> Android: Netrunner Sealed</a>
+          <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> anrsealed</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -379,7 +339,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#" data-toggle="modal" data-target="#modalChecker"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Check Deck</a></li>
             <li><a href="#" data-toggle="modal" data-target="#modalHelp"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Help</a></li>
-            <li><a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.0</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.1</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div>
@@ -392,13 +352,13 @@
 
         <!-- Panel Left -->
         <div class="col-md-3">
-          <p class="well well-sm"><b>Android: Netrunner Sealed</b> is a free tool. It generates the Sealed Packs of the players for your Sealed games. Please read <b><a href="#" data-toggle="modal" data-target="#modalHelp"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Help</a></b> for more information.</p>
+          <p class="well well-sm"><b>anrsealed</b> is a free tool. It generates the Sealed Packs of the players for your Sealed games. Please read <b><a href="#" data-toggle="modal" data-target="#modalHelp"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Help</a></b> for more information.</p>
 
           <div class="well well-sm">
             <h4><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> Breaking News</h4>
-            <b>[18 May 2016] v2.0 is now available.</b>
+            <b>[18 May 2016] v2.1 is now available.</b>
             <ul>
-              <li>See <b><a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.0</a></b> for more details.</li>
+              <li>See <b><a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.1</a></b> for more details.</li>
             </ul>
             <h4><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Known issues</h4>
             <ul>
@@ -797,7 +757,7 @@
       $(function() {
 
         // Global variables
-        var mView = new View(['cards', 'constraints', 'cycles', 'sets'], '2.0', '4');
+        var mView = new View(['cards', 'constraints', 'cycles', 'sets'], '2.1', '0');
 
         /**
           *
