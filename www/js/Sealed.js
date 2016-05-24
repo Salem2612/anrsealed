@@ -31,15 +31,15 @@ Sealed.prototype = {
 
       // Manage the cardpools
       var cardPools = {};
-      if (this.mUseOneCardPool)
-      {
-        // Use the same cards
-        cardPools = this.mCardPools;
-      }
-      else
-      {
-        // Clone the cards and the constraint for the current player
-        for (var side in Side) {
+      for (var side in Side) {
+        if (this.mUseOneCardPool)
+        {
+          // Use the same cards
+          cardPools[side] = this.mCardPools[side].fill();
+        }
+        else
+        {
+        // Clone the cards
           cardPools[side] = this.mCardPools[side].clone();
         }
       }
@@ -95,13 +95,13 @@ Sealed.prototype = {
           // Add the Text File to the ZIP file
           zip.file("All Information/" + locale + "/" + fileName, textFile);
           zip.file("Sorted by Player/" + player.mName + "/" + fullInformationFileName, textFile);
-          
+
           // Generate the Sealed Pack File sorted by Faction then by Card Type
           var textFile = player.mSealedPacks[side].generateTextFileSortedByFactionType(locale);
           // Add the Text File to the ZIP file
           zip.file("Sorted by Faction then by Card Type/" + locale + "/" + fileName, textFile);
           zip.file("Sorted by Player/" + player.mName + "/" + factionTypeFileName, textFile);
-          
+
           // Generate the Sealed Pack File sorted by Cycle then by Set
           var textFile = player.mSealedPacks[side].generateTextFileSortedByCycleSet(locale);
           // Add the Text File to the ZIP file

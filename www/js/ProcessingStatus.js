@@ -58,4 +58,4 @@ ProcessingStatus.KO = "Fail";
 
 ProcessingStatus.DETAIL = {};
 ProcessingStatus.DETAIL.NOT_ENOUGH_PLAYERS = "There are not enough players (min 1 Player)";
-ProcessingStatus.DETAIL.NOT_ENOUGH_CARDS = "There are not enough cards in your cardpool. Please select 'Use all the cards', instead of 'Use the cards selected by anrsealed'.";
+ProcessingStatus.DETAIL.NOT_ENOUGH_CARDS = "There are not enough cards in your cardpool. Please check more expansions if each player has its own cards, or decrease the number of players if you are sharing your cards.";
