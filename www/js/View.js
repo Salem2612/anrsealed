@@ -174,7 +174,8 @@ View.prototype = {
       // Create the CardPools of each Side from the available sets
       var cardPools = {};
       for (var side in Side) {
-        cardPools[side] = new CardPool(side, sets, useAllCards, this.mJSONs.constraints[nbCards], this.mDatabase);
+        var constraints = new Constraints(nbCards, this.mJSONs.constraints[side]);
+        cardPools[side] = new CardPool(side, sets, useAllCards, constraints, this.mDatabase);
       }
 
       // GENERATE THE SEALED

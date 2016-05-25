@@ -5,15 +5,15 @@ console.log('CardPool.js loaded');
   *
   * Pool of Cards and the Constraints to create the Packs
   */
-function CardPool(side, sets, useAllCards, constraintsJSON, database) {
+function CardPool(side, sets, useAllCards, constraints, database) {
 
   // CONSTRUCTOR
   // Initialize members
 	this.mSide                = side; // Side of the CardPool
   this.mUseAllCards         = useAllCards;  // true : Use nbOfficialCopies. false : use nbCopies.
   this.mSets                = sets; // array of {"cycleNo" : X, "setNo" : X, "nbSets" : X}
-  this.mConstraints         = new Constraints(constraintsJSON[this.mSide]); // Constraints to generate Packs from the CardPool
-  this.mConstraintsJSON     = constraintsJSON;
+  this.mConstraints         = constraints; // Constraints to generate Packs from the CardPool
+  this.mConstraintsSaved    = constraints.clone(); // Constraints to generate Packs from the CardPool
   this.mDatabase            = database;
   this.mCards               = new Cards([], this.mDatabase.mSets);  // Cards in the CardPool
 
@@ -34,7 +34,7 @@ function CardPool(side, sets, useAllCards, constraintsJSON, database) {
 CardPool.prototype = {
 
   clone : function() {
-    var clone = new CardPool(this.mSide, this.mSets, this.mUseAllCards, this.mConstraintsJSON, this.mDatabase);
+    var clone = new CardPool(this.mSide, this.mSets, this.mUseAllCards, this.mConstraintsSaved, this.mDatabase);
     return clone;
   },
 
