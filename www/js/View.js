@@ -113,8 +113,8 @@ View.prototype = {
     var nbPlayers = parseInt($('#text_nb_players').val());
 
     // Retrieve the number of cards from the view
-    var nbCards = $('#radio_nb_cards_60').is(':checked') ? 60 :
-                  $('#radio_nb_cards_80').is(':checked') ? 80 : 0;
+    var nbCards = $('#radio_nb_cards_30').is(':checked') ? 30 :
+                  $('#radio_nb_cards_45').is(':checked') ? 45 : 0;
 
     // Retrieve the ownership from the view
     var useOneCardPool = $('#radio_ownership_one').is(':checked');
@@ -162,7 +162,9 @@ View.prototype = {
       {"cycleNo" : 10,  "setNo" : 3, "nbSets" : $('#checkbox_democracy_and_dogma').is(':checked') ? 1 : 0},
       {"cycleNo" : 10,  "setNo" : 4, "nbSets" : $('#checkbox_salsette_island').is(':checked') ? 1 : 0},
       {"cycleNo" : 10,  "setNo" : 5, "nbSets" : $('#checkbox_the_liberated_mind').is(':checked') ? 1 : 0},
-      {"cycleNo" : 10,  "setNo" : 6, "nbSets" : $('#checkbox_fear_the_masses').is(':checked') ? 1 : 0}
+      {"cycleNo" : 10,  "setNo" : 6, "nbSets" : $('#checkbox_fear_the_masses').is(':checked') ? 1 : 0},
+      {"cycleNo" : 11,  "setNo" : 1, "nbSets" : $('#checkbox_23_seconds').is(':checked') ? 1 : 0},
+      {"cycleNo" : 11,  "setNo" : 2, "nbSets" : $('#checkbox_blood_money').is(':checked') ? 1 : 0}
     ];
 
     //

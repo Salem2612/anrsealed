@@ -10,8 +10,8 @@ function Constraint(nbCards, constraintJSON) {
   // CONSTRUCTOR
   this.mNbCards = nbCards;
   this.mConstraintJSON = constraintJSON;
-  this.mNbMin = Math.floor(this.mConstraintJSON.min * this.mNbCards / 80);
-  this.mNbMax = Math.floor(this.mConstraintJSON.max * this.mNbCards / 80);
+  this.mNbMin = Math.round(this.mConstraintJSON.min * this.mNbCards / 45);
+  this.mNbMax = Math.round(this.mConstraintJSON.max * this.mNbCards / 45);
   this.mNbCurrent = 0;
   this.mType = this.mConstraintJSON.type;
   this.mScore = this.mConstraintJSON.score;
