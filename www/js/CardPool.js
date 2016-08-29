@@ -5,17 +5,19 @@ console.log('CardPool.js loaded');
   *
   * Pool of Cards and the Constraints to create the Packs
   */
-function CardPool(side, sets, useAllCards, constraints, database) {
+function CardPool(side, sets, useAllCards, starterConstraints, boosterConstraints, database) {
 
   // CONSTRUCTOR
   // Initialize members
-	this.mSide                = side; // Side of the CardPool
-  this.mUseAllCards         = useAllCards;  // true : Use nbOfficialCopies. false : use nbCopies.
-  this.mSets                = sets; // array of {"cycleNo" : X, "setNo" : X, "nbSets" : X}
-  this.mConstraints         = constraints; // Constraints to generate Packs from the CardPool
-  this.mConstraintsSaved    = constraints.clone(); // Constraints to generate Packs from the CardPool
-  this.mDatabase            = database;
-  this.mCards               = new Cards([], this.mDatabase.mSets);  // Cards in the CardPool
+	this.mSide                    = side; // Side of the CardPool
+  this.mUseAllCards             = useAllCards;  // true : Use nbOfficialCopies. false : use nbCopies.
+  this.mSets                    = sets; // array of {"cycleNo" : X, "setNo" : X, "nbSets" : X}
+  this.mStarterConstraints      = starterConstraints; // Constraints to generate the Starter from the CardPool
+  this.mStarterConstraintsSaved = starterConstraints.clone(); // Constraints to generate the Starter from the CardPool
+  this.mBoosterConstraints      = boosterConstraints; // Constraints to generate the Boosters from the CardPool
+  this.mBoosterConstraintsSaved = boosterConstraints.clone(); // Constraints to generate the Boosters from the CardPool
+  this.mDatabase                = database;
+  this.mCards                   = new Cards([], this.mDatabase.mSets);  // Cards in the CardPool
 
   // Add the Cards of the Sets in the CardPool
   for (var iSet = 0; iSet < this.mSets.length; iSet++) {
@@ -34,7 +36,7 @@ function CardPool(side, sets, useAllCards, constraints, database) {
 CardPool.prototype = {
 
   clone : function() {
-    var clone = new CardPool(this.mSide, this.mSets, this.mUseAllCards, this.mConstraintsSaved, this.mDatabase);
+    var clone = new CardPool(this.mSide, this.mSets, this.mUseAllCards, this.mStarterConstraintsSaved, this.mBoosterConstraintsSaved, this.mDatabase);
     return clone;
   },
 

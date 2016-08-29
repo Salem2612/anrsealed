@@ -5,15 +5,14 @@ console.log('Pack.js loaded');
   *
   * Pack of Cards of a Side.
   */
-function Pack(cardPool) {
+function Pack(cardPool, type) {
 
   // CONSTRUCTOR
-  this.mCardPool = cardPool;    // Pool of available Cards to generate the Sealed Pack
-  this.mType = cardPool.mType;  // Type of the Sealed Pack (STARTER or BOOSTER)
-  this.mSide = cardPool.mSide;  // Side of the Sealed Pack
-  this.mConstraints = cardPool.mConstraints.clone();  // Constraints of the Sealed Pack
-  this.mCards = new Cards([], cardPool.mDatabase.mSets);  // Cards in the Sealed Pack
-
+  this.mCardPool    = cardPool;       // Pool of available Cards to generate the Sealed Pack
+  this.mType        = type;           // Type of the Sealed Pack (STARTER or BOOSTER)
+  this.mSide        = cardPool.mSide; // Side of the Sealed Pack
+  this.mConstraints = (type == "STARTER") ? cardPool.mStarterConstraints.clone() : cardPool.mBoosterConstraints.clone();  // Constraints of the Sealed Pack
+  this.mCards       = new Cards([], cardPool.mDatabase.mSets);  // Cards in the Sealed Pack
 }
 
 Pack.prototype = {
@@ -105,8 +104,10 @@ Pack.prototype = {
     // Sort the Sealed Pack by Name
     this.mCards.sortByName(locale);
 
-    // Add "The Shadow: Pulling the Strings" or "The Masque" to improve importing in Netrunner DB
-    textFile = (Side.CORP == this.mSide) ? "The Shadow: Pulling the Strings\r\n\r\n" : "The Masque\r\n\r\n";
+    // Add "The Shadow: Pulling the Strings" or "The Masque" at the begginning of the Starter to improve importing in Netrunner DB
+    if (this.type == "STARTER") {
+      textFile = (Side.CORP == this.mSide) ? "The Shadow: Pulling the Strings\r\n\r\n" : "The Masque\r\n\r\n";
+    }
 
     // Create the Text File
     for (iCard = 0; iCard < this.mCards.mItems.length; iCard++) {

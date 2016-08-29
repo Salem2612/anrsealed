@@ -902,7 +902,7 @@
 {"id":"10088","cycleNo":10,"setNo":5,"cardNo":88,"nameEn":"Dedicated Neural Net","nameFr":"Réseau Neural Dédié","side":"CORP","faction":"Jinteki","types":["BAD","CARD","AGENDA"],"nbCopies":0,"nbOfficialCopies":3},
 {"id":"10089","cycleNo":10,"setNo":5,"cardNo":89,"nameEn":"Chetana","nameFr":"Chetana","side":"CORP","faction":"Jinteki","types":["BAD","CARD","ICE","SENTRY"],"nbCopies":0,"nbOfficialCopies":3},
 {"id":"10090","cycleNo":10,"setNo":5,"cardNo":90,"nameEn":"Puppet Master","nameFr":"Marionnettiste","side":"CORP","faction":"NBN","types":["COMMON","CARD","AGENDA"],"nbCopies":1,"nbOfficialCopies":3},
-{"id":"10091","cycleNo":10,"setNo":5,"cardNo":91,"nameEn":"Waiver","nameFr":"Désestement","side":"CORP","faction":"NBN","types":["COMMON","CARD","ICE","CODE_GATE"],"nbCopies":2,"nbOfficialCopies":3},
+{"id":"10091","cycleNo":10,"setNo":5,"cardNo":91,"nameEn":"Waiver","nameFr":"Désistement","side":"CORP","faction":"NBN","types":["COMMON","CARD","ICE","CODE_GATE"],"nbCopies":2,"nbOfficialCopies":3},
 {"id":"10092","cycleNo":10,"setNo":5,"cardNo":92,"nameEn":"Exchange of Information","nameFr":"Echange d'Informations","side":"CORP","faction":"NBN","types":["COMMON","DIRTY","CARD","OPERATION"],"nbCopies":1,"nbOfficialCopies":3},
 {"id":"10093","cycleNo":10,"setNo":5,"cardNo":93,"nameEn":"Red Tape","nameFr":"Paperasserie","side":"CORP","faction":"Weyland","types":["COMMON","CARD","ICE","CODE_GATE"],"nbCopies":2,"nbOfficialCopies":3},
 {"id":"10094","cycleNo":10,"setNo":5,"cardNo":94,"nameEn":"Consulting Visit","nameFr":"Visite de Consultants","side":"CORP","faction":"Weyland","types":["COMMON","CARD","TUTOR","OPERATION"],"nbCopies":1,"nbOfficialCopies":3},

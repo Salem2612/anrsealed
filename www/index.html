@@ -50,7 +50,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.2.0</h4>
+            <h4 class="modal-title"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.2.1</h4>
           </div>
           <div class="modal-body">
             <div class="row">
@@ -85,11 +85,12 @@
 
               <!-- Right -->
               <div class="col-md-6 col-sm-12">
-                <h4>[22 Aug 2016] v2.2</h4>
+                <h4>[29 Sep 2016] v2.2</h4>
                 <ul>
                   <li>Add Blood Money.</li>
+                  <li>Add Boosters.</li>
                 </ul>
-                
+
                 <h4>[22 Jul 2016] v2.1</h4>
                 <ul>
                   <li>Fix Sage, Chameleon and Rainbow that were automatically picked.</li>
@@ -141,7 +142,8 @@
             <ol>
               <li>Select the <b><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Core Sets</b>, <b><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Deluxe Expansions</b> and <b><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Cycles</b>.</li>
               <li>Select the <b><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Number of players</b>.</li>
-              <li>Select the <b><span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Number of cards per player</b>.</li>
+              <li>Select the format of the <b><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> Starter</b>.</li>
+              <li>Select the number of <b><span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Boosters</b>.</li>
               <li>Select the <b><span class="glyphicon glyphicon-education" aria-hidden="true"></span> Owner</b> of the cards.</li>
               <li>Select the <b><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> Cardpool</b>.</li>
               <li>Click on <b><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Generate & Download</b>.</li>
@@ -173,7 +175,7 @@
                   <li>The Omni-league is a tournament that lasts many weeks or months.</li>
                   <li>Each player starts the Omni-league with <b>85 cards</b>.</li>
                   <li>The Winner of a game can take a card from the unused cards of its opponent's Sealed pack.</li>
-                  <li>Each player wins <b>5 cards</b> between each round and can modify its decks.</li>
+                  <li>Each player receives <b>1 booster</b> between each round and can modify its decks.</li>
                 </ul>
               </ul>
               <h4>Deckbuilding rules</h4>
@@ -184,7 +186,7 @@
                     <li>1 Runner Sealed Pack: <b>Sealed Pack - Player x - Runner.txt</b></li>
                     <li><i>Optionnaly: The players can Copy/Paste their Sealed Packs to <b><a href="http://netrunnerdb.com/en/deck/import" target="_blank"><span class="glyphicon glyphicon-link" aria-hidden="true"></span>NetrunnerDB</a></b> or <b><a href="http://www.jinteki.net/deckbuilder" target="_blank"><span class="glyphicon glyphicon-tree-deciduous" aria-hidden="true"></span>Jinteki.net</a></b> for better readability.</i></li>
                   </ul>
-                <li>Each player builds <b>1 Corp deck</b> and <b>1 Runner deck</b> only with the cards in its Sealed Packs.</li>
+                <li>Each player builds <b>1 Corp deck</b> and <b>1 Runner deck</b> <u>only with the cards in its Starter</u>.</li>
                 <li>Identity cards:</li>
                 <ul>
                   <li>No Faction.</li>
@@ -212,7 +214,7 @@
               </ul>
 
             <h3><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Algorithm</h3>
-            <p>All cards of a Sealed Pack are picked randomly by completing <b><a href="https://github.com/Salem2612/anrsealed/blob/v2.2/www/json/v2.2.0/constraints.json">constraints</a></b>. These constraints are given for the 45 cards format. For the 30 cards format, the constraints are 75% of the 45 cards format.</p>
+            <p>All cards of a Sealed Pack are picked randomly by completing <b><a href="https://github.com/Salem2612/anrsealed/blob/v2.2/www/json/v2.2.1/constraints.json">constraints</a></b>. These constraints are given for the 45 cards format. For the 30 cards format, the constraints are 75% of the 45 cards format.</p>
             </ul>
 
             <h3><span class="glyphicon glyphicon-list" aria-hidden="true"></span> List of Cards</h3>
@@ -339,10 +341,10 @@
 
           <div class="well well-sm">
             <h4><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> Breaking News</h4>
-            <b>[22 Aug 2016] v2.2 is now available.</b>
+            <b>[29 Sep 2016] v2.2 is now available.</b>
             <ul>
               <li>See <b><a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.2</a></b> for more details.</li>
-              <li>New Corp's identity text box: <i>You can use agendas from all factions in this deck. The trash cost of all <b>transaction</b> and <b>advertisement</b> assets is increased by 2.</i>.</li>
+              <li>New Corp's identity text box: <i>You can use agendas from all factions in this deck. The trash cost of all <b>transaction</b> and <b>advertisement</b> assets is increased by 2</i>.</li>
             </ul>
 
             <h4><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Known issues</h4>
@@ -354,7 +356,8 @@
             <ol>
               <li>Select the <b><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Core Sets</b>, <b><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Deluxe Expansions</b> and <b><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Cycles</b>.</li>
               <li>Select the <b><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Number of players</b>.</li>
-              <li>Select the <b><span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Number of cards per player</b>.</li>
+              <li>Select the format of the <b><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> Starter</b>.</li>
+              <li>Select the number of <b><span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Boosters</b>.</li>
               <li>Select the <b><span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span> Owner</b> of the cards.</li>
               <li>Select the <b><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> Cardpool</b>.</li>
               <li>Click on <b><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Generate & Download</b>.</li>
@@ -372,91 +375,90 @@
 
             <!-- Generate -->
             <div class="col-lg-4 col-lg-push-8 col-md-12">
-            <div class="well well-sm">
-              <!-- Number of players -->
-              <div class="row">
-                <div class="col-sm-12">
-                  <h4><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Number of players</h4>
-                  <div class="form-group">
-                    <div class="input-group">
-                      <input id="text_nb_players" type="text" class="form-control" placeholder="Enter the number of players" aria-describedby="text_nb_players_addon" value="2">
-                      <span class="input-group-addon" id="text_nb_players_addon">players</span>
+              <div class="well well-sm">
+                <!-- Number of players -->
+                <h4><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Number of players</h4>
+                <div class="form-group">
+                  <div class="input-group">
+                    <input id="text_nb_players" type="text" class="form-control" placeholder="Enter the number of players" aria-describedby="text_nb_players_addon" value="2">
+                    <span class="input-group-addon" id="text_nb_players_addon">players</span>
+                  </div>
+                </div>  <!-- /.Number of players -->
+
+                <!-- Starter -->
+                <h4><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> Starter</h4>
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="radio">
+                      <label><input type="radio" name="optradio_starter"  id="radio_starter_45" checked>85 cards (45 cards per deck / 7 Agenda points)</label>
+                    </div>
+
+                    <div class="radio">
+                      <label><input type="radio" name="optradio_starter" id="radio_starter_30">57 cards (30 cards per deck / 6 Agenda points)</label>
+                    </div>
+
+                    <div class="radio">
+                      <label><input type="radio" name="optradio_starter" id="radio_starter_no">No starter</label>
                     </div>
                   </div>
-                </div>
-              </div> <!-- /.Number of players -->
+                </div>  <!-- Starter -->
 
-              <!-- Number of cards -->
-              <div class="row">
-                <div class="col-sm-12">
-                  <h4><span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Number of cards <small>per player</small></h4>
-                  <div class="form-group">
-                    <div class="input-group" id="text_nb_cards">
-                      <div class="radio">
-                        <label><input type="radio" name="optradio_nb_cards"  id="radio_nb_cards_45" checked>85 cards (45 cards per deck / 7 Agenda points)</label>
-                      </div>
-                      <div class="radio">
-                        <label><input type="radio" name="optradio_nb_cards" id="radio_nb_cards_30">57 cards (30 cards per deck / 6 Agenda points)</label>
-                      </div>
+                <!-- Boosters -->
+                <h4><span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Boosters</h4>
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="radio">
+                      <label><input type="radio" name="optradio_boosters" id="radio_boosters_8">
+                        <div class="input-group">
+                          <input id="text_nb_boosters" type="text" class="form-control" placeholder="Enter the number of boosters" aria-describedby="text_nb_boosters_addon" value="1"><span class="input-group-addon" id="text_nb_boosters_addon">boosters of 8 cards</span>
+                        </div>
+                      </label>
+                    </div>
+
+                    <div class="radio">
+                      <label><input type="radio" name="optradio_boosters" id="radio_boosters_no" checked>No booster</label>
                     </div>
                   </div>
-                </div>
-              </div> <!-- /.Number of cards -->
+                </div>  <!-- /.Boosters -->
 
-              <!-- Ownership -->
-              <div class="row">
-                <div class="col-sm-12">
-                  <h4><span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span> Ownership</h4>
-                  <div class="form-group">
-                    <div class="input-group" id="text_ownership">
-                      <div class="radio">
-                        <label><input type="radio" name="optradio_ownership" id="radio_ownership_each" checked>Each player plays with its own cards.</label>
-                      </div>
-                      <div class="radio">
-                        <label><input type="radio" name="optradio_ownership"  id="radio_ownership_one">One player shares its cards to all others.</label>
-                      </div>
+                <!-- Ownership -->
+                <h4><span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span> Ownership</h4>
+                <div class="form-group">
+                  <div class="input-group" id="text_ownership">
+                    <div class="radio">
+                      <label><input type="radio" name="optradio_ownership" id="radio_ownership_each" checked>Each player plays with its own cards.</label>
+                    </div>
+                    <div class="radio">
+                      <label><input type="radio" name="optradio_ownership"  id="radio_ownership_one">One player shares its cards to all others.</label>
                     </div>
                   </div>
-                </div>
-              </div> <!-- /.Ownership -->
+                </div>  <!-- /.Ownership -->
 
-              <!-- Cardpool -->
-              <div class="row">
-                <div class="col-sm-12">
-                  <h4><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> Cardpool</h4>
-                  <div class="form-group">
-                    <div class="input-group" id="text_cardpool">
-                      <div class="radio">
-                        <label><input type="radio" name="optradio_cardpool" id="radio_cardpool_specific" checked>Use the cards selected by <b><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> anrsealed</b>.</label>
-                      </div>
-                      <div class="radio">
-                        <label><input type="radio" name="optradio_cardpool"  id="radio_cardpool_all">Use all the cards (Recommended if you share a small cardpool).</label>
-                      </div>
+                <!-- Cardpool -->
+                <h4><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> Cardpool</h4>
+                <div class="form-group">
+                  <div class="input-group" id="text_cardpool">
+                    <div class="radio">
+                      <label><input type="radio" name="optradio_cardpool" id="radio_cardpool_specific" checked>Use the cards selected by <b><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> anrsealed</b>.</label>
+                    </div>
+                    <div class="radio">
+                      <label><input type="radio" name="optradio_cardpool"  id="radio_cardpool_all">Use all the cards (Recommended if you share a small cardpool).</label>
                     </div>
                   </div>
-                </div>
-              </div> <!-- /.Cardpool -->
+                </div>  <!-- /.Cardpool -->
 
-              <!-- Generate & Download -->
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <button id="button_generate_and_download" type="button" class="btn btn-success btn-lg">
-                      <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Generate & Download
-                    </button>
-                  </div>
-                </div>
-              </div> <!-- /.Generate & Download -->
+                <!-- Generate & Download -->
+                <div class="form-group">
+                  <button id="button_generate_and_download" type="button" class="btn btn-success btn-lg">
+                    <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Generate & Download
+                  </button>
+                </div>  <!-- Generate & Download -->
 
-              <!-- Status -->
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <textarea id="textarea_status" class="form-control" style="resize:none" rows="9" readonly placeholder="Select the expansions, the number of players, the number of cards per player, the ownership of the cards and the cardpool to use then click on Generate & Download."></textarea>
-                  </div>
-                </div>
-              </div>  <!-- /.Status -->
-            </div>  <!-- /.well -->
+                <!-- Status -->
+                <div class="form-group">
+                  <textarea id="textarea_status" class="form-control" style="resize:none" rows="9" readonly placeholder="Select the expansions, the number of players, the format of the starter, the number of boosters, the ownership of the cards and the cardpool to use then click on Generate & Download."></textarea>
+                </div>  <!-- /.Status -->
+              </div>  <!-- /.well -->
             </div>  <!-- /.Generate -->
 
             <!-- Boxes -->
@@ -658,6 +660,7 @@
                       <div class="well well-sm">
                         <div class="row">
                           <!-- Image -->
+                          <!-- Image -->
                           <div class="col-xs-5">
                             <img src="images/05 Mumbad.png" alt="" class="img-responsive img-rounded" />
                           </div> <!-- /.Image -->
@@ -776,7 +779,7 @@
       $(function() {
 
         // Global variables
-        var mView = new View(['cards', 'constraints', 'cycles', 'sets'], '2.2', '0');
+        var mView = new View(['cards', 'constraints', 'cycles', 'sets'], '2.2', '1');
 
         /**
           *
@@ -873,6 +876,10 @@
           */
         $('#text_nb_players').on('click', function(e) {
           $('#text_nb_players').select();
+        });
+        $('#text_nb_boosters').on('click', function(e) {
+          $('#radio_boosters_8').prop("checked", true);
+          $('#text_nb_boosters').select();
         });
 
         /**

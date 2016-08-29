@@ -113,8 +113,14 @@ View.prototype = {
     var nbPlayers = parseInt($('#text_nb_players').val());
 
     // Retrieve the number of cards from the view
-    var nbCards = $('#radio_nb_cards_30').is(':checked') ? 30 :
-                  $('#radio_nb_cards_45').is(':checked') ? 45 : 0;
+    var nbStarters = $('#radio_starter_no').is(':checked') ? 0 : 1;
+
+    // Retrieve the number of boosters from the view
+    var nbCards = $('#radio_starter_30').is(':checked') ? 30 :
+                  $('#radio_starter_45').is(':checked') ? 45 : 0;
+
+    // Retrieve the number of cards from the view
+    var nbBoosters = $('#radio_boosters_8').is(':checked') ? parseInt($('#text_nb_boosters').val()) : 0;
 
     // Retrieve the ownership from the view
     var useOneCardPool = $('#radio_ownership_one').is(':checked');
@@ -176,12 +182,13 @@ View.prototype = {
       // Create the CardPools of each Side from the available sets
       var cardPools = {};
       for (var side in Side) {
-        var constraints = new Constraints(nbCards, this.mJSONs.constraints[side]);
-        cardPools[side] = new CardPool(side, sets, useAllCards, constraints, this.mDatabase);
+        var starterConstraints = new Constraints(nbCards, this.mJSONs.constraints[side].starter);
+        var boosterConstraints = new Constraints(45, this.mJSONs.constraints[side].booster);
+        cardPools[side] = new CardPool(side, sets, useAllCards, starterConstraints, boosterConstraints, this.mDatabase);
       }
 
       // GENERATE THE SEALED
-      this.mSealed = new Sealed(nbPlayers, cardPools, useOneCardPool, this.mVersionMajor);
+      this.mSealed = new Sealed(nbPlayers, cardPools, nbStarters, nbBoosters, useOneCardPool, this.mVersionMajor);
       processingStatus.process(this.mSealed.generate());
     }
 
@@ -207,25 +214,25 @@ View.prototype = {
 
     // Print Status of each Constraint of each Pack of each Sealed Pool of each Player
     for (var iPlayer = 0; iPlayer < this.mSealed.mNbPlayers; iPlayer++) {
-      // Print Current Player
-      var player = this.mSealed.mPlayers[iPlayer];
       for (var side in Side) {
-        // Print Current Sealed Pool
-        var sealedPack = player.mSealedPacks[side];
-        var text = "";
-        // Print Current Pack
-        var packStatus = (true === sealedPack.mConstraints.areMet()) ? ProcessingStatus.OK : ProcessingStatus.KO;
-        if (packStatus === ProcessingStatus.KO) {
-          text += " - [Player " + (iPlayer+1) +"] [" + side + "] : " + packStatus + "\n";
-          for (var iConstraint = 0; iConstraint < sealedPack.mConstraints.mItems.length; iConstraint++) {
-            // Print Current Constraint
-            var constraint = sealedPack.mConstraints.mItems[iConstraint];
-            if (!constraint.isMet()) {
-              text += "    - Only " + constraint.mNbCurrent + " " + constraint.mType + " available. At least " + constraint.mNbMin + " needed.\n";
+        for (var iPack = 0; iPack < (this.mSealed.mNbStarters + this.mSealed.mNbBoosters); iPack++) {
+          var sealedPack = this.mSealed.mPlayers[iPlayer].mSealedPacks[side][iPack];
+          var text = "";
+          // Print Current Pack
+          var packStatus = (true === sealedPack.mConstraints.areMet()) ? ProcessingStatus.OK : ProcessingStatus.KO;
+          if (packStatus === ProcessingStatus.KO) {
+            var packName = ((this.mSealed.mNbStarters > 0) && (iPack < this.mSealed.mNbStarters)) ? ("Starter") : ("Booster " + (iPack - this.mSealed.mNbStarters + 1));
+            text += " - [Player " + (iPlayer+1) + " - " + side + " - " + packName + "] : " + packStatus + "\n";
+            for (var iConstraint = 0; iConstraint < sealedPack.mConstraints.mItems.length; iConstraint++) {
+              // Print Current Constraint
+              var constraint = sealedPack.mConstraints.mItems[iConstraint];
+              if (!constraint.isMet()) {
+                text += "    - Only " + constraint.mNbCurrent + " " + constraint.mType + " available. At least " + constraint.mNbMin + " needed.\n";
+              }
             }
           }
+          $('#textarea_status').val($('#textarea_status').val() + text);
         }
-        $('#textarea_status').val($('#textarea_status').val() + text);
       }
     }
   },
