@@ -50,7 +50,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.2.1</h4>
+            <h4 class="modal-title"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.3.0</h4>
           </div>
           <div class="modal-body">
             <div class="row">
@@ -85,6 +85,12 @@
 
               <!-- Right -->
               <div class="col-md-6 col-sm-12">
+                <h4>[07 Oct 2016] v2.3</h4>
+                <ul>
+                  <li>Add Escalation.</li>
+                  <li>Remove Tag and Bag cards from the DIRTY cards.</li>
+                </ul>
+
                 <h4>[29 Sep 2016] v2.2</h4>
                 <ul>
                   <li>Add Blood Money.</li>
@@ -214,7 +220,7 @@
               </ul>
 
             <h3><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Algorithm</h3>
-            <p>All cards of a Sealed Pack are picked randomly by completing <b><a href="https://github.com/Salem2612/anrsealed/blob/v2.2/www/json/v2.2.1/constraints.json">constraints</a></b>. These constraints are given for the 45 cards format. For the 30 cards format, the constraints are 75% of the 45 cards format.</p>
+            <p>All cards of a Sealed Pack are picked randomly by completing <b><a href="https://github.com/Salem2612/anrsealed/blob/v2.3/www/json/v2.3.0/constraints.json">constraints</a></b>. These constraints are given for the 45 cards format. For the 30 cards format, the constraints are 75% of the 45 cards format.</p>
             </ul>
 
             <h3><span class="glyphicon glyphicon-list" aria-hidden="true"></span> List of Cards</h3>
@@ -324,7 +330,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#" data-toggle="modal" data-target="#modalChecker"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Check Deck</a></li>
             <li><a href="#" data-toggle="modal" data-target="#modalHelp"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Help</a></li>
-            <li><a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.2</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.3</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div>
@@ -341,9 +347,9 @@
 
           <div class="well well-sm">
             <h4><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> Breaking News</h4>
-            <b>[29 Sep 2016] v2.2 is now available.</b>
+            <b>[07 Oct 2016] v2.3 is now available.</b>
             <ul>
-              <li>See <b><a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.2</a></b> for more details.</li>
+              <li>See <b><a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.3</a></b> for more details.</li>
               <li>New Corp's identity text box: <i>You can use agendas from all factions in this deck. The trash cost of all <b>transaction</b> and <b>advertisement</b> assets is increased by 2</i>.</li>
             </ul>
 
@@ -779,7 +785,7 @@
       $(function() {
 
         // Global variables
-        var mView = new View(['cards', 'constraints', 'cycles', 'sets'], '2.2', '1');
+        var mView = new View(['cards', 'constraints', 'cycles', 'sets'], '2.3', '0');
 
         /**
           *
