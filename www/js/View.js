@@ -170,7 +170,11 @@ View.prototype = {
       {"cycleNo" : 10,  "setNo" : 5, "nbSets" : $('#checkbox_the_liberated_mind').is(':checked') ? 1 : 0},
       {"cycleNo" : 10,  "setNo" : 6, "nbSets" : $('#checkbox_fear_the_masses').is(':checked') ? 1 : 0},
       {"cycleNo" : 11,  "setNo" : 1, "nbSets" : $('#checkbox_23_seconds').is(':checked') ? 1 : 0},
-      {"cycleNo" : 11,  "setNo" : 2, "nbSets" : $('#checkbox_blood_money').is(':checked') ? 1 : 0}
+      {"cycleNo" : 11,  "setNo" : 2, "nbSets" : $('#checkbox_blood_money').is(':checked') ? 1 : 0},
+      {"cycleNo" : 11,  "setNo" : 3, "nbSets" : $('#checkbox_escalation').is(':checked') ? 1 : 0}
+      // {"cycleNo" : 11,  "setNo" : 4, "nbSets" : $('#checkbox_intervention').is(':checked') ? 1 : 0},
+      // {"cycleNo" : 11,  "setNo" : 5, "nbSets" : $('#checkbox_martial_law').is(':checked') ? 1 : 0},
+      // {"cycleNo" : 11,  "setNo" : 6, "nbSets" : $('#checkbox_quorum').is(':checked') ? 1 : 0}
     ];
 
     //

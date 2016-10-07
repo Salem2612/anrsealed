@@ -35,4 +35,8 @@
 {"cycleNo":10, "setNo":5, "nameEn":"The Liberated Mind", "nameFr":"L'Esprit Libéré", "type":"DATA_PACK"},
 {"cycleNo":10, "setNo":6, "nameEn":"Fear the Masses", "nameFr":"Redoutez le Peuple", "type":"DATA_PACK"},
 {"cycleNo":11, "setNo":1, "nameEn":"23 Seconds", "nameFr":"23 Secondes", "type":"DATA_PACK"},
-{"cycleNo":11, "setNo":2, "nameEn":"Blood Money", "nameFr":"Le Prix du Sang", "type":"DATA_PACK"}]
+{"cycleNo":11, "setNo":2, "nameEn":"Blood Money", "nameFr":"Le Prix du Sang", "type":"DATA_PACK"},
+{"cycleNo":11, "setNo":3, "nameEn":"Escalation", "nameFr":"Escalade", "type":"DATA_PACK"},
+{"cycleNo":11, "setNo":4, "nameEn":"Intervention", "nameFr":"Intervention", "type":"DATA_PACK"},
+{"cycleNo":11, "setNo":5, "nameEn":"Martial Law", "nameFr":"Loi Martiale", "type":"DATA_PACK"},
+{"cycleNo":11, "setNo":6, "nameEn":"Quorum", "nameFr":"Quorum", "type":"DATA_PACK"}]
