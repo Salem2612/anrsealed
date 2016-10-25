@@ -50,7 +50,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.3.0</h4>
+            <h4 class="modal-title"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.3.1</h4>
           </div>
           <div class="modal-body">
             <div class="row">
@@ -89,6 +89,8 @@
                 <ul>
                   <li>Add Escalation.</li>
                   <li>Remove Tag and Bag cards from the DIRTY cards.</li>
+                  <li>Add the packs viewer.</li>
+                  <li>Add the Stimhack Cube.</li>
                 </ul>
 
                 <h4>[29 Sep 2016] v2.2</h4>
@@ -220,7 +222,7 @@
               </ul>
 
             <h3><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Algorithm</h3>
-            <p>All cards of a Sealed Pack are picked randomly by completing <b><a href="https://github.com/Salem2612/anrsealed/blob/v2.3/www/json/v2.3.0/constraints.json">constraints</a></b>. These constraints are given for the 45 cards format. For the 30 cards format, the constraints are 75% of the 45 cards format.</p>
+            <p>All cards of a Sealed Pack are picked randomly by completing <b><a href="https://github.com/Salem2612/anrsealed/blob/v2.3/www/json/v2.3.1/constraints.json">constraints</a></b>. These constraints are given for the 45 cards format. For the 30 cards format, the constraints are 75% of the 45 cards format.</p>
             </ul>
 
             <h3><span class="glyphicon glyphicon-list" aria-hidden="true"></span> List of Cards</h3>
@@ -307,6 +309,37 @@
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+
+    <!-- Modal View Sealed Packs (vsp) -->
+    <div class="modal fade"  id="modalViewResults" tabindex="-1" role="dialog" aria-labelledby="modalViewResultsLabel">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> View Sealed Packs</h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-12">
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-pills" id="vspTabs" role="tablist">
+                </ul>
+                <p></p>
+
+                <!-- Tab panes -->
+                <div class="tab-content" id="vspContents">
+                </div>
+
+              </div>
+            </div>
+          </div> <!-- modal-body -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal --> <!-- Modal View Results -->
 
     <!-- Nav Bar -->
     <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
@@ -445,7 +478,10 @@
                 <div class="form-group">
                   <div class="input-group" id="text_cardpool">
                     <div class="radio">
-                      <label><input type="radio" name="optradio_cardpool" id="radio_cardpool_specific" checked>Use the cards selected by <b><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> anrsealed</b>.</label>
+                      <label><input type="radio" name="optradio_cardpool" id="radio_cardpool_anrsealed" checked>Use the cards selected by <b><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> anrsealed</b>.</label>
+                    </div>
+                    <div class="radio">
+                      <label><input type="radio" name="optradio_cardpool" id="radio_cardpool_stimhack">Use the <b><a href="http://forum.stimhack.com/t/stimhack-draft-cube-current-lists-updated-for-escalation/955" target="_blank"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Stimhack Cube</a></b>.</label>
                     </div>
                     <div class="radio">
                       <label><input type="radio" name="optradio_cardpool"  id="radio_cardpool_all">Use all the cards (Recommended if you share a small cardpool).</label>
@@ -455,9 +491,10 @@
 
                 <!-- Generate & Download -->
                 <div class="form-group">
-                  <button id="button_generate_and_download" type="button" class="btn btn-success btn-lg">
-                    <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Generate & Download
-                  </button>
+                  <div class="btn-group">
+                    <button id="button_generate_and_download" type="button" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Generate & Download</button>
+                    <button id="button_view_results" type="button" data-toggle="modal" data-target="#modalViewResults" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> View</button>
+                  </div>
                 </div>  <!-- Generate & Download -->
 
                 <!-- Status -->
@@ -789,7 +826,7 @@
       $(function() {
 
         // Global variables
-        var mView = new View(['cards', 'constraints', 'cycles', 'sets'], '2.3', '0');
+        var mView = new View(['cards', 'constraints', 'cycles', 'sets'], '2.3', '1');
 
         /**
           *
@@ -902,6 +939,15 @@
         });
 
         /**
+          * Handler of the button_generate_and_download on click event.
+          *
+          * return  void
+          */
+        $('#button_view_results').on('click', function(e) {
+          mView.viewSealedPacks();
+        });
+
+        /**
           * Handler of the button_checker_check on click event.
           *
           * return  void
@@ -921,6 +967,39 @@
         });
 
       });
+    </script>
+
+    <script id="tmplVspTab" type="x-tmpl-mustache">
+      <li role="presentation" class="dropdown">
+        <a href="#" class="dropdown-toggle" id="vspTab{{playerId}}" data-toggle="dropdown" aria-controls="vspTab{{playerId}}-contents" aria-expanded="false">{{playerName}} <span class="caret"></span></a>
+        <ul class="dropdown-menu" aria-labelledby="vspTab{{playerId}}" id="vspTab{{playerId}}-contents">
+          <li class><a href="#vspPane{{playerId}}CORP"    role="tab" id="vspTab{{playerId}}CORP"    data-toggle="pill" aria-controls="vspPane{{playerId}}CORP" aria-expanded="false">Corp</a></li>
+          <li class><a href="#vspPane{{playerId}}RUNNER"  role="tab" id="vspTab{{playerId}}RUNNER"  data-toggle="pill" aria-controls="vspPane{{playerId}}RUNNER" aria-expanded="false">Runner</a></li>
+        </ul>
+      </li>
+    </script>
+
+    <script id="tmplVspContent" type="x-tmpl-mustache">
+      <div class="tab-pane fade" role="tabpanel" id="vspPane{{playerId}}{{side}}" aria-labelledby="vspTab{{playerId}}{{side}}">
+        <div id="vspCard{{playerId}}{{side}}">
+          </div>
+        </div>
+      </div>
+    </script>
+
+    <script id="tmplVspCard" type="x-tmpl-mustache">
+      <div class="row">
+        <div class="col-sm-4">
+          <a href="https://netrunnerdb.com/en/card/{{id0}}" target="_blank"><img src="https://netrunnerdb.com/card_image/{{id0}}.png" alt="" class="img-responsive img-rounded" /></a>
+        </div>
+        <div class="col-sm-4">
+          <a href="https://netrunnerdb.com/en/card/{{id1}}" target="_blank"><img src="https://netrunnerdb.com/card_image/{{id1}}.png" alt="" class="img-responsive img-rounded" /></a>
+        </div>
+        <div class="col-sm-4">
+          <a href="https://netrunnerdb.com/en/card/{{id2}}" target="_blank"><img src="https://netrunnerdb.com/card_image/{{id2}}.png" alt="" class="img-responsive img-rounded" /></a>
+        </div>
+      </div>
+      <p></p>
     </script>
 
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->

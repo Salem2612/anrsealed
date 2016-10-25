@@ -5,14 +5,18 @@ console.log('Constraints.js loaded');
   *
   * Array of Constraint
   */
-function Constraints(nbCards, constraintsJSON) {
+function Constraints(nbCards, constraintsJSON, useBAD) {
 
   // CONSTRUCTOR
   this.mNbCards = nbCards;
-  this.mItems = [];
+  this.mUseBAD  = useBAD;
+  this.mItems   = [];
 
   for (iConstraint = 0; iConstraint < constraintsJSON.length; iConstraint++) {
-    this.mItems[iConstraint] = new Constraint(this.mNbCards, constraintsJSON[iConstraint]);
+    if ((constraintsJSON[iConstraint].type != "BAD") || this.mUseBAD)
+    {
+      this.mItems.push(new Constraint(this.mNbCards, constraintsJSON[iConstraint]));
+    }
   }
 
 }//end Constraints
@@ -20,7 +24,7 @@ function Constraints(nbCards, constraintsJSON) {
 Constraints.prototype = {
 
   clone : function() {
-    var clone = new Constraints(this.mNbCards, []);
+    var clone = new Constraints(this.mNbCards, [], this.mUseBAD);
     clone.mItems = this.mItems.map(function(constraint) {
       return constraint.clone();
     });

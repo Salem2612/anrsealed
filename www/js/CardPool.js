@@ -5,12 +5,12 @@ console.log('CardPool.js loaded');
   *
   * Pool of Cards and the Constraints to create the Packs
   */
-function CardPool(side, sets, useAllCards, starterConstraints, boosterConstraints, database) {
+function CardPool(side, sets, type, starterConstraints, boosterConstraints, database) {
 
   // CONSTRUCTOR
   // Initialize members
 	this.mSide                    = side; // Side of the CardPool
-  this.mUseAllCards             = useAllCards;  // true : Use nbOfficialCopies. false : use nbCopies.
+  this.mType                    = type; // See CardPool.TYPE_*
   this.mSets                    = sets; // array of {"cycleNo" : X, "setNo" : X, "nbSets" : X}
   this.mStarterConstraints      = starterConstraints; // Constraints to generate the Starter from the CardPool
   this.mStarterConstraintsSaved = starterConstraints.clone(); // Constraints to generate the Starter from the CardPool
@@ -25,7 +25,7 @@ function CardPool(side, sets, useAllCards, starterConstraints, boosterConstraint
     if(set.nbSets > 0)
     {
       // Retrieve the Cards of the current Set from the database
-      var cards = this.mDatabase.cloneCards(this.mSide, set.cycleNo, set.setNo, this.mUseAllCards, set.nbSets);
+      var cards = this.mDatabase.cloneCards(this.mSide, set.cycleNo, set.setNo, this.mType, set.nbSets);
       // Add the Cards in the CardPool
       Array.prototype.push.apply(this.mCards.mItems, cards.mItems);
     }
@@ -36,7 +36,7 @@ function CardPool(side, sets, useAllCards, starterConstraints, boosterConstraint
 CardPool.prototype = {
 
   clone : function() {
-    var clone = new CardPool(this.mSide, this.mSets, this.mUseAllCards, this.mStarterConstraintsSaved, this.mBoosterConstraintsSaved, this.mDatabase);
+    var clone = new CardPool(this.mSide, this.mSets, this.mType, this.mStarterConstraintsSaved, this.mBoosterConstraintsSaved, this.mDatabase);
     return clone;
   },
 
@@ -50,3 +50,8 @@ CardPool.prototype = {
   }
 
 };
+
+// Enum CardPool Type
+CardPool.TYPE_ANRSEALED = "anrsealed";
+CardPool.TYPE_STIMHACK  = "Stimhack";
+CardPool.TYPE_ALL_CARDS = "All cards";

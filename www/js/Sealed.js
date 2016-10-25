@@ -47,7 +47,7 @@ Sealed.prototype = {
       }
 
       // Create the current Player
-      this.mPlayers[iPlayer] = new Player("Player " + (iPlayer+1), cardPools, this.mNbStarters, this.mNbBoosters);
+      this.mPlayers[iPlayer] = new Player(iPlayer+1, cardPools, this.mNbStarters, this.mNbBoosters);
       // Generate the current Player
       processingStatus.process(this.mPlayers[iPlayer].generate());
     }

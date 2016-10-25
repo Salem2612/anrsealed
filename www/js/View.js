@@ -36,8 +36,7 @@ View.prototype = {
     this.mNbJSONsLoaded++;
     // Check if all files have been loaded
     if (this.mNbJSONsLoaded == this.mJSONs.nbFiles) {
-      // All JSON Files have benn loaded
-
+      // All JSON Files have been loaded
       // Create the Database
       this.mDatabase = new Database(this.mJSONs);
 
@@ -126,7 +125,9 @@ View.prototype = {
     var useOneCardPool = $('#radio_ownership_one').is(':checked');
 
     // Retrieve the cardpool choice from the view
-    var useAllCards = $('#radio_cardpool_all').is(':checked');
+    var cardpoolType  = $('#radio_cardpool_anrsealed').is(':checked') ? CardPool.TYPE_ANRSEALED :
+                        $('#radio_cardpool_stimhack').is(':checked') ? CardPool.TYPE_STIMHACK :
+                        CardPool.TYPE_ALL_CARDS;
 
     // Retrieve the available sets of the view
     var nbCoreSets =  $('#radio_nb_core_set_0').is(':checked') ? 0 :
@@ -186,9 +187,9 @@ View.prototype = {
       // Create the CardPools of each Side from the available sets
       var cardPools = {};
       for (var side in Side) {
-        var starterConstraints = new Constraints(nbCards, this.mJSONs.constraints[side].starter);
-        var boosterConstraints = new Constraints(45, this.mJSONs.constraints[side].booster);
-        cardPools[side] = new CardPool(side, sets, useAllCards, starterConstraints, boosterConstraints, this.mDatabase);
+        var starterConstraints = new Constraints(nbCards, this.mJSONs.constraints[side].starter, (cardpoolType != CardPool.TYPE_STIMHACK));
+        var boosterConstraints = new Constraints(45, this.mJSONs.constraints[side].booster, (cardpoolType != CardPool.TYPE_STIMHACK));
+        cardPools[side] = new CardPool(side, sets, cardpoolType, starterConstraints, boosterConstraints, this.mDatabase);
       }
 
       // GENERATE THE SEALED
@@ -250,6 +251,69 @@ View.prototype = {
   downloadSealed : function() {
     // Download the Sealed
     this.mSealed.download();
+  },
+
+  /**
+    * View the Sealed Packs in the modal.
+    *
+    * return  void
+    */
+  viewSealedPacks : function() {
+    // Render the modal
+    var tabs = [];
+    var contents = [];
+    for (var iPlayer = 0; iPlayer < this.mSealed.mPlayers.length; iPlayer++) {
+      // Retrieve the current player
+      var player = this.mSealed.mPlayers[iPlayer];
+      // Tab
+      var tab = {};
+      tab.playerId = "Player" + player.mId;
+      tab.playerName = player.mName;
+      tabs.push(tab);
+
+      // Contents
+      for (var side in Side) {
+        // Retrieve the current pack
+        var sealedPacks = player.mSealedPacks[side];
+        // Add player and side information
+        var content = {};
+        content.playerId = tab.playerId;
+        content.side = side;
+        // Add card IDs
+        content.rows = [];
+        var nbCards = player.getNbCards(side);
+        var iCardInRow = 0;
+        var row = {};
+        for (var iPack = 0; iPack < sealedPacks.length; iPack++) {
+          // Retrieve the current Sealed Pack (Starter or Booster) and sort it by name EN
+          var sealedPack = sealedPacks[iPack];
+          sealedPack.mCards.sortByName("EN");
+          // Add copies of the cards
+          for (var iCard = 0; iCard < sealedPack.mCards.mItems.length; iCard+=1) {
+            // Retrieve the current Card
+            var card = sealedPack.mCards.mItems[iCard];
+            for (var iCopy = 0; iCopy < card.mNbCopies; iCopy++) {
+              row["id"+iCardInRow] = card.mId;
+              if ((iCardInRow == 2) || (content.rows.length*3+iCardInRow+1 == nbCards)) {
+                // Push the row when it is full or when there is no other cards to add
+                content.rows.push(row);
+                iCardInRow = 0;
+                row = {};
+              }
+              else {
+                iCardInRow = (iCardInRow + 1) % 3;
+              }
+            }
+          }
+        }
+        contents.push(content);
+      }
+    }
+    this.renderTemplate(tabs, '#tmplVspTab', '#vspTabs');
+    this.renderTemplate(contents, '#tmplVspContent', '#vspContents');
+    for (var iContent = 0; iContent < contents.length; iContent++) {
+      this.renderTemplate(contents[iContent].rows, '#tmplVspCard', '#vspCard' + contents[iContent].playerId + contents[iContent].side);
+    }
   },
 
   /**

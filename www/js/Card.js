@@ -18,10 +18,12 @@ function Card(cardJSON, set) {
   this.mSide                  = cardJSON.side;
   this.mFaction               = cardJSON.faction;
   this.mTypes                 = cardJSON.types;
-	this.mNbCopies              = cardJSON.nbCopiesANRSealed;
-	this.mNbMaxCopiesPerPlayer  = cardJSON.nbCopiesANRSealed;
-	this.mNbOffialCopies        = cardJSON.nbOfficialCopies;
-	this.mNbAvailableCopies     = cardJSON.nbOfficialCopies;
+	this.mNbOfficialCopies      = cardJSON.nbOfficialCopies;
+	this.mNbCopiesANRSealed     = cardJSON.nbCopiesANRSealed;
+	this.mNbCopiesStimhack      = cardJSON.nbCopiesStimhack;
+	this.mNbAvailableCopies     = 0;
+	this.mNbMaxCopiesPerPlayer  = 0;
+	this.mNbCopies              = 0;
 	this.mScore                 = 0;
 
 }//end Card
@@ -40,8 +42,9 @@ Card.prototype = {
         'side':this.mSide,
         'faction':this.mFaction,
         'types':this.mTypes,
-        'nbCopiesANRSealed':this.mNbMaxCopiesPerPlayer,
-        'nbOfficialCopies':this.mNbOffialCopies
+        'nbOfficialCopies':this.mNbOfficialCopies,
+        'nbCopiesANRSealed':this.mNbCopiesANRSealed,
+        'nbCopiesStimhack':this.mNbCopiesStimhack
       },
       this.mSet);
     clone.mScore = this.mScore;
@@ -61,7 +64,7 @@ Card.prototype = {
     }
     return hasType;
   },
-  
+
   /**
     * Find the Type of the Card among the specified Type
     */
