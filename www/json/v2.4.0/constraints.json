@@ -39,9 +39,9 @@
       {"type":"UPGRADE","min":5,"max":99,"score":1},
       {"type":"OPERATION","min":10,"max":99,"score":1},
       {"type":"ICE","min":0,"max":30,"score":1},
-      {"type":"BARRIER","min":5,"max":99,"score":1},
-      {"type":"CODE_GATE","min":5,"max":99,"score":1},
-      {"type":"SENTRY","min":5,"max":99,"score":1},
+      {"type":"BARRIER","min":8,"max":99,"score":1},
+      {"type":"CODE_GATE","min":8,"max":99,"score":1},
+      {"type":"SENTRY","min":8,"max":99,"score":1},
       {"type":"ECO","min":13,"max":99,"score":1},
       {"type":"DIRTY","min":10,"max":99,"score":1}
     ],
