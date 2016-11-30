@@ -240,6 +240,19 @@ Cards.prototype = {
       }
     }
     return index;
+  },
+  
+  /**
+    * Get the number of copies of cards
+    *
+    * return  Number of copies of cards
+    */
+  getNbCards : function() {
+    var nbCards = 0;
+    for (var iCard = 0; iCard < this.mItems.length; iCard++) {
+      nbCards += this.mItems[iCard].mNbCopies;
+    }
+    return nbCards;
   }
 
 };

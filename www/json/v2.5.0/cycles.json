@@ -8,4 +8,5 @@
 {"cycleNo":7, "nameEn":"Order and Chaos", "nameFr":"Ordre et Chaos", "type":"DELUXE"},
 {"cycleNo":8, "nameEn":"SanSan Cycle", "nameFr":"Cycle SanSan", "type":"DATA_PACKS"},
 {"cycleNo":9, "nameEn":"Data and Destiny", "nameFr":"Destinée et Données", "type":"DELUXE"},
-{"cycleNo":10, "nameEn":"Mumbad Cycle", "nameFr":"Cycle Mumbad", "type":"DATA_PACKS"}]
+{"cycleNo":10, "nameEn":"Mumbad Cycle", "nameFr":"Cycle Mumbad", "type":"DATA_PACKS"},
+{"cycleNo":11, "nameEn":"Flashpoint", "nameFr":"Point de Rupture", "type":"DATA_PACKS"}]

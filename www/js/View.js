@@ -36,8 +36,7 @@ View.prototype = {
     this.mNbJSONsLoaded++;
     // Check if all files have been loaded
     if (this.mNbJSONsLoaded == this.mJSONs.nbFiles) {
-      // All JSON Files have benn loaded
-
+      // All JSON Files have been loaded
       // Create the Database
       this.mDatabase = new Database(this.mJSONs);
 
@@ -113,14 +112,22 @@ View.prototype = {
     var nbPlayers = parseInt($('#text_nb_players').val());
 
     // Retrieve the number of cards from the view
-    var nbCards = $('#radio_nb_cards_60').is(':checked') ? 60 :
-                  $('#radio_nb_cards_80').is(':checked') ? 80 : 0;
+    var nbStarters = $('#radio_starter_no').is(':checked') ? 0 : 1;
+
+    // Retrieve the number of boosters from the view
+    var nbCards = $('#radio_starter_30').is(':checked') ? 30 :
+                  $('#radio_starter_45').is(':checked') ? 45 : 0;
+
+    // Retrieve the number of cards from the view
+    var nbBoosters = $('#radio_boosters_8').is(':checked') ? parseInt($('#text_nb_boosters').val()) : 0;
 
     // Retrieve the ownership from the view
     var useOneCardPool = $('#radio_ownership_one').is(':checked');
 
     // Retrieve the cardpool choice from the view
-    var useAllCards = $('#radio_cardpool_all').is(':checked');
+    var cardpoolType  = $('#radio_cardpool_anrsealed').is(':checked') ? CardPool.TYPE_ANRSEALED :
+                        $('#radio_cardpool_stimhack').is(':checked') ? CardPool.TYPE_STIMHACK :
+                        CardPool.TYPE_ALL_CARDS;
 
     // Retrieve the available sets of the view
     var nbCoreSets =  $('#radio_nb_core_set_0').is(':checked') ? 0 :
@@ -162,7 +169,13 @@ View.prototype = {
       {"cycleNo" : 10,  "setNo" : 3, "nbSets" : $('#checkbox_democracy_and_dogma').is(':checked') ? 1 : 0},
       {"cycleNo" : 10,  "setNo" : 4, "nbSets" : $('#checkbox_salsette_island').is(':checked') ? 1 : 0},
       {"cycleNo" : 10,  "setNo" : 5, "nbSets" : $('#checkbox_the_liberated_mind').is(':checked') ? 1 : 0},
-      {"cycleNo" : 10,  "setNo" : 6, "nbSets" : $('#checkbox_fear_the_masses').is(':checked') ? 1 : 0}
+      {"cycleNo" : 10,  "setNo" : 6, "nbSets" : $('#checkbox_fear_the_masses').is(':checked') ? 1 : 0},
+      {"cycleNo" : 11,  "setNo" : 1, "nbSets" : $('#checkbox_23_seconds').is(':checked') ? 1 : 0},
+      {"cycleNo" : 11,  "setNo" : 2, "nbSets" : $('#checkbox_blood_money').is(':checked') ? 1 : 0},
+      {"cycleNo" : 11,  "setNo" : 3, "nbSets" : $('#checkbox_escalation').is(':checked') ? 1 : 0},
+      {"cycleNo" : 11,  "setNo" : 4, "nbSets" : $('#checkbox_intervention').is(':checked') ? 1 : 0}
+      // {"cycleNo" : 11,  "setNo" : 5, "nbSets" : $('#checkbox_martial_law').is(':checked') ? 1 : 0},
+      // {"cycleNo" : 11,  "setNo" : 6, "nbSets" : $('#checkbox_quorum').is(':checked') ? 1 : 0}
     ];
 
     //
@@ -174,11 +187,13 @@ View.prototype = {
       // Create the CardPools of each Side from the available sets
       var cardPools = {};
       for (var side in Side) {
-        cardPools[side] = new CardPool(side, sets, useAllCards, this.mJSONs.constraints[nbCards], this.mDatabase);
+        var starterConstraints = new Constraints(nbCards, this.mJSONs.constraints[side].starter, (cardpoolType != CardPool.TYPE_STIMHACK));
+        var boosterConstraints = new Constraints(45, this.mJSONs.constraints[side].booster, (cardpoolType != CardPool.TYPE_STIMHACK));
+        cardPools[side] = new CardPool(side, sets, cardpoolType, starterConstraints, boosterConstraints, this.mDatabase);
       }
 
       // GENERATE THE SEALED
-      this.mSealed = new Sealed(nbPlayers, cardPools, useOneCardPool, this.mVersionMajor);
+      this.mSealed = new Sealed(nbPlayers, cardPools, nbStarters, nbBoosters, useOneCardPool, this.mVersionMajor);
       processingStatus.process(this.mSealed.generate());
     }
 
@@ -204,25 +219,25 @@ View.prototype = {
 
     // Print Status of each Constraint of each Pack of each Sealed Pool of each Player
     for (var iPlayer = 0; iPlayer < this.mSealed.mNbPlayers; iPlayer++) {
-      // Print Current Player
-      var player = this.mSealed.mPlayers[iPlayer];
       for (var side in Side) {
-        // Print Current Sealed Pool
-        var sealedPack = player.mSealedPacks[side];
-        var text = "";
-        // Print Current Pack
-        var packStatus = (true === sealedPack.mConstraints.areMet()) ? ProcessingStatus.OK : ProcessingStatus.KO;
-        if (packStatus === ProcessingStatus.KO) {
-          text += " - [Player " + (iPlayer+1) +"] [" + side + "] : " + packStatus + "\n";
-          for (var iConstraint = 0; iConstraint < sealedPack.mConstraints.mItems.length; iConstraint++) {
-            // Print Current Constraint
-            var constraint = sealedPack.mConstraints.mItems[iConstraint];
-            if (!constraint.isMet()) {
-              text += "    - Only " + constraint.mNbCurrent + " " + constraint.mType + " available. At least " + constraint.mNbMin + " needed.\n";
+        for (var iPack = 0; iPack < (this.mSealed.mNbStarters + this.mSealed.mNbBoosters); iPack++) {
+          var sealedPack = this.mSealed.mPlayers[iPlayer].mSealedPacks[side][iPack];
+          var text = "";
+          // Print Current Pack
+          var packStatus = (true === sealedPack.mConstraints.areMet()) ? ProcessingStatus.OK : ProcessingStatus.KO;
+          if (packStatus === ProcessingStatus.KO) {
+            var packName = ((this.mSealed.mNbStarters > 0) && (iPack < this.mSealed.mNbStarters)) ? ("Starter") : ("Booster " + (iPack - this.mSealed.mNbStarters + 1));
+            text += " - [Player " + (iPlayer+1) + " - " + side + " - " + packName + "] : " + packStatus + "\n";
+            for (var iConstraint = 0; iConstraint < sealedPack.mConstraints.mItems.length; iConstraint++) {
+              // Print Current Constraint
+              var constraint = sealedPack.mConstraints.mItems[iConstraint];
+              if (!constraint.isMet()) {
+                text += "    - Only " + constraint.mNbCurrent + " " + constraint.mType + " available. At least " + constraint.mNbMin + " needed.\n";
+              }
             }
           }
+          $('#textarea_status').val($('#textarea_status').val() + text);
         }
-        $('#textarea_status').val($('#textarea_status').val() + text);
       }
     }
   },
@@ -236,6 +251,69 @@ View.prototype = {
   downloadSealed : function() {
     // Download the Sealed
     this.mSealed.download();
+  },
+
+  /**
+    * View the Sealed Packs in the modal.
+    *
+    * return  void
+    */
+  viewSealedPacks : function() {
+    // Render the modal
+    var tabs = [];
+    var contents = [];
+    for (var iPlayer = 0; iPlayer < this.mSealed.mPlayers.length; iPlayer++) {
+      // Retrieve the current player
+      var player = this.mSealed.mPlayers[iPlayer];
+      // Tab
+      var tab = {};
+      tab.playerId = "Player" + player.mId;
+      tab.playerName = player.mName;
+      tabs.push(tab);
+
+      // Contents
+      for (var side in Side) {
+        // Retrieve the current pack
+        var sealedPacks = player.mSealedPacks[side];
+        // Add player and side information
+        var content = {};
+        content.playerId = tab.playerId;
+        content.side = side;
+        // Add card IDs
+        content.rows = [];
+        var nbCards = player.getNbCards(side);
+        var iCardInRow = 0;
+        var row = {};
+        for (var iPack = 0; iPack < sealedPacks.length; iPack++) {
+          // Retrieve the current Sealed Pack (Starter or Booster) and sort it by name EN
+          var sealedPack = sealedPacks[iPack];
+          sealedPack.mCards.sortByName("EN");
+          // Add copies of the cards
+          for (var iCard = 0; iCard < sealedPack.mCards.mItems.length; iCard+=1) {
+            // Retrieve the current Card
+            var card = sealedPack.mCards.mItems[iCard];
+            for (var iCopy = 0; iCopy < card.mNbCopies; iCopy++) {
+              row["id"+iCardInRow] = card.mId;
+              if ((iCardInRow == 2) || (content.rows.length*3+iCardInRow+1 == nbCards)) {
+                // Push the row when it is full or when there is no other cards to add
+                content.rows.push(row);
+                iCardInRow = 0;
+                row = {};
+              }
+              else {
+                iCardInRow = (iCardInRow + 1) % 3;
+              }
+            }
+          }
+        }
+        contents.push(content);
+      }
+    }
+    this.renderTemplate(tabs, '#tmplVspTab', '#vspTabs');
+    this.renderTemplate(contents, '#tmplVspContent', '#vspContents');
+    for (var iContent = 0; iContent < contents.length; iContent++) {
+      this.renderTemplate(contents[iContent].rows, '#tmplVspCard', '#vspCard' + contents[iContent].playerId + contents[iContent].side);
+    }
   },
 
   /**
