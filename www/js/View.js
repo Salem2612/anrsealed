@@ -174,8 +174,8 @@ View.prototype = {
       {"cycleNo" : 11,  "setNo" : 2, "nbSets" : $('#checkbox_blood_money').is(':checked') ? 1 : 0},
       {"cycleNo" : 11,  "setNo" : 3, "nbSets" : $('#checkbox_escalation').is(':checked') ? 1 : 0},
       {"cycleNo" : 11,  "setNo" : 4, "nbSets" : $('#checkbox_intervention').is(':checked') ? 1 : 0},
-      {"cycleNo" : 11,  "setNo" : 5, "nbSets" : $('#checkbox_martial_law').is(':checked') ? 1 : 0}
-      // {"cycleNo" : 11,  "setNo" : 6, "nbSets" : $('#checkbox_quorum').is(':checked') ? 1 : 0}
+      {"cycleNo" : 11,  "setNo" : 5, "nbSets" : $('#checkbox_martial_law').is(':checked') ? 1 : 0},
+      {"cycleNo" : 11,  "setNo" : 6, "nbSets" : $('#checkbox_quorum').is(':checked') ? 1 : 0}
     ];
 
     //
