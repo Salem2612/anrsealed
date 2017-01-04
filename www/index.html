@@ -50,7 +50,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.5.0</h4>
+            <h4 class="modal-title"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.6.0</h4>
           </div>
           <div class="modal-body">
             <div class="row">
@@ -85,6 +85,11 @@
 
               <!-- Right -->
               <div class="col-md-6 col-sm-12">
+                <h4>[01 Dec 2016] v2.6</h4>
+                <ul>
+                  <li>Add Martial Law.</li>
+                </ul>
+
                 <h4>[30 Nov 2016] v2.5</h4>
                 <ul>
                   <li>Add Intervention.</li>
@@ -241,7 +246,7 @@
               </ul>
 
             <h3><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Algorithm</h3>
-            <p>All cards of a Sealed Pack are picked randomly by completing <b><a href="https://github.com/Salem2612/anrsealed/blob/v2.5/www/json/v2.5.0/constraints.json">constraints</a></b>. These constraints are given for the 45 cards format. For the 30 cards format, the constraints are 75% of the 45 cards format.</p>
+            <p>All cards of a Sealed Pack are picked randomly by completing <b><a href="https://github.com/Salem2612/anrsealed/blob/v2.6/www/json/v2.6.0/constraints.json">constraints</a></b>. These constraints are given for the 45 cards format. For the 30 cards format, the constraints are 75% of the 45 cards format.</p>
             </ul>
 
             <h3><span class="glyphicon glyphicon-list" aria-hidden="true"></span> List of Cards</h3>
@@ -382,7 +387,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#" data-toggle="modal" data-target="#modalChecker"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Verify Deck</a></li>
             <li><a href="#" data-toggle="modal" data-target="#modalHelp"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Help</a></li>
-            <li><a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.5</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.6</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div>
@@ -400,9 +405,9 @@
             <p><b>anrsealed</b> is a free tool. It generates the Sealed Packs of the players for your Sealed games. Please read <b><a href="#" data-toggle="modal" data-target="#modalHelp"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Help</a></b> for more information.</p>
 
             <h4><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> Breaking News</h4>
-            <b>[30 Nov 2016] v2.5 is now available.</b>
+            <b>[30 Nov 2016] v2.6 is now available.</b>
             <ul>
-              <li>See <b><a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.5</a></b> for more details.</li>
+              <li>See <b><a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.6</a></b> for more details.</li>
               <li>New Corp's identity text box: <i>You can use agendas from all factions in this deck. The trash cost of all <b>transaction</b> and <b>advertisement</b> assets is increased by 2</i>.</li>
             </ul>
 
@@ -763,7 +768,7 @@
                           <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_flashpoint" id="checkbox_blood_money" checked>Blood Money</label></div>
                           <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_flashpoint" id="checkbox_escalation" checked>Escalation</label></div>
                           <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_flashpoint" id="checkbox_intervention" checked>Intervention</label></div>
-                          <!-- <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_flashpoint" id="checkbox_martial_law" checked>Martial Law</label></div> -->
+                          <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_flashpoint" id="checkbox_martial_law" checked>Martial Law</label></div>
                           <!-- <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_flashpoint" id="checkbox_quorum" checked>Quorum</label></div> -->
                         </div>
                       </div>
@@ -815,7 +820,7 @@
       $(function() {
 
         // Global variables
-        var mView = new View(['cards', 'constraints', 'cycles', 'sets'], '2.5', '0');
+        var mView = new View(['cards', 'constraints', 'cycles', 'sets'], '2.6', '0');
 
         /**
           *
