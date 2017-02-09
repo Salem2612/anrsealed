@@ -389,10 +389,36 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" aria-expanded="false" style="height: 1px;">
           <ul class="nav navbar-nav">
-
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Tools <span class="caret"></a>
+              <ul class="dropdown-menu">
+                <li><a href="#" data-toggle="modal" data-target="#modalChecker"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Deck Checker</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-film" aria-hidden="true"></span> Media <span class="caret"></a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-header">Articles</li>
+                <li><a href="#"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Stimhack <small>(en)</small></a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Videos and Tutorials</li>
+                <li><a href="#"><span class="glyphicon glyphicon-education" aria-hidden="true"></span> How to use anrsealed ? <small>(en, fr)</small></a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-education" aria-hidden="true"></span> How to build a sealed deck ? <small>(en, fr)</small></a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-film" aria-hidden="true"></span> Example of a sealed game <small>(fr)</small></a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Community <span class="caret"></a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-header">Networks</li>
+                <li><a href="https://www.facebook.com/groups/859734034163218/" target="_blank"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Facebook Playgroup <small>(fr)</small></a></li>
+                <li><a href="http://www.run4games.com/forum/viewtopic.php?f=256&t=8872" target="_blank"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Forum <small>(fr)</small></a></li>
+                <li><a href="https://forum.stimhack.com/t/netrunner-sealed/4964" target="_blank"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Forum <small>(en)</small></a></li>
+                <li><a href="http://www.challengeboards.net/boards/standings/10413" target="_blank"><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> Sealed League <small>(password : yoyo)</small></a></li>
+              </ul>
+            </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#" data-toggle="modal" data-target="#modalChecker"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Verify Deck</a></li>
             <li><a href="#" data-toggle="modal" data-target="#modalHelp"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Help</a></li>
             <li><a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.6</a></li>
           </ul>
@@ -416,11 +442,6 @@
               <li><b>[04 Jan 2017]</b> <a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.6</a> is now available.</li>
             </ul>
 
-            <h4><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> <a>Known issues</a></h4>
-            <ul>
-              <li><b><span class="glyphicon glyphicon-apple" aria-hidden="true"></span> Mac</b>: Download doesn't work on <b>Safari</b>, please use <b>Chrome</b>.</li>
-            </ul>
-
             <h4><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> <a>How to use anrsealed ?</a></h4>
             <ol>
               <li>Select the <b><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Core Sets</b>, <b>Deluxe Expansions</b> and <b>Cycles</b>.</li>
@@ -430,6 +451,11 @@
               <li>The <b><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Zip file</b> <i>Sealed Packs v2.6.zip</i> is downloaded.</li>
               <li>Read the <b><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Sealed Rules</b> in <b><a href="#" data-toggle="modal" data-target="#modalHelp"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Help</a></b> to build and play.</li>
             </ol>
+
+            <h4><span class="glyphicon glyphicon-alert" aria-hidden="true"></span> <a>Known issues</a></h4>
+            <ul>
+              <li><b><span class="glyphicon glyphicon-apple" aria-hidden="true"></span> Mac</b>: Download doesn't work on <b>Safari</b>, please use <b>Chrome</b>.</li>
+            </ul>
 
             <h4><span class="glyphicon glyphicon-link" aria-hidden="true"></span> <a>Partnership</a></h4>
             <div class="row">
@@ -547,7 +573,7 @@
 
                 <!-- Status -->
                 <div class="form-group">
-                  <textarea id="textarea_status" class="form-control" style="resize:none" rows="3" readonly placeholder="Select the expansions, the number of players, the format of the starter, the number of boosters, the ownership of the cards and the cardpool to use then click on Generate & Download."></textarea>
+                  <textarea id="textarea_status" class="form-control" style="resize:none" rows="3" readonly placeholder="Select the expansions, the number of players, the ownership of the cards then click on Generate & Download."></textarea>
                 </div>  <!-- /.Status -->
               </div>  <!-- /.well -->
             </div>  <!-- /.Generate -->
