@@ -18,7 +18,7 @@
     <link href="dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-
+    <link href="css/styles.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -56,12 +56,12 @@
             <div class="row">
               <!-- Left -->
               <div class="col-md-6 col-sm-12">
-                <h4>Authors</h4>
+                <h4><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Authors</h4>
                 <p>
                   <b>anrsealed</b> has been created by <a href="mailto:qasu.contact@gmail.com"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Samuel Buggia</a> and <a href="http://www.run4games.com/forum/" target="_blank"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Ludovic Schmidt</a>. Contact us if you find a bug or if you have any question.
                 </p>
 
-                <h4>Modules</h4>
+                <h4><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Modules</h4>
                 <p>
                   <b>anrsealed.com</b> uses the following modules:
                   <ul>
@@ -74,7 +74,7 @@
                   </ul>
                 </p>
 
-                <h4>Thanks</h4>
+                <h4><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Thanks</h4>
                 <p>
                   <ul>
                     <li><b>Mister Yo</b> for the french translation of the SanSan Cycle and Data and Destiny.</li>
@@ -195,7 +195,7 @@
           </div>
           <div class="modal-body">
 
-            <h3><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Zip file</h3>
+            <h4><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Zip file</h4>
             <p>The downloaded <b><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Zip file</b> contains the following folders:</p>
             <ul>
               <li><b>All information</b>: Usefull for debugging.</li>
@@ -206,7 +206,7 @@
               <li><b>Sorted by Player</b>: Each player folder contains all the previous files. Useful for a tournament organisator : Zip each player folder and send one to each player.</li>
             </ul>
 
-            <h3><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Deckbuilding rules</h3>
+            <h4><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Deckbuilding rules</h4>
             <ul>
               <li>Each player receives:
                 <ul>
@@ -246,14 +246,14 @@
               </ul>
             </ul>
 
-            <h3><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Win conditions <small>(Same as in the base game)</small></h3>
+            <h4><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Win conditions</a> <small>(Same as the base game)</small></h4>
             <ul>
               <li><b>7</b> Agenda Points <small>(or 6 Agenda Points if you chose the 30 cards per deck format)</small>.</li>
               <li>The Runner is <b>flatlined</b>.</li>
               <li>The Corp <b>can't draw</b> at the start of its turn.</li>
             </ul>
 
-            <h3><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Formats</h3>
+            <h4><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Formats</h4>
             <ul>
               <li><b>One Shot</b></li>
               <ul>
@@ -269,15 +269,15 @@
               </ul>
             </ul>
 
-            <h3><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Algorithm</h3>
+            <h4><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Algorithm</h4>
             <p>All cards of a Sealed Pack are picked randomly by completing <b><a href="https://github.com/Salem2612/anrsealed/blob/v2.6/www/json/v2.6.1/constraints.json">constraints</a></b>. These constraints are given for the 45 cards format. For the 30 cards format, the constraints are 60% of the 45 cards format.</p>
             </ul>
 
-            <h3><span class="glyphicon glyphicon-list" aria-hidden="true"></span> List of Cards</h3>
+            <h4><span class="glyphicon glyphicon-list" aria-hidden="true"></span> List of Cards</h4>
             <p>The <b><a href="https://docs.google.com/spreadsheets/d/1iODcruMiN18QsMhlUhh8vzwSrZUXHVB_TKxhVQNRNdM/edit?usp=sharing" target="_blank"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> List of Cards</a></b> is available in a Google Sheet.</p>
 
-            <h3><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Identity cards</h3>
-            <p>Use these <b><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Identity cards</b> for your Sealed games.</p>
+            <h4><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Identity cards</h4>
+            <p>Use these <b><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Identity cards</b> for your Sealed games:</p>
             <div class="row">
               <div class="col-md-3 col-xs-4">
                 <a href="images/id_corp.jpg" target="_blank"><img src="images/id_corp.jpg" alt="" class="img-responsive img-rounded" /></a>
@@ -481,11 +481,11 @@
           <div class="well well-sm">
 
             <!-- anrsealed -->
-            <h4><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> <a>anrsealed</a></h4>
+            <h4><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> anrsealed</h4>
             <p align="justify">The <b>Sealed</b> format is an alternative format for <b>Android: Netrunner</b>. In this format you must <b>build a deck with only 85 randomly picked cards</b>. <b>anrsealed</b> is a free tool that generates these random packs. Each player can use their own collection or one player can share his collection to the others. Please read <b><a href="#" data-toggle="modal" data-target="#modalHelp"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Help</a></b> for more information.</p> <!-- anrsealed -->
 
             <!-- How to use anrsealed ? -->
-            <h4><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> <a>How to use anrsealed ?</a></h4>
+            <h4><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> How to use anrsealed ?</h4>
             <ol>
               <li>Select the <b><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Core Sets</b>, <b>Deluxe Expansions</b> and <b>Cycles</b>.</li>
               <li>Select the <b><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Number of players</b> and the <b><span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span> Ownership</b>.</li>
@@ -506,14 +506,14 @@
             </div> <!-- Identity cards -->
 
             <!-- Breaking News -->
-            <h4><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> <a>Breaking News</a></h4>
+            <h4><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> Breaking News</h4>
             <ul>
               <li><b>[04 Jan 2017]</b> The version <b><a href="#" data-toggle="modal" data-target="#modalChanges">2.6</a></b> is now available.</li>
               <li>Download doesn't work on <b>Safari</b>, please use <b>Chrome</b>.</li>
             </ul> <!-- Breaking News -->
 
             <!-- Partnership -->
-            <h4><span class="glyphicon glyphicon-link" aria-hidden="true"></span> <a>Partnership</a></h4>
+            <h4><span class="glyphicon glyphicon-link" aria-hidden="true"></span> Partnership</h4>
             <div class="row">
               <div class="col-sm-5 col-xs-12">
                 <a href="http://run4games.com/" target="_blank"><img src="images/r4g.jpg" alt="" class="img-responsive img-rounded" /></a>
@@ -536,7 +536,7 @@
             <div class="col-lg-4 col-lg-push-8 col-md-12">
               <div class="well well-sm">
                 <!-- Number of players -->
-                <h4><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <a>Number of players</a></h4>
+                <h4><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Number of players</h4>
                 <div class="form-group">
                   <div class="input-group">
                     <input id="text_nb_players" type="text" class="form-control" placeholder="Enter the number of players" aria-describedby="text_nb_players_addon" value="2">
@@ -545,7 +545,7 @@
                 </div>  <!-- /.Number of players -->
 
                 <!-- Ownership -->
-                <h4><span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span> <a>Ownership</a></h4>
+                <h4><span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span> Ownership</h4>
                 <div class="form-group">
                   <div class="input-group" id="text_ownership">
                     <div class="radio">
@@ -644,7 +644,7 @@
                   <div class="row">
                     <!-- Core Set -->
                     <div class="col-sm-6">
-                      <h4><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> <a>Core Set</a></h4>
+                      <h4><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Core Set</h4>
                       <div class="row">
                         <!-- Image -->
                         <div class="col-xs-6">
@@ -675,7 +675,7 @@
 
                     <!-- Deluxes -->
                     <div class="col-sm-6">
-                      <h4><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> <a>Deluxe Expansions</a></h4>
+                      <h4><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Deluxe Expansions</h4>
                       <div class="row">
                         <!-- Image -->
                         <div class="col-xs-6">
@@ -698,7 +698,7 @@
                   </div>  <!-- ./BigBoxes -->
 
                   <!-- Cycle1 -->
-                  <h4><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> <a>Cycles</a></h4>
+                  <h4><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Cycles</h4>
                   <div class="row">
                     <!-- Genesis -->
                     <div class="col-sm-4">
