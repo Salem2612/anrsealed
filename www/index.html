@@ -93,6 +93,7 @@
                     <div id="changeLogCollapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                       <ul>
                         <li>Add Daedelus Complex.</li>
+                        <li>Change many attributes of cards.</li>
                       </ul>
                     </div>
                   </div>
@@ -651,8 +652,9 @@
 
                   <!-- BigBoxes -->
                   <div class="row">
+
                     <!-- Core Set -->
-                    <div class="col-sm-6">
+                    <div class="col-sm-5">
                       <h4><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Core Set</h4>
                       <div class="row">
                         <!-- Image -->
@@ -683,7 +685,7 @@
                     </div>  <!-- ./Core Set -->
 
                     <!-- Deluxes -->
-                    <div class="col-sm-6">
+                    <div class="col-sm-5">
                       <h4><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Deluxe Expansions</h4>
                       <div class="row">
                         <!-- Image -->
@@ -704,11 +706,27 @@
                         </div>  <!-- /.Check -->
                       </div>
                     </div>  <!-- ./Deluxes -->
+
+                    <!-- Buttons Check/Uncheck all -->
+                    <div class="col-sm-2">
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <div class="form-group">
+                            <div class="btn-group-vertical">
+                              <button id="button_check_all" type="button" class="btn btn-default"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Check all</button>
+                              <button id="button_uncheck_all" type="button" class="btn btn-default"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Uncheck all</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>  <!-- ./Buttons Check/Uncheck all -->
+
                   </div>  <!-- ./BigBoxes -->
 
                   <!-- Cycle1 -->
                   <h4><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Cycles</h4>
                   <div class="row">
+
                     <!-- Genesis -->
                     <div class="col-sm-4">
                       <div class="row">
@@ -784,10 +802,12 @@
                         </div>  <!-- /.Check -->
                       </div>
                     </div>  <!-- ./Lunar -->
+
                   </div>  <!-- ./Cycle1 -->
 
                   <!-- Cycle2 -->
                   <div class="row">
+
                     <!-- SanSan -->
                     <div class="col-sm-4">
                       <div class="row">
@@ -866,19 +886,39 @@
                         </div>  <!-- /.Check -->
                       </div>
                     </div>  <!-- ./Flashpoint -->
+
                   </div>  <!-- ./Cycle2 -->
 
-                  <!-- Buttons Check/Uncheck all -->
+                  <!-- Cycle3 -->
                   <div class="row">
-                    <div class="col-sm-12">
-                      <div class="form-group">
-                        <div class="btn-group">
-                          <button id="button_check_all" type="button" class="btn btn-default"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Check all</button>
-                          <button id="button_uncheck_all" type="button" class="btn btn-default"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Uncheck all</button>
-                        </div>
+
+                    <!-- Red Sand -->
+                    <div class="col-sm-4">
+                      <div class="row">
+                        <!-- Image -->
+                        <div class="col-xs-5">
+                          <img src="images/07 Red Sand.png" alt="" class="img-responsive img-rounded" />
+                        </div> <!-- /.Image -->
+                        <!-- Check -->
+                        <div class="col-xs-7" style="padding:0px">
+                          <div class="form-group">
+                            <div class="checkbox" style="margin:0px">
+                              <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_red_sand" checked><strong>Red Sand</strong></label>
+                            </div>
+                            <div class="input-group">
+                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_red_sand" id="checkbox_daedalus_complex" checked>Daedalus Complex</label></div>
+                              <!-- <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_red_sand" id="checkbox_station_one" checked>Station One</label></div> -->
+                              <!-- <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_red_sand" id="checkbox_earths_scion" checked>Earth's Scion</label></div> -->
+                              <!-- <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_red_sand" id="checkbox_blood_and_water" checked>Blood and Water</label></div> -->
+                              <!-- <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_red_sand" id="checkbox_unknown" checked>***</label></div> -->
+                              <!-- <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_red_sand" id="checkbox_unknown" checked>***</label></div> -->
+                            </div>
+                          </div>
+                        </div>  <!-- /.Check -->
                       </div>
-                    </div>
-                  </div>  <!-- ./Buttons Check/Uncheck all -->
+                    </div>  <!-- ./Red Sand -->
+
+                  </div>  <!-- ./Cycle3 -->
 
                 </div>  <!-- ./Panel Middle -->
               </div>  <!-- ./Panel Middle -->
@@ -1000,6 +1040,7 @@
         $('#checkbox_sansan').change(function() {checkAllItems(this.id, "checkbox_cycle_item_sansan");});
         $('#checkbox_mumbad').change(function() {checkAllItems(this.id, "checkbox_cycle_item_mumbad");});
         $('#checkbox_flashpoint').change(function() {checkAllItems(this.id, "checkbox_cycle_item_flashpoint");});
+        $('#checkbox_red_sand').change(function() {checkAllItems(this.id, "checkbox_cycle_item_red_sand");});
 
         /**
           *
@@ -1011,6 +1052,7 @@
         $(':checkbox[value="checkbox_cycle_item_sansan"]').change(function() {checkTitle("checkbox_sansan", this.value);});
         $(':checkbox[value="checkbox_cycle_item_mumbad"]').change(function() {checkTitle("checkbox_mumbad", this.value);});
         $(':checkbox[value="checkbox_cycle_item_flashpoint"]').change(function() {checkTitle("checkbox_flashpoint", this.value);});
+        $(':checkbox[value="checkbox_cycle_item_red_sand"]').change(function() {checkTitle("checkbox_red_sand", this.value);});
 
         /**
           * Handler of the text_nb_players on click event.
