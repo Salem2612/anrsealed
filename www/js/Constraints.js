@@ -64,7 +64,7 @@ Constraints.prototype = {
   },
 
   /**
-    * Meet the constraints that matches with the specified Card
+    * Meet the constraints that match with the specified Card
     *
     * return  void
     */

@@ -16,21 +16,34 @@ function ProcessingStatus() {
 ProcessingStatus.prototype = {
 
   /**
+    * Reset the status
+    *
+    * return  Enum ProcessingStatus
+    */
+  reset : function() {
+    this.mValue = ProcessingStatus.NOT_DONE;
+    this.mDetail = ProcessingStatus.DETAIL.NOT_ENOUGH_CARDS;
+  },
+
+  /**
     *
     *
     * return  Enum ProcessingStatus
     */
-  process : function(newValue) {
+  process : function(newValue, log) {
+    // Log the changing of the status
+    if ((ProcessingStatus.KO == newValue) && this.mValue != newValue) {
+      anrsealedLogs.push("ProcessingStatus.process() becomes KO in class " + log);
+    }
+
     // Select the new value from its old value and the new value
     if (ProcessingStatus.NOT_DONE == this.mValue) {
       // Anything erases NOT_DONE
       this.mValue = newValue;
     }
-    else if (ProcessingStatus.OK == this.mValue) {
+    else if ((ProcessingStatus.OK == this.mValue) && (ProcessingStatus.KO == newValue)) {
       // KO erases OK
-      if (ProcessingStatus.KO == newValue) {
-        this.mValue = ProcessingStatus.KO;
-      }
+      this.mValue = ProcessingStatus.KO;
     }
     // No else : Nothing erases KO
   },
@@ -44,7 +57,7 @@ ProcessingStatus.prototype = {
     // Select the new value from its old value and the new value
     if (nbPlayers < 0) {
       // Not enough players
-      this.process(this.mValue);
+      this.process(this.mValue, "ProcessingStatus.checkNbPlayers");
       this.mDetail = ProcessingStatus.DETAIL.NOT_ENOUGH_PLAYERS;
     }
   }

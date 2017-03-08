@@ -49,7 +49,7 @@ Sealed.prototype = {
       // Create the current Player
       this.mPlayers[iPlayer] = new Player(iPlayer+1, cardPools, this.mNbStarters, this.mNbBoosters);
       // Generate the current Player
-      processingStatus.process(this.mPlayers[iPlayer].generate());
+      processingStatus.process(this.mPlayers[iPlayer].generate(), "Sealed");
     }
 
     return processingStatus.mValue;
@@ -65,6 +65,15 @@ Sealed.prototype = {
     */
   download : function() {
     var zip = new JSZip();
+
+    // Generate and zip the log file
+    var textFile = "";
+    for (var iLog in anrsealedLogs)
+    {
+      textFile += anrsealedLogs[iLog] + "\r\n";
+    }
+    zip.file("log.txt", textFile);
+
     // Generate and Zip the Players files
     for (var iPlayer = 0; iPlayer < this.mNbPlayers; iPlayer++) {
       var player = this.mPlayers[iPlayer];

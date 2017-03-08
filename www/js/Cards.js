@@ -9,6 +9,7 @@ function Cards(cardsJSON, sets) {
 
   // CONSTRUCTOR
   this.mItems = [];
+  this.mHighScoredCards = [];
   this.mSets  = sets;
 
   // Create Card Objects from Card JSON
@@ -57,13 +58,13 @@ Cards.prototype = {
     */
   pickRandomCardFromScore : function(score) {
     // Filter (and return shallow copy) the array of Cards to keep only Cards with the specified score
-    var highScoredCards = this.mItems.filter(function(card) {
+    this.mHighScoredCards = this.mItems.filter(function(card) {
       return (card.mScore == score);
     });
     // Choose a random Card among the Cards with the specified score
-    var iRandomCard = Math.floor(Math.random() * highScoredCards.length);
+    var iRandomCard = Math.floor(Math.random() * this.mHighScoredCards.length);
     // Find the Card in the whole Cards
-    var iCard = this.mItems.indexOf(highScoredCards[iRandomCard]);
+    var iCard = this.mItems.indexOf(this.mHighScoredCards[iRandomCard]);
     // Clone the Card to return it
     var card = this.mItems[iCard].clone();
     // Pick only one Card
@@ -241,7 +242,7 @@ Cards.prototype = {
     }
     return index;
   },
-  
+
   /**
     * Get the number of copies of cards
     *

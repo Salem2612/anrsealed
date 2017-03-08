@@ -28,9 +28,10 @@ Player.prototype = {
     for (var side in Side) {
       this.mSealedPacks[side] = [];
       for (var iPack = 0; iPack < (this.mNbStarters + this.mNbBoosters); iPack++) {
+        anrsealedLogs.push("[" + this.mName + "." + side + "]");
         // Generate the current Pack with the current CardPool
         var sealedPack = new Pack(this.mCardPools[side], ((this.mNbStarters > 0) && (iPack < this.mNbStarters)) ? 'STARTER' : 'BOOSTER');
-        processingStatus.process(sealedPack.generate());
+        processingStatus.process(sealedPack.generate(), "Player");
         this.mSealedPacks[side][iPack] = sealedPack;
       }
     }

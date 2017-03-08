@@ -30,7 +30,7 @@ Constraint.prototype = {
     * Constraint is met if its current number is between min and max
     */
   isMet : function() {
-    return ((this.mNbCurrent >= this.mNbMin) && (this.mNbCurrent <= this.mNbMax));
+    return (this.mNbCurrent >= this.mNbMin);
   },
 
   /**
@@ -44,7 +44,7 @@ Constraint.prototype = {
     * Constraint is completely met if its current number equal to max
     */
   isCompletelyMet : function() {
-    return (this.mNbCurrent == this.mNbMax);
+    return (this.mNbCurrent >= this.mNbMax);
   },
 
   /**
@@ -66,13 +66,13 @@ Constraint.prototype = {
       // Compare the type of the constraint with the current type of the Card
       if (this.mType == card.mTypes[iType]) {
         // Check if the constraint is already completely met
-        if (this.isCompletelyMet()) {
-          // The constraint is completely met : Return a score of -1
+        if (card.hasType("COMMON") && this.isCompletelyMet()) {
+          // The constraint is completely met and the card is COMMON : Return a score of -1
           score = -1;
           break;  // Stop trying to meet the Constraint
         }
         else if (this.isNotMet()) {
-          // The constraint is not yet met : Return the score of the constraint
+          // The constraint is not yet met and the card is not COMMON : Return the score of the constraint
           score = this.mScore;
           break;  // Stop searching Types
         }
@@ -91,12 +91,9 @@ Constraint.prototype = {
     for (var iType = 0; iType < card.mTypes.length; iType++) {
       // Compare the type of the constraint with the current type of the Card
       if (this.mType == card.mTypes[iType]) {
-        // Check if the Constraint is not already completely met
-        if (this.isNotCompletelyMet()) {
-          // Meet the Constraint by incrementing its number
-          this.mNbCurrent++;
-          break;  // Stop searching
-        }
+        // Meet the Constraint by incrementing its number
+        this.mNbCurrent++;
+        break;  // Stop searching
       }
     }
   }

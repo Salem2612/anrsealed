@@ -16,7 +16,7 @@
       {"type":"DECODER","min":3,"max":99,"score":1},
       {"type":"KILLER","min":3,"max":99,"score":1},
       {"type":"PUMPABLE","min":9,"max":99,"score":1},
-      {"type":"ECO","min":10,"max":99,"score":1}
+      {"type":"ECO","min":12,"max":99,"score":1}
     ],
     "booster":
     [
@@ -34,14 +34,14 @@
       {"type":"BROKEN","min":10,"max":10,"score":200},
       {"type":"COMMON","min":70,"max":70,"score":300},
       {"type":"IDENTITY","min":0,"max":0,"score":0},
-      {"type":"AGENDA","min":14,"max":18,"score":1},
+      {"type":"TAG","min":5,"max":99,"score":1},
+      {"type":"BAG","min":4,"max":99,"score":1},
+      {"type":"AGENDA","min":14,"max":16,"score":1},
       {"type":"ASSET","min":7,"max":99,"score":1},
       {"type":"UPGRADE","min":5,"max":99,"score":1},
       {"type":"OPERATION","min":10,"max":99,"score":1},
-      {"type":"ICE","min":0,"max":30,"score":1},
-      {"type":"BARRIER","min":8,"max":99,"score":1},
-      {"type":"CODE_GATE","min":8,"max":99,"score":1},
-      {"type":"SENTRY","min":8,"max":99,"score":1},
+      {"type":"ICE","min":24,"max":30,"score":1},
+      {"type":"ETR","min":8,"max":99,"score":1},
       {"type":"ECO","min":13,"max":99,"score":1},
       {"type":"DIRTY","min":10,"max":99,"score":1}
     ],

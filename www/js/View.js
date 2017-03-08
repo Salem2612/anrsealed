@@ -1,4 +1,6 @@
 console.log('View.js loaded');
+var anrsealedLogs = [];
+var anrsealedDebug = false;
 
 /**
   * Class View
@@ -93,8 +95,9 @@ View.prototype = {
     // Generate the Sealed
     var generateStatus = this.generateSealed();
     $('#button_generate_and_download')[0].lastChild.nodeValue = " Generate & Download";
-    if (ProcessingStatus.OK == generateStatus) {
-      // Download the Sealed
+
+    // Download the Sealed
+    if (anrsealedDebug || (ProcessingStatus.OK == generateStatus)) {
       var downloadStatus = this.downloadSealed();
     }
   },
@@ -187,6 +190,12 @@ View.prototype = {
     //
     for (var iGen = 0; (iGen < 20) && ((processingStatus.mValue == ProcessingStatus.NOT_DONE) || processingStatus.mValue == ProcessingStatus.KO); iGen++)
     {
+      // Reset the status
+      processingStatus.reset();
+
+      // Reset the log
+      anrsealedLogs = [];
+
       // Check the number of players
       processingStatus.checkNbPlayers(nbPlayers);
 
@@ -200,7 +209,7 @@ View.prototype = {
 
       // GENERATE THE SEALED
       this.mSealed = new Sealed(nbPlayers, cardPools, nbStarters, nbBoosters, useOneCardPool, this.mVersionMajor);
-      processingStatus.process(this.mSealed.generate());
+      processingStatus.process(this.mSealed.generate(), "View");
     }
 
     // PRINT STATUS
@@ -238,7 +247,7 @@ View.prototype = {
               // Print Current Constraint
               var constraint = sealedPack.mConstraints.mItems[iConstraint];
               if (!constraint.isMet()) {
-                text += "    - Only " + constraint.mNbCurrent + " " + constraint.mType + " available. At least " + constraint.mNbMin + " needed.\n";
+                text += "    - Only " + constraint.mNbCurrent + " " + constraint.mType + " found. At least " + constraint.mNbMin + " needed.\n";
               }
             }
           }

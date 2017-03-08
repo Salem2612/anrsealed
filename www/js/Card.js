@@ -100,10 +100,10 @@ Card.prototype = {
   getTextTypes : function() {
     var text = "";
     for (var iType = 0; iType < this.mTypes.length; iType++) {
-      text += this.mTypes[iType];
+      text += "[" + this.mTypes[iType] + "]";
       // Add a space after each Type, but not for the last Type
       if (iType != this.mTypes.length-1) {
-        text += ", ";
+        text += " ";
       }
     }
     return text;
@@ -143,7 +143,7 @@ Card.prototype = {
     * Get the full text of the Card
     */
   getFullText : function(locale) {
-    var text = this.mNbCopies + "x " + this.getName(locale) + " (" + this.mSet.getCycleAndSetNames(locale) + " / " + this.mFaction + " / " + this.getTextTypes() + ")\r\n";
+    var text = this.mNbCopies + "x " + this.getName(locale) + " (" + this.mSet.getCycleAndSetNames(locale) + ", " + this.mFaction + ") " + this.getTextTypes() + "\r\n";
     return text;
   },
 

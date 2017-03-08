@@ -31,11 +31,12 @@ Pack.prototype = {
       // Check if there is still useful Cards in the CardPool to meet the constraints
       if (highScore == 0) {
         // Stop generating if all the constraints are not met and there is no Card to add
-        processingStatus.process(ProcessingStatus.KO);
+        processingStatus.process(ProcessingStatus.KO, "Pack");
         break;
       }
       // Pick a random Card among the High Scored Cards of the CardPool
       var card = this.mCardPool.mCards.pickRandomCardFromScore(highScore);
+      anrsealedLogs.push(" - Pick : " + card.mNameEn + " " + card.getTextTypes() + " (score = " + highScore + " among " + this.mCardPool.mCards.mHighScoredCards.length + " cards)");
       // Meet the constraints that matches with the picked Card
       this.mConstraints.meet(card);
       // Put the picked Card in the SealedPool
@@ -44,7 +45,7 @@ Pack.prototype = {
 
     // Check if the generation is OK
     if (this.mConstraints.areMet()) {
-      processingStatus.process(ProcessingStatus.OK);
+      processingStatus.process(ProcessingStatus.OK, "Pack");
     }
     return processingStatus.mValue;
 	},
