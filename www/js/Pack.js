@@ -23,24 +23,29 @@ Pack.prototype = {
 	generate : function() {
     var processingStatus = new ProcessingStatus();
 
-    // Pick cards from the CardPool while all constraints are not met and there is still useful Cards in the CardPool to meet the constraints
-    while(this.mConstraints.areNotMet())
-    {
-      // Calculate the score of the Cards of the CardPool
-      var highScore = this.mCardPool.mCards.calculateScores(this.mConstraints);
-      // Check if there is still useful Cards in the CardPool to meet the constraints
-      if (highScore == 0) {
-        // Stop generating if all the constraints are not met and there is no Card to add
-        processingStatus.process(ProcessingStatus.KO, "Pack");
-        break;
+    // Pick cards from the CardPool to meet all constraints
+    for (var iConstraint = 0; iConstraint < this.mConstraints.mItems.length; iConstraint++) {
+      var constraint = this.mConstraints.mItems[iConstraint];
+
+      // Pick cards from the CardPool while the constraint is not met and there is still useful Cards in the CardPool to meet the constraint
+      while(constraint.isNotMet())
+      {
+        // Pick a random Card that meets the constraint
+        var card = this.mCardPool.mCards.pickRandomCard(constraint, this.mConstraints);
+        var nbAvailableCards = this.mCardPool.mCards.getNbAvailableCopies();
+        // Check if a card has been found
+        if (nbAvailableCards < constraint.mNbMin)
+        {
+          // Stop generating if there is no cards to meet the constraint
+          processingStatus.process(ProcessingStatus.KO, "Pack");
+          break;
+        }
+        // Meet the constraints that matches with the picked Card
+        this.mConstraints.meet(card);
+        // Put the picked Card in the SealedPool
+        this.mCards.add(card);
+        anrsealedLogs.push(" - " + card.mNameEn + " " + card.getTextTypes() + " (Among " + nbAvailableCards + " cards)");
       }
-      // Pick a random Card among the High Scored Cards of the CardPool
-      var card = this.mCardPool.mCards.pickRandomCardFromScore(highScore);
-      anrsealedLogs.push(" - Pick : " + card.mNameEn + " " + card.getTextTypes() + " (score = " + highScore + " among " + this.mCardPool.mCards.mHighScoredCards.length + " cards)");
-      // Meet the constraints that matches with the picked Card
-      this.mConstraints.meet(card);
-      // Put the picked Card in the SealedPool
-      this.mCards.add(card);
     }
 
     // Check if the generation is OK

@@ -9,7 +9,7 @@ function Cards(cardsJSON, sets) {
 
   // CONSTRUCTOR
   this.mItems = [];
-  this.mHighScoredCards = [];
+  this.mAvailableCards = [];
   this.mSets  = sets;
 
   // Create Card Objects from Card JSON
@@ -40,7 +40,7 @@ Cards.prototype = {
 	calculateScores : function(constraints) {
     var highScore = 0;
     // Calculate the score of each card and sort them with the higher score first
-    for (iCard = 0; iCard < this.mItems.length; iCard++) {
+    for (var iCard = 0; iCard < this.mItems.length; iCard++) {
       // Calculate the score of the current Card
       var score = this.mItems[iCard].calculateScore(constraints);
       // Store the new high score
@@ -56,23 +56,35 @@ Cards.prototype = {
     *
     * return  Picked Card with a score
     */
-  pickRandomCardFromScore : function(score) {
+  pickRandomCard : function(constraint, constraints) {
     // Filter (and return shallow copy) the array of Cards to keep only Cards with the specified score
-    this.mHighScoredCards = this.mItems.filter(function(card) {
-      return (card.mScore == score);
+    this.mAvailableCards = this.mItems.filter(function(card) {
+      return ((card.mNbCopies > 0) && constraint.tryMeet(card) && constraints.AreNotOvercompletedBy(card));
     });
-    // Choose a random Card among the Cards with the specified score
-    var iRandomCard = Math.floor(Math.random() * this.mHighScoredCards.length);
-    // Find the Card in the whole Cards
-    var iCard = this.mItems.indexOf(this.mHighScoredCards[iRandomCard]);
-    // Clone the Card to return it
-    var card = this.mItems[iCard].clone();
-    // Pick only one Card
-    card.mNbCopies = 1;
-    // Decrease the amount of that Card in the Array
-    this.mItems[iCard].mNbCopies--;
-    this.mItems[iCard].mNbAvailableCopies--;
+
+    var card;
+    if (this.mAvailableCards.length > 0) {
+      // Choose a random Card among the Cards that meet the constraints
+      var iRandomCard = Math.floor(Math.random() * this.mAvailableCards.length);
+      // Find the Card in the whole Cards
+      var iCard = this.mItems.indexOf(this.mAvailableCards[iRandomCard]);
+      // Clone the Card to return it
+      card = this.mItems[iCard].clone();
+      // Pick only one Card
+      card.mNbCopies = 1;
+      // Decrease the amount of that Card in the Array
+      this.mItems[iCard].mNbCopies--;
+      this.mItems[iCard].mNbAvailableCopies--;
+    }
     return card;
+  },
+
+  getNbAvailableCopies : function() {
+    var nbAvailableCopies = 0;
+    for (var iCard = 0; iCard < this.mAvailableCards.length; iCard++) {
+      nbAvailableCopies += this.mAvailableCards[iCard].mNbCopies;
+    }
+    return nbAvailableCopies;
   },
 
   /**

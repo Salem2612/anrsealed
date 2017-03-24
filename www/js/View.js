@@ -246,8 +246,15 @@ View.prototype = {
             for (var iConstraint = 0; iConstraint < sealedPack.mConstraints.mItems.length; iConstraint++) {
               // Print Current Constraint
               var constraint = sealedPack.mConstraints.mItems[iConstraint];
-              if (!constraint.isMet()) {
-                text += "    - Only " + constraint.mNbCurrent + " " + constraint.mType + " found. At least " + constraint.mNbMin + " needed.\n";
+              if (!constraint.isPartiallyMet()) {
+                text += "    - " + constraint.mNbCurrent + " / " + constraint.mNbMin + " ";
+                for (var iConstraintType = 0; iConstraintType < constraint.mTypes.length; iConstraintType++) {
+                  text += constraint.mTypes[iConstraintType];
+                  if (iConstraintType < constraint.mTypes.length-1) {
+                    text += ", ";
+                  }
+                }
+                text += " found.\n";
               }
             }
           }

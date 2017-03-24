@@ -13,7 +13,7 @@ function Constraint(nbCards, constraintJSON) {
   this.mNbMin = Math.round(this.mConstraintJSON.min * this.mNbCards / 45);
   this.mNbMax = Math.round(this.mConstraintJSON.max * this.mNbCards / 45);
   this.mNbCurrent = 0;
-  this.mType = this.mConstraintJSON.type;
+  this.mTypes = this.mConstraintJSON.types;
   this.mScore = this.mConstraintJSON.score;
 
 }//end Constraint
@@ -27,21 +27,21 @@ Constraint.prototype = {
   },
 
   /**
-    * Constraint is met if its current number is between min and max
+    * Constraint is met if its current number is greater than min
     */
-  isMet : function() {
+  isPartiallyMet : function() {
     return (this.mNbCurrent >= this.mNbMin);
   },
 
   /**
-    * Constraint is met if its current number is between min and max
+    * Constraint is met if its current number is less than min
     */
   isNotMet : function() {
-    return (!this.isMet());
+    return (!this.isPartiallyMet());
   },
 
   /**
-    * Constraint is completely met if its current number equal to max
+    * Constraint is completely met if its current number is equal to max
     */
   isCompletelyMet : function() {
     return (this.mNbCurrent >= this.mNbMax);
@@ -55,30 +55,60 @@ Constraint.prototype = {
   },
 
   /**
-    * Meet the constraint if the type of the Constraint is in the specified array of types, then return the score
-    *
-    * return  Score
+    * Count the number of types of the constraint that are in the Card
     */
-  tryMeet : function(card) {
-    var score = 0;  // Return score 0 by default
-    // Search the type of the constraint in the types of the Card
-    for (var iType = 0; iType < card.mTypes.length; iType++) {
-      // Compare the type of the constraint with the current type of the Card
-      if (this.mType == card.mTypes[iType]) {
-        // Check if the constraint is already completely met
-        if (card.hasType("COMMON") && this.isCompletelyMet()) {
-          // The constraint is completely met and the card is COMMON : Return a score of -1
-          score = -1;
-          break;  // Stop trying to meet the Constraint
-        }
-        else if (this.isNotMet()) {
-          // The constraint is not yet met and the card is not COMMON : Return the score of the constraint
-          score = this.mScore;
-          break;  // Stop searching Types
+  getNbSameTypes : function(card) {
+    var nbSameTypes = 0;
+    // Count the number of types of the constraint that are in the Card
+    for (var iConstraintType = 0; iConstraintType < this.mTypes.length; iConstraintType++) {
+      for (var iCardType = 0; iCardType < card.mTypes.length; iCardType++) {
+        if (this.mTypes[iConstraintType] == card.mTypes[iCardType]) {
+          // The current types are the same
+          nbSameTypes++;
         }
       }
     }
-    return score;
+    return nbSameTypes;
+  },
+
+  /**
+    * Check if the types of the constraint are in the given card
+    */
+  haveSameTypes : function(card) {
+    // Get the number of same types between the constraint and the card
+    var nbSameTypes = this.getNbSameTypes(card);
+    // Check if the number of types found in the Card is equal to the number of types in the Constraint
+    return (nbSameTypes == this.mTypes.length);
+  },
+
+  /**
+    * Find if the types of the Constraint are in the given card.
+    *
+    * return  true : The card meets the constraint, false : The constraint is already completely met or the card does not meet the constraint
+    */
+  tryMeet : function(card) {
+    if (this.isCompletelyMet()) {
+      // The constraint is already completely met, don't check the card
+      return false;
+    }
+    else {
+      // Check if the card contains the types of the constraint
+      return (this.haveSameTypes(card));
+    }
+  },
+
+  /**
+    * Check if the given card is going to overcomplete the constraint
+    */
+  isOvercompletedBy : function(card) {
+    return (this.haveSameTypes(card) && this.isCompletelyMet());
+  },
+
+  /**
+    * Check if the given card will not overcomplete the constraint
+    */
+  isNotOvercompletedBy : function(card) {
+    return (!this.isOvercompletedBy(card));
   },
 
   /**
@@ -87,14 +117,10 @@ Constraint.prototype = {
     * return  void
     */
   meet : function(card) {
-    // The type of the constraint in the types of the Card
-    for (var iType = 0; iType < card.mTypes.length; iType++) {
-      // Compare the type of the constraint with the current type of the Card
-      if (this.mType == card.mTypes[iType]) {
+    // Check if the card contains the types of the constraint
+    if (this.haveSameTypes(card)) {
         // Meet the Constraint by incrementing its number
         this.mNbCurrent++;
-        break;  // Stop searching
-      }
     }
   }
 

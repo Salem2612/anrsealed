@@ -43,7 +43,7 @@ Constraints.prototype = {
     // Check if all constraints are not met
     for (iConstraint = 0; iConstraint < this.mItems.length; iConstraint++) {
       // Check if the current constraints is not met
-      var isMet = this.mItems[iConstraint].isMet();
+      var isMet = this.mItems[iConstraint].isPartiallyMet();
       if (isMet == false) {
         constraintsAreMet = false;
         break;
@@ -61,6 +61,26 @@ Constraints.prototype = {
     */
   areNotMet : function() {
     return !(this.areMet());
+  },
+
+  /**
+    * Find if the card meets all the constraints.
+    *
+    * return  true : The card meets all the constraints, false : The constraint is already completely met or the card does not meet the constraint
+    */
+  AreNotOvercompletedBy : function(card) {
+    var areNotOvercompleted = false;
+    for (iConstraint = 0; iConstraint < this.mItems.length; iConstraint++) {
+      if(this.mItems[iConstraint].isNotOvercompletedBy(card)) {
+        // This card will not overcomplete this constraint
+        areNotOvercompleted = true;
+      }
+      else {
+        areNotOvercompleted = false;
+        break; // Stop : This card is going to overcomplete a constraint
+      }
+    }
+    return areNotOvercompleted;
   },
 
   /**
