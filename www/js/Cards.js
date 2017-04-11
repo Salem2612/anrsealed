@@ -57,13 +57,17 @@ Cards.prototype = {
     * return  Picked Card with a score
     */
   pickRandomCard : function(constraint, constraints) {
-    // Filter (and return shallow copy) the array of Cards to keep only Cards with the specified score
+    // Filter (and return shallow copy of) the array of Cards to keep only Cards with the specified score
     this.mAvailableCards = this.mItems.filter(function(card) {
       return ((card.mNbCopies > 0) && constraint.tryMeet(card) && constraints.AreNotOvercompletedBy(card));
     });
 
+    // Get the number of available copies
+    var nbAvailableCopies = this.getNbAvailableCopies();
+
+    // Pick a random card among the available cards
     var card;
-    if (this.mAvailableCards.length > 0) {
+    if (nbAvailableCopies > 0) {
       // Choose a random Card among the Cards that meet the constraints
       var iRandomCard = Math.floor(Math.random() * this.mAvailableCards.length);
       // Find the Card in the whole Cards
@@ -76,7 +80,7 @@ Cards.prototype = {
       this.mItems[iCard].mNbCopies--;
       this.mItems[iCard].mNbAvailableCopies--;
     }
-    return card;
+    return {"nbAvailableCopies" : nbAvailableCopies, "card" : card};
   },
 
   getNbAvailableCopies : function() {

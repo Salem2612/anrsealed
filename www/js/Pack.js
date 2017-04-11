@@ -31,20 +31,23 @@ Pack.prototype = {
       while(constraint.isNotMet())
       {
         // Pick a random Card that meets the constraint
-        var card = this.mCardPool.mCards.pickRandomCard(constraint, this.mConstraints);
-        var nbAvailableCards = this.mCardPool.mCards.getNbAvailableCopies();
+        var nbAvailableCopies_card = this.mCardPool.mCards.pickRandomCard(constraint, this.mConstraints);
+        var nbAvailableCopies = nbAvailableCopies_card.nbAvailableCopies;
+        var card = nbAvailableCopies_card.card;
         // Check if a card has been found
-        if (nbAvailableCards < constraint.mNbMin)
+        if (nbAvailableCopies < (constraint.mNbMin - constraint.mNbCurrent))
         {
-          // Stop generating if there is no cards to meet the constraint
+          // Stop generating if there is not enough cards to finish to meet the constraint
           processingStatus.process(ProcessingStatus.KO, "Pack");
           break;
         }
-        // Meet the constraints that matches with the picked Card
+        // Meet the constraints that matche with the picked Card
         this.mConstraints.meet(card);
         // Put the picked Card in the SealedPool
         this.mCards.add(card);
-        anrsealedLogs.push(" - " + card.mNameEn + " " + card.getTextTypes() + " (Among " + nbAvailableCards + " cards)");
+        var log = " - " + card.mNameEn + " " + card.getTextTypes() + " (Among " + nbAvailableCopies + " cards)";
+        anrsealedLogs.push(log);
+        // console.log(log); // Uncomment to debug
       }
     }
 

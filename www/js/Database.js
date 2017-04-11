@@ -29,10 +29,10 @@ Database.prototype = {
     cards.mItems = clonedCards.mItems.filter(function(card) {
       // Check if use the official or specified number of copies, according to the number of available copies
       card.mNbAvailableCopies = nbSets * card.mNbOfficialCopies;
-      card.mNbMaxCopiesPerPlayer = (type == CardPool.TYPE_ANRSEALED) ? card.mNbCopiesANRSealed : (type == CardPool.TYPE_STIMHACK) ? card.mNbCopiesStimhack : card.mNbOfficialCopies;
+      card.mNbMaxCopiesPerPlayer = (type == CardPool.TYPE_ANRSEALED) ? card.mNbCopiesANRSealed : (type == CardPool.TYPE_STIMHACK) ? card.mNbCopiesStimhack : Math.min(card.mNbAvailableCopies, 3);
       card.mNbCopies = Math.min(card.mNbMaxCopiesPerPlayer, card.mNbAvailableCopies);
       // The Cycle No, Set No and Side must match and the Card must have a number of copies greater than 0
-      return ((card.mCycleNo == cycleNo) && (card.mSetNo == setNo) && (card.mSide == side) && (card.mNbMaxCopiesPerPlayer > 0));
+      return ((card.mCycleNo == cycleNo) && (card.mSetNo == setNo) && (card.mSide == side) && (card.mNbCopies > 0));
     });
     return cards;
   }

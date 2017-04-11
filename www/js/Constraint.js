@@ -37,7 +37,7 @@ Constraint.prototype = {
     * Constraint is met if its current number is less than min
     */
   isNotMet : function() {
-    return (!this.isPartiallyMet());
+    return (this.mNbCurrent < this.mNbMin);
   },
 
   /**
@@ -122,6 +122,21 @@ Constraint.prototype = {
         // Meet the Constraint by incrementing its number
         this.mNbCurrent++;
     }
+  },
+  
+    /**
+    * Get the types of the card as text. The types are delimited by commas.
+    */
+  getTextTypes : function() {
+    var text = "";
+    for (var iType = 0; iType < this.mTypes.length; iType++) {
+      text += "[" + this.mTypes[iType] + "]";
+      // Add a space after each Type, but not for the last Type
+      if (iType != this.mTypes.length-1) {
+        text += " ";
+      }
+    }
+    return text;
   }
 
 };
