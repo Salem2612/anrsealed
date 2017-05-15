@@ -26,6 +26,8 @@ Pack.prototype = {
     // Pick cards from the CardPool to meet all constraints
     for (var iConstraint = 0; iConstraint < this.mConstraints.mItems.length; iConstraint++) {
       var constraint = this.mConstraints.mItems[iConstraint];
+      var log = " > Constraint : " + constraint.getTextTypes() + " : [" + constraint.mNbMin + ";" + constraint.mNbMax + "]";
+      anrsealedLogs.push(log);
 
       // Pick cards from the CardPool while the constraint is not met and there is still useful Cards in the CardPool to meet the constraint
       while(constraint.isNotMet())
@@ -35,19 +37,22 @@ Pack.prototype = {
         var nbAvailableCopies = nbAvailableCopies_card.nbAvailableCopies;
         var card = nbAvailableCopies_card.card;
         // Check if a card has been found
-        if (nbAvailableCopies < (constraint.mNbMin - constraint.mNbCurrent))
+        if (nbAvailableCopies > 0)
+        {
+          // Meet the constraints that match with the picked Card
+          this.mConstraints.meet(card);
+          // Put the picked Card in the SealedPool
+          this.mCards.add(card);
+          var log = "  - " + card.mNameEn + " " + card.getTextTypes() + " (Among " + nbAvailableCopies + " cards)";
+          anrsealedLogs.push(log);
+          // console.log(log); // Uncomment to debug
+        }
+        else
         {
           // Stop generating if there is not enough cards to finish to meet the constraint
-          processingStatus.process(ProcessingStatus.KO, "Pack");
+          processingStatus.process(ProcessingStatus.KO, "Pack for constraint " + constraint.getTextTypes() + " : " + constraint.mNbCurrent + " < [" + constraint.mNbMin + ";" + constraint.mNbMax + "]");
           break;
         }
-        // Meet the constraints that matche with the picked Card
-        this.mConstraints.meet(card);
-        // Put the picked Card in the SealedPool
-        this.mCards.add(card);
-        var log = " - " + card.mNameEn + " " + card.getTextTypes() + " (Among " + nbAvailableCopies + " cards)";
-        anrsealedLogs.push(log);
-        // console.log(log); // Uncomment to debug
       }
     }
 

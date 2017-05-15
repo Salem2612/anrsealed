@@ -32,7 +32,7 @@ ProcessingStatus.prototype = {
     */
   process : function(newValue, log) {
     // Log the changing of the status
-    if ((ProcessingStatus.KO == newValue) && this.mValue != newValue) {
+    if ((ProcessingStatus.KO == newValue) && (this.mValue != newValue)) {
       anrsealedLogs.push("ProcessingStatus.process() becomes KO in class " + log);
     }
 

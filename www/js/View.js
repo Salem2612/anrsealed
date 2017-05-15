@@ -204,7 +204,7 @@ View.prototype = {
       for (var side in Side) {
         var starterConstraints = new Constraints(nbCards, this.mJSONs.constraints[side].starter, (cardpoolType != CardPool.TYPE_STIMHACK));
         var boosterConstraints = new Constraints(45, this.mJSONs.constraints[side].booster, (cardpoolType != CardPool.TYPE_STIMHACK));
-        cardPools[side] = new CardPool(side, sets, cardpoolType, starterConstraints, boosterConstraints, this.mDatabase);
+        cardPools[side] = new CardPool(side, sets, cardpoolType, useOneCardPool, starterConstraints, boosterConstraints, this.mDatabase);
       }
 
       // GENERATE THE SEALED
