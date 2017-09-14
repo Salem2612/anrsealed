@@ -46,4 +46,5 @@
 {"cycleNo":12, "setNo":4, "nameEn":"Blood and Water", "nameFr":"De Sang et d'Eau", "type":"DATA_PACK"},
 {"cycleNo":12, "setNo":5, "nameEn":"Free Mars", "nameFr":"Mars Libérée", "type":"DATA_PACK"},
 {"cycleNo":12, "setNo":6, "nameEn":"Crimson Dust", "nameFr":"Poussière Ecarlate", "type":"DATA_PACK"},
-{"cycleNo":13, "setNo":1, "nameEn":"Terminal Directive", "nameFr":"Terminal Directive", "type":"DELUXE"}]
+{"cycleNo":13, "setNo":1, "nameEn":"Terminal Directive", "nameFr":"Terminal Directive", "type":"DELUXE"},
+{"cycleNo":14, "setNo":1, "nameEn":"Revised Core Set", "nameFr":"Jeu de Base révisé", "type":"CORE_SET"}]

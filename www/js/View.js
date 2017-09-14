@@ -137,6 +137,10 @@ View.prototype = {
                       $('#radio_nb_core_set_1').is(':checked') ? 1 :
                       $('#radio_nb_core_set_2').is(':checked') ? 2 :
                       $('#radio_nb_core_set_3').is(':checked') ? 3 : 0;
+    var nbRevisedCoreSets = $('#radio_nb_revised_core_set_0').is(':checked') ? 0 :
+                            $('#radio_nb_revised_core_set_1').is(':checked') ? 1 :
+                            $('#radio_nb_revised_core_set_2').is(':checked') ? 2 :
+                            $('#radio_nb_revised_core_set_3').is(':checked') ? 3 : 0;
     var sets = [
       {"cycleNo" : 1,   "setNo" : 1, "nbSets" : nbCoreSets},
       {"cycleNo" : 2,   "setNo" : 1, "nbSets" : $('#checkbox_what_lies_ahead').is(':checked') ? 1 : 0},
@@ -183,8 +187,10 @@ View.prototype = {
       {"cycleNo" : 12,  "setNo" : 2, "nbSets" : $('#checkbox_station_one').is(':checked') ? 1 : 0},
       {"cycleNo" : 12,  "setNo" : 3, "nbSets" : $('#checkbox_earths_scion').is(':checked') ? 1 : 0},
       {"cycleNo" : 12,  "setNo" : 4, "nbSets" : $('#checkbox_blood_and_water').is(':checked') ? 1 : 0},
-      {"cycleNo" : 12,  "setNo" : 5, "nbSets" : $('#checkbox_free_mars').is(':checked') ? 1 : 0}
-      // {"cycleNo" : 12,  "setNo" : 6, "nbSets" : $('#checkbox_crimson_dust').is(':checked') ? 1 : 0}
+      {"cycleNo" : 12,  "setNo" : 5, "nbSets" : $('#checkbox_free_mars').is(':checked') ? 1 : 0},
+      {"cycleNo" : 12,  "setNo" : 6, "nbSets" : $('#checkbox_crimson_dust').is(':checked') ? 1 : 0},
+      {"cycleNo" : 13,  "setNo" : 1, "nbSets" : $('#checkbox_terminal_directive').is(':checked') ? 1 : 0},
+      {"cycleNo" : 14,  "setNo" : 1, "nbSets" : nbRevisedCoreSets}
     ];
 
     //
