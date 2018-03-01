@@ -190,7 +190,7 @@ View.prototype = {
       {"cycleNo" : 12,  "setNo" : 5, "nbSets" : $('#checkbox_free_mars').is(':checked') ? 1 : 0},
       {"cycleNo" : 12,  "setNo" : 6, "nbSets" : $('#checkbox_crimson_dust').is(':checked') ? 1 : 0},
       {"cycleNo" : 13,  "setNo" : 1, "nbSets" : $('#checkbox_terminal_directive').is(':checked') ? 1 : 0},
-      {"cycleNo" : 14,  "setNo" : 1, "nbSets" : nbRevisedCoreSets}
+      {"cycleNo" : 20,  "setNo" : 1, "nbSets" : nbRevisedCoreSets}
     ];
 
     //
