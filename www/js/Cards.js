@@ -189,7 +189,7 @@ Cards.prototype = {
     * return  void
     */
   sortByName : function(locale) {
-    // Sort the Cards by Rarity
+    // Sort the Cards by Name
     this.mItems.sort(function(card1, card2) {
       // Compare the names of the cards
       return card1.getName(locale).localeCompare(card2.getName(locale));
@@ -197,21 +197,19 @@ Cards.prototype = {
   },
 
   /**
-    * Sort by Faction, Then by Card Type, then by Name
+    * Sort by Faction, then by Card Type, then by Name
     *
     * return  void
     */
   sortByFactionThenTypeThenName : function(types, locale) {
-    // Sort the Cards by Rarity
+    // Sort the Cards by Faction, then by Card Type, then by Name
     this.mItems.sort(function(card1, card2) {
       // Compare the factions of the cards, then the Types, then the names
       if (card1.mFaction < card2.mFaction) return -1;
       if (card1.mFaction > card2.mFaction) return 1;
       if (card1.findType(types) < card2.findType(types)) return -1;
       if (card1.findType(types) > card2.findType(types)) return 1;
-      if (card1.getName(locale) < card2.getName(locale)) return -1;
-      if (card1.getName(locale) > card2.getName(locale)) return 1;
-      return 0;
+      return card1.getName(locale).localeCompare(card2.getName(locale));
     });
   },
 

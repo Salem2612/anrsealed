@@ -152,7 +152,6 @@ Pack.prototype = {
 
     // Sort the Sealed Pack by Name
     this.mCards.sortByName(locale);
-    this.mCards.sortByType(locale);
 
     // Create the Text File
     for (iCard = 0; iCard < this.mCards.mItems.length; iCard++) {
