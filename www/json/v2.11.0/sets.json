@@ -47,4 +47,10 @@
 {"cycleNo":12, "setNo":5, "nameEn":"Free Mars", "nameFr":"Mars Libérée", "type":"DATA_PACK"},
 {"cycleNo":12, "setNo":6, "nameEn":"Crimson Dust", "nameFr":"Poussière Ecarlate", "type":"DATA_PACK"},
 {"cycleNo":13, "setNo":1, "nameEn":"Terminal Directive", "nameFr":"Terminal Directive", "type":"DELUXE"},
-{"cycleNo":14, "setNo":1, "nameEn":"Revised Core Set", "nameFr":"Jeu de Base révisé", "type":"CORE_SET"}]
+{"cycleNo":14, "setNo":1, "nameEn":"Sovereign Sight ", "nameFr":"Sovereign Sight ", "type":"DATA_PACK"},
+{"cycleNo":14, "setNo":2, "nameEn":"Kitara 2", "nameFr":"Kitara 3", "type":"DATA_PACK"},
+{"cycleNo":14, "setNo":3, "nameEn":"Kitara 3", "nameFr":"Kitara 4", "type":"DATA_PACK"},
+{"cycleNo":14, "setNo":4, "nameEn":"Kitara 4", "nameFr":"Kitara 5", "type":"DATA_PACK"},
+{"cycleNo":14, "setNo":5, "nameEn":"Kitara 5", "nameFr":"Kitara 6", "type":"DATA_PACK"},
+{"cycleNo":14, "setNo":6, "nameEn":"Kitara 6", "nameFr":"Kitara 7", "type":"DATA_PACK"},
+{"cycleNo":20, "setNo":1, "nameEn":"Revised Core Set", "nameFr":"Jeu de Base révisé", "type":"CORE_SET"}]
