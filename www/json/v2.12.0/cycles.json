@@ -12,5 +12,6 @@
 {"cycleNo":11, "nameEn":"Flashpoint", "nameFr":"Point de Rupture", "type":"DATA_PACKS"},
 {"cycleNo":12, "nameEn":"Red Sand", "nameFr":"Sable Rouge", "type":"DATA_PACKS"},
 {"cycleNo":13, "nameEn":"Terminal Directive", "nameFr":"Terminal Directive", "type":"DELUXE"},
-{"cycleNo":14, "nameEn":"Kitara", "nameFr":"Kitara", "type":"DATA_PACKS"},
-{"cycleNo":20, "nameEn":"Revised Core Set", "nameFr":"Jeu de base révisé", "type":"CORE_SET"}]
+{"cycleNo":20, "nameEn":"Revised Core Set", "nameFr":"Jeu de base révisé", "type":"CORE_SET"},
+{"cycleNo":21, "nameEn":"Kitara", "nameFr":"Kitara", "type":"DATA_PACKS"},
+{"cycleNo":22, "nameEn":"Reign and Reverie", "nameFr":"Reign and Reverie", "type":"DELUXE"}]

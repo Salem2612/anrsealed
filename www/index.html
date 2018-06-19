@@ -50,7 +50,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.11.0</h4>
+            <h4 class="modal-title"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.12.0</h4>
           </div>
           <div class="modal-body">
             <div class="row">
@@ -89,17 +89,26 @@
                 <div class="panel-group" id="accordionChangeLog" role="tablist" aria-multiselectable="true">
 
                   <div class="panel">
-                    <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog" href="#changeLogCollapse11" aria-expanded="true" aria-controls="changeLogCollapse11">[01 Mar 2018] v2.11 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
-                    <div id="changeLogCollapse11" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog" href="#changeLogCollapse13" aria-expanded="true" aria-controls="changeLogCollapse13">[18 Jun 2018] v2.12 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
+                    <div id="changeLogCollapse13" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                      <ul>
+                        <li>Add the Kitara cycle.</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="panel">
+                    <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog" href="#changeLogCollapse12" aria-expanded="true" aria-controls="changeLogCollapse12">[01 Mar 2018] v2.11 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
+                    <div id="changeLogCollapse12" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                       <ul>
                         <li>Fix some bugs.</li>
                       </ul>
                     </div>
                   </div>
-				  
+
                   <div class="panel">
                     <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog" href="#changeLogCollapse11" aria-expanded="true" aria-controls="changeLogCollapse11">[14 Sep 2017] v2.10 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
-                    <div id="changeLogCollapse11" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div id="changeLogCollapse11" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                       <ul>
                         <li>Add Terminal Directive.</li>
                         <li>Add the Revised Core Set.</li>
@@ -324,7 +333,7 @@
             </ul>
 
             <h4><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Algorithm</h4>
-            <p>All cards of a Sealed Pack are picked randomly by completing <b><a href="https://github.com/Salem2612/anrsealed/blob/master/www/json/v2.11.0/constraints.json">constraints</a></b>. These constraints are given for the 45 cards format. For the 30 cards format, the constraints are 60% of the 45 cards format.</p>
+            <p>All cards of a Sealed Pack are picked randomly by completing <b><a href="https://github.com/Salem2612/anrsealed/blob/master/www/json/v2.12.0/constraints.json">constraints</a></b>. These constraints are given for the 45 cards format. For the 30 cards format, the constraints are 60% of the 45 cards format.</p>
             </ul>
 
             <h4><span class="glyphicon glyphicon-list" aria-hidden="true"></span> List of Cards</h4>
@@ -519,7 +528,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#" data-toggle="modal" data-target="#modalHelp"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Help</a></li>
-            <li><a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.11</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.12</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div>
@@ -562,7 +571,7 @@
             <!-- Breaking News -->
             <h4><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> Breaking News</h4>
             <ul>
-              <li><b>[01 Mar 2018]</b> The version <b><a href="#" data-toggle="modal" data-target="#modalChanges">2.11</a></b> is now available.</li>
+              <li><b>[18 Jun 2018]</b> The version <b><a href="#" data-toggle="modal" data-target="#modalChanges">2.12</a></b> is now available.</li>
               <li>Download doesn't work on <b>Safari</b>, please use <b>Chrome</b>.</li>
             </ul> <!-- Breaking News -->
 
@@ -998,6 +1007,32 @@
                       </div>
                     </div>  <!-- ./Red Sand -->
 
+                    <!-- Kitara -->
+                    <div class="col-sm-4">
+                      <div class="row">
+                        <!-- Image -->
+                        <div class="col-xs-5">
+                          <img src="images/08 Kitara.png" alt="" class="img-responsive img-rounded" />
+                        </div> <!-- /.Image -->
+                        <!-- Check -->
+                        <div class="col-xs-7" style="padding:0px">
+                          <div class="form-group">
+                            <div class="checkbox" style="margin:0px">
+                              <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_kitara" checked><strong>Kitara</strong></label>
+                            </div>
+                            <div class="input-group">
+                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_kitara" id="checkbox_sovereign_sight" checked>Sovereign Sight</label></div>
+                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_kitara" id="checkbox_down_the_white_nile" checked>Down the White Nile</label></div>
+                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_kitara" id="checkbox_council_of_the_crest" checked>Council of the Crest</label></div>
+                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_kitara" id="checkbox_the_devil_and_the_dragon" checked>The Devil and the Dragon</label></div>
+                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_kitara" id="checkbox_whispers_in_nalubaale" checked>Whispers in Nalubaale</label></div>
+                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_kitara" id="checkbox_kampala_ascendent" checked>Kampala Ascendent</label></div>
+                            </div>
+                          </div>
+                        </div>  <!-- /.Check -->
+                      </div>
+                    </div>  <!-- ./Kitara -->
+
                   </div>  <!-- ./Cycle3 -->
 
                 </div>  <!-- ./Panel Middle -->
@@ -1042,7 +1077,7 @@
       $(function() {
 
         // Global variables
-        var mView = new View(['cards', 'constraints', 'cycles', 'sets'], '2.11', '0');
+        var mView = new View(['cards', 'constraints', 'cycles', 'sets'], '2.12', '0');
 
         /**
           *
@@ -1122,6 +1157,7 @@
         $('#checkbox_mumbad').change(function() {checkAllItems(this.id, "checkbox_cycle_item_mumbad");});
         $('#checkbox_flashpoint').change(function() {checkAllItems(this.id, "checkbox_cycle_item_flashpoint");});
         $('#checkbox_red_sand').change(function() {checkAllItems(this.id, "checkbox_cycle_item_red_sand");});
+        $('#checkbox_kitara').change(function() {checkAllItems(this.id, "checkbox_cycle_item_kitara");});
 
         /**
           *
@@ -1134,6 +1170,7 @@
         $(':checkbox[value="checkbox_cycle_item_mumbad"]').change(function() {checkTitle("checkbox_mumbad", this.value);});
         $(':checkbox[value="checkbox_cycle_item_flashpoint"]').change(function() {checkTitle("checkbox_flashpoint", this.value);});
         $(':checkbox[value="checkbox_cycle_item_red_sand"]').change(function() {checkTitle("checkbox_red_sand", this.value);});
+        $(':checkbox[value="checkbox_cycle_item_kitara"]').change(function() {checkTitle("checkbox_kitara", this.value);});
 
         /**
           * Handler of the text_nb_players on click event.

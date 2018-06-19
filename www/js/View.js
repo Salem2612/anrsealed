@@ -190,7 +190,13 @@ View.prototype = {
       {"cycleNo" : 12,  "setNo" : 5, "nbSets" : $('#checkbox_free_mars').is(':checked') ? 1 : 0},
       {"cycleNo" : 12,  "setNo" : 6, "nbSets" : $('#checkbox_crimson_dust').is(':checked') ? 1 : 0},
       {"cycleNo" : 13,  "setNo" : 1, "nbSets" : $('#checkbox_terminal_directive').is(':checked') ? 1 : 0},
-      {"cycleNo" : 20,  "setNo" : 1, "nbSets" : nbRevisedCoreSets}
+      {"cycleNo" : 20,  "setNo" : 1, "nbSets" : nbRevisedCoreSets},
+      {"cycleNo" : 21,  "setNo" : 1, "nbSets" : $('#checkbox_sovereign_sight').is(':checked') ? 1 : 0},
+      {"cycleNo" : 21,  "setNo" : 2, "nbSets" : $('#checkbox_down_the_white_nile').is(':checked') ? 1 : 0},
+      {"cycleNo" : 21,  "setNo" : 3, "nbSets" : $('#checkbox_council_of_the_crest').is(':checked') ? 1 : 0},
+      {"cycleNo" : 21,  "setNo" : 4, "nbSets" : $('#checkbox_the_devil_and_the_dragon').is(':checked') ? 1 : 0},
+      {"cycleNo" : 21,  "setNo" : 5, "nbSets" : $('#checkbox_whispers_in_nalubaale').is(':checked') ? 1 : 0},
+      {"cycleNo" : 21,  "setNo" : 6, "nbSets" : $('#checkbox_kampala_ascendent').is(':checked') ? 1 : 0}
     ];
 
     //
