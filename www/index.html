@@ -552,7 +552,7 @@
           <div class="well well-sm">
 
             <!-- anrsealed -->
-            <h4><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> anrsealed</h4>
+            <h4 style="margin-top:0px"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> anrsealed</h4>
             <p align="justify">The <b>Sealed</b> format is an alternative format for <b>Android: Netrunner</b>. You must build a deck from a pack of <b>85 random cards</b>. <b>anrsealed</b> generates these packs so that they are all <b>balanced</b>. Each player builds his deck with his own collection or one player can share his collection to the others. Please read <b><a href="#" data-toggle="modal" data-target="#modalHelp"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Help</a></b> for more information.</p> <!-- anrsealed -->
 
             <!-- How to use anrsealed ? -->
@@ -603,84 +603,141 @@
             <!-- Generate -->
             <div class="col-lg-3 col-lg-push-9 col-md-12">
               <div class="well well-sm">
-                <!-- Number of players -->
-                <h4><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Number of players</h4>
-                <div class="form-group">
-                  <div class="input-group">
-                    <input id="text_nb_players" type="text" class="form-control" placeholder="Enter the number of players" aria-describedby="text_nb_players_addon" value="2">
-                    <span class="input-group-addon" id="text_nb_players_addon">players</span>
-                  </div>
-                </div>  <!-- /.Number of players -->
 
-                <!-- Ownership -->
-                <h4><span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span> Ownership</h4>
-                <div class="form-group">
-                  <div class="input-group" id="text_ownership">
-                    <div class="radio">
-                      <label><input type="radio" name="optradio_ownership" id="radio_ownership_each" checked><b>Each</b> player plays with his own cards.</label>
-                    </div>
-                    <div class="radio">
-                      <label><input type="radio" name="optradio_ownership"  id="radio_ownership_one">A player <b>shares</b> his cards to all others.</label>
-                    </div>
+                <div class="row">
+                  <div class="col-md-5">
+                    <!-- Players -->
+                    <h4 style="margin-top:0px;margin-bottom:0px" data-toggle="tooltip" data-placement="bottom" title="Select if the players know the game."><span class="glyphicon glyphicon-education" aria-hidden="true"></span> Players</h4>
+                    <div class="form-group">
+                      <div class="input-group" id="text_players">
+                        <div class="radio">
+                          <label data-toggle="tooltip" data-placement="bottom" title="All the players know the game."><input type="radio" name="optradio_players" id="radio_players_hackers" checked>Hackers</label>
+                        </div>
+                        <div class="radio">
+                          <label data-toggle="tooltip" data-placement="bottom" title="Use only simple cards."><input type="radio" name="optradio_players"  id="radio_players_noobs">N00bs</label>
+                        </div>
+                      </div>
+                    </div>  <!-- /.Players -->
                   </div>
-                </div>  <!-- /.Ownership -->
+
+                  <div class="col-md-7">
+                    <!-- Nb players -->
+                    <h4 style="margin-top:0px"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Nb players</h4>
+                    <div class="form-group">
+                      <div class="input-group">
+                        <input id="text_nb_players" type="text" class="form-control" placeholder="Enter the number of players" aria-describedby="text_nb_players_addon" value="2">
+                        <span class="input-group-addon" id="text_nb_players_addon">players</span>
+                      </div>
+                    </div>  <!-- /.Number of players -->
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-5">
+                    <!-- Mode -->
+                    <h4 style="margin-top:0px;margin-bottom:0px"><span class="glyphicon glyphicon-object-align-bottom" aria-hidden="true"></span> Mode</h4>
+                    <div class="form-group">
+                      <div class="input-group" id="text_mode">
+                        <div class="radio">
+                          <label data-toggle="tooltip" data-placement="bottom" title="Generate one Sealed pack for each player."><input type="radio" name="optradio_mode" id="radio_mode_sealed" checked>Sealed</label>
+                        </div>
+                        <div class="radio">
+                          <label data-toggle="tooltip" data-placement="bottom" title="Generate one deck for each player."><input type="radio" name="optradio_mode"  id="radio_mode_deck">Deck</label>
+                        </div>
+                      </div>
+                    </div>  <!-- /.Mode -->
+                  </div>
+
+                  <div class="col-md-7">
+                    <!-- Ownership -->
+                    <h4 style="margin-top:0px;margin-bottom:0px" data-toggle="tooltip" data-placement="bottom" title="Select the owner of the cards."><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Ownership</h4>
+                    <div class="form-group">
+                      <div class="input-group" id="text_ownership">
+                        <div class="radio">
+                          <label data-toggle="tooltip" data-placement="bottom" title="Each player plays with his own cards."><input type="radio" name="optradio_ownership" id="radio_ownership_each" checked>Every man for himself</label>
+                        </div>
+                        <div class="radio">
+                          <label data-toggle="tooltip" data-placement="bottom" title="A player shares his cards to all others."><input type="radio" name="optradio_ownership"  id="radio_ownership_one">Sharing</label>
+                        </div>
+                      </div>
+                    </div>  <!-- /.Ownership -->
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-12">
+                    <!-- Shortcuts -->
+                    <h4 style="margin-top:0px;margin-bottom:0px" data-toggle="tooltip" data-placement="bottom" title="Select the owner of the cards."><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Shortcuts</h4>
+                    <div class="form-group">
+                      <div class="btn-group-vertical">
+                        <button id="button_check_all" type="button" class="btn btn-default" style="text-align:left"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Check all</button>
+                        <button id="button_uncheck_all" type="button" class="btn btn-default" style="text-align:left"><span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span> Uncheck all</button>
+                      </div>
+                    </div>
+                  </div>  <!-- /.Shortcuts -->
+                </div>
 
                 <!-- Advanced Settings -->
                 <div id="accordion" role="tablist" aria-multiselectable="true">
-                  <h4>
+                  <h4 style="margin-top:0px">
                     <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <a role="button" data-toggle="collapse" data-parent="#accordion" href="#accordionAdvancedSettings1" aria-expanded="true" aria-controls="accordionAdvancedSettings1">Advanced settings <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
                     </a>
                   </h4>
-
                   <div id="accordionAdvancedSettings1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                    <!-- Starter -->
-                    <h4><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> Starter</h4>
-                    <div class="form-group">
-                      <div class="input-group">
-                        <div class="radio">
-                          <label><input type="radio" name="optradio_starter"  id="radio_starter_45" checked>85 cards (45 cards per deck / 7 Agenda points)</label>
-                        </div>
 
-                        <div class="radio">
-                          <label><input type="radio" name="optradio_starter" id="radio_starter_30">57 cards (30 cards per deck / 6 Agenda points)</label>
-                        </div>
-
-                        <div class="radio">
-                          <label><input type="radio" name="optradio_starter" id="radio_starter_no">No starter</label>
-                        </div>
-                      </div>
-                    </div>  <!-- Starter -->
-
-                    <!-- Boosters -->
-                    <h4><span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Boosters</h4>
-                    <div class="form-group">
-                      <div class="input-group">
-                        <div class="radio">
-                          <label><input type="radio" name="optradio_boosters" id="radio_boosters_8">
-                            <div class="input-group">
-                              <input id="text_nb_boosters" type="text" class="form-control" placeholder="Enter the number of boosters" aria-describedby="text_nb_boosters_addon" value="1"><span class="input-group-addon" id="text_nb_boosters_addon">boosters of 8 cards</span>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <!-- Starter -->
+                        <h4 style="margin-top:0px;margin-bottom:0px"><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> Starter</h4>
+                        <div class="form-group">
+                          <div class="input-group">
+                            <div class="radio">
+                              <label data-toggle="tooltip" data-placement="bottom" title="45 cards per deck / 7 Agenda points."><input type="radio" name="optradio_starter"  id="radio_starter_45" checked>85 cards</label>
                             </div>
-                          </label>
-                        </div>
 
-                        <div class="radio">
-                          <label><input type="radio" name="optradio_boosters" id="radio_boosters_no" checked>No booster</label>
-                        </div>
+                            <div class="radio">
+                              <label data-toggle="tooltip" data-placement="bottom" title="30 cards per deck / 6 Agenda points."><input type="radio" name="optradio_starter" id="radio_starter_30">57 cards</label>
+                            </div>
+
+                            <div class="radio">
+                              <label><input type="radio" name="optradio_starter" id="radio_starter_no">No starter</label>
+                            </div>
+                          </div>
+                        </div>  <!-- Starter -->
                       </div>
-                    </div>  <!-- /.Boosters -->
+
+                      <div class="col-md-6">
+
+                        <!-- Boosters -->
+                        <h4 style="margin-top:0px;margin-bottom:0px"><span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Boosters</h4>
+                        <div class="form-group">
+                          <div class="input-group">
+                            <div class="radio">
+                              <label data-toggle="tooltip" data-placement="bottom" title="Number of boosters of 8 cards."><input type="radio" name="optradio_boosters" id="radio_boosters_8">
+                                  <input id="text_nb_boosters" type="text" class="form-control" placeholder="Enter the number of boosters" aria-describedby="text_nb_boosters_addon" value="1">
+                              </label>
+                            </div>
+
+                            <div class="radio">
+                              <label><input type="radio" name="optradio_boosters" id="radio_boosters_no" checked>No booster</label>
+                            </div>
+                          </div>
+                        </div>  <!-- /.Boosters -->
+                      </div>
+                    </div>
 
                     <!-- Cardpool -->
-                    <h4><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> Cardpool</h4>
+                    <h4 style="margin-top:0px;margin-bottom:0px"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> Cardpool</h4>
                     <div class="form-group">
                       <div class="input-group" id="text_cardpool">
                         <div class="radio">
-                          <label><input type="radio" name="optradio_cardpool" id="radio_cardpool_anrsealed" checked>Use the cards selected by <b><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> anrsealed</b>.</label>
+                          <label data-toggle="tooltip" data-placement="bottom" title="Use the cards selected by anrsealed."><input type="radio" name="optradio_cardpool" id="radio_cardpool_anrsealed" checked><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> anrsealed</label>
                         </div>
                         <div class="radio">
-                          <label><input type="radio" name="optradio_cardpool" id="radio_cardpool_stimhack">Use the <b><a href="http://forum.stimhack.com/t/stimhack-draft-cube-current-lists-updated-for-escalation/955" target="_blank"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Stimhack Cube</a></b>.</label>
+                          <label data-toggle="tooltip" data-placement="bottom" title="Use the cards selected by Stimhack."><input type="radio" name="optradio_cardpool" id="radio_cardpool_stimhack"><a href="http://forum.stimhack.com/t/stimhack-draft-cube-current-lists-updated-for-escalation/955" target="_blank"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Stimhack Cube</a></label>
                         </div>
                         <div class="radio">
-                          <label><input type="radio" name="optradio_cardpool"  id="radio_cardpool_all">Use all the cards (Recommended if you share a small cardpool).</label>
+                          <label data-toggle="tooltip" data-placement="bottom" title="Use all the cards (Recommended if you share a small cardpool)."><input type="radio" name="optradio_cardpool"  id="radio_cardpool_all">All cards</label>
                         </div>
                       </div>
                     </div>  <!-- /.Cardpool -->
@@ -698,7 +755,7 @@
 
                 <!-- Status -->
                 <div class="form-group">
-                  <textarea id="textarea_status" class="form-control" style="resize:vertical" rows="5" readonly placeholder="Select the expansions, the number of players, the ownership of the cards then click on Generate & Download."></textarea>
+                  <textarea id="textarea_status" class="form-control" style="resize:vertical" rows="5" readonly placeholder="Select the expansions, the number of players, the mode, the ownership of the cards then click on Generate & Download."></textarea>
                 </div>  <!-- /.Status -->
               </div>  <!-- /.well -->
             </div>  <!-- /.Generate -->
@@ -977,7 +1034,7 @@
                         </div> <!-- /.Image -->
                         <!-- Check -->
                         <div class="col-xs-7" style="padding:0px">
-                          <div class="form-group">
+                          <div class="form-group" style="margin-bottom:0px">
                             <div class="checkbox" style="margin:0px">
                               <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_red_sand" checked><strong>Red Sand</strong></label>
                             </div>
@@ -1003,7 +1060,7 @@
                         </div> <!-- /.Image -->
                         <!-- Check -->
                         <div class="col-xs-7" style="padding:0px">
-                          <div class="form-group">
+                          <div class="form-group" style="margin-bottom:0px">
                             <div class="checkbox" style="margin:0px">
                               <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_kitara" checked><strong>Kitara</strong></label>
                             </div>
@@ -1079,6 +1136,11 @@
 
         // Global variables
         var mView = new View(['cards', 'constraints', 'cycles', 'sets'], '2.13', '0');
+
+        /**
+          *
+          */
+        $('[data-toggle="tooltip"]').tooltip();
 
         /**
           *
