@@ -197,7 +197,7 @@ View.prototype = {
       {"cycleNo" : 21,  "setNo" : 4, "nbSets" : $('#checkbox_the_devil_and_the_dragon').is(':checked') ? 1 : 0},
       {"cycleNo" : 21,  "setNo" : 5, "nbSets" : $('#checkbox_whispers_in_nalubaale').is(':checked') ? 1 : 0},
       {"cycleNo" : 21,  "setNo" : 6, "nbSets" : $('#checkbox_kampala_ascendent').is(':checked') ? 1 : 0},
-      {"cycleNo" : 22,  "setNo" : 6, "nbSets" : $('#checkbox_reign_and_reverie').is(':checked') ? 1 : 0}
+      {"cycleNo" : 22,  "setNo" : 1, "nbSets" : $('#checkbox_reign_and_reverie').is(':checked') ? 1 : 0}
     ];
 
     //
