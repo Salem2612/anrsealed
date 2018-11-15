@@ -111,17 +111,23 @@ View.prototype = {
   generateSealed : function() {
     var processingStatus = new ProcessingStatus();
 
+    // Retrieve the type of the players from the view
+    var arePlayersNoobs = $('#radio_players_noobs').is(':checked');
+
     // Retrieve the number of players from the view
     var nbPlayers = parseInt($('#text_nb_players').val());
 
-    // Retrieve the number of cards from the view
+    // Retrieve the type of the players from the view
+    var isModeSealed = $('#radio_mode_sealed').is(':checked');
+
+    // Retrieve the number of starters from the view
     var nbStarters = $('#radio_starter_no').is(':checked') ? 0 : 1;
 
-    // Retrieve the number of boosters from the view
+    // Retrieve the number of cards from the view
     var nbCards = $('#radio_starter_30').is(':checked') ? 30 :
                   $('#radio_starter_45').is(':checked') ? 45 : 0;
 
-    // Retrieve the number of cards from the view
+    // Retrieve the number of boosters from the view
     var nbBoosters = $('#radio_boosters_8').is(':checked') ? parseInt($('#text_nb_boosters').val()) : 0;
 
     // Retrieve the ownership from the view
@@ -217,6 +223,7 @@ View.prototype = {
       for (var side in Side) {
         var starterConstraints = new Constraints(nbCards, this.mJSONs.constraints[side].starter, (cardpoolType != CardPool.TYPE_STIMHACK));
         var boosterConstraints = new Constraints(45, this.mJSONs.constraints[side].booster, (cardpoolType != CardPool.TYPE_STIMHACK));
+        var deckConstraints = new Constraints(45, this.mJSONs.constraints[side].deck, (cardpoolType != CardPool.TYPE_STIMHACK));
         cardPools[side] = new CardPool(side, sets, cardpoolType, useOneCardPool, starterConstraints, boosterConstraints, this.mDatabase);
       }
 
