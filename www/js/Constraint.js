@@ -14,7 +14,6 @@ function Constraint(nbCards, constraintJSON) {
   this.mNbMax = Math.round(this.mConstraintJSON.max * this.mNbCards / 45);
   this.mNbCurrent = 0;
   this.mTypes = this.mConstraintJSON.types;
-  this.mScore = this.mConstraintJSON.score;
 
 }//end Constraint
 

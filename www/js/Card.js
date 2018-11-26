@@ -24,7 +24,6 @@ function Card(cardJSON, set) {
 	this.mNbAvailableCopies     = 0;
 	this.mNbMaxCopiesPerPlayer  = 0;
 	this.mNbCopies              = 0;
-	this.mScore                 = 0;
 
 }//end Card
 
@@ -47,7 +46,6 @@ Card.prototype = {
         'nbCopiesStimhack':this.mNbCopiesStimhack
       },
       this.mSet);
-    clone.mScore = this.mScore;
     return clone;
   },
 
@@ -145,35 +143,6 @@ Card.prototype = {
   getFullText : function(locale) {
     var text = this.mNbCopies + "x " + this.getName(locale) + " (" + this.mSet.getCycleAndSetNames(locale) + ", " + this.mFaction + ") " + this.getTextTypes() + "\r\n";
     return text;
-  },
-
-  /**
-    * Calculate the Score of the Card with the specified Constraint
-    */
-  calculateScore : function(constraints) {
-    // Reinitialize the score of the Card
-    this.mScore = 0;
-    // Check if the Card is available
-    if (this.mNbCopies > 0) {
-      // Calculate the score of the cards with each constraint
-      for (var iConstraint = 0; iConstraint < constraints.mItems.length; iConstraint++) {
-        // Try to meet the current constraint
-        var score = constraints.mItems[iConstraint].tryMeet(this);
-        // Check if the Card meet an already complete Constraint
-        if (score == -1) {
-          // The Card meet an already complete Constraint
-          // The Card must not be picked : Set its Score to 0
-          this.mScore = 0;
-          break;  // Stop calculating the score of the Card
-        }
-        else {
-          // The Card does not meet an already complete Constraint
-          // Accumulate the score of the Card with the score of the Constraint
-          this.mScore += score;
-        }
-      }
-    }
-    return this.mScore;
   }
 
 };

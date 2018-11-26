@@ -33,31 +33,12 @@ Cards.prototype = {
   },
 
   /**
-    * Calculate the score of the Cards with the specified constraints and return the High Score.
+    * Filter the Cards that meet the Constraint and pick one of them at random.
     *
-    * return  highScore
-    */
-	calculateScores : function(constraints) {
-    var highScore = 0;
-    // Calculate the score of each card and sort them with the higher score first
-    for (var iCard = 0; iCard < this.mItems.length; iCard++) {
-      // Calculate the score of the current Card
-      var score = this.mItems[iCard].calculateScore(constraints);
-      // Store the new high score
-      if (score > highScore) {
-        highScore = score;
-      }
-    }
-    return highScore;
-	},
-
-  /**
-    * Filter the Cards with the specified score and pick one of them at random.
-    *
-    * return  Picked Card with a score
+    * return  Picked Card
     */
   pickRandomCard : function(constraint, constraints) {
-    // Filter (and return shallow copy of) the array of Cards to keep only Cards with the specified score
+    // Filter (and return shallow copy of) the array of Cards to keep only Cards that meet the Constraint
     this.mAvailableCards = this.mItems.filter(function(card) {
       return ((card.mNbCopies > 0) && constraint.tryMeet(card) && constraints.AreNotOvercompletedBy(card));
     });

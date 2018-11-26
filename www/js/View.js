@@ -203,7 +203,8 @@ View.prototype = {
       {"cycleNo" : 21,  "setNo" : 4, "nbSets" : $('#checkbox_the_devil_and_the_dragon').is(':checked') ? 1 : 0},
       {"cycleNo" : 21,  "setNo" : 5, "nbSets" : $('#checkbox_whispers_in_nalubaale').is(':checked') ? 1 : 0},
       {"cycleNo" : 21,  "setNo" : 6, "nbSets" : $('#checkbox_kampala_ascendent').is(':checked') ? 1 : 0},
-      {"cycleNo" : 22,  "setNo" : 1, "nbSets" : $('#checkbox_reign_and_reverie').is(':checked') ? 1 : 0}
+      {"cycleNo" : 22,  "setNo" : 1, "nbSets" : $('#checkbox_reign_and_reverie').is(':checked') ? 1 : 0},
+      {"cycleNo" : 23,  "setNo" : 1, "nbSets" : $('#checkbox_magnum_opus_1').is(':checked') ? 1 : 0}
     ];
 
     //
@@ -221,9 +222,16 @@ View.prototype = {
       // Create the CardPools of each Side from the available sets
       var cardPools = {};
       for (var side in Side) {
-        var starterConstraints = new Constraints(nbCards, this.mJSONs.constraints[side].starter, (cardpoolType != CardPool.TYPE_STIMHACK));
+        var starterConstraints;
+        if (isModeSealed)
+        {
+          starterConstraints = new Constraints(nbCards, this.mJSONs.constraints[side].starter, (cardpoolType != CardPool.TYPE_STIMHACK));
+        }
+        else
+        {
+          starterConstraints = new Constraints(nbCards, this.mJSONs.constraints[side].deck, (cardpoolType != CardPool.TYPE_STIMHACK));
+        }
         var boosterConstraints = new Constraints(45, this.mJSONs.constraints[side].booster, (cardpoolType != CardPool.TYPE_STIMHACK));
-        var deckConstraints = new Constraints(45, this.mJSONs.constraints[side].deck, (cardpoolType != CardPool.TYPE_STIMHACK));
         cardPools[side] = new CardPool(side, sets, cardpoolType, useOneCardPool, starterConstraints, boosterConstraints, this.mDatabase);
       }
 

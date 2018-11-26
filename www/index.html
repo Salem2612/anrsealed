@@ -50,7 +50,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.13.0</h4>
+            <h4 class="modal-title"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v3.0.0</h4>
           </div>
           <div class="modal-body">
             <div class="row">
@@ -89,8 +89,19 @@
                 <div class="panel-group" id="accordionChangeLog" role="tablist" aria-multiselectable="true">
 
                   <div class="panel">
+                    <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog" href="#changeLogCollapse15" aria-expanded="true" aria-controls="changeLogCollapse15">[31 Jul 2018] v3.0 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
+                    <div id="changeLogCollapse15" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                      <ul>
+                        <li>Add Magnum Opus cards.</li>
+                        <li>Add Deck generation : Generate a Sealed Deck instead of a Sealed Pack. Play without building !</li>
+                        <li>Add the option to choose the type of players. The N00bs use simple cards. Interesting for beginners.</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="panel">
                     <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog" href="#changeLogCollapse14" aria-expanded="true" aria-controls="changeLogCollapse14">[31 Jul 2018] v2.13 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
-                    <div id="changeLogCollapse14" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div id="changeLogCollapse14" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                       <ul>
                         <li>Add Reign and Reverie.</li>
                       </ul>
@@ -342,7 +353,7 @@
             </ul>
 
             <h4><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Algorithm</h4>
-            <p>All cards of a Sealed Pack are picked randomly by completing <b><a href="https://github.com/Salem2612/anrsealed/blob/master/www/json/v2.13.0/constraints.json">constraints</a></b>. These constraints are given for the 45 cards format. For the 30 cards format, the constraints are 60% of the 45 cards format.</p>
+            <p>All cards of a Sealed Pack are picked randomly by completing <b><a href="https://github.com/Salem2612/anrsealed/blob/master/www/json/v3.0.0/constraints.json">constraints</a></b>. These constraints are given for the 45 cards format. For the 30 cards format, the constraints are 60% of the 45 cards format.</p>
             </ul>
 
             <h4><span class="glyphicon glyphicon-list" aria-hidden="true"></span> List of Cards</h4>
@@ -536,7 +547,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#" data-toggle="modal" data-target="#modalHelp"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Help</a></li>
-            <li><a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v2.13</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v3.0</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div>
@@ -559,7 +570,7 @@
             <h4><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> How to use anrsealed ?</h4>
             <ol>
               <li>Select the <b><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Core Sets</b>, <b>Deluxe Expansions</b> and <b>Cycles</b>.</li>
-              <li>Select the <b><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Number of players</b> and the <b><span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span> Ownership</b>.</li>
+              <li>Select the <b><span class="glyphicon glyphicon-education" aria-hidden="true"></span> Type of players</b>, <b><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Number of players</b>, <b><span class="glyphicon glyphicon-object-align-bottom" aria-hidden="true"></span> Mode</b> and <b><span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span> Ownership</b>.</li>
               <li>Click on <b><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Generate & Download</b>.</li>
               <li>Build a deck from the 85 cards of the downloaded <b><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Zip file</b> and the following identity cards.</li>
               <li>Play with the same rules as the base game.</li>
@@ -579,8 +590,8 @@
             <!-- Breaking News -->
             <h4><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> Breaking News</h4>
             <ul>
-              <li><b>[31 Jul 2018]</b> The version <b><a href="#" data-toggle="modal" data-target="#modalChanges">2.13</a></b> is now available.</li>
-              <li>Download doesn't work on <b>Safari</b>, please use <b>Chrome</b>.</li>
+              <li><b>[26 Nov 2018]</b> The version <b><a href="#" data-toggle="modal" data-target="#modalChanges">3.0</a></b> is now available.</li>
+              <li><span class="glyphicon glyphicon-apple" aria-hidden="true"></span> Download doesn't work on <b>Safari</b>, please use <b>Chrome</b>.</li>
             </ul> <!-- Breaking News -->
 
             <!-- Partnership -->
@@ -662,19 +673,6 @@
                       </div>
                     </div>  <!-- /.Ownership -->
                   </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-sm-12">
-                    <!-- Shortcuts -->
-                    <h4 style="margin-top:0px;margin-bottom:0px" data-toggle="tooltip" data-placement="bottom" title="Select the owner of the cards."><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Shortcuts</h4>
-                    <div class="form-group">
-                      <div class="btn-group-vertical">
-                        <button id="button_check_all" type="button" class="btn btn-default" style="text-align:left"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Check all</button>
-                        <button id="button_uncheck_all" type="button" class="btn btn-default" style="text-align:left"><span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span> Uncheck all</button>
-                      </div>
-                    </div>
-                  </div>  <!-- /.Shortcuts -->
                 </div>
 
                 <!-- Advanced Settings -->
@@ -1077,19 +1075,47 @@
                       </div>
                     </div>  <!-- ./Kitara -->
 
-                    <!-- Buttons Check/Uncheck all -->
+                    <!-- Magnum Opus -->
                     <div class="col-sm-4">
+                      <div class="row">
+                        <!-- Image -->
+                        <div class="col-xs-5">
+                          <img src="images/23 Magnum Opus.png" alt="" class="img-responsive img-rounded" />
+                        </div> <!-- /.Image -->
+                        <!-- Check -->
+                        <div class="col-xs-7" style="padding:0px">
+                          <div class="form-group" style="margin-bottom:0px">
+                            <div class="checkbox" style="margin:0px">
+                              <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_magnum_opus" checked><strong>Magnum Opus</strong></label>
+                            </div>
+                            <div class="input-group">
+                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_magnum_opus" id="checkbox_magnum_opus_1" checked>Magnum Opus</label></div>
+                            </div>
+                          </div>
+                        </div>  <!-- /.Check -->
+                      </div>
+
+                      <!-- Separator -->
+                      <div class="row">
+                        <div class="form-group">
+                        </div>
+                      </div> <!-- ./Separator -->
+
+                      <!-- Buttons Check/Uncheck all -->
                       <div class="row">
                         <div class="col-sm-12">
                           <div class="form-group">
-                            <div class="btn-group-vertical">
+                            <div class="btn-group-horizontal">
                               <button id="button_check_all" type="button" class="btn btn-default" style="text-align:left"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Check all</button>
                               <button id="button_uncheck_all" type="button" class="btn btn-default" style="text-align:left"><span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span> Uncheck all</button>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </div>  <!-- ./Buttons Check/Uncheck all -->
+                      </div>  <!-- ./Buttons Check/Uncheck all -->
+
+                    </div>  <!-- ./Magnum Opus -->
+
+
 
                   </div>  <!-- ./Cycle3 -->
 
@@ -1135,7 +1161,7 @@
       $(function() {
 
         // Global variables
-        var mView = new View(['cards', 'constraints', 'cycles', 'sets'], '2.13', '0');
+        var mView = new View(['cards', 'constraints', 'cycles', 'sets'], '3.0', '0');
 
         /**
           *
@@ -1221,6 +1247,7 @@
         $('#checkbox_flashpoint').change(function() {checkAllItems(this.id, "checkbox_cycle_item_flashpoint");});
         $('#checkbox_red_sand').change(function() {checkAllItems(this.id, "checkbox_cycle_item_red_sand");});
         $('#checkbox_kitara').change(function() {checkAllItems(this.id, "checkbox_cycle_item_kitara");});
+        $('#checkbox_magnum_opus').change(function() {checkAllItems(this.id, "checkbox_cycle_item_magnum_opus");});
 
         /**
           *
@@ -1234,6 +1261,7 @@
         $(':checkbox[value="checkbox_cycle_item_flashpoint"]').change(function() {checkTitle("checkbox_flashpoint", this.value);});
         $(':checkbox[value="checkbox_cycle_item_red_sand"]').change(function() {checkTitle("checkbox_red_sand", this.value);});
         $(':checkbox[value="checkbox_cycle_item_kitara"]').change(function() {checkTitle("checkbox_kitara", this.value);});
+        $(':checkbox[value="checkbox_cycle_item_magnum_opus"]').change(function() {checkTitle("checkbox_magnum_opus", this.value);});
 
         /**
           * Handler of the text_nb_players on click event.
