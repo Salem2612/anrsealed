@@ -225,13 +225,13 @@ View.prototype = {
         var starterConstraints;
         if (isModeSealed)
         {
-          starterConstraints = new Constraints(nbCards, this.mJSONs.constraints[side].starter, (cardpoolType != CardPool.TYPE_STIMHACK));
+          starterConstraints = new Constraints(nbCards, this.mJSONs.constraints[side].starter, arePlayersNoobs);
         }
         else
         {
-          starterConstraints = new Constraints(nbCards, this.mJSONs.constraints[side].deck, (cardpoolType != CardPool.TYPE_STIMHACK));
+          starterConstraints = new Constraints(nbCards, this.mJSONs.constraints[side].deck, arePlayersNoobs);
         }
-        var boosterConstraints = new Constraints(45, this.mJSONs.constraints[side].booster, (cardpoolType != CardPool.TYPE_STIMHACK));
+        var boosterConstraints = new Constraints(45, this.mJSONs.constraints[side].booster, arePlayersNoobs);
         cardPools[side] = new CardPool(side, sets, cardpoolType, useOneCardPool, starterConstraints, boosterConstraints, this.mDatabase);
       }
 
