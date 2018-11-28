@@ -1264,19 +1264,6 @@
         $(':checkbox[value="checkbox_cycle_item_magnum_opus"]').change(function() {checkTitle("checkbox_magnum_opus", this.value);});
 
         /**
-          * Handler of the text_nb_players on click event.
-          *
-          * return  void
-          */
-        $('#text_nb_players').on('click', function(e) {
-          $('#text_nb_players').select();
-        });
-        $('#text_nb_boosters').on('click', function(e) {
-          $('#radio_boosters_8').prop("checked", true);
-          $('#text_nb_boosters').select();
-        });
-
-        /**
           * Handler of the button_generate_and_download on click event.
           *
           * return  void
