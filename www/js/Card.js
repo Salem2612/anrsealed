@@ -19,6 +19,7 @@ function Card(cardJSON, set) {
   this.mFaction               = cardJSON.faction;
   this.mTypes                 = cardJSON.types;
 	this.mNbOfficialCopies      = cardJSON.nbOfficialCopies;
+	this.mNbMaxCopiesPerDeck    = cardJSON.nbMaxCopiesPerDeck;
 	this.mNbCopiesANRSealed     = cardJSON.nbCopiesANRSealed;
 	this.mNbCopiesStimhack      = cardJSON.nbCopiesStimhack;
 	this.mNbAvailableCopies     = 0;
@@ -42,6 +43,7 @@ Card.prototype = {
         'faction':this.mFaction,
         'types':this.mTypes,
         'nbOfficialCopies':this.mNbOfficialCopies,
+        'nbMaxCopiesPerDeck':this.mNbMaxCopiesPerDeck,
         'nbCopiesANRSealed':this.mNbCopiesANRSealed,
         'nbCopiesStimhack':this.mNbCopiesStimhack
       },

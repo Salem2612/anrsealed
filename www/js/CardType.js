@@ -34,5 +34,5 @@ function CardTypes() {
 
 }//end CardTypes
 
-CardTypes[Side.CORP] = [CardType.AGENDA, CardType.ASSET, CardType.UPGRADE, CardType.OPERATION, CardType.ICE];
-CardTypes[Side.RUNNER] = [CardType.EVENT, CardType.HARDWARE, CardType.RESOURCE, CardType.PROGRAM];
+CardTypes[Side.CORP] = [CardType.IDENTITY, CardType.AGENDA, CardType.ASSET, CardType.UPGRADE, CardType.OPERATION, CardType.ICE];
+CardTypes[Side.RUNNER] = [CardType.IDENTITY, CardType.EVENT, CardType.HARDWARE, CardType.RESOURCE, CardType.PROGRAM];

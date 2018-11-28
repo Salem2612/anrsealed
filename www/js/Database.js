@@ -36,7 +36,7 @@ Database.prototype = {
                                     (type == CardPool.TYPE_STIMHACK) ? card.mNbCopiesStimhack :
                                     card.mNbAvailableCopies;
       // Limit the maximum number of copies per player to 3
-      card.mNbMaxCopiesPerPlayer = Math.min(card.mNbMaxCopiesPerPlayer, 3);
+      card.mNbMaxCopiesPerPlayer = Math.min(card.mNbMaxCopiesPerPlayer, card.mNbMaxCopiesPerDeck);
       // Current number of available copies for one player
       card.mNbCopies = Math.min(card.mNbMaxCopiesPerPlayer, card.mNbAvailableCopies);
       // The Cycle No, Set No and Side must match and the Card must have a number of copies greater than 0
