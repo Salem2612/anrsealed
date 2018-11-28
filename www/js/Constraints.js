@@ -5,18 +5,24 @@ console.log('Constraints.js loaded');
   *
   * Array of Constraint
   */
-function Constraints(nbCards, constraintsJSON, useBAD) {
+function Constraints(nbCards, constraintsJSON, arePlayersNoobs) {
 
   // CONSTRUCTOR
-  this.mNbCards = nbCards;
-  this.mUseBAD  = useBAD;
-  this.mItems   = [];
+  this.mNbCards         = nbCards;
+  this.mArePlayersNoobs = arePlayersNoobs;
+  this.mItems           = [];
 
   for (iConstraint = 0; iConstraint < constraintsJSON.length; iConstraint++) {
-    if ((constraintsJSON[iConstraint].type != "BAD") || this.mUseBAD)
+    // Clone the constraints JSON
+    var constraintJSON = {};
+    constraintJSON.min = constraintsJSON[iConstraint].min;
+    constraintJSON.max = constraintsJSON[iConstraint].max;
+    constraintJSON.types = constraintsJSON[iConstraint].types.slice(0);
+    if (this.mArePlayersNoobs)
     {
-      this.mItems.push(new Constraint(this.mNbCards, constraintsJSON[iConstraint]));
+      constraintJSON.types.push("NEWBIE");
     }
+    this.mItems.push(new Constraint(this.mNbCards, constraintJSON));
   }
 
 }//end Constraints
@@ -24,7 +30,7 @@ function Constraints(nbCards, constraintsJSON, useBAD) {
 Constraints.prototype = {
 
   clone : function() {
-    var clone = new Constraints(this.mNbCards, [], this.mUseBAD);
+    var clone = new Constraints(this.mNbCards, [], this.mArePlayersNoobs);
     clone.mItems = this.mItems.map(function(constraint) {
       return constraint.clone();
     });
