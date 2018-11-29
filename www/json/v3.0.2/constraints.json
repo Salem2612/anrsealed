@@ -30,8 +30,8 @@
       {"types":["PUMPABLE","DECODER","COMMON"],"min":3,"max":45},
       {"types":["PUMPABLE","KILLER","COMMON"],"min":3,"max":45},
       {"types":["CONSOLE","COMMON"],"min":2,"max":3},
+      {"types":["CONSOLE"],"min":2,"max":3},
       {"types":["PROGRAM","COMMON"],"min":0,"max":14},
-      {"types":["COMMON"],"min":40,"max":45},
       {"types":["BROKEN"],"min":4,"max":4},
       {"types":["CARD"],"min":46,"max":46},
       {"types":["BAD"],"min":0,"max":0}
@@ -74,7 +74,6 @@
       {"types":["HARD_TO_SCORE"],"min":0,"max":1},
       {"types":["ETR","COMMON"],"min":8,"max":49},
       {"types":["ICE","COMMON"],"min":15,"max":49},
-      {"types":["COMMON"],"min":40,"max":50},
       {"types":["CARD"],"min":50,"max":50},
       {"types":["BAD"],"min":0,"max":0}
     ]
