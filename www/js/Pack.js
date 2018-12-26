@@ -247,6 +247,55 @@ Pack.prototype = {
       textFile += card.getText(locale);
     }
     return textFile;
+  },
+
+  /**
+   * Generate the XML File of the Sealed Pack in OCTGN Format
+   */
+  generateXmlFileOctgn : function(locale) {
+    let xmlFile = "";
+
+    this.mCards.sortByCardId();
+
+    // Header
+    xmlFile += '<?xml version="1.0" encoding="utf-8" standalone="yes"?>\r\n';
+    xmlFile += '<deck game="0f38e453-26df-4c04-9d67-6d43de939c77">\r\n';
+
+    xmlFile += '<section name="Sealed Pack">\r\n';
+
+    for (const card of this.mCards.mItems) {
+      const qty = card.mNbCopies;
+      const id = card.mId;
+      const name = card.getName(locale).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+      xmlFile += `<card qty="${qty}" id="bc0f047c-01b1-427f-a439-d451eda${id}">${name}</card>\r\n`;
+    }
+
+    xmlFile += '</section>\r\n';
+
+    // If the pack has no identity card, we add a neutral draft identity so that NetrunnerDB
+    // does not automatically fill in Noise or ETF instead when importing the deck.
+    let hasIdentity = false;
+    for (const card of this.mCards.mItems) {
+      if (card.hasType(CardType.IDENTITY)) {
+        hasIdentity = true;
+        break;
+      }
+    }
+
+    if (!hasIdentity) {
+      xmlFile += '<section name="Neutral Identity">\r\n';
+      if (this.mSide == Side.CORP) {
+        xmlFile += '<card qty="1" id="bc0f047c-01b1-427f-a439-d451eda00005">The Shadow: Pulling the Strings</card>\r\n';
+      } else {
+        xmlFile += '<card qty="1" id="bc0f047c-01b1-427f-a439-d451eda00006">The Masque: Cyber General</card>\r\n';
+      }
+      xmlFile += '</section>\r\n';
+    }
+
+    // Footer
+    xmlFile += '</deck>\r\n';
+
+    return xmlFile;
   }
 
 };
