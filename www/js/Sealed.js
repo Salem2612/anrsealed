@@ -104,7 +104,7 @@ Sealed.prototype = {
             // Generate the Sealed Pack File sorted Alphabetically
             var textFile = sealedPack.generateTextFileSortedByAlphabeticalOrder(locale);
             // Add the Text File to the ZIP file
-            var path = "Sorted by Alphabetical order (Import into NetrunnerDB or Jinteki.net)/" + locale + "/" + fileName;
+            var path = "Sorted by Alphabetical order (Import into Jinteki.net)/" + locale + "/" + fileName;
             zip.file(path, textFile);
             zip.file("Sorted by Player/" + player.mName + "/" + path, textFile);
 
@@ -128,6 +128,13 @@ Sealed.prototype = {
             var path = "Sorted by Data Pack/" + locale + "/" + fileName;
             zip.file(path, textFile);
             zip.file("Sorted by Player/" + player.mName + "/" + path, textFile);
+
+            // Generate the OCTGN XML file for importing into NetrunnerDB
+            var xmlFile = sealedPack.generateXmlFileOctgn();
+            // Add the XML File to the ZIP file
+            var path = "OCTGN Format (Import into NetrunnerDB)/" + fileName.replace(/\.txt$/, ".o8d");
+            zip.file(path, xmlFile);
+            zip.file("Sorted by Player/" + player.mName + "/" + path, xmlFile);
           }
         }
       }
