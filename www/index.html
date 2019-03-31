@@ -50,7 +50,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v3.0.2</h4>
+            <h4 class="modal-title"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v3.1.0</h4>
           </div>
           <div class="modal-body">
             <div class="row">
@@ -94,8 +94,17 @@
                 <div class="panel-group" id="accordionChangeLog" role="tablist" aria-multiselectable="true">
 
                   <div class="panel">
+                    <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog" href="#changeLogCollapse16" aria-expanded="true" aria-controls="changeLogCollapse16">[31 Mar 2019] v3.1 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
+                    <div id="changeLogCollapse16" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                      <ul>
+                        <li>Add Downfall cards.</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="panel">
                     <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog" href="#changeLogCollapse15" aria-expanded="true" aria-controls="changeLogCollapse15">[31 Jul 2018] v3.0 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
-                    <div id="changeLogCollapse15" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div id="changeLogCollapse15" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                       <ul>
                         <li>Add Magnum Opus cards.</li>
                         <li>Add Deck generation : Generate a Sealed Deck instead of a Sealed Pack. Play without building !</li>
@@ -358,7 +367,7 @@
             </ul>
 
             <h4><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Algorithm</h4>
-            <p>All cards of a Sealed Pack are picked randomly by completing <b><a href="https://github.com/Salem2612/anrsealed/blob/master/www/json/v3.0.2/constraints.json">constraints</a></b>. These constraints are given for the 45 cards format. For the 30 cards format, the constraints are 60% of the 45 cards format.</p>
+            <p>All cards of a Sealed Pack are picked randomly by completing <b><a href="https://github.com/Salem2612/anrsealed/blob/master/www/json/v3.1.0/constraints.json">constraints</a></b>. These constraints are given for the 45 cards format. For the 30 cards format, the constraints are 60% of the 45 cards format.</p>
             </ul>
 
             <h4><span class="glyphicon glyphicon-list" aria-hidden="true"></span> List of Cards</h4>
@@ -552,7 +561,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#" data-toggle="modal" data-target="#modalHelp"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Help</a></li>
-            <li><a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v3.0</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v3.1</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div>
@@ -595,7 +604,7 @@
             <!-- Breaking News -->
             <h4><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> Breaking News</h4>
             <ul>
-              <li><b>[26 Nov 2018]</b> The version <b><a href="#" data-toggle="modal" data-target="#modalChanges">3.0</a></b> is now available.</li>
+              <li><b>[31 Mar 2018]</b> The version <b><a href="#" data-toggle="modal" data-target="#modalChanges">3.1</a></b> is now available.</li>
               <li><span class="glyphicon glyphicon-apple" aria-hidden="true"></span> Download doesn't work on <b>Safari</b>, please use <b>Chrome</b>.</li>
             </ul> <!-- Breaking News -->
 
@@ -776,11 +785,11 @@
                       <h4 style="margin-top:0px"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Core Set</h4>
                       <div class="row">
                         <!-- Image -->
-                        <div class="col-xs-7">
+                        <div class="col-xs-6">
                           <img src="images/Core Set.png" alt="" class="img-responsive img-rounded" />
                         </div> <!-- /.Image -->
                         <!-- Radio -->
-                        <div class="col-xs-5" style="padding:0px">
+                        <div class="col-xs-6" style="padding:0px">
                           <div class="form-group">
                             <div class="input-group" id="text_nb_core_set">
                               <div class="radio">
@@ -806,11 +815,11 @@
                       <h4 style="margin-top:0px"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Revised Core Set</h4>
                       <div class="row">
                         <!-- Image -->
-                        <div class="col-xs-7">
+                        <div class="col-xs-6">
                           <img src="images/Revised Core Set.png" alt="" class="img-responsive img-rounded" />
                         </div> <!-- /.Image -->
                         <!-- Radio -->
-                        <div class="col-xs-5" style="padding:0px">
+                        <div class="col-xs-6" style="padding:0px">
                           <div class="form-group">
                             <div class="input-group" id="text_nb_revised_core_set">
                               <div class="radio">
@@ -832,7 +841,7 @@
                     </div>  <!-- ./Revised Core Set -->
 
                     <!-- Deluxes -->
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                       <h4 style="margin-top:0px"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Deluxe Expansions</h4>
                       <div class="row">
                         <!-- Image -->
@@ -851,6 +860,7 @@
                             <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_deluxes" id="checkbox_data_and_destiny" checked>Data and Destiny</label></div>
                             <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_deluxes" id="checkbox_terminal_directive" checked>Terminal Directive</label></div>
                             <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_deluxes" id="checkbox_reign_and_reverie" checked>Reign and Reverie</label></div>
+							<div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_deluxes" id="checkbox_magnum_opus_1" checked>Magnum Opus</label></div>
                           </div>
                         </div>  <!-- /.Check -->
                       </div>
@@ -1080,21 +1090,21 @@
                       </div>
                     </div>  <!-- ./Kitara -->
 
-                    <!-- Magnum Opus -->
+                    <!-- Ashes -->
                     <div class="col-sm-4">
                       <div class="row">
                         <!-- Image -->
                         <div class="col-xs-5">
-                          <img src="images/23 Magnum Opus.png" alt="" class="img-responsive img-rounded" />
+                          <img src="images/26 Ashes.png" alt="" class="img-responsive img-rounded" />
                         </div> <!-- /.Image -->
                         <!-- Check -->
                         <div class="col-xs-7" style="padding:0px">
                           <div class="form-group" style="margin-bottom:0px">
                             <div class="checkbox" style="margin:0px">
-                              <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_magnum_opus" checked><strong>Magnum Opus</strong></label>
+                              <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_ashes" checked><strong>Ashes</strong></label>
                             </div>
                             <div class="input-group">
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_magnum_opus" id="checkbox_magnum_opus_1" checked>Magnum Opus</label></div>
+                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_ashes" id="checkbox_downfall" checked>Downfall</label></div>
                             </div>
                           </div>
                         </div>  <!-- /.Check -->
@@ -1117,10 +1127,7 @@
                           </div>
                         </div>
                       </div>  <!-- ./Buttons Check/Uncheck all -->
-
-                    </div>  <!-- ./Magnum Opus -->
-
-
+                    </div>  <!-- ./Ashes -->
 
                   </div>  <!-- ./Cycle3 -->
 
@@ -1166,7 +1173,7 @@
       $(function() {
 
         // Global variables
-        var mView = new View(['cards', 'constraints', 'cycles', 'sets'], '3.0', '2');
+        var mView = new View(['cards', 'constraints', 'cycles', 'sets'], '3.1', '0');
 
         /**
           *
