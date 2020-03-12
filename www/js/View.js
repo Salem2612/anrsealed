@@ -205,7 +205,8 @@ View.prototype = {
       {"cycleNo" : 21,  "setNo" : 6, "nbSets" : $('#checkbox_kampala_ascendent').is(':checked') ? 1 : 0},
       {"cycleNo" : 22,  "setNo" : 1, "nbSets" : $('#checkbox_reign_and_reverie').is(':checked') ? 1 : 0},
       {"cycleNo" : 23,  "setNo" : 1, "nbSets" : $('#checkbox_magnum_opus_1').is(':checked') ? 1 : 0},
-      {"cycleNo" : 26,  "setNo" : 1, "nbSets" : $('#checkbox_downfall').is(':checked') ? 1 : 0}
+      {"cycleNo" : 26,  "setNo" : 1, "nbSets" : $('#checkbox_downfall').is(':checked') ? 1 : 0},
+      {"cycleNo" : 26,  "setNo" : 2, "nbSets" : $('#checkbox_uprising').is(':checked') ? 1 : 0}
     ];
 
     //

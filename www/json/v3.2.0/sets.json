@@ -56,4 +56,5 @@
 {"cycleNo":21, "setNo":6, "nameEn":"Kampala Ascendent", "nameFr":"Kampala Ascendent", "type":"DATA_PACK"},
 {"cycleNo":22, "setNo":1, "nameEn":"Reign and Reverie", "nameFr":"Reign and Reverie", "type":"DELUXE"},
 {"cycleNo":23, "setNo":1, "nameEn":"Magnum Opus", "nameFr":"Magnum Opus", "type":"DELUXE"},
-{"cycleNo":26, "setNo":1, "nameEn":"Downfall", "nameFr":"Downfall", "type":"DATA_PACK"}]
+{"cycleNo":26, "setNo":1, "nameEn":"Downfall", "nameFr":"Downfall", "type":"DATA_PACK"},
+{"cycleNo":26, "setNo":2, "nameEn":"Uprising", "nameFr":"Uprising", "type":"DATA_PACK"}]
