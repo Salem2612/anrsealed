@@ -33,7 +33,6 @@ Database.prototype = {
       //  ! Share and ANRSealed : Boost to the maximum available number of copies
       card.mNbMaxCopiesPerPlayer =  (isShared && (type == CardPool.TYPE_ANRSEALED) && (card.mNbCopiesANRSealed > 0)) ? card.mNbAvailableCopies :
                                     (type == CardPool.TYPE_ANRSEALED) ? card.mNbCopiesANRSealed :
-                                    (type == CardPool.TYPE_STIMHACK) ? card.mNbCopiesStimhack :
                                     card.mNbAvailableCopies;
       // Limit the maximum number of copies per player to 3
       card.mNbMaxCopiesPerPlayer = Math.min(card.mNbMaxCopiesPerPlayer, card.mNbMaxCopiesPerDeck);

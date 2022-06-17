@@ -57,4 +57,8 @@
 {"cycleNo":22, "setNo":1, "nameEn":"Reign and Reverie", "nameFr":"Reign and Reverie", "type":"DELUXE"},
 {"cycleNo":23, "setNo":1, "nameEn":"Magnum Opus", "nameFr":"Magnum Opus", "type":"DELUXE"},
 {"cycleNo":26, "setNo":1, "nameEn":"Downfall", "nameFr":"Downfall", "type":"DATA_PACK"},
-{"cycleNo":26, "setNo":2, "nameEn":"Uprising", "nameFr":"Uprising", "type":"DATA_PACK"}]
+{"cycleNo":26, "setNo":2, "nameEn":"Uprising", "nameFr":"Uprising", "type":"DATA_PACK"},
+{"cycleNo":29, "setNo":1, "nameEn":"Salvaged Memories", "nameFr":"Salvaged Memories", "type":"DELUXE"},
+{"cycleNo":30, "setNo":1, "nameEn":"System Gateway", "nameFr":"System Gateway", "type":"DELUXE"},
+{"cycleNo":31, "setNo":1, "nameEn":"System Update 2021", "nameFr":"System Update 2021", "type":"DELUXE"},
+{"cycleNo":32, "setNo":1, "nameEn":"Midnight Sun Booster Pack", "nameFr":"Midnight Sun Booster Pack", "type":"DATA_PACK"}]

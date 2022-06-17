@@ -135,7 +135,6 @@ View.prototype = {
 
     // Retrieve the cardpool choice from the view
     var cardpoolType  = $('#radio_cardpool_anrsealed').is(':checked') ? CardPool.TYPE_ANRSEALED :
-                        $('#radio_cardpool_stimhack').is(':checked') ? CardPool.TYPE_STIMHACK :
                         CardPool.TYPE_ALL_CARDS;
 
     // Retrieve the available sets of the view
@@ -204,9 +203,12 @@ View.prototype = {
       {"cycleNo" : 21,  "setNo" : 5, "nbSets" : $('#checkbox_whispers_in_nalubaale').is(':checked') ? 1 : 0},
       {"cycleNo" : 21,  "setNo" : 6, "nbSets" : $('#checkbox_kampala_ascendent').is(':checked') ? 1 : 0},
       {"cycleNo" : 22,  "setNo" : 1, "nbSets" : $('#checkbox_reign_and_reverie').is(':checked') ? 1 : 0},
-      {"cycleNo" : 23,  "setNo" : 1, "nbSets" : $('#checkbox_magnum_opus_1').is(':checked') ? 1 : 0},
+      {"cycleNo" : 23,  "setNo" : 1, "nbSets" : $('#checkbox_magnum_opus').is(':checked') ? 1 : 0},
       {"cycleNo" : 26,  "setNo" : 1, "nbSets" : $('#checkbox_downfall').is(':checked') ? 1 : 0},
-      {"cycleNo" : 26,  "setNo" : 2, "nbSets" : $('#checkbox_uprising').is(':checked') ? 1 : 0}
+      {"cycleNo" : 29,  "setNo" : 1, "nbSets" : $('#checkbox_salvaged_memories').is(':checked') ? 1 : 0},
+      {"cycleNo" : 30,  "setNo" : 1, "nbSets" : $('#checkbox_system_gateway').is(':checked') ? 1 : 0},
+      {"cycleNo" : 31,  "setNo" : 1, "nbSets" : $('#checkbox_system_update_2021').is(':checked') ? 1 : 0},
+      {"cycleNo" : 32,  "setNo" : 1, "nbSets" : $('#checkbox_midnight_sun_booster_pack').is(':checked') ? 1 : 0}
     ];
 
     //

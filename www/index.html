@@ -50,7 +50,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v3.2.0</h4>
+            <h4 class="modal-title"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v3.3.0</h4>
           </div>
           <div class="modal-body">
             <div class="row">
@@ -94,8 +94,20 @@
                 <div class="panel-group" id="accordionChangeLog" role="tablist" aria-multiselectable="true">
 
                   <div class="panel">
+                    <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog" href="#changeLogCollapse18" aria-expanded="true" aria-controls="changeLogCollapse18">[18 Jun 2022] v3.3 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
+                    <div id="changeLogCollapse18" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                      <ul>
+                        <li>Add Salvaged Memories cards.</li>
+                        <li>Add System Gateway cards.</li>
+                        <li>Add System Updates 2021 cards.</li>
+                        <li>Add Midnight Sun Booster Pack cards.</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="panel">
                     <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog" href="#changeLogCollapse17" aria-expanded="true" aria-controls="changeLogCollapse17">[12 Mar 2020] v3.2 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
-                    <div id="changeLogCollapse17" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div id="changeLogCollapse17" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                       <ul>
                         <li>Add Uprising cards.</li>
                       </ul>
@@ -376,7 +388,7 @@
             </ul>
 
             <h4><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Algorithm</h4>
-            <p>All cards of a Sealed Pack are picked randomly by completing <b><a href="https://github.com/Salem2612/anrsealed/blob/master/www/json/v3.2.0/constraints.json">constraints</a></b>. These constraints are given for the 45 cards format. For the 30 cards format, the constraints are 60% of the 45 cards format.</p>
+            <p>All cards of a Sealed Pack are picked randomly by completing <b><a href="https://github.com/Salem2612/anrsealed/blob/master/www/json/v3.3.0/constraints.json">constraints</a></b>. These constraints are given for the 45 cards format. For the 30 cards format, the constraints are 60% of the 45 cards format.</p>
             </ul>
 
             <h4><span class="glyphicon glyphicon-list" aria-hidden="true"></span> List of Cards</h4>
@@ -570,7 +582,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#" data-toggle="modal" data-target="#modalHelp"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Help</a></li>
-            <li><a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v3.2</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v3.3</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div>
@@ -613,7 +625,7 @@
             <!-- Breaking News -->
             <h4><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> Breaking News</h4>
             <ul>
-              <li><b>[12 Mar 2020]</b> The version <b><a href="#" data-toggle="modal" data-target="#modalChanges">3.2</a></b> is now available.</li>
+              <li><b>[18 Jun 2020]</b> The version <b><a href="#" data-toggle="modal" data-target="#modalChanges">3.3</a></b> is now available.</li>
               <li><span class="glyphicon glyphicon-apple" aria-hidden="true"></span> Download doesn't work on <b>Safari</b>, please use <b>Chrome</b>.</li>
             </ul> <!-- Breaking News -->
 
@@ -755,9 +767,6 @@
                           <label data-toggle="tooltip" data-placement="bottom" title="Use the cards selected by anrsealed."><input type="radio" name="optradio_cardpool" id="radio_cardpool_anrsealed" checked><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> anrsealed</label>
                         </div>
                         <div class="radio">
-                          <label data-toggle="tooltip" data-placement="bottom" title="Use the cards selected by Stimhack."><input type="radio" name="optradio_cardpool" id="radio_cardpool_stimhack"><a href="http://forum.stimhack.com/t/stimhack-draft-cube-current-lists-updated-for-escalation/955" target="_blank"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Stimhack Cube</a></label>
-                        </div>
-                        <div class="radio">
                           <label data-toggle="tooltip" data-placement="bottom" title="Use all the cards (Recommended if you share a small cardpool)."><input type="radio" name="optradio_cardpool"  id="radio_cardpool_all">All cards</label>
                         </div>
                       </div>
@@ -790,28 +799,28 @@
                   <div class="row">
 
                     <!-- Core Set -->
-                    <div class="col-sm-4">
+                    <div class="col-sm-2">
                       <h4 style="margin-top:0px"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Core Set</h4>
                       <div class="row">
                         <!-- Image -->
-                        <div class="col-xs-6">
+                        <div class="col-xs-9">
                           <img src="images/Core Set.png" alt="" class="img-responsive img-rounded" />
                         </div> <!-- /.Image -->
                         <!-- Radio -->
-                        <div class="col-xs-6" style="padding:0px">
+                        <div class="col-xs-3" style="padding:0px">
                           <div class="form-group">
                             <div class="input-group" id="text_nb_core_set">
                               <div class="radio">
-                                <label><input type="radio" name="optradio_nb_core_set" id="radio_nb_core_set_0">0 core set</label>
+                                <label><input type="radio" name="optradio_nb_core_set" id="radio_nb_core_set_0">0</label>
                               </div>
                               <div class="radio">
-                                <label><input type="radio" name="optradio_nb_core_set" id="radio_nb_core_set_1">1 core set</label>
+                                <label><input type="radio" name="optradio_nb_core_set" id="radio_nb_core_set_1">1</label>
                               </div>
                               <div class="radio">
-                                <label><input type="radio" name="optradio_nb_core_set" id="radio_nb_core_set_2">2 core sets</label>
+                                <label><input type="radio" name="optradio_nb_core_set" id="radio_nb_core_set_2">2</label>
                               </div>
                               <div class="radio">
-                                <label><input type="radio" name="optradio_nb_core_set" id="radio_nb_core_set_3" checked>3 core sets</label>
+                                <label><input type="radio" name="optradio_nb_core_set" id="radio_nb_core_set_3" checked>3</label>
                               </div>
                             </div>
                           </div>
@@ -820,28 +829,28 @@
                     </div>  <!-- ./Core Set -->
 
                     <!-- Revised Core Set -->
-                    <div class="col-sm-4">
-                      <h4 style="margin-top:0px"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Revised Core Set</h4>
+                    <div class="col-sm-2">
+                      <h4 style="margin-top:0px"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Revised Core</h4>
                       <div class="row">
                         <!-- Image -->
-                        <div class="col-xs-6">
+                        <div class="col-xs-9">
                           <img src="images/Revised Core Set.png" alt="" class="img-responsive img-rounded" />
                         </div> <!-- /.Image -->
                         <!-- Radio -->
-                        <div class="col-xs-6" style="padding:0px">
+                        <div class="col-xs-3" style="padding:0px">
                           <div class="form-group">
                             <div class="input-group" id="text_nb_revised_core_set">
                               <div class="radio">
-                                <label><input type="radio" name="optradio_nb_revised_core_set" id="radio_nb_revised_core_set_0" checked>0 core set</label>
+                                <label><input type="radio" name="optradio_nb_revised_core_set" id="radio_nb_revised_core_set_0" checked>0</label>
                               </div>
                               <div class="radio">
-                                <label><input type="radio" name="optradio_nb_revised_core_set" id="radio_nb_revised_core_set_1">1 core set</label>
+                                <label><input type="radio" name="optradio_nb_revised_core_set" id="radio_nb_revised_core_set_1">1</label>
                               </div>
                               <div class="radio">
-                                <label><input type="radio" name="optradio_nb_revised_core_set" id="radio_nb_revised_core_set_2">2 core sets</label>
+                                <label><input type="radio" name="optradio_nb_revised_core_set" id="radio_nb_revised_core_set_2">2</label>
                               </div>
                               <div class="radio">
-                                <label><input type="radio" name="optradio_nb_revised_core_set" id="radio_nb_revised_core_set_3">3 core sets</label>
+                                <label><input type="radio" name="optradio_nb_revised_core_set" id="radio_nb_revised_core_set_3">3</label>
                               </div>
                             </div>
                           </div>
@@ -849,9 +858,32 @@
                       </div>
                     </div>  <!-- ./Revised Core Set -->
 
+                    <!-- NISEI -->
+                    <div class="col-sm-4">
+                      <h4 style="margin-top:0px"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> NISEI</h4>
+                      <div class="row">
+                        <!-- Image -->
+                        <div class="col-xs-5">
+                          <img src="images/nisei.png" alt="" class="img-responsive img-rounded" />
+                        </div> <!-- /.Image -->
+                        <!-- Check -->
+                        <div class="col-xs-7" style="padding:0px">
+                          <div class="checkbox" style="margin:0px">
+                            <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_nisei" checked><strong>NISEI</strong></label>
+                          </div>
+                          <div class="input-group">
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_nisei" id="checkbox_magnum_opus" checked>Magnum Opus</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_nisei" id="checkbox_salvaged_memories" checked>Salvaged Memories</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_nisei" id="checkbox_system_gateway" checked>System Gateway</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_nisei" id="checkbox_system_update_2021" checked>System Update 2021</label></div>
+                          </div>
+                        </div>  <!-- /.Check -->
+                      </div>
+                    </div>  <!-- ./NISEI -->
+
                     <!-- Deluxes -->
-                    <div class="col-sm-3">
-                      <h4 style="margin-top:0px"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Deluxe Expansions</h4>
+                    <div class="col-sm-4">
+                      <h4 style="margin-top:0px"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Deluxes</h4>
                       <div class="row">
                         <!-- Image -->
                         <div class="col-xs-5">
@@ -860,7 +892,7 @@
                         <!-- Check -->
                         <div class="col-xs-7" style="padding:0px">
                           <div class="checkbox" style="margin:0px">
-                            <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_deluxes" checked><strong>Deluxe Expansions</strong></label>
+                            <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_deluxes" checked><strong>Deluxes</strong></label>
                           </div>
                           <div class="input-group">
                             <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_deluxes" id="checkbox_creation_and_control" checked>Creation and Control</label></div>
@@ -869,7 +901,6 @@
                             <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_deluxes" id="checkbox_data_and_destiny" checked>Data and Destiny</label></div>
                             <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_deluxes" id="checkbox_terminal_directive" checked>Terminal Directive</label></div>
                             <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_deluxes" id="checkbox_reign_and_reverie" checked>Reign and Reverie</label></div>
-							<div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_deluxes" id="checkbox_magnum_opus_1" checked>Magnum Opus</label></div>
                           </div>
                         </div>  <!-- /.Check -->
                       </div>
@@ -1099,8 +1130,9 @@
                       </div>
                     </div>  <!-- ./Kitara -->
 
-                    <!-- Ashes -->
+                    <!-- Bottom right -->
                     <div class="col-sm-4">
+                      <!-- Ashes -->
                       <div class="row">
                         <!-- Image -->
                         <div class="col-xs-5">
@@ -1118,7 +1150,32 @@
                             </div>
                           </div>
                         </div>  <!-- /.Check -->
-                      </div>
+                      </div> <!-- ./Ashes -->
+
+                      <!-- Separator -->
+                      <div class="row">
+                        <div class="form-group">
+                        </div>
+                      </div> <!-- ./Separator -->
+
+                      <!-- Borealis -->
+                      <div class="row">
+                        <!-- Image -->
+                        <div class="col-xs-5">
+                          <img src="images/borealis.png" alt="" class="img-responsive img-rounded" />
+                        </div> <!-- /.Image -->
+                        <!-- Check -->
+                        <div class="col-xs-7" style="padding:0px">
+                          <div class="form-group" style="margin-bottom:0px">
+                            <div class="checkbox" style="margin:0px">
+                              <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_borealis" checked><strong>Borealis</strong></label>
+                            </div>
+                            <div class="input-group">
+                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_borealis" id="checkbox_midnight_sun_booster_pack" checked>Midnight Sun Booster Pack</label></div>
+                            </div>
+                          </div>
+                        </div>  <!-- /.Check -->
+                      </div> <!-- ./Borealis -->
 
                       <!-- Separator -->
                       <div class="row">
@@ -1137,7 +1194,7 @@
                           </div>
                         </div>
                       </div>  <!-- ./Buttons Check/Uncheck all -->
-                    </div>  <!-- ./Ashes -->
+                    </div>  <!-- ./Bottom right -->
 
                   </div>  <!-- ./Cycle3 -->
 
@@ -1183,7 +1240,7 @@
       $(function() {
 
         // Global variables
-        var mView = new View(['cards', 'constraints', 'cycles', 'sets'], '3.2', '0');
+        var mView = new View(['cards', 'constraints', 'cycles', 'sets'], '3.3', '0');
 
         /**
           *
@@ -1261,6 +1318,7 @@
           *
           */
         $('#checkbox_deluxes').change(function() {checkAllItems(this.id, "checkbox_cycle_item_deluxes");});
+        $('#checkbox_nisei').change(function() {checkAllItems(this.id, "checkbox_cycle_item_nisei");});
         $('#checkbox_genesis').change(function() {checkAllItems(this.id, "checkbox_cycle_item_genesis");});
         $('#checkbox_spin').change(function() {checkAllItems(this.id, "checkbox_cycle_item_spin");});
         $('#checkbox_lunar').change(function() {checkAllItems(this.id, "checkbox_cycle_item_lunar");});
@@ -1270,11 +1328,13 @@
         $('#checkbox_red_sand').change(function() {checkAllItems(this.id, "checkbox_cycle_item_red_sand");});
         $('#checkbox_kitara').change(function() {checkAllItems(this.id, "checkbox_cycle_item_kitara");});
         $('#checkbox_ashes').change(function() {checkAllItems(this.id, "checkbox_cycle_item_ashes");});
+        $('#checkbox_borealis').change(function() {checkAllItems(this.id, "checkbox_cycle_item_borealis");});
 
         /**
           *
           */
         $(':checkbox[value="checkbox_cycle_item_deluxes"]').change(function() {checkTitle("checkbox_deluxes", this.value);});
+        $(':checkbox[value="checkbox_cycle_item_nisei"]').change(function() {checkTitle("checkbox_nisei", this.value);});
         $(':checkbox[value="checkbox_cycle_item_genesis"]').change(function() {checkTitle("checkbox_genesis", this.value);});
         $(':checkbox[value="checkbox_cycle_item_spin"]').change(function() {checkTitle("checkbox_spin", this.value);});
         $(':checkbox[value="checkbox_cycle_item_lunar"]').change(function() {checkTitle("checkbox_lunar", this.value);});
@@ -1284,6 +1344,7 @@
         $(':checkbox[value="checkbox_cycle_item_red_sand"]').change(function() {checkTitle("checkbox_red_sand", this.value);});
         $(':checkbox[value="checkbox_cycle_item_kitara"]').change(function() {checkTitle("checkbox_kitara", this.value);});
         $(':checkbox[value="checkbox_cycle_item_ashes"]').change(function() {checkTitle("checkbox_ashes", this.value);});
+        $(':checkbox[value="checkbox_cycle_item_borealis"]').change(function() {checkTitle("checkbox_borealis", this.value);});
 
         /**
           * Handler of the button_generate_and_download on click event.

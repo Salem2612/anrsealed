@@ -54,5 +54,4 @@ CardPool.prototype = {
 
 // Enum CardPool Type
 CardPool.TYPE_ANRSEALED = "anrsealed";
-CardPool.TYPE_STIMHACK  = "Stimhack";
 CardPool.TYPE_ALL_CARDS = "All cards";

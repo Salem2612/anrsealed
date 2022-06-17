@@ -16,4 +16,8 @@
 {"cycleNo":21, "nameEn":"Kitara", "nameFr":"Kitara", "type":"DATA_PACKS"},
 {"cycleNo":22, "nameEn":"Reign and Reverie", "nameFr":"Reign and Reverie", "type":"DELUXE"},
 {"cycleNo":23, "nameEn":"Magnum Opus", "nameFr":"Magnum Opus", "type":"DELUXE"},
-{"cycleNo":26, "nameEn":"Ashes", "nameFr":"Ashes", "type":"DATA_PACKS"}]
+{"cycleNo":26, "nameEn":"Ashes", "nameFr":"Ashes", "type":"DATA_PACKS"},
+{"cycleNo":29, "nameEn":"Salvaged Memories", "nameFr":"Salvaged Memories", "type":"DELUXE"},
+{"cycleNo":30, "nameEn":"System Gateway", "nameFr":"System Gateway", "type":"DELUXE"},
+{"cycleNo":31, "nameEn":"System Update 2021", "nameFr":"System Update 2021", "type":"DELUXE"},
+{"cycleNo":32, "nameEn":"Borealis", "nameFr":"Borealis", "type":"DATA_PACKS"}]
