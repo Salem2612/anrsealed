@@ -8,11 +8,11 @@ console.log('Pack.js loaded');
 function Pack(cardPool, type) {
 
   // CONSTRUCTOR
-  this.mCardPool    = cardPool;       // Pool of available Cards to generate the Sealed Pack
-  this.mType        = type;           // Type of the Sealed Pack (STARTER or BOOSTER)
-  this.mSide        = cardPool.mSide; // Side of the Sealed Pack
+  this.mCardPool = cardPool;       // Pool of available Cards to generate the Sealed Pack
+  this.mType = type;           // Type of the Sealed Pack (STARTER or BOOSTER)
+  this.mSide = cardPool.mSide; // Side of the Sealed Pack
   this.mConstraints = (type == "STARTER") ? cardPool.mStarterConstraints.clone() : cardPool.mBoosterConstraints.clone();  // Constraints of the Sealed Pack
-  this.mCards       = new Cards([], cardPool.mDatabase.mSets);  // Cards in the Sealed Pack
+  this.mCards = new Cards([], cardPool.mDatabase.mSets);  // Cards in the Sealed Pack
 }
 
 Pack.prototype = {
@@ -20,7 +20,7 @@ Pack.prototype = {
   /**
     * Generate the Sealed Pack
     */
-	generate : function() {
+  generate: function () {
     var processingStatus = new ProcessingStatus();
 
     // Pick cards from the CardPool to meet all constraints
@@ -30,15 +30,13 @@ Pack.prototype = {
       anrsealedLogs.push(log);
 
       // Pick cards from the CardPool while the constraint is not met and there is still useful Cards in the CardPool to meet the constraint
-      while(constraint.isNotMet())
-      {
+      while (constraint.isNotMet()) {
         // Pick a random Card that meets the constraint
         var nbAvailableCopies_card = this.mCardPool.mCards.pickRandomCard(constraint, this.mConstraints);
         var nbAvailableCopies = nbAvailableCopies_card.nbAvailableCopies;
         var card = nbAvailableCopies_card.card;
         // Check if a card has been found
-        if (nbAvailableCopies > 0)
-        {
+        if (nbAvailableCopies > 0) {
           // Meet the constraints that match with the picked Card
           this.mConstraints.meet(card);
           // Put the picked Card in the SealedPool
@@ -47,8 +45,7 @@ Pack.prototype = {
           anrsealedLogs.push(log);
           // console.log(log); // Uncomment to debug
         }
-        else
-        {
+        else {
           // Stop generating if there is not enough cards to finish to meet the constraint
           processingStatus.process(ProcessingStatus.KO, "Pack for constraint " + constraint.getTextTypes() + " : " + constraint.mNbCurrent + " < [" + constraint.mNbMin + ";" + constraint.mNbMax + "]");
           break;
@@ -61,12 +58,12 @@ Pack.prototype = {
       processingStatus.process(ProcessingStatus.OK, "Pack");
     }
     return processingStatus.mValue;
-	},
+  },
 
   /**
     * Generate and return the Sealed Pack as Text
     */
-  generateTextFileSortedByCardType : function(locale) {
+  generateTextFileSortedByCardType: function (locale) {
     var textFile = "";
     // List the types to sort the Cards in the Text File
     var types = CardTypes[this.mSide];
@@ -111,7 +108,7 @@ Pack.prototype = {
   /**
     * Generate the Text File of the Sealed Pack sorted by alphabetical order
     */
-  generateTextFileSortedByAlphabeticalOrder : function(locale) {
+  generateTextFileSortedByAlphabeticalOrder: function (locale) {
     // Create the Text File of the Sealed Pack
     var textFile = "";
 
@@ -129,7 +126,7 @@ Pack.prototype = {
       // Add a new line between each letter
       if (iCard != 0) {
         // Retrieve the first letter of the previous Card
-        var firstLetterPrev = this.mCards.mItems[iCard-1].getName(locale).toLocaleLowerCase().charAt(0);
+        var firstLetterPrev = this.mCards.mItems[iCard - 1].getName(locale).toLocaleLowerCase().charAt(0);
         // Retrieve the first letter of the current Card
         var firstLetterCurrent = card.getName(locale).toLocaleLowerCase().charAt(0);
         // Compare the first letters of the 2 Cards
@@ -146,7 +143,7 @@ Pack.prototype = {
   /**
     * Generate the Text File of the Sealed Pack with all information of the cards
     */
-  generateTextFileFull : function(locale) {
+  generateTextFileFull: function (locale) {
     // Create the Text File of the Sealed Pack
     var textFile = "";
 
@@ -165,7 +162,7 @@ Pack.prototype = {
   /**
     * Generate the Text File of the Sealed Pack sorted by Faction then by Card Type
     */
-  generateTextFileSortedByFactionType : function(locale) {
+  generateTextFileSortedByFactionType: function (locale) {
     // Create the Text File of the Sealed Pack
     var textFile = "";
 
@@ -177,17 +174,14 @@ Pack.prototype = {
     for (iCard = 0; iCard < this.mCards.mItems.length; iCard++) {
       var card = this.mCards.mItems[iCard];
       // Add the Faction and Type title
-      if (iCard == 0)
-      {
+      if (iCard == 0) {
         // Always print the Faction and Type title for the first Card
         textFile += card.mFaction + " / " + card.findType(types) + "\r\n";
       }
-      else
-      {
-        prevCard = this.mCards.mItems[iCard-1];
+      else {
+        prevCard = this.mCards.mItems[iCard - 1];
         // Print the Faction and Type title if the faction or the Type are different
-        if ((prevCard.mFaction != card.mFaction) || (prevCard.findType(types) != card.findType(types)))
-        {
+        if ((prevCard.mFaction != card.mFaction) || (prevCard.findType(types) != card.findType(types))) {
           textFile += "\r\n" + card.mFaction + " / " + card.findType(types) + "\r\n";
         }
       }
@@ -200,7 +194,7 @@ Pack.prototype = {
   /**
     * Generate the Text File of the Sealed Pack sorted by Cycle then by Set
     */
-  generateTextFileSortedByCycleSet : function(locale) {
+  generateTextFileSortedByCycleSet: function (locale) {
     // Create the Text File of the Sealed Pack
     var textFile = "";
 
@@ -211,34 +205,27 @@ Pack.prototype = {
     for (iCard = 0; iCard < this.mCards.mItems.length; iCard++) {
       var card = this.mCards.mItems[iCard];
       // Add the Cycle and Set title
-      if (iCard == 0)
-      {
+      if (iCard == 0) {
         // Always print the Cycle and Set title for the first Card
         var cycleName = card.mSet.mCycle.getName(locale);
         var setName = card.mSet.getName(locale);
-        if (cycleName != setName)
-        {
+        if (cycleName != setName) {
           textFile += cycleName + " / " + setName + "\r\n";
         }
-        else
-        {
+        else {
           textFile += cycleName + "\r\n";
         }
       }
-      else
-      {
-        prevCard = this.mCards.mItems[iCard-1];
+      else {
+        prevCard = this.mCards.mItems[iCard - 1];
         // Print the Cycle and Set title if the sets are different
         var cycleName = card.mSet.mCycle.getName(locale);
         var setName = card.mSet.getName(locale);
-        if (prevCard.mSet.getName(locale) != setName)
-        {
-          if (cycleName != setName)
-          {
+        if (prevCard.mSet.getName(locale) != setName) {
+          if (cycleName != setName) {
             textFile += "\r\n" + cycleName + " / " + setName + "\r\n";
           }
-          else
-          {
+          else {
             textFile += "\r\n" + cycleName + "\r\n";
           }
         }
@@ -252,7 +239,7 @@ Pack.prototype = {
   /**
    * Generate the XML File of the Sealed Pack in OCTGN Format
    */
-  generateXmlFileOctgn : function(locale) {
+  generateXmlFileOctgn: function (locale) {
     let xmlFile = "";
 
     this.mCards.sortByCardId();

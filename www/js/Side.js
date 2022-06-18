@@ -1,4 +1,4 @@
 var Side = {
-  RUNNER  : "RUNNER",
-  CORP    : "CORP"
+  RUNNER: "RUNNER",
+  CORP: "CORP"
 };

@@ -20,7 +20,7 @@ ProcessingStatus.prototype = {
     *
     * return  Enum ProcessingStatus
     */
-  reset : function() {
+  reset: function () {
     this.mValue = ProcessingStatus.NOT_DONE;
     this.mDetail = ProcessingStatus.DETAIL.NOT_ENOUGH_CARDS;
   },
@@ -30,7 +30,7 @@ ProcessingStatus.prototype = {
     *
     * return  Enum ProcessingStatus
     */
-  process : function(newValue, log) {
+  process: function (newValue, log) {
     // Log the changing of the status
     if ((ProcessingStatus.KO == newValue) && (this.mValue != newValue)) {
       anrsealedLogs.push("ProcessingStatus.process() becomes KO in class " + log);
@@ -53,7 +53,7 @@ ProcessingStatus.prototype = {
     *
     * return  Enum ProcessingStatus
     */
-  checkNbPlayers : function(nbPlayers) {
+  checkNbPlayers: function (nbPlayers) {
     // Select the new value from its old value and the new value
     if (nbPlayers < 0) {
       // Not enough players

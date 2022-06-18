@@ -8,42 +8,42 @@ console.log('Card.js loaded');
 function Card(cardJSON, set) {
 
   // CONSTRUCTOR
-	this.mId                    = cardJSON.id;
-	this.mCycleNo               = cardJSON.cycleNo;
-	this.mSetNo                 = cardJSON.setNo;
-  this.mSet                   = set;
-	this.mCardNo                = cardJSON.cardNo;
-	this.mNameEn                = cardJSON.nameEn;
-	this.mNameFr                = cardJSON.nameFr;
-  this.mSide                  = cardJSON.side;
-  this.mFaction               = cardJSON.faction;
-  this.mTypes                 = cardJSON.types;
-	this.mNbOfficialCopies      = cardJSON.nbOfficialCopies;
-	this.mNbMaxCopiesPerDeck    = cardJSON.nbMaxCopiesPerDeck;
-	this.mNbCopiesANRSealed     = cardJSON.nbCopiesANRSealed;
-	this.mNbAvailableCopies     = 0;
-	this.mNbMaxCopiesPerPlayer  = 0;
-	this.mNbCopies              = 0;
+  this.mId = cardJSON.id;
+  this.mCycleNo = cardJSON.cycleNo;
+  this.mSetNo = cardJSON.setNo;
+  this.mSet = set;
+  this.mCardNo = cardJSON.cardNo;
+  this.mNameEn = cardJSON.nameEn;
+  this.mNameFr = cardJSON.nameFr;
+  this.mSide = cardJSON.side;
+  this.mFaction = cardJSON.faction;
+  this.mTypes = cardJSON.types;
+  this.mNbOfficialCopies = cardJSON.nbOfficialCopies;
+  this.mNbMaxCopiesPerDeck = cardJSON.nbMaxCopiesPerDeck;
+  this.mNbCopiesANRSealed = cardJSON.nbCopiesANRSealed;
+  this.mNbAvailableCopies = 0;
+  this.mNbMaxCopiesPerPlayer = 0;
+  this.mNbCopies = 0;
 
 }//end Card
 
 Card.prototype = {
 
-  clone : function() {
+  clone: function () {
     var clone = new Card(
       {
-        'id':this.mId,
-        'cycleNo':this.mCycleNo,
-        'setNo':this.mSetNo,
-        'cardNo':this.mCardNo,
-        'nameEn':this.mNameEn,
-        'nameFr':this.mNameFr,
-        'side':this.mSide,
-        'faction':this.mFaction,
-        'types':this.mTypes,
-        'nbOfficialCopies':this.mNbOfficialCopies,
-        'nbMaxCopiesPerDeck':this.mNbMaxCopiesPerDeck,
-        'nbCopiesANRSealed':this.mNbCopiesANRSealed
+        'id': this.mId,
+        'cycleNo': this.mCycleNo,
+        'setNo': this.mSetNo,
+        'cardNo': this.mCardNo,
+        'nameEn': this.mNameEn,
+        'nameFr': this.mNameFr,
+        'side': this.mSide,
+        'faction': this.mFaction,
+        'types': this.mTypes,
+        'nbOfficialCopies': this.mNbOfficialCopies,
+        'nbMaxCopiesPerDeck': this.mNbMaxCopiesPerDeck,
+        'nbCopiesANRSealed': this.mNbCopiesANRSealed
       },
       this.mSet);
     return clone;
@@ -52,7 +52,7 @@ Card.prototype = {
   /**
     * Check if the Card has the specified Type
     */
-  hasType : function(type) {
+  hasType: function (type) {
     var hasType = false;
     for (var cardType of this.mTypes) {
       if (cardType == type) {
@@ -66,7 +66,7 @@ Card.prototype = {
   /**
     * Find the Type of the Card among the specified Type
     */
-  findType : function(types) {
+  findType: function (types) {
     var foundType = "";
     for (var type of types) {
       if (this.hasType(type)) {
@@ -80,14 +80,14 @@ Card.prototype = {
   /**
     * Get the rarity of the Card
     */
-  getRarity : function() {
+  getRarity: function () {
     for (var cardType of this.mTypes) {
       switch (cardType) {
-        case CardType.FIXED : return CardType.FIXED;
-        case CardType.COMMON : return CardType.COMMON;
-        case CardType.UNCO : return CardType.UNCO;
-        case CardType.RARE : return CardType.RARE;
-        case CardType.BANNED : return CardType.BANNED;
+        case CardType.FIXED: return CardType.FIXED;
+        case CardType.COMMON: return CardType.COMMON;
+        case CardType.UNCO: return CardType.UNCO;
+        case CardType.RARE: return CardType.RARE;
+        case CardType.BANNED: return CardType.BANNED;
       }
     }
   },
@@ -95,12 +95,12 @@ Card.prototype = {
   /**
     * Get the types of the card as text. The types are delimited by commas.
     */
-  getTextTypes : function() {
+  getTextTypes: function () {
     var text = "";
     for (var iType = 0; iType < this.mTypes.length; iType++) {
       text += "[" + this.mTypes[iType] + "]";
       // Add a space after each Type, but not for the last Type
-      if (iType != this.mTypes.length-1) {
+      if (iType != this.mTypes.length - 1) {
         text += " ";
       }
     }
@@ -110,7 +110,7 @@ Card.prototype = {
   /**
     * Get the name of the Card
     */
-  getName : function(locale) {
+  getName: function (locale) {
     var name = this.mNameEn;  // Default name is in English
 
     // French Name
@@ -124,7 +124,7 @@ Card.prototype = {
   /**
     * Get the URL of the Card on NetrunnerDB
     */
-  getURL : function() {
+  getURL: function () {
     var url = "http://netrunnerdb.com/en/card/" + this.mId;
     return url;
   },
@@ -132,7 +132,7 @@ Card.prototype = {
   /**
     * Get the text of the Card
     */
-  getText : function(locale) {
+  getText: function (locale) {
     var text = this.mNbCopies + "x " + this.getName(locale) + "\r\n";
     return text;
   },
@@ -140,7 +140,7 @@ Card.prototype = {
   /**
     * Get the full text of the Card
     */
-  getFullText : function(locale) {
+  getFullText: function (locale) {
     var text = this.mNbCopies + "x " + this.getName(locale) + " (" + this.mSet.getCycleAndSetNames(locale) + ", " + this.mFaction + ") " + this.getTextTypes() + "\r\n";
     return text;
   }

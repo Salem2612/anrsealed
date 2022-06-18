@@ -26,7 +26,7 @@ Sets.prototype = {
   /**
     * Get the Set given by cycleNo and setNo
     */
-  getSet : function(cycleNo, setNo) {
+  getSet: function (cycleNo, setNo) {
     var set;
     // Search the Set and return it
     for (var iSet = 0; iSet < this.mItems.length; iSet++) {

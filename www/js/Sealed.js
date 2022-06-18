@@ -8,13 +8,13 @@ console.log('Sealed.js loaded');
 function Sealed(nbPlayers, cardPools, nbStarters, nbBoosters, useOneCardPool, version) {
 
   // CONSTRUCTOR
-	this.mNbPlayers       = nbPlayers;  // Number of Players
-  this.mCardPools       = cardPools;  // Available CardPools in the Sealed
-	this.mNbStarters      = nbStarters; // Number of Starters per player
-	this.mNbBoosters      = nbBoosters; // Number of Boosters per player
-  this.mUseOneCardPool  = useOneCardPool; // true : Use only one cardpool for all players. false : Use one cardpool per player
-  this.mPlayers         = []; // Players in the Sealed
-  this.mVersion         = version;
+  this.mNbPlayers = nbPlayers;  // Number of Players
+  this.mCardPools = cardPools;  // Available CardPools in the Sealed
+  this.mNbStarters = nbStarters; // Number of Starters per player
+  this.mNbBoosters = nbBoosters; // Number of Boosters per player
+  this.mUseOneCardPool = useOneCardPool; // true : Use only one cardpool for all players. false : Use one cardpool per player
+  this.mPlayers = []; // Players in the Sealed
+  this.mVersion = version;
 
 }//end Sealed
 
@@ -25,7 +25,7 @@ Sealed.prototype = {
     *
     * return  ProcessingStatus.mValue
     */
-  generate : function() {
+  generate: function () {
     var processingStatus = new ProcessingStatus();
 
     // Generate the Sealed Packs of all players
@@ -34,20 +34,18 @@ Sealed.prototype = {
       // Manage the cardpools
       var cardPools = {};
       for (var side in Side) {
-        if (this.mUseOneCardPool)
-        {
+        if (this.mUseOneCardPool) {
           // Use the same cards
           cardPools[side] = this.mCardPools[side].fill();
         }
-        else
-        {
-        // Clone the cards
+        else {
+          // Clone the cards
           cardPools[side] = this.mCardPools[side].clone();
         }
       }
 
       // Create the current Player
-      this.mPlayers[iPlayer] = new Player(iPlayer+1, cardPools, this.mNbStarters, this.mNbBoosters);
+      this.mPlayers[iPlayer] = new Player(iPlayer + 1, cardPools, this.mNbStarters, this.mNbBoosters);
       // Generate the current Player
       processingStatus.process(this.mPlayers[iPlayer].generate(), "Sealed");
     }
@@ -63,13 +61,12 @@ Sealed.prototype = {
     *
     * return  void
     */
-  download : function() {
+  download: function () {
     var zip = new JSZip();
 
     // Generate and zip the log file
     var textFile = "";
-    for (var iLog in anrsealedLogs)
-    {
+    for (var iLog in anrsealedLogs) {
       textFile += anrsealedLogs[iLog] + "\r\n";
     }
     zip.file("log.txt", textFile);
@@ -77,22 +74,19 @@ Sealed.prototype = {
     // Generate and Zip the Players files
     for (var iPlayer = 0; iPlayer < this.mNbPlayers; iPlayer++) {
       var player = this.mPlayers[iPlayer];
-      for (var locale of ["EN", "FR"])
-      {
-        for (var side in Side)
-        {
-          for (var iPack = 0; iPack < (this.mNbStarters + this.mNbBoosters); iPack++)
-          {
+      for (var locale of ["EN", "FR"]) {
+        for (var side in Side) {
+          for (var iPack = 0; iPack < (this.mNbStarters + this.mNbBoosters); iPack++) {
             // Retrieve the Pack and its names
             var sealedPack = player.mSealedPacks[side][iPack];
             var sideName = side[0].toUpperCase() + side.substr(1).toLowerCase();
             var packName = ((this.mNbStarters > 0) && (iPack < this.mNbStarters)) ? ("Starter") : ("Booster " + (iPack - this.mNbStarters + 1));
             var fileName = "Sealed Pack - " + player.mName + " - " + sideName + " - " + packName + ".txt";
-            var sortedByCardTypeFileName = "Sealed Pack - " + player.mName + " - Sorted by Card Type - " + locale + " - " + sideName + " - " + packName +".txt";
-            var alphabeticalFileName = "Sealed Pack - " + player.mName + " - Sorted by Alphabetical order - " + locale + " - " + sideName + " - " + packName +".txt";
-            var fullInformationFileName = "Sealed Pack - " + player.mName + " - All Information - " + locale + " - " + sideName + " - " + packName +".txt";
-            var factionTypeFileName = "Sealed Pack - " + player.mName + " - Sorted by Faction then by Card Type - " + locale + " - " + sideName + " - " + packName +".txt";
-            var cycleSetFileName = "Sealed Pack - " + player.mName + " - Sorted by Data Pack - " + locale + " - " + sideName + " - " + packName +".txt";
+            var sortedByCardTypeFileName = "Sealed Pack - " + player.mName + " - Sorted by Card Type - " + locale + " - " + sideName + " - " + packName + ".txt";
+            var alphabeticalFileName = "Sealed Pack - " + player.mName + " - Sorted by Alphabetical order - " + locale + " - " + sideName + " - " + packName + ".txt";
+            var fullInformationFileName = "Sealed Pack - " + player.mName + " - All Information - " + locale + " - " + sideName + " - " + packName + ".txt";
+            var factionTypeFileName = "Sealed Pack - " + player.mName + " - Sorted by Faction then by Card Type - " + locale + " - " + sideName + " - " + packName + ".txt";
+            var cycleSetFileName = "Sealed Pack - " + player.mName + " - Sorted by Data Pack - " + locale + " - " + sideName + " - " + packName + ".txt";
 
             // Generate the file sorted by card type
             var textFile = sealedPack.generateTextFileSortedByCardType(locale);
@@ -141,7 +135,7 @@ Sealed.prototype = {
     }
 
     // Generate ZIP
-    var content = zip.generate({type:"blob"});
+    var content = zip.generate({ type: "blob" });
     // Download ZIP
     var zipName = "Sealed Packs v" + this.mVersion + ".zip";
     saveAs(content, zipName);

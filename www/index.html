@@ -1,455 +1,559 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="anrsealed generates the Sealed Packs for your Android: Netrunner Sealed party games">
-    <meta name="author" content="Samuel BUGGIA">
-    <meta http-equiv="cache-control" content="no-cache, must-revalidate, post-check=0, pre-check=0">
-    <meta http-equiv="expires" content="Sat, 31 Oct 2014 00:00:00 GMT">
-    <meta http-equiv="pragma" content="no-cache">
-    <link rel="icon" href="images/favicon.png">
 
-    <title>anrsealed</title>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description"
+    content="anrsealed generates the Sealed Packs for your Android: Netrunner Sealed party games">
+  <meta name="author" content="Samuel BUGGIA">
+  <meta http-equiv="cache-control" content="no-cache, must-revalidate, post-check=0, pre-check=0">
+  <meta http-equiv="expires" content="Sat, 31 Oct 2014 00:00:00 GMT">
+  <meta http-equiv="pragma" content="no-cache">
+  <link rel="icon" href="images/favicon.png">
 
-    <!-- Bootstrap core CSS -->
-    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>anrsealed</title>
 
-    <!-- Custom styles for this template -->
-    <link href="css/styles.css" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="assets/js/ie-emulation-modes-warning.js"></script>
+  <!-- Custom styles for this template -->
+  <link href="css/styles.css" rel="stylesheet">
 
-    <!-- Google Analytics -->
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+  <!--[if lt IE 9]><script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+  <script src="assets/js/ie-emulation-modes-warning.js"></script>
 
-      ga('create', 'UA-67432837-1', 'auto');
-      ga('send', 'pageview');
+  <!-- Google Analytics -->
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-    </script>
+    ga('create', 'UA-67432837-1', 'auto');
+    ga('send', 'pageview');
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
+  </script>
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
+</head>
 
-  <body>
+<body>
 
-    <div class="modal fade"  id="modalChanges" tabindex="-1" role="dialog" aria-labelledby="modalChangesLabel">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v3.3.0</h4>
-          </div>
-          <div class="modal-body">
-            <div class="row">
-              <!-- Left -->
-              <div class="col-md-6 col-sm-12">
-                <h4><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Authors</h4>
-                <p>
-                  <b>anrsealed</b> has been created by <a href="mailto:qasu.contact@gmail.com"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Samuel Buggia</a> and <a href="https://ludiworld.com" target="_blank"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Ludovic Schmidt</a>. Contact us if you find a bug or if you have any question.
-                </p>
+  <div class="modal fade" id="modalChanges" tabindex="-1" role="dialog" aria-labelledby="modalChangesLabel">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v3.3.0</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <!-- Left -->
+            <div class="col-md-6 col-sm-12">
+              <h4><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Authors</h4>
+              <p>
+                <b>anrsealed</b> has been created by <a href="mailto:qasu.contact@gmail.com"><span
+                    class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Samuel Buggia</a> and <a
+                  href="https://ludiworld.com" target="_blank"><span class="glyphicon glyphicon-envelope"
+                    aria-hidden="true"></span> Ludovic Schmidt</a>. Contact us if you find a bug or if you have any
+                question.
+              </p>
 
-                <h4><span class="glyphicon glyphicon-cloud" aria-hidden="true"></span> Github</h4>
-                <p>
-                  The sources of <b>anrsealed</b> are available on <a href="https://github.com/Salem2612/anrsealed" target="_blank">Github</a>. Open an issue on Github for bug reporting.
-                </p>
+              <h4><span class="glyphicon glyphicon-cloud" aria-hidden="true"></span> Github</h4>
+              <p>
+                The sources of <b>anrsealed</b> are available on <a href="https://github.com/Salem2612/anrsealed"
+                  target="_blank">Github</a>. Open an issue on Github for bug reporting.
+              </p>
 
-                <h4><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Modules</h4>
-                <p>
-                  <b>anrsealed.com</b> uses the following modules:
-                  <ul>
-                    <li><a href="https://jquery.com/" target="_blank">JQuery</a></li>
-                    <li><a href="http://getbootstrap.com/" target="_blank">Bootstrap</a></li>
-                    <li><a href="http://glyphicons.com/" target="_blank">Glyphicons</a></li>
-                    <li><a href="https://github.com/janl/mustache.js" target="_blank">Mustache JS</a></li>
-                    <li><a href="https://stuk.github.io/jszip/" target="_blank">JSZip</a></li>
-                    <li><a href="https://github.com/eligrey/FileSaver.js/" target="_blank">FileSaver</a></li>
-                  </ul>
-                </p>
-
-                <h4><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Thanks</h4>
-                <p>
-                  <ul>
-                    <li><b>Mister Yo</b> for the french translation of the SanSan Cycle and Data and Destiny.</li>
-                    <li><b>The BBQ Team</b> for the french translation of Mumbad Cycle and Flashpoint Cycle.</li>
-                    <li>The <b>Run4Games community</b> for the comments about the selected cards and the algorithm.</li>
-                  </ul>
-                </p>
-              </div>  <!-- Left -->
-
-              <!-- Right -->
-              <div class="col-md-6 col-sm-12">
-                <div class="panel-group" id="accordionChangeLog" role="tablist" aria-multiselectable="true">
-
-                  <div class="panel">
-                    <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog" href="#changeLogCollapse18" aria-expanded="true" aria-controls="changeLogCollapse18">[18 Jun 2022] v3.3 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
-                    <div id="changeLogCollapse18" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                      <ul>
-                        <li>Add Salvaged Memories cards.</li>
-                        <li>Add System Gateway cards.</li>
-                        <li>Add System Updates 2021 cards.</li>
-                        <li>Add Midnight Sun Booster Pack cards.</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div class="panel">
-                    <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog" href="#changeLogCollapse17" aria-expanded="true" aria-controls="changeLogCollapse17">[12 Mar 2020] v3.2 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
-                    <div id="changeLogCollapse17" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                      <ul>
-                        <li>Add Uprising cards.</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div class="panel">
-                    <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog" href="#changeLogCollapse16" aria-expanded="true" aria-controls="changeLogCollapse16">[31 Mar 2019] v3.1 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
-                    <div id="changeLogCollapse16" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                      <ul>
-                        <li>Add Downfall cards.</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div class="panel">
-                    <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog" href="#changeLogCollapse15" aria-expanded="true" aria-controls="changeLogCollapse15">[31 Jul 2018] v3.0 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
-                    <div id="changeLogCollapse15" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                      <ul>
-                        <li>Add Magnum Opus cards.</li>
-                        <li>Add Deck generation : Generate a Sealed Deck instead of a Sealed Pack. Play without building !</li>
-                        <li>Add the option to choose the type of players. The N00bs use simple cards. Interesting for beginners.</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div class="panel">
-                    <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog" href="#changeLogCollapse14" aria-expanded="true" aria-controls="changeLogCollapse14">[31 Jul 2018] v2.13 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
-                    <div id="changeLogCollapse14" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                      <ul>
-                        <li>Add Reign and Reverie.</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div class="panel">
-                    <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog" href="#changeLogCollapse13" aria-expanded="true" aria-controls="changeLogCollapse13">[18 Jun 2018] v2.12 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
-                    <div id="changeLogCollapse13" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                      <ul>
-                        <li>Add the Kitara cycle.</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div class="panel">
-                    <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog" href="#changeLogCollapse12" aria-expanded="true" aria-controls="changeLogCollapse12">[01 Mar 2018] v2.11 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
-                    <div id="changeLogCollapse12" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                      <ul>
-                        <li>Fix some bugs.</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div class="panel">
-                    <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog" href="#changeLogCollapse11" aria-expanded="true" aria-controls="changeLogCollapse11">[14 Sep 2017] v2.10 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
-                    <div id="changeLogCollapse11" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                      <ul>
-                        <li>Add Terminal Directive.</li>
-                        <li>Add the Revised Core Set.</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div class="panel">
-                    <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog" href="#changeLogCollapse10" aria-expanded="true" aria-controls="changeLogCollapse10">[19 Aug 2017] v2.9 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
-                    <div id="changeLogCollapse10" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                      <ul>
-                        <li>Add Earth's Scion.</li>
-                        <li>Add Blood and Water.</li>
-                        <li>Add Free Mars.</li>
-                        <li>Add Crimson Dust.</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div class="panel">
-                    <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog" href="#changeLogCollapse9" aria-expanded="true" aria-controls="changeLogCollapse9">[11 Apr 2017] v2.8 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
-                    <div id="changeLogCollapse9" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                      <ul>
-                        <li>Add Station One.</li>
-                        <li>Change many numbers of selected cards.</li>
-                        <li>Constraints now handle multiple types.</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div class="panel">
-                    <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog" href="#changeLogCollapse8" aria-expanded="true" aria-controls="changeLogCollapse8">[08 Mar 2017] v2.7 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
-                    <div id="changeLogCollapse8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                      <ul>
-                        <li>Add Daedelus Complex.</li>
-                        <li>Add TAG and BAG types.</li>
-                        <li>Replace BARRIER, CODE GATE and SENTRY types by ETR (End The Run).</li>
-                        <li>Change many attributes of cards.</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div class="panel">
-                    <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog" href="#changeLogCollapse1" aria-expanded="true" aria-controls="changeLogCollapse1">[04 Jan 2017] v2.6 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
-                    <div id="changeLogCollapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                      <ul>
-                        <li>Add Martial Law.</li>
-                        <li>Add Quorum.</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div class="panel">
-                    <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog" href="#changeLogCollapse2" aria-expanded="true" aria-controls="changeLogCollapse2">[30 Nov 2016] v2.5 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
-                    <div id="changeLogCollapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                      <ul>
-                        <li>Add Intervention.</li>
-                        <li>Refactoring of the widgets.</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div class="panel">
-                    <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog" href="#changeLogCollapse3" aria-expanded="true" aria-controls="changeLogCollapse3">[25 Oct 2016] v2.4 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
-                    <div id="changeLogCollapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                      <ul>
-                        <li>Pick 8 pieces of ice of each type instead of 5.</li>
-                        <li>Add the packs viewer.</li>
-                        <li>Add the Stimhack Cube.</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div class="panel">
-                    <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog" href="#changeLogCollapse4" aria-expanded="true" aria-controls="changeLogCollapse4">[07 Oct 2016] v2.3 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
-                    <div id="changeLogCollapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                      <ul>
-                        <li>Add Escalation.</li>
-                        <li>Remove Tag and Bag cards from the DIRTY cards.</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div class="panel">
-                    <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog" href="#changeLogCollapse5" aria-expanded="true" aria-controls="changeLogCollapse5">[29 Sep 2016] v2.2 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
-                    <div id="changeLogCollapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                      <ul>
-                        <li>Add Blood Money.</li>
-                        <li>Add Boosters.</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div class="panel">
-                    <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog" href="#changeLogCollapse6" aria-expanded="true" aria-controls="changeLogCollapse6">[22 Jul 2016] v2.1 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
-                    <div id="changeLogCollapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                      <ul>
-                        <li>Fix Sage, Chameleon and Rainbow that were automatically picked.</li>
-                        <li>Add The Liberated Mind.</li>
-                        <li>Add Fear the Masses.</li>
-                        <li>Add 23 Seconds.</li>
-                        <li>Add categories (BAD, COMMON, BROKEN for weak, ordinary and strong cards. DIRTY for savage cards.)</li>
-                        <li>Pick 85 cards per Sealed Pack for the format 45 cards per deck / 7 agenda points.</li>
-                        <li>Pick 57 cards per Sealed Pack for the format 30 cards per deck / 6 agenda points.</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div class="panel">
-                    <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog" href="#changeLogCollapse7" aria-expanded="true" aria-controls="changeLogCollapse7">[18 May 2016] v2.0 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
-                    <div id="changeLogCollapse7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                      <ul>
-                        <li>Big refactoring of the site</li>
-                        <ul>
-                          <li>Replace rarities by a number of copies of each card.</li>
-                          <li>Remove Starters and Boosters. Replace them by allowing the choice of each Data Pack.</li>
-                          <li>Add 2 formats : 80 cards per Sealed Pack (45 cards per deck / 7 Agenda points to win), 60 cards per Sealed Pack (30 cards per deck / 6 Agenda points to win).</li>
-                          <li>Allow collection sharing.</li>
-                          <li>Add a text file sorted by faction and card type in the downloaded zip file.</li>
-                          <li>Add a text file sorted by Data Pack in the downloaded zip file.</li>
-                        </ul>
-                        <li>Add Khala Ghoda.</li>
-                        <li>Add Business First.</li>
-                        <li>Add Democracy and Dogma.</li>
-                        <li>Add Salsette Island.</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                </div>  <!-- accordionChangeLog -->
-              </div>  <!-- Right -->
-            </div>
-          </div> <!-- modal-body -->
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
-    <div class="modal fade"  id="modalHelp" tabindex="-1" role="dialog" aria-labelledby="modalHelpLabel">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Help</h4>
-          </div>
-          <div class="modal-body">
-
-            <h4><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Zip file</h4>
-            <p>The downloaded <b><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Zip file</b> contains the following folders:</p>
-            <ul>
-              <li><b>All information</b>: Usefull for debugging.</li>
-              <li><b>Sorted by Alphabetical order</b>: Simply Copy/Paste the content of these files to import them into <b><a href="http://netrunnerdb.com/en/deck/import" target="_blank"><span class="glyphicon glyphicon-link" aria-hidden="true"></span>NetrunnerDB</a></b> or <b><a href="http://www.jinteki.net/deckbuilder" target="_blank"><span class="glyphicon glyphicon-tree-deciduous" aria-hidden="true"></span>Jinteki.net</a></b>.</li>
-              <li><b>Sorted by Card Type</b>: Useful to read your Sealed Pack as in a Deckbuilder.</li>
-              <li><b>Sorted by Data Pack</b>: Useful if you sort your cards by Data Pack.</li>
-              <li><b>Sorted by Faction then by Card Type</b>: Useful if you sort your cards by Faction, then by Card Type.</li>
-              <li><b>Sorted by Player</b>: Each player folder contains all the previous files. Useful for a tournament organisator : Zip each player folder and send one to each player.</li>
-            </ul>
-
-            <h4><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Deckbuilding rules</h4>
-            <ul>
-              <li>Each player receives:
-                <ul>
-                  <li>1 Corp Sealed Pack: <b>Sealed Pack - Player x - Corp.txt</b></li>
-                  <li>1 Runner Sealed Pack: <b>Sealed Pack - Player x - Runner.txt</b></li>
-                  <li><i>Optionnaly: The players can Copy/Paste their Sealed Packs to <b><a href="http://netrunnerdb.com/en/deck/import" target="_blank"><span class="glyphicon glyphicon-link" aria-hidden="true"></span>NetrunnerDB</a></b> or <b><a href="http://www.jinteki.net/deckbuilder" target="_blank"><span class="glyphicon glyphicon-tree-deciduous" aria-hidden="true"></span>Jinteki.net</a></b> for better readability.</i></li>
-                </ul>
-              <li>Each player builds <b>1 Corp deck</b> and <b>1 Runner deck</b> <u>only with the 85 cards of his Starter</u> by using the following identity cards :</li>
+              <h4><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Modules</h4>
+              <p>
+                <b>anrsealed.com</b> uses the following modules:
               <ul>
-                <li>No Faction.</li>
-                <li>45 Cards minimum <small>(or 30 if you chose the 30 cards per deck format)</small>.</li>
-                <li>No influence limit.</li>
-                <li>The Runner's text box is blank.</li>
-                <li>The Corp's text box is:
+                <li><a href="https://jquery.com/" target="_blank">JQuery</a></li>
+                <li><a href="http://getbootstrap.com/" target="_blank">Bootstrap</a></li>
+                <li><a href="http://glyphicons.com/" target="_blank">Glyphicons</a></li>
+                <li><a href="https://github.com/janl/mustache.js" target="_blank">Mustache JS</a></li>
+                <li><a href="https://stuk.github.io/jszip/" target="_blank">JSZip</a></li>
+                <li><a href="https://github.com/eligrey/FileSaver.js/" target="_blank">FileSaver</a></li>
+              </ul>
+              </p>
+
+              <h4><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Thanks</h4>
+              <p>
+              <ul>
+                <li><b>Mister Yo</b> for the french translation of the SanSan Cycle and Data and Destiny.</li>
+                <li><b>The BBQ Team</b> for the french translation of Mumbad Cycle and Flashpoint Cycle.</li>
+                <li>The <b>Run4Games community</b> for the comments about the selected cards and the algorithm.</li>
+              </ul>
+              </p>
+            </div> <!-- Left -->
+
+            <!-- Right -->
+            <div class="col-md-6 col-sm-12">
+              <div class="panel-group" id="accordionChangeLog" role="tablist" aria-multiselectable="true">
+
+                <div class="panel">
+                  <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog"
+                      href="#changeLogCollapse18" aria-expanded="true" aria-controls="changeLogCollapse18">[18 Jun 2022]
+                      v3.3 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
+                  <div id="changeLogCollapse18" class="panel-collapse collapse in" role="tabpanel"
+                    aria-labelledby="headingOne">
+                    <ul>
+                      <li>Add Salvaged Memories cards.</li>
+                      <li>Add System Gateway cards.</li>
+                      <li>Add System Updates 2021 cards.</li>
+                      <li>Add Midnight Sun Booster Pack cards.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="panel">
+                  <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog"
+                      href="#changeLogCollapse17" aria-expanded="true" aria-controls="changeLogCollapse17">[12 Mar 2020]
+                      v3.2 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
+                  <div id="changeLogCollapse17" class="panel-collapse collapse" role="tabpanel"
+                    aria-labelledby="headingOne">
+                    <ul>
+                      <li>Add Uprising cards.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="panel">
+                  <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog"
+                      href="#changeLogCollapse16" aria-expanded="true" aria-controls="changeLogCollapse16">[31 Mar 2019]
+                      v3.1 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
+                  <div id="changeLogCollapse16" class="panel-collapse collapse" role="tabpanel"
+                    aria-labelledby="headingOne">
+                    <ul>
+                      <li>Add Downfall cards.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="panel">
+                  <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog"
+                      href="#changeLogCollapse15" aria-expanded="true" aria-controls="changeLogCollapse15">[31 Jul 2018]
+                      v3.0 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
+                  <div id="changeLogCollapse15" class="panel-collapse collapse" role="tabpanel"
+                    aria-labelledby="headingOne">
+                    <ul>
+                      <li>Add Magnum Opus cards.</li>
+                      <li>Add Deck generation : Generate a Sealed Deck instead of a Sealed Pack. Play without building !
+                      </li>
+                      <li>Add the option to choose the type of players. The N00bs use simple cards. Interesting for
+                        beginners.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="panel">
+                  <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog"
+                      href="#changeLogCollapse14" aria-expanded="true" aria-controls="changeLogCollapse14">[31 Jul 2018]
+                      v2.13 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
+                  <div id="changeLogCollapse14" class="panel-collapse collapse" role="tabpanel"
+                    aria-labelledby="headingOne">
+                    <ul>
+                      <li>Add Reign and Reverie.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="panel">
+                  <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog"
+                      href="#changeLogCollapse13" aria-expanded="true" aria-controls="changeLogCollapse13">[18 Jun 2018]
+                      v2.12 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
+                  <div id="changeLogCollapse13" class="panel-collapse collapse" role="tabpanel"
+                    aria-labelledby="headingOne">
+                    <ul>
+                      <li>Add the Kitara cycle.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="panel">
+                  <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog"
+                      href="#changeLogCollapse12" aria-expanded="true" aria-controls="changeLogCollapse12">[01 Mar 2018]
+                      v2.11 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
+                  <div id="changeLogCollapse12" class="panel-collapse collapse" role="tabpanel"
+                    aria-labelledby="headingOne">
+                    <ul>
+                      <li>Fix some bugs.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="panel">
+                  <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog"
+                      href="#changeLogCollapse11" aria-expanded="true" aria-controls="changeLogCollapse11">[14 Sep 2017]
+                      v2.10 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
+                  <div id="changeLogCollapse11" class="panel-collapse collapse" role="tabpanel"
+                    aria-labelledby="headingOne">
+                    <ul>
+                      <li>Add Terminal Directive.</li>
+                      <li>Add the Revised Core Set.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="panel">
+                  <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog"
+                      href="#changeLogCollapse10" aria-expanded="true" aria-controls="changeLogCollapse10">[19 Aug 2017]
+                      v2.9 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
+                  <div id="changeLogCollapse10" class="panel-collapse collapse" role="tabpanel"
+                    aria-labelledby="headingOne">
+                    <ul>
+                      <li>Add Earth's Scion.</li>
+                      <li>Add Blood and Water.</li>
+                      <li>Add Free Mars.</li>
+                      <li>Add Crimson Dust.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="panel">
+                  <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog"
+                      href="#changeLogCollapse9" aria-expanded="true" aria-controls="changeLogCollapse9">[11 Apr 2017]
+                      v2.8 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
+                  <div id="changeLogCollapse9" class="panel-collapse collapse" role="tabpanel"
+                    aria-labelledby="headingOne">
+                    <ul>
+                      <li>Add Station One.</li>
+                      <li>Change many numbers of selected cards.</li>
+                      <li>Constraints now handle multiple types.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="panel">
+                  <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog"
+                      href="#changeLogCollapse8" aria-expanded="true" aria-controls="changeLogCollapse8">[08 Mar 2017]
+                      v2.7 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
+                  <div id="changeLogCollapse8" class="panel-collapse collapse" role="tabpanel"
+                    aria-labelledby="headingOne">
+                    <ul>
+                      <li>Add Daedelus Complex.</li>
+                      <li>Add TAG and BAG types.</li>
+                      <li>Replace BARRIER, CODE GATE and SENTRY types by ETR (End The Run).</li>
+                      <li>Change many attributes of cards.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="panel">
+                  <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog"
+                      href="#changeLogCollapse1" aria-expanded="true" aria-controls="changeLogCollapse1">[04 Jan 2017]
+                      v2.6 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
+                  <div id="changeLogCollapse1" class="panel-collapse collapse" role="tabpanel"
+                    aria-labelledby="headingOne">
+                    <ul>
+                      <li>Add Martial Law.</li>
+                      <li>Add Quorum.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="panel">
+                  <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog"
+                      href="#changeLogCollapse2" aria-expanded="true" aria-controls="changeLogCollapse2">[30 Nov 2016]
+                      v2.5 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
+                  <div id="changeLogCollapse2" class="panel-collapse collapse" role="tabpanel"
+                    aria-labelledby="headingOne">
+                    <ul>
+                      <li>Add Intervention.</li>
+                      <li>Refactoring of the widgets.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="panel">
+                  <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog"
+                      href="#changeLogCollapse3" aria-expanded="true" aria-controls="changeLogCollapse3">[25 Oct 2016]
+                      v2.4 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
+                  <div id="changeLogCollapse3" class="panel-collapse collapse" role="tabpanel"
+                    aria-labelledby="headingOne">
+                    <ul>
+                      <li>Pick 8 pieces of ice of each type instead of 5.</li>
+                      <li>Add the packs viewer.</li>
+                      <li>Add the Stimhack Cube.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="panel">
+                  <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog"
+                      href="#changeLogCollapse4" aria-expanded="true" aria-controls="changeLogCollapse4">[07 Oct 2016]
+                      v2.3 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
+                  <div id="changeLogCollapse4" class="panel-collapse collapse" role="tabpanel"
+                    aria-labelledby="headingOne">
+                    <ul>
+                      <li>Add Escalation.</li>
+                      <li>Remove Tag and Bag cards from the DIRTY cards.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="panel">
+                  <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog"
+                      href="#changeLogCollapse5" aria-expanded="true" aria-controls="changeLogCollapse5">[29 Sep 2016]
+                      v2.2 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
+                  <div id="changeLogCollapse5" class="panel-collapse collapse" role="tabpanel"
+                    aria-labelledby="headingOne">
+                    <ul>
+                      <li>Add Blood Money.</li>
+                      <li>Add Boosters.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="panel">
+                  <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog"
+                      href="#changeLogCollapse6" aria-expanded="true" aria-controls="changeLogCollapse6">[22 Jul 2016]
+                      v2.1 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
+                  <div id="changeLogCollapse6" class="panel-collapse collapse" role="tabpanel"
+                    aria-labelledby="headingOne">
+                    <ul>
+                      <li>Fix Sage, Chameleon and Rainbow that were automatically picked.</li>
+                      <li>Add The Liberated Mind.</li>
+                      <li>Add Fear the Masses.</li>
+                      <li>Add 23 Seconds.</li>
+                      <li>Add categories (BAD, COMMON, BROKEN for weak, ordinary and strong cards. DIRTY for savage
+                        cards.)</li>
+                      <li>Pick 85 cards per Sealed Pack for the format 45 cards per deck / 7 agenda points.</li>
+                      <li>Pick 57 cards per Sealed Pack for the format 30 cards per deck / 6 agenda points.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="panel">
+                  <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog"
+                      href="#changeLogCollapse7" aria-expanded="true" aria-controls="changeLogCollapse7">[18 May 2016]
+                      v2.0 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
+                  <div id="changeLogCollapse7" class="panel-collapse collapse" role="tabpanel"
+                    aria-labelledby="headingOne">
+                    <ul>
+                      <li>Big refactoring of the site</li>
+                      <ul>
+                        <li>Replace rarities by a number of copies of each card.</li>
+                        <li>Remove Starters and Boosters. Replace them by allowing the choice of each Data Pack.</li>
+                        <li>Add 2 formats : 80 cards per Sealed Pack (45 cards per deck / 7 Agenda points to win), 60
+                          cards per Sealed Pack (30 cards per deck / 6 Agenda points to win).</li>
+                        <li>Allow collection sharing.</li>
+                        <li>Add a text file sorted by faction and card type in the downloaded zip file.</li>
+                        <li>Add a text file sorted by Data Pack in the downloaded zip file.</li>
+                      </ul>
+                      <li>Add Khala Ghoda.</li>
+                      <li>Add Business First.</li>
+                      <li>Add Democracy and Dogma.</li>
+                      <li>Add Salsette Island.</li>
+                    </ul>
+                  </div>
+                </div>
+
+              </div> <!-- accordionChangeLog -->
+            </div> <!-- Right -->
+          </div>
+        </div> <!-- modal-body -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+  <div class="modal fade" id="modalHelp" tabindex="-1" role="dialog" aria-labelledby="modalHelpLabel">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Help</h4>
+        </div>
+        <div class="modal-body">
+
+          <h4><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Zip file</h4>
+          <p>The downloaded <b><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Zip file</b>
+            contains the following folders:</p>
+          <ul>
+            <li><b>All information</b>: Usefull for debugging.</li>
+            <li><b>Sorted by Alphabetical order</b>: Simply Copy/Paste the content of these files to import them into
+              <b><a href="http://netrunnerdb.com/en/deck/import" target="_blank"><span class="glyphicon glyphicon-link"
+                    aria-hidden="true"></span>NetrunnerDB</a></b> or <b><a href="http://www.jinteki.net/deckbuilder"
+                  target="_blank"><span class="glyphicon glyphicon-tree-deciduous"
+                    aria-hidden="true"></span>Jinteki.net</a></b>.
+            </li>
+            <li><b>Sorted by Card Type</b>: Useful to read your Sealed Pack as in a Deckbuilder.</li>
+            <li><b>Sorted by Data Pack</b>: Useful if you sort your cards by Data Pack.</li>
+            <li><b>Sorted by Faction then by Card Type</b>: Useful if you sort your cards by Faction, then by Card Type.
+            </li>
+            <li><b>Sorted by Player</b>: Each player folder contains all the previous files. Useful for a tournament
+              organisator : Zip each player folder and send one to each player.</li>
+          </ul>
+
+          <h4><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Deckbuilding rules</h4>
+          <ul>
+            <li>Each player receives:
+              <ul>
+                <li>1 Corp Sealed Pack: <b>Sealed Pack - Player x - Corp.txt</b></li>
+                <li>1 Runner Sealed Pack: <b>Sealed Pack - Player x - Runner.txt</b></li>
+                <li><i>Optionnaly: The players can Copy/Paste their Sealed Packs to <b><a
+                        href="http://netrunnerdb.com/en/deck/import" target="_blank"><span
+                          class="glyphicon glyphicon-link" aria-hidden="true"></span>NetrunnerDB</a></b> or <b><a
+                        href="http://www.jinteki.net/deckbuilder" target="_blank"><span
+                          class="glyphicon glyphicon-tree-deciduous" aria-hidden="true"></span>Jinteki.net</a></b> for
+                    better readability.</i></li>
+              </ul>
+            <li>Each player builds <b>1 Corp deck</b> and <b>1 Runner deck</b> <u>only with the 85 cards of his
+                Starter</u> by using the following identity cards :</li>
+            <ul>
+              <li>No Faction.</li>
+              <li>45 Cards minimum <small>(or 30 if you chose the 30 cards per deck format)</small>.</li>
+              <li>No influence limit.</li>
+              <li>The Runner's text box is blank.</li>
+              <li>The Corp's text box is:
                 <ul>
                   <li>You can use agendas from all factions in this deck.</li>
                   <li>The number of agenda points required in this deck is reduced by 2.</li>
-                  <li>The trash cost of all <b>transaction</b> and <b>advertisement</b> assets is increased by 2. <em>(See <a href="https://netrunnerdb.com/find/?q=t%3Aupgrade%7Casset+s%3Aadvertisement%7Ctransaction&sort=name&view=list&_locale=en" target="_blank">list of corresponding cards</a>)</em></li>
+                  <li>The trash cost of all <b>transaction</b> and <b>advertisement</b> assets is increased by 2.
+                    <em>(See <a
+                        href="https://netrunnerdb.com/find/?q=t%3Aupgrade%7Casset+s%3Aadvertisement%7Ctransaction&sort=name&view=list&_locale=en"
+                        target="_blank">list of corresponding cards</a>)</em>
+                  </li>
                 </ul>
-              </ul>
-              <li>Agenda points:</li>
-              <ul>
-                <li>30 cards per deck / 6 agenda points format :</li>
-                <ul>
-                  <li>30-34 cards: <b>14-15</b> Agenda points</li>
-                  <li>35-39 cards: 16-17 Agenda points</li>
-                  <li>40-44 cards: 18-19 Agenda points</li>
-                  <li>etc...</li>
-                </ul>
-                <li>45 cards per deck / 7 agenda points format <small>(-2 agenda points compared to the base game)</small> :</li>
-                <ul>
-                  <li>45-49 cards: <b>18-19</b> Agenda points</li>
-                  <li>50-54 cards: 20-21 Agenda points</li>
-                  <li>55-59 cards: 22-23 Agenda points</li>
-                  <li>etc...</li>
-                </ul>
-              </ul>
             </ul>
-
-            <h4><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Win conditions</a> <small>(Same as the base game)</small></h4>
+            <li>Agenda points:</li>
             <ul>
-              <li><b>7</b> Agenda Points <small>(or 6 Agenda Points if you chose the 30 cards per deck format)</small>.</li>
-              <li>The Runner is <b>flatlined</b>.</li>
-              <li>The Corp <b>can't draw</b> at the start of its turn.</li>
+              <li>30 cards per deck / 6 agenda points format :</li>
+              <ul>
+                <li>30-34 cards: <b>14-15</b> Agenda points</li>
+                <li>35-39 cards: 16-17 Agenda points</li>
+                <li>40-44 cards: 18-19 Agenda points</li>
+                <li>etc...</li>
+              </ul>
+              <li>45 cards per deck / 7 agenda points format <small>(-2 agenda points compared to the base game)</small>
+                :</li>
+              <ul>
+                <li>45-49 cards: <b>18-19</b> Agenda points</li>
+                <li>50-54 cards: 20-21 Agenda points</li>
+                <li>55-59 cards: 22-23 Agenda points</li>
+                <li>etc...</li>
+              </ul>
             </ul>
+          </ul>
 
-            <h4><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Formats</h4>
+          <h4><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Win conditions</a> <small>(Same as the
+              base game)</small></h4>
+          <ul>
+            <li><b>7</b> Agenda Points <small>(or 6 Agenda Points if you chose the 30 cards per deck format)</small>.
+            </li>
+            <li>The Runner is <b>flatlined</b>.</li>
+            <li>The Corp <b>can't draw</b> at the start of its turn.</li>
+          </ul>
+
+          <h4><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Formats</h4>
+          <ul>
+            <li><b>One Shot</b></li>
             <ul>
-              <li><b>One Shot</b></li>
-              <ul>
-                <li>The One Shot is the classic format for one game, or one day tournament.</li>
-                <li>Each player plays a One Shot with <b>85 cards</b>.</li>
-              </ul>
-              <li><b>Omni-league</b></li>
-              <ul>
-                <li>The Omni-league is a tournament that lasts many weeks or months.</li>
-                <li>Each player starts the Omni-league with <b>85 cards</b>.</li>
-                <li>The Winner of a game can take a card from the unused cards of its opponent's Sealed pack.</li>
-                <li>Each player receives <b>1 booster</b> between each round and can modify its decks.</li>
-              </ul>
+              <li>The One Shot is the classic format for one game, or one day tournament.</li>
+              <li>Each player plays a One Shot with <b>85 cards</b>.</li>
             </ul>
-
-            <h4><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Algorithm</h4>
-            <p>All cards of a Sealed Pack are picked randomly by completing <b><a href="https://github.com/Salem2612/anrsealed/blob/master/www/json/v3.3.0/constraints.json">constraints</a></b>. These constraints are given for the 45 cards format. For the 30 cards format, the constraints are 60% of the 45 cards format.</p>
+            <li><b>Omni-league</b></li>
+            <ul>
+              <li>The Omni-league is a tournament that lasts many weeks or months.</li>
+              <li>Each player starts the Omni-league with <b>85 cards</b>.</li>
+              <li>The Winner of a game can take a card from the unused cards of its opponent's Sealed pack.</li>
+              <li>Each player receives <b>1 booster</b> between each round and can modify its decks.</li>
             </ul>
+          </ul>
 
-            <h4><span class="glyphicon glyphicon-list" aria-hidden="true"></span> List of Cards</h4>
-            <p>The <b><a href="https://docs.google.com/spreadsheets/d/1iODcruMiN18QsMhlUhh8vzwSrZUXHVB_TKxhVQNRNdM/edit?usp=sharing" target="_blank"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> List of Cards</a></b> is available in a Google Sheet.</p>
+          <h4><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Algorithm</h4>
+          <p>All cards of a Sealed Pack are picked randomly by completing <b><a
+                href="https://github.com/Salem2612/anrsealed/blob/master/www/json/v3.3.0/constraints.json">constraints</a></b>.
+            These constraints are given for the 45 cards format. For the 30 cards format, the constraints are 60% of the
+            45 cards format.</p>
+          </ul>
 
-            <h4><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Identity cards</h4>
-            <p>Use these <b><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Identity cards</b> for your Sealed games:</p>
-            <div class="row">
-              <div class="col-md-3 col-xs-4">
-                <a href="images/id_corp.jpg" target="_blank"><img src="images/id_corp.jpg" alt="" class="img-responsive img-rounded" /></a>
-              </div>
-              <div class="col-md-3 col-xs-4">
-                <a href="images/id_runner.jpg" target="_blank"><img src="images/id_runner.jpg" alt="" class="img-responsive img-rounded" /></a>
+          <h4><span class="glyphicon glyphicon-list" aria-hidden="true"></span> List of Cards</h4>
+          <p>The <b><a
+                href="https://docs.google.com/spreadsheets/d/1iODcruMiN18QsMhlUhh8vzwSrZUXHVB_TKxhVQNRNdM/edit?usp=sharing"
+                target="_blank"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> List of
+                Cards</a></b> is available in a Google Sheet.</p>
+
+          <h4><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Identity cards</h4>
+          <p>Use these <b><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Identity cards</b> for your
+            Sealed games:</p>
+          <div class="row">
+            <div class="col-md-3 col-xs-4">
+              <a href="images/id_corp.jpg" target="_blank"><img src="images/id_corp.jpg" alt=""
+                  class="img-responsive img-rounded" /></a>
+            </div>
+            <div class="col-md-3 col-xs-4">
+              <a href="images/id_runner.jpg" target="_blank"><img src="images/id_runner.jpg" alt=""
+                  class="img-responsive img-rounded" /></a>
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+  <div class="modal fade" id="modalChecker" tabindex="-1" role="dialog" aria-labelledby="modalCheckerLabel">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Checker</h4>
+        </div>
+        <div class="modal-body">
+          <p>This tool is used to :
+          <ul>
+            <li>Check the consistency between a deck and a Sealed Pack.</li>
+            <li>Generate the Reserve for Omnileague. (A Reserve is the list of cards that a player has in its Sealed
+              Pack but does not use in its deck).</li>
+          </ul>
+          </p>
+          <div class="row">
+            <div class="col-md-6">
+              <h4>Sealed Pack <small>(File sorted by alphabetical order)</small></h4>
+              <div class="form-group">
+                <textarea id="textarea_checker_sealed_pack" class="form-control" style="resize:none" rows="6"
+                  placeholder="Paste your Sealed Pack here (without any rarities in parenthesis). Use the file sorted by alphabetical order. Example : 2x Access to Globalsec"></textarea>
               </div>
             </div>
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
-    <div class="modal fade"  id="modalChecker" tabindex="-1" role="dialog" aria-labelledby="modalCheckerLabel">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Checker</h4>
-          </div>
-          <div class="modal-body">
-            <p>This tool is used to :
-              <ul>
-                <li>Check the consistency between a deck and a Sealed Pack.</li>
-                <li>Generate the Reserve for Omnileague. (A Reserve is the list of cards that a player has in its Sealed Pack but does not use in its deck).</li>
-              </ul>
-            </p>
-            <div class="row">
-              <div class="col-md-6">
-                <h4>Sealed Pack <small>(File sorted by alphabetical order)</small></h4>
-                <div class="form-group">
-                  <textarea id="textarea_checker_sealed_pack" class="form-control" style="resize:none" rows="6" placeholder="Paste your Sealed Pack here (without any rarities in parenthesis). Use the file sorted by alphabetical order. Example : 2x Access to Globalsec"></textarea>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <h4>Deck</h4>
-                <div class="form-group">
-                  <textarea id="textarea_checker_deck" class="form-control" style="resize:none" rows="6" placeholder="Paste your deck here (without any rarities in parenthesis). Example : 2x Access to Globalsec"></textarea>
-                </div>
+            <div class="col-md-6">
+              <h4>Deck</h4>
+              <div class="form-group">
+                <textarea id="textarea_checker_deck" class="form-control" style="resize:none" rows="6"
+                  placeholder="Paste your deck here (without any rarities in parenthesis). Example : 2x Access to Globalsec"></textarea>
               </div>
             </div>
+          </div>
 
-            <div class="row">
-              <div class="col-md-6">
-                <h4>Status</h4>
-                <div class="form-group">
-                  <textarea id="textarea_checker_status" class="form-control" style="resize:none" rows="5" readonly placeholder="Paste you Sealed Pack and Deck above, then click on the Check button. The Status of the check will appear here."></textarea>
-                </div>
-                <div class="form-group">
-                  <div class="btn-group" role="group">
+          <div class="row">
+            <div class="col-md-6">
+              <h4>Status</h4>
+              <div class="form-group">
+                <textarea id="textarea_checker_status" class="form-control" style="resize:none" rows="5" readonly
+                  placeholder="Paste you Sealed Pack and Deck above, then click on the Check button. The Status of the check will appear here."></textarea>
+              </div>
+              <div class="form-group">
+                <div class="btn-group" role="group">
                   <button id="button_checker_check" type="button" class="btn btn-primary btn-lg">
                     <span class="glyphicon glyphicon-check" aria-hidden="true"></span> Check
                   </button>
@@ -457,938 +561,1112 @@
                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Erase Status and Reserve
                   </button>
                 </div>
-                </div>
-
               </div>
-              <div class="col-md-6">
-                <h4>Omnileague Reserve</h4>
-                <div class="form-group">
-                  <textarea id="textarea_checker_reserve" class="form-control" style="resize:none" rows="5" readonly placeholder="Paste you Sealed Pack and Deck above, then click on the Check button. The Omnileague Reserve will appear here."></textarea>
-                </div>
+
+            </div>
+            <div class="col-md-6">
+              <h4>Omnileague Reserve</h4>
+              <div class="form-group">
+                <textarea id="textarea_checker_reserve" class="form-control" style="resize:none" rows="5" readonly
+                  placeholder="Paste you Sealed Pack and Deck above, then click on the Check button. The Omnileague Reserve will appear here."></textarea>
               </div>
             </div>
-
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
 
-    <!-- Modal View Sealed Packs (vsp) -->
-    <div class="modal fade"  id="modalViewResults" tabindex="-1" role="dialog" aria-labelledby="modalViewResultsLabel">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> View Sealed Packs</h4>
-          </div>
-          <div class="modal-body">
-            <div class="row">
-              <div class="col-md-12">
-
-                <!-- Nav tabs -->
-                <ul class="nav nav-pills" id="vspTabs" role="tablist">
-                </ul>
-                <p></p>
-
-                <!-- Tab panes -->
-                <div class="tab-content" id="vspContents">
-                </div>
-
-              </div>
-            </div>
-          </div> <!-- modal-body -->
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal --> <!-- Modal View Results -->
-
-    <!-- Modal View Identities -->
-    <div class="modal fade"  id="modalViewIdentities" tabindex="-1" role="dialog" aria-labelledby="modalViewIdentitiesLabel">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Identity cards</h4>
-          </div>
-          <div class="modal-body">
-
-            <!-- Identity cards -->
-            <div class="row">
-              <div class="col-md-6">
-                <a href="images/id_corp.jpg" target="_blank"><img src="images/id_corp.jpg" alt="" class="img-responsive img-rounded" /></a>
-              </div>
-              <div class="col-md-6">
-                <a href="images/id_runner.jpg" target="_blank"><img src="images/id_runner.jpg" alt="" class="img-responsive img-rounded" /></a>
-              </div>
-            </div> <!-- Identity cards -->
-
-          </div> <!-- modal-body -->
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal --> <!-- Modal View Results -->
-
-    <!-- Nav Bar -->
-    <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-      <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> anrsealed</a>
         </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" aria-expanded="false" style="height: 1px;">
-          <ul class="nav navbar-nav">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Tools <span class="caret"></a>
-              <ul class="dropdown-menu">
-                <li><a href="#" data-toggle="modal" data-target="#modalChecker"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Deck Checker</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-film" aria-hidden="true"></span> Media <span class="caret"></a>
-              <ul class="dropdown-menu">
-                <li class="dropdown-header">Articles</li>
-                <li><a href="#"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Stimhack <small>(en)</small></a></li>
-                <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Videos and Tutorials</li>
-                <li><a href="#"><span class="glyphicon glyphicon-education" aria-hidden="true"></span> How to use anrsealed ? <small>(en, fr)</small></a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-education" aria-hidden="true"></span> How to build a sealed deck ? <small>(en, fr)</small></a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-film" aria-hidden="true"></span> Example of a sealed game <small>(fr)</small></a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Community <span class="caret"></a>
-              <ul class="dropdown-menu">
-                <li class="dropdown-header">Networks</li>
-                <li><a href="https://www.facebook.com/groups/859734034163218/" target="_blank"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Facebook Playgroup <small>(fr)</small></a></li>
-                <li><a href="https://forum.stimhack.com/t/netrunner-sealed/4964" target="_blank"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Forum <small>(en)</small></a></li>
-                <li><a href="http://www.challengeboards.net/boards/standings/10413" target="_blank"><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> Sealed League <small>(password : yoyo)</small></a></li>
-              </ul>
-            </li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#" data-toggle="modal" data-target="#modalHelp"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Help</a></li>
-            <li><a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v3.3</a></li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div>
-    </nav> <!-- /.Nav Bar -->
-
-    <div class="container-fluid">
-
-      <!-- Body -->
-      <div class="row">
-
-        <!-- Panel Left -->
-        <div class="col-md-3">
-          <div class="well well-sm">
-
-            <!-- anrsealed -->
-            <h4 style="margin-top:0px"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> anrsealed</h4>
-            <p align="justify">The <b>Sealed</b> format is an alternative format for <b>Android: Netrunner</b>. You must build a deck from a pack of <b>85 random cards</b>. <b>anrsealed</b> generates these packs so that they are all <b>balanced</b>. Each player builds his deck with his own collection or one player can share his collection to the others. Please read <b><a href="#" data-toggle="modal" data-target="#modalHelp"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Help</a></b> for more information.</p> <!-- anrsealed -->
-
-            <!-- How to use anrsealed ? -->
-            <h4><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> How to use anrsealed ?</h4>
-            <ol>
-              <li>Select the <b><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Core Sets</b>, <b>Deluxe Expansions</b> and <b>Cycles</b>.</li>
-              <li>Select the <b><span class="glyphicon glyphicon-education" aria-hidden="true"></span> Type of players</b>, <b><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Number of players</b>, <b><span class="glyphicon glyphicon-object-align-bottom" aria-hidden="true"></span> Mode</b> and <b><span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span> Ownership</b>.</li>
-              <li>Click on <b><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Generate & Download</b>.</li>
-              <li>Build a deck from the 85 cards of the downloaded <b><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Zip file</b> and the following identity cards.</li>
-              <li>Play with the same rules as the base game.</li>
-            </ol> <!-- How to use anrsealed ? -->
-
-            <!-- Identity cards -->
-            <div class="row">
-              <div class="col-xs-1"></div>
-              <div class="col-xs-4">
-                <a href="#" data-toggle="modal" data-target="#modalViewIdentities"><img src="images/id_corp.jpg" alt="" class="img-responsive img-rounded" /></a>
-              </div>
-              <div class="col-xs-4">
-                <a href="#" data-toggle="modal" data-target="#modalViewIdentities"><img src="images/id_runner.jpg" alt="" class="img-responsive img-rounded" /></a>
-              </div>
-            </div> <!-- Identity cards -->
-
-            <!-- Breaking News -->
-            <h4><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> Breaking News</h4>
-            <ul>
-              <li><b>[18 Jun 2020]</b> The version <b><a href="#" data-toggle="modal" data-target="#modalChanges">3.3</a></b> is now available.</li>
-              <li><span class="glyphicon glyphicon-apple" aria-hidden="true"></span> Download doesn't work on <b>Safari</b>, please use <b>Chrome</b>.</li>
-            </ul> <!-- Breaking News -->
-
-            <!-- Partnership -->
-            <h4><span class="glyphicon glyphicon-link" aria-hidden="true"></span> Partnership</h4>
-            <div class="row">
-              <div class="col-sm-3 col-xs-12">
-                <a href="http://ludiworld.com/newshop/" target="_blank"><img src="images/ludiworld.jpg" alt="" class="img-responsive img-rounded" /></a>
-              </div>
-            </div> <!-- Partnership -->
-
-          </div>
-        </div> <!-- Panel Left -->
-
-        <!-- Panel Right -->
-        <div class="col-md-9">
-
-          <!-- Core Set, Deluxes and Generate -->
+  <!-- Modal View Sealed Packs (vsp) -->
+  <div class="modal fade" id="modalViewResults" tabindex="-1" role="dialog" aria-labelledby="modalViewResultsLabel">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> View Sealed
+            Packs</h4>
+        </div>
+        <div class="modal-body">
           <div class="row">
+            <div class="col-md-12">
 
-            <!-- Generate -->
-            <div class="col-lg-3 col-lg-push-9 col-md-12">
-              <div class="well well-sm">
+              <!-- Nav tabs -->
+              <ul class="nav nav-pills" id="vspTabs" role="tablist">
+              </ul>
+              <p></p>
 
-                <div class="row">
-                  <div class="col-md-5">
-                    <!-- Players -->
-                    <h4 style="margin-top:0px;margin-bottom:0px" data-toggle="tooltip" data-placement="bottom" title="Select if the players know the game."><span class="glyphicon glyphicon-education" aria-hidden="true"></span> Players</h4>
-                    <div class="form-group">
-                      <div class="input-group" id="text_players">
-                        <div class="radio">
-                          <label data-toggle="tooltip" data-placement="bottom" title="All the players know the game."><input type="radio" name="optradio_players" id="radio_players_hackers" checked>Hackers</label>
-                        </div>
-                        <div class="radio">
-                          <label data-toggle="tooltip" data-placement="bottom" title="Use only simple cards."><input type="radio" name="optradio_players"  id="radio_players_noobs">N00bs</label>
-                        </div>
+              <!-- Tab panes -->
+              <div class="tab-content" id="vspContents">
+              </div>
+
+            </div>
+          </div>
+        </div> <!-- modal-body -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+  <!-- Modal View Results -->
+
+  <!-- Modal View Identities -->
+  <div class="modal fade" id="modalViewIdentities" tabindex="-1" role="dialog"
+    aria-labelledby="modalViewIdentitiesLabel">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Identity cards</h4>
+        </div>
+        <div class="modal-body">
+
+          <!-- Identity cards -->
+          <div class="row">
+            <div class="col-md-6">
+              <a href="images/id_corp.jpg" target="_blank"><img src="images/id_corp.jpg" alt=""
+                  class="img-responsive img-rounded" /></a>
+            </div>
+            <div class="col-md-6">
+              <a href="images/id_runner.jpg" target="_blank"><img src="images/id_runner.jpg" alt=""
+                  class="img-responsive img-rounded" /></a>
+            </div>
+          </div> <!-- Identity cards -->
+
+        </div> <!-- modal-body -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+  <!-- Modal View Results -->
+
+  <!-- Nav Bar -->
+  <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span>
+          anrsealed</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" aria-expanded="false" style="height: 1px;">
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+              aria-expanded="false"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Tools <span
+                class="caret"></a>
+            <ul class="dropdown-menu">
+              <li><a href="#" data-toggle="modal" data-target="#modalChecker"><span class="glyphicon glyphicon-check"
+                    aria-hidden="true"></span> Deck Checker</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+              aria-expanded="false"><span class="glyphicon glyphicon-film" aria-hidden="true"></span> Media <span
+                class="caret"></a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-header">Articles</li>
+              <li><a href="#"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Stimhack
+                  <small>(en)</small></a></li>
+              <li role="separator" class="divider"></li>
+              <li class="dropdown-header">Videos and Tutorials</li>
+              <li><a href="#"><span class="glyphicon glyphicon-education" aria-hidden="true"></span> How to use
+                  anrsealed ? <small>(en, fr)</small></a></li>
+              <li><a href="#"><span class="glyphicon glyphicon-education" aria-hidden="true"></span> How to build a
+                  sealed deck ? <small>(en, fr)</small></a></li>
+              <li><a href="#"><span class="glyphicon glyphicon-film" aria-hidden="true"></span> Example of a sealed game
+                  <small>(fr)</small></a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+              aria-expanded="false"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Community <span
+                class="caret"></a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-header">Networks</li>
+              <li><a href="https://www.facebook.com/groups/859734034163218/" target="_blank"><span
+                    class="glyphicon glyphicon-globe" aria-hidden="true"></span> Facebook Playgroup
+                  <small>(fr)</small></a></li>
+              <li><a href="https://forum.stimhack.com/t/netrunner-sealed/4964" target="_blank"><span
+                    class="glyphicon glyphicon-comment" aria-hidden="true"></span> Forum <small>(en)</small></a></li>
+              <li><a href="http://www.challengeboards.net/boards/standings/10413" target="_blank"><span
+                    class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> Sealed League <small>(password :
+                    yoyo)</small></a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#" data-toggle="modal" data-target="#modalHelp"><span class="glyphicon glyphicon-question-sign"
+                aria-hidden="true"></span> Help</a></li>
+          <li><a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode"
+                aria-hidden="true"></span> v3.3</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div>
+  </nav> <!-- /.Nav Bar -->
+
+  <div class="container-fluid">
+
+    <!-- Body -->
+    <div class="row">
+
+      <!-- Panel Left -->
+      <div class="col-md-3">
+        <div class="well well-sm">
+
+          <!-- anrsealed -->
+          <h4 style="margin-top:0px"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> anrsealed</h4>
+          <p align="justify">The <b>Sealed</b> format is an alternative format for <b>Android: Netrunner</b>. You must
+            build a deck from a pack of <b>85 random cards</b>. <b>anrsealed</b> generates these packs so that they are
+            all <b>balanced</b>. Each player builds his deck with his own collection or one player can share his
+            collection to the others. Please read <b><a href="#" data-toggle="modal" data-target="#modalHelp"><span
+                  class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Help</a></b> for more
+            information.</p> <!-- anrsealed -->
+
+          <!-- How to use anrsealed ? -->
+          <h4><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> How to use anrsealed ?</h4>
+          <ol>
+            <li>Select the <b><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Core Sets</b>,
+              <b>Deluxe Expansions</b> and <b>Cycles</b>.
+            </li>
+            <li>Select the <b><span class="glyphicon glyphicon-education" aria-hidden="true"></span> Type of
+                players</b>, <b><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Number of players</b>,
+              <b><span class="glyphicon glyphicon-object-align-bottom" aria-hidden="true"></span> Mode</b> and <b><span
+                  class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span> Ownership</b>.
+            </li>
+            <li>Click on <b><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Generate &
+                Download</b>.</li>
+            <li>Build a deck from the 85 cards of the downloaded <b><span class="glyphicon glyphicon-folder-open"
+                  aria-hidden="true"></span> Zip file</b> and the following identity cards.</li>
+            <li>Play with the same rules as the base game.</li>
+          </ol> <!-- How to use anrsealed ? -->
+
+          <!-- Identity cards -->
+          <div class="row">
+            <div class="col-xs-1"></div>
+            <div class="col-xs-4">
+              <a href="#" data-toggle="modal" data-target="#modalViewIdentities"><img src="images/id_corp.jpg" alt=""
+                  class="img-responsive img-rounded" /></a>
+            </div>
+            <div class="col-xs-4">
+              <a href="#" data-toggle="modal" data-target="#modalViewIdentities"><img src="images/id_runner.jpg" alt=""
+                  class="img-responsive img-rounded" /></a>
+            </div>
+          </div> <!-- Identity cards -->
+
+          <!-- Breaking News -->
+          <h4><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> Breaking News</h4>
+          <ul>
+            <li><b>[18 Jun 2020]</b> The version <b><a href="#" data-toggle="modal"
+                  data-target="#modalChanges">3.3</a></b> is now available.</li>
+            <li><span class="glyphicon glyphicon-apple" aria-hidden="true"></span> Download doesn't work on
+              <b>Safari</b>, please use <b>Chrome</b>.
+            </li>
+          </ul> <!-- Breaking News -->
+
+          <!-- Partnership -->
+          <h4><span class="glyphicon glyphicon-link" aria-hidden="true"></span> Partnership</h4>
+          <div class="row">
+            <div class="col-sm-3 col-xs-12">
+              <a href="http://ludiworld.com/newshop/" target="_blank"><img src="images/ludiworld.jpg" alt=""
+                  class="img-responsive img-rounded" /></a>
+            </div>
+          </div> <!-- Partnership -->
+
+        </div>
+      </div> <!-- Panel Left -->
+
+      <!-- Panel Right -->
+      <div class="col-md-9">
+
+        <!-- Core Set, Deluxes and Generate -->
+        <div class="row">
+
+          <!-- Generate -->
+          <div class="col-lg-3 col-lg-push-9 col-md-12">
+            <div class="well well-sm">
+
+              <div class="row">
+                <div class="col-md-5">
+                  <!-- Players -->
+                  <h4 style="margin-top:0px;margin-bottom:0px" data-toggle="tooltip" data-placement="bottom"
+                    title="Select if the players know the game."><span class="glyphicon glyphicon-education"
+                      aria-hidden="true"></span> Players</h4>
+                  <div class="form-group">
+                    <div class="input-group" id="text_players">
+                      <div class="radio">
+                        <label data-toggle="tooltip" data-placement="bottom"
+                          title="All the players know the game."><input type="radio" name="optradio_players"
+                            id="radio_players_hackers" checked>Hackers</label>
                       </div>
-                    </div>  <!-- /.Players -->
-                  </div>
-
-                  <div class="col-md-7">
-                    <!-- Nb players -->
-                    <h4 style="margin-top:0px"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Nb players</h4>
-                    <div class="form-group">
-                      <div class="input-group">
-                        <input id="text_nb_players" type="text" class="form-control" placeholder="Enter the number of players" aria-describedby="text_nb_players_addon" value="2">
-                        <span class="input-group-addon" id="text_nb_players_addon">players</span>
-                      </div>
-                    </div>  <!-- /.Number of players -->
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-md-5">
-                    <!-- Mode -->
-                    <h4 style="margin-top:0px;margin-bottom:0px"><span class="glyphicon glyphicon-object-align-bottom" aria-hidden="true"></span> Mode</h4>
-                    <div class="form-group">
-                      <div class="input-group" id="text_mode">
-                        <div class="radio">
-                          <label data-toggle="tooltip" data-placement="bottom" title="Each player builds and plays with his Sealed Pack."><input type="radio" name="optradio_mode" id="radio_mode_sealed" checked>Sealed Pack</label>
-                        </div>
-                        <div class="radio">
-                          <label data-toggle="tooltip" data-placement="bottom" title="Each player plays with his Sealed Deck, without building."><input type="radio" name="optradio_mode"  id="radio_mode_deck">Sealed Deck <small>(Beta)</small></label>
-                        </div>
-                      </div>
-                    </div>  <!-- /.Mode -->
-                  </div>
-
-                  <div class="col-md-7">
-                    <!-- Ownership -->
-                    <h4 style="margin-top:0px;margin-bottom:0px" data-toggle="tooltip" data-placement="bottom" title="Select the owner of the cards."><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Ownership</h4>
-                    <div class="form-group">
-                      <div class="input-group" id="text_ownership">
-                        <div class="radio">
-                          <label data-toggle="tooltip" data-placement="bottom" title="Each player plays with his own cards."><input type="radio" name="optradio_ownership" id="radio_ownership_each" checked>Every man for himself</label>
-                        </div>
-                        <div class="radio">
-                          <label data-toggle="tooltip" data-placement="bottom" title="A player shares his cards to all others."><input type="radio" name="optradio_ownership"  id="radio_ownership_one">Sharing</label>
-                        </div>
-                      </div>
-                    </div>  <!-- /.Ownership -->
-                  </div>
-                </div>
-
-                <!-- Advanced Settings -->
-                <div id="accordion" role="tablist" aria-multiselectable="true">
-                  <h4 style="margin-top:0px">
-                    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <a role="button" data-toggle="collapse" data-parent="#accordion" href="#accordionAdvancedSettings1" aria-expanded="true" aria-controls="accordionAdvancedSettings1">Advanced settings <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
-                    </a>
-                  </h4>
-                  <div id="accordionAdvancedSettings1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-
-                    <div class="row">
-                      <div class="col-md-6">
-                        <!-- Starter -->
-                        <h4 style="margin-top:0px;margin-bottom:0px"><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> Starter</h4>
-                        <div class="form-group">
-                          <div class="input-group">
-                            <div class="radio">
-                              <label data-toggle="tooltip" data-placement="bottom" title="45 cards per deck / 7 Agenda points."><input type="radio" name="optradio_starter"  id="radio_starter_45" checked>85 cards</label>
-                            </div>
-
-                            <div class="radio">
-                              <label data-toggle="tooltip" data-placement="bottom" title="30 cards per deck / 6 Agenda points."><input type="radio" name="optradio_starter" id="radio_starter_30">57 cards</label>
-                            </div>
-
-                            <div class="radio">
-                              <label><input type="radio" name="optradio_starter" id="radio_starter_no">No starter</label>
-                            </div>
-                          </div>
-                        </div>  <!-- Starter -->
-                      </div>
-
-                      <div class="col-md-6">
-
-                        <!-- Boosters -->
-                        <h4 style="margin-top:0px;margin-bottom:0px"><span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Boosters</h4>
-                        <div class="form-group">
-                          <div class="input-group">
-                            <div class="radio">
-                              <label data-toggle="tooltip" data-placement="bottom" title="Number of boosters of 8 cards."><input type="radio" name="optradio_boosters" id="radio_boosters_8">
-                                  <input id="text_nb_boosters" type="text" class="form-control" placeholder="Enter the number of boosters" aria-describedby="text_nb_boosters_addon" value="1">
-                              </label>
-                            </div>
-
-                            <div class="radio">
-                              <label><input type="radio" name="optradio_boosters" id="radio_boosters_no" checked>No booster</label>
-                            </div>
-                          </div>
-                        </div>  <!-- /.Boosters -->
+                      <div class="radio">
+                        <label data-toggle="tooltip" data-placement="bottom" title="Use only simple cards."><input
+                            type="radio" name="optradio_players" id="radio_players_noobs">N00bs</label>
                       </div>
                     </div>
+                  </div> <!-- /.Players -->
+                </div>
 
-                    <!-- Cardpool -->
-                    <h4 style="margin-top:0px;margin-bottom:0px"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> Cardpool</h4>
-                    <div class="form-group">
-                      <div class="input-group" id="text_cardpool">
-                        <div class="radio">
-                          <label data-toggle="tooltip" data-placement="bottom" title="Use the cards selected by anrsealed."><input type="radio" name="optradio_cardpool" id="radio_cardpool_anrsealed" checked><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> anrsealed</label>
-                        </div>
-                        <div class="radio">
-                          <label data-toggle="tooltip" data-placement="bottom" title="Use all the cards (Recommended if you share a small cardpool)."><input type="radio" name="optradio_cardpool"  id="radio_cardpool_all">All cards</label>
-                        </div>
-                      </div>
-                    </div>  <!-- /.Cardpool -->
+                <div class="col-md-7">
+                  <!-- Nb players -->
+                  <h4 style="margin-top:0px"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Nb
+                    players</h4>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input id="text_nb_players" type="text" class="form-control"
+                        placeholder="Enter the number of players" aria-describedby="text_nb_players_addon" value="2">
+                      <span class="input-group-addon" id="text_nb_players_addon">players</span>
+                    </div>
+                  </div> <!-- /.Number of players -->
+                </div>
+              </div>
 
-                  </div>
-                </div> <!-- /.Advanced settings -->
-
-                <!-- Generate & Download -->
-                <div class="form-group">
-                  <div class="btn-group">
-                    <button id="button_generate_and_download" type="button" class="btn btn-success" data-loading-text="Generating..." autocomplete="off"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Generate & Download</button>
-                    <button id="button_view_results" type="button" data-toggle="modal" data-target="#modalViewResults" class="btn btn-default"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> View</button>
-                  </div>
-                </div>  <!-- Generate & Download -->
-
-                <!-- Status -->
-                <div class="form-group">
-                  <textarea id="textarea_status" class="form-control" style="resize:vertical" rows="5" readonly placeholder="Select the expansions, the number of players, the mode, the ownership of the cards then click on Generate & Download."></textarea>
-                </div>  <!-- /.Status -->
-              </div>  <!-- /.well -->
-            </div>  <!-- /.Generate -->
-
-            <!-- Panel Middle -->
-            <div class="col-lg-9 col-lg-pull-3 col-md-12">
               <div class="row">
-                <div class="col-sm-12 well well-sm">
+                <div class="col-md-5">
+                  <!-- Mode -->
+                  <h4 style="margin-top:0px;margin-bottom:0px"><span class="glyphicon glyphicon-object-align-bottom"
+                      aria-hidden="true"></span> Mode</h4>
+                  <div class="form-group">
+                    <div class="input-group" id="text_mode">
+                      <div class="radio">
+                        <label data-toggle="tooltip" data-placement="bottom"
+                          title="Each player builds and plays with his Sealed Pack."><input type="radio"
+                            name="optradio_mode" id="radio_mode_sealed" checked>Sealed Pack</label>
+                      </div>
+                      <div class="radio">
+                        <label data-toggle="tooltip" data-placement="bottom"
+                          title="Each player plays with his Sealed Deck, without building."><input type="radio"
+                            name="optradio_mode" id="radio_mode_deck">Sealed Deck <small>(Beta)</small></label>
+                      </div>
+                    </div>
+                  </div> <!-- /.Mode -->
+                </div>
 
-                  <!-- BigBoxes -->
+                <div class="col-md-7">
+                  <!-- Ownership -->
+                  <h4 style="margin-top:0px;margin-bottom:0px" data-toggle="tooltip" data-placement="bottom"
+                    title="Select the owner of the cards."><span class="glyphicon glyphicon-home"
+                      aria-hidden="true"></span> Ownership</h4>
+                  <div class="form-group">
+                    <div class="input-group" id="text_ownership">
+                      <div class="radio">
+                        <label data-toggle="tooltip" data-placement="bottom"
+                          title="Each player plays with his own cards."><input type="radio" name="optradio_ownership"
+                            id="radio_ownership_each" checked>Every man for himself</label>
+                      </div>
+                      <div class="radio">
+                        <label data-toggle="tooltip" data-placement="bottom"
+                          title="A player shares his cards to all others."><input type="radio" name="optradio_ownership"
+                            id="radio_ownership_one">Sharing</label>
+                      </div>
+                    </div>
+                  </div> <!-- /.Ownership -->
+                </div>
+              </div>
+
+              <!-- Advanced Settings -->
+              <div id="accordion" role="tablist" aria-multiselectable="true">
+                <h4 style="margin-top:0px">
+                  <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <a role="button"
+                    data-toggle="collapse" data-parent="#accordion" href="#accordionAdvancedSettings1"
+                    aria-expanded="true" aria-controls="accordionAdvancedSettings1">Advanced settings <span
+                      class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+                  </a>
+                </h4>
+                <div id="accordionAdvancedSettings1" class="panel-collapse collapse" role="tabpanel"
+                  aria-labelledby="headingOne">
+
                   <div class="row">
+                    <div class="col-md-6">
+                      <!-- Starter -->
+                      <h4 style="margin-top:0px;margin-bottom:0px"><span class="glyphicon glyphicon-tag"
+                          aria-hidden="true"></span> Starter</h4>
+                      <div class="form-group">
+                        <div class="input-group">
+                          <div class="radio">
+                            <label data-toggle="tooltip" data-placement="bottom"
+                              title="45 cards per deck / 7 Agenda points."><input type="radio" name="optradio_starter"
+                                id="radio_starter_45" checked>85 cards</label>
+                          </div>
 
-                    <!-- Core Set -->
-                    <div class="col-sm-2">
-                      <h4 style="margin-top:0px"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Core Set</h4>
-                      <div class="row">
-                        <!-- Image -->
-                        <div class="col-xs-9">
-                          <img src="images/Core Set.png" alt="" class="img-responsive img-rounded" />
-                        </div> <!-- /.Image -->
-                        <!-- Radio -->
-                        <div class="col-xs-3" style="padding:0px">
-                          <div class="form-group">
-                            <div class="input-group" id="text_nb_core_set">
-                              <div class="radio">
-                                <label><input type="radio" name="optradio_nb_core_set" id="radio_nb_core_set_0">0</label>
-                              </div>
-                              <div class="radio">
-                                <label><input type="radio" name="optradio_nb_core_set" id="radio_nb_core_set_1">1</label>
-                              </div>
-                              <div class="radio">
-                                <label><input type="radio" name="optradio_nb_core_set" id="radio_nb_core_set_2">2</label>
-                              </div>
-                              <div class="radio">
-                                <label><input type="radio" name="optradio_nb_core_set" id="radio_nb_core_set_3" checked>3</label>
-                              </div>
+                          <div class="radio">
+                            <label data-toggle="tooltip" data-placement="bottom"
+                              title="30 cards per deck / 6 Agenda points."><input type="radio" name="optradio_starter"
+                                id="radio_starter_30">57 cards</label>
+                          </div>
+
+                          <div class="radio">
+                            <label><input type="radio" name="optradio_starter" id="radio_starter_no">No starter</label>
+                          </div>
+                        </div>
+                      </div> <!-- Starter -->
+                    </div>
+
+                    <div class="col-md-6">
+
+                      <!-- Boosters -->
+                      <h4 style="margin-top:0px;margin-bottom:0px"><span class="glyphicon glyphicon-tags"
+                          aria-hidden="true"></span> Boosters</h4>
+                      <div class="form-group">
+                        <div class="input-group">
+                          <div class="radio">
+                            <label data-toggle="tooltip" data-placement="bottom"
+                              title="Number of boosters of 8 cards."><input type="radio" name="optradio_boosters"
+                                id="radio_boosters_8">
+                              <input id="text_nb_boosters" type="text" class="form-control"
+                                placeholder="Enter the number of boosters" aria-describedby="text_nb_boosters_addon"
+                                value="1">
+                            </label>
+                          </div>
+
+                          <div class="radio">
+                            <label><input type="radio" name="optradio_boosters" id="radio_boosters_no" checked>No
+                              booster</label>
+                          </div>
+                        </div>
+                      </div> <!-- /.Boosters -->
+                    </div>
+                  </div>
+
+                  <!-- Cardpool -->
+                  <h4 style="margin-top:0px;margin-bottom:0px"><span class="glyphicon glyphicon-briefcase"
+                      aria-hidden="true"></span> Cardpool</h4>
+                  <div class="form-group">
+                    <div class="input-group" id="text_cardpool">
+                      <div class="radio">
+                        <label data-toggle="tooltip" data-placement="bottom"
+                          title="Use the cards selected by anrsealed."><input type="radio" name="optradio_cardpool"
+                            id="radio_cardpool_anrsealed" checked><span class="glyphicon glyphicon-barcode"
+                            aria-hidden="true"></span> anrsealed</label>
+                      </div>
+                      <div class="radio">
+                        <label data-toggle="tooltip" data-placement="bottom"
+                          title="Use all the cards (Recommended if you share a small cardpool)."><input type="radio"
+                            name="optradio_cardpool" id="radio_cardpool_all">All cards</label>
+                      </div>
+                    </div>
+                  </div> <!-- /.Cardpool -->
+
+                </div>
+              </div> <!-- /.Advanced settings -->
+
+              <!-- Generate & Download -->
+              <div class="form-group">
+                <div class="btn-group">
+                  <button id="button_generate_and_download" type="button" class="btn btn-success"
+                    data-loading-text="Generating..." autocomplete="off"><span class="glyphicon glyphicon-download-alt"
+                      aria-hidden="true"></span> Generate & Download</button>
+                  <button id="button_view_results" type="button" data-toggle="modal" data-target="#modalViewResults"
+                    class="btn btn-default"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                    View</button>
+                </div>
+              </div> <!-- Generate & Download -->
+
+              <!-- Status -->
+              <div class="form-group">
+                <textarea id="textarea_status" class="form-control" style="resize:vertical" rows="5" readonly
+                  placeholder="Select the expansions, the number of players, the mode, the ownership of the cards then click on Generate & Download."></textarea>
+              </div> <!-- /.Status -->
+            </div> <!-- /.well -->
+          </div> <!-- /.Generate -->
+
+          <!-- Panel Middle -->
+          <div class="col-lg-9 col-lg-pull-3 col-md-12">
+            <div class="row">
+              <div class="col-sm-12 well well-sm">
+
+                <!-- BigBoxes -->
+                <div class="row">
+
+                  <!-- Core Set -->
+                  <div class="col-sm-2">
+                    <h4 style="margin-top:0px"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Core
+                      Set</h4>
+                    <div class="row">
+                      <!-- Image -->
+                      <div class="col-xs-9">
+                        <img src="images/Core Set.png" alt="" class="img-responsive img-rounded" />
+                      </div> <!-- /.Image -->
+                      <!-- Radio -->
+                      <div class="col-xs-3" style="padding:0px">
+                        <div class="form-group">
+                          <div class="input-group" id="text_nb_core_set">
+                            <div class="radio">
+                              <label><input type="radio" name="optradio_nb_core_set" id="radio_nb_core_set_0">0</label>
+                            </div>
+                            <div class="radio">
+                              <label><input type="radio" name="optradio_nb_core_set" id="radio_nb_core_set_1">1</label>
+                            </div>
+                            <div class="radio">
+                              <label><input type="radio" name="optradio_nb_core_set" id="radio_nb_core_set_2">2</label>
+                            </div>
+                            <div class="radio">
+                              <label><input type="radio" name="optradio_nb_core_set" id="radio_nb_core_set_3"
+                                  checked>3</label>
                             </div>
                           </div>
-                        </div>  <!-- /.Radio -->
-                      </div>
-                    </div>  <!-- ./Core Set -->
+                        </div>
+                      </div> <!-- /.Radio -->
+                    </div>
+                  </div> <!-- ./Core Set -->
 
-                    <!-- Revised Core Set -->
-                    <div class="col-sm-2">
-                      <h4 style="margin-top:0px"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Revised Core</h4>
-                      <div class="row">
-                        <!-- Image -->
-                        <div class="col-xs-9">
-                          <img src="images/Revised Core Set.png" alt="" class="img-responsive img-rounded" />
-                        </div> <!-- /.Image -->
-                        <!-- Radio -->
-                        <div class="col-xs-3" style="padding:0px">
-                          <div class="form-group">
-                            <div class="input-group" id="text_nb_revised_core_set">
-                              <div class="radio">
-                                <label><input type="radio" name="optradio_nb_revised_core_set" id="radio_nb_revised_core_set_0" checked>0</label>
-                              </div>
-                              <div class="radio">
-                                <label><input type="radio" name="optradio_nb_revised_core_set" id="radio_nb_revised_core_set_1">1</label>
-                              </div>
-                              <div class="radio">
-                                <label><input type="radio" name="optradio_nb_revised_core_set" id="radio_nb_revised_core_set_2">2</label>
-                              </div>
-                              <div class="radio">
-                                <label><input type="radio" name="optradio_nb_revised_core_set" id="radio_nb_revised_core_set_3">3</label>
-                              </div>
+                  <!-- Revised Core Set -->
+                  <div class="col-sm-2">
+                    <h4 style="margin-top:0px"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
+                      Revised Core</h4>
+                    <div class="row">
+                      <!-- Image -->
+                      <div class="col-xs-9">
+                        <img src="images/Revised Core Set.png" alt="" class="img-responsive img-rounded" />
+                      </div> <!-- /.Image -->
+                      <!-- Radio -->
+                      <div class="col-xs-3" style="padding:0px">
+                        <div class="form-group">
+                          <div class="input-group" id="text_nb_revised_core_set">
+                            <div class="radio">
+                              <label><input type="radio" name="optradio_nb_revised_core_set"
+                                  id="radio_nb_revised_core_set_0" checked>0</label>
+                            </div>
+                            <div class="radio">
+                              <label><input type="radio" name="optradio_nb_revised_core_set"
+                                  id="radio_nb_revised_core_set_1">1</label>
+                            </div>
+                            <div class="radio">
+                              <label><input type="radio" name="optradio_nb_revised_core_set"
+                                  id="radio_nb_revised_core_set_2">2</label>
+                            </div>
+                            <div class="radio">
+                              <label><input type="radio" name="optradio_nb_revised_core_set"
+                                  id="radio_nb_revised_core_set_3">3</label>
                             </div>
                           </div>
-                        </div>  <!-- /.Radio -->
-                      </div>
-                    </div>  <!-- ./Revised Core Set -->
+                        </div>
+                      </div> <!-- /.Radio -->
+                    </div>
+                  </div> <!-- ./Revised Core Set -->
 
-                    <!-- NISEI -->
-                    <div class="col-sm-4">
-                      <h4 style="margin-top:0px"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> NISEI</h4>
-                      <div class="row">
-                        <!-- Image -->
-                        <div class="col-xs-5">
-                          <img src="images/nisei.png" alt="" class="img-responsive img-rounded" />
-                        </div> <!-- /.Image -->
-                        <!-- Check -->
-                        <div class="col-xs-7" style="padding:0px">
+                  <!-- NISEI -->
+                  <div class="col-sm-4">
+                    <h4 style="margin-top:0px"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> NISEI
+                    </h4>
+                    <div class="row">
+                      <!-- Image -->
+                      <div class="col-xs-5">
+                        <img src="images/nisei.png" alt="" class="img-responsive img-rounded" />
+                      </div> <!-- /.Image -->
+                      <!-- Check -->
+                      <div class="col-xs-7" style="padding:0px">
+                        <div class="checkbox" style="margin:0px">
+                          <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_nisei"
+                              checked><strong>NISEI</strong></label>
+                        </div>
+                        <div class="input-group">
+                          <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_nisei"
+                                id="checkbox_magnum_opus" checked>Magnum Opus</label></div>
+                          <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_nisei"
+                                id="checkbox_salvaged_memories" checked>Salvaged Memories</label></div>
+                          <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_nisei"
+                                id="checkbox_system_gateway" checked>System Gateway</label></div>
+                          <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_nisei"
+                                id="checkbox_system_update_2021" checked>System Update 2021</label></div>
+                        </div>
+                      </div> <!-- /.Check -->
+                    </div>
+                  </div> <!-- ./NISEI -->
+
+                  <!-- Deluxes -->
+                  <div class="col-sm-4">
+                    <h4 style="margin-top:0px"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
+                      Deluxes</h4>
+                    <div class="row">
+                      <!-- Image -->
+                      <div class="col-xs-5">
+                        <img src="images/Deluxes.png" alt="" class="img-responsive img-rounded" />
+                      </div> <!-- /.Image -->
+                      <!-- Check -->
+                      <div class="col-xs-7" style="padding:0px">
+                        <div class="checkbox" style="margin:0px">
+                          <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_deluxes"
+                              checked><strong>Deluxes</strong></label>
+                        </div>
+                        <div class="input-group">
+                          <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_deluxes"
+                                id="checkbox_creation_and_control" checked>Creation and Control</label></div>
+                          <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_deluxes"
+                                id="checkbox_honor_and_profit" checked>Honor and Profit</label></div>
+                          <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_deluxes"
+                                id="checkbox_order_and_chaos" checked>Order and Chaos</label></div>
+                          <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_deluxes"
+                                id="checkbox_data_and_destiny" checked>Data and Destiny</label></div>
+                          <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_deluxes"
+                                id="checkbox_terminal_directive" checked>Terminal Directive</label></div>
+                          <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_deluxes"
+                                id="checkbox_reign_and_reverie" checked>Reign and Reverie</label></div>
+                        </div>
+                      </div> <!-- /.Check -->
+                    </div>
+                  </div> <!-- ./Deluxes -->
+
+                </div> <!-- ./BigBoxes -->
+
+                <!-- Cycle1 -->
+                <h4 style="margin-top:5px"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Expansions
+                </h4>
+                <div class="row">
+
+                  <!-- Genesis -->
+                  <div class="col-sm-4">
+                    <div class="row">
+                      <!-- Image -->
+                      <div class="col-xs-5">
+                        <img src="images/01 Genesis.png" alt="" class="img-responsive img-rounded" />
+                      </div> <!-- /.Image -->
+                      <!-- Check -->
+                      <div class="col-xs-7" style="padding:0px">
+                        <div class="checkbox" style="margin:0px">
+                          <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_genesis"
+                              checked><strong>Genesis</strong></label>
+                        </div>
+                        <div class="input-group">
+                          <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_genesis"
+                                id="checkbox_what_lies_ahead" checked>What Lies Ahead</label></div>
+                          <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_genesis"
+                                id="checkbox_trace_amount" checked>Trace Amount</label></div>
+                          <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_genesis"
+                                id="checkbox_cyber_exodus" checked>Cyber Exodus</label></div>
+                          <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_genesis"
+                                id="checkbox_a_study_in_static" checked>A Study in Static</label></div>
+                          <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_genesis"
+                                id="checkbox_humanitys_shadow" checked>Humanity's Shadow</label></div>
+                          <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_genesis"
+                                id="checkbox_future_proof" checked>Future Proof</label></div>
+                        </div>
+                      </div> <!-- /.Check -->
+                    </div>
+                  </div> <!-- ./Genesis -->
+
+                  <!-- Spin -->
+                  <div class="col-sm-4">
+                    <div class="row">
+                      <!-- Image -->
+                      <div class="col-xs-5">
+                        <img src="images/02 Spin.png" alt="" class="img-responsive img-rounded" />
+                      </div> <!-- /.Image -->
+                      <!-- Check -->
+                      <div class="col-xs-7" style="padding:0px">
+                        <div class="form-group">
                           <div class="checkbox" style="margin:0px">
-                            <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_nisei" checked><strong>NISEI</strong></label>
+                            <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_spin"
+                                checked><strong>Spin</strong></label>
                           </div>
                           <div class="input-group">
-                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_nisei" id="checkbox_magnum_opus" checked>Magnum Opus</label></div>
-                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_nisei" id="checkbox_salvaged_memories" checked>Salvaged Memories</label></div>
-                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_nisei" id="checkbox_system_gateway" checked>System Gateway</label></div>
-                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_nisei" id="checkbox_system_update_2021" checked>System Update 2021</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_spin"
+                                  id="checkbox_opening_move" checked>Opening Move</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_spin"
+                                  id="checkbox_second_though" checked>Second Though</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_spin"
+                                  id="checkbox_mala_tempora" checked>Mala Tempora</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_spin"
+                                  id="checkbox_true_colors" checked>True Colors</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_spin"
+                                  id="checkbox_fear_and_loathing" checked>Fear and Loathing</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_spin"
+                                  id="checkbox_double_time" checked>Double Time</label></div>
                           </div>
-                        </div>  <!-- /.Check -->
-                      </div>
-                    </div>  <!-- ./NISEI -->
+                        </div>
+                      </div> <!-- /.Check -->
+                    </div>
+                  </div> <!-- ./Spin -->
 
-                    <!-- Deluxes -->
-                    <div class="col-sm-4">
-                      <h4 style="margin-top:0px"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Deluxes</h4>
-                      <div class="row">
-                        <!-- Image -->
-                        <div class="col-xs-5">
-                          <img src="images/Deluxes.png" alt="" class="img-responsive img-rounded" />
-                        </div> <!-- /.Image -->
-                        <!-- Check -->
-                        <div class="col-xs-7" style="padding:0px">
+                  <!-- Lunar -->
+                  <div class="col-sm-4">
+                    <div class="row">
+                      <!-- Image -->
+                      <div class="col-xs-5">
+                        <img src="images/03 Lunar.png" alt="" class="img-responsive img-rounded" />
+                      </div> <!-- /.Image -->
+                      <!-- Check -->
+                      <div class="col-xs-7" style="padding:0px">
+                        <div class="form-group">
                           <div class="checkbox" style="margin:0px">
-                            <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_deluxes" checked><strong>Deluxes</strong></label>
+                            <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_lunar"
+                                checked><strong>Lunar</strong></label>
                           </div>
                           <div class="input-group">
-                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_deluxes" id="checkbox_creation_and_control" checked>Creation and Control</label></div>
-                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_deluxes" id="checkbox_honor_and_profit" checked>Honor and Profit</label></div>
-                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_deluxes" id="checkbox_order_and_chaos" checked>Order and Chaos</label></div>
-                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_deluxes" id="checkbox_data_and_destiny" checked>Data and Destiny</label></div>
-                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_deluxes" id="checkbox_terminal_directive" checked>Terminal Directive</label></div>
-                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_deluxes" id="checkbox_reign_and_reverie" checked>Reign and Reverie</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_lunar"
+                                  id="checkbox_upstalk" checked>Upstalk</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_lunar"
+                                  id="checkbox_the_spaces_between" checked>The Spaces Between</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_lunar"
+                                  id="checkbox_first_contact" checked>First Contact</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_lunar"
+                                  id="checkbox_up_and_over" checked>Up and Over</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_lunar"
+                                  id="checkbox_all_that_remains" checked>All That Remains</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_lunar"
+                                  id="checkbox_the_source" checked>The Source</label></div>
                           </div>
-                        </div>  <!-- /.Check -->
-                      </div>
-                    </div>  <!-- ./Deluxes -->
+                        </div>
+                      </div> <!-- /.Check -->
+                    </div>
+                  </div> <!-- ./Lunar -->
 
-                  </div>  <!-- ./BigBoxes -->
+                </div> <!-- ./Cycle1 -->
 
-                  <!-- Cycle1 -->
-                  <h4 style="margin-top:5px"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Expansions</h4>
-                  <div class="row">
+                <!-- Cycle2 -->
+                <div class="row">
 
-                    <!-- Genesis -->
-                    <div class="col-sm-4">
-                      <div class="row">
-                        <!-- Image -->
-                        <div class="col-xs-5">
-                          <img src="images/01 Genesis.png" alt="" class="img-responsive img-rounded" />
-                        </div> <!-- /.Image -->
-                        <!-- Check -->
-                        <div class="col-xs-7" style="padding:0px">
-                            <div class="checkbox" style="margin:0px">
-                              <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_genesis" checked><strong>Genesis</strong></label>
-                            </div>
-                            <div class="input-group">
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_genesis" id="checkbox_what_lies_ahead" checked>What Lies Ahead</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_genesis" id="checkbox_trace_amount" checked>Trace Amount</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_genesis" id="checkbox_cyber_exodus" checked>Cyber Exodus</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_genesis" id="checkbox_a_study_in_static" checked>A Study in Static</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_genesis" id="checkbox_humanitys_shadow" checked>Humanity's Shadow</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_genesis" id="checkbox_future_proof" checked>Future Proof</label></div>
-                            </div>
-                        </div>  <!-- /.Check -->
-                      </div>
-                    </div>  <!-- ./Genesis -->
-
-                    <!-- Spin -->
-                    <div class="col-sm-4">
-                      <div class="row">
-                        <!-- Image -->
-                        <div class="col-xs-5">
-                          <img src="images/02 Spin.png" alt="" class="img-responsive img-rounded" />
-                        </div> <!-- /.Image -->
-                        <!-- Check -->
-                        <div class="col-xs-7" style="padding:0px">
-                          <div class="form-group">
-                            <div class="checkbox" style="margin:0px">
-                              <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_spin" checked><strong>Spin</strong></label>
-                            </div>
-                            <div class="input-group">
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_spin" id="checkbox_opening_move" checked>Opening Move</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_spin" id="checkbox_second_though" checked>Second Though</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_spin" id="checkbox_mala_tempora" checked>Mala Tempora</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_spin" id="checkbox_true_colors" checked>True Colors</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_spin" id="checkbox_fear_and_loathing" checked>Fear and Loathing</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_spin" id="checkbox_double_time" checked>Double Time</label></div>
-                            </div>
-                          </div>
-                        </div>  <!-- /.Check -->
-                      </div>
-                    </div>  <!-- ./Spin -->
-
-                    <!-- Lunar -->
-                    <div class="col-sm-4">
-                      <div class="row">
-                        <!-- Image -->
-                        <div class="col-xs-5">
-                          <img src="images/03 Lunar.png" alt="" class="img-responsive img-rounded" />
-                        </div> <!-- /.Image -->
-                        <!-- Check -->
-                        <div class="col-xs-7" style="padding:0px">
-                          <div class="form-group">
-                            <div class="checkbox" style="margin:0px">
-                              <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_lunar" checked><strong>Lunar</strong></label>
-                            </div>
-                            <div class="input-group">
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_lunar" id="checkbox_upstalk" checked>Upstalk</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_lunar" id="checkbox_the_spaces_between" checked>The Spaces Between</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_lunar" id="checkbox_first_contact" checked>First Contact</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_lunar" id="checkbox_up_and_over" checked>Up and Over</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_lunar" id="checkbox_all_that_remains" checked>All That Remains</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_lunar" id="checkbox_the_source" checked>The Source</label></div>
-                            </div>
-                          </div>
-                        </div>  <!-- /.Check -->
-                      </div>
-                    </div>  <!-- ./Lunar -->
-
-                  </div>  <!-- ./Cycle1 -->
-
-                  <!-- Cycle2 -->
-                  <div class="row">
-
-                    <!-- SanSan -->
-                    <div class="col-sm-4">
-                      <div class="row">
-                        <!-- Image -->
-                        <div class="col-xs-5">
-                          <img src="images/04 SanSan.png" alt="" class="img-responsive img-rounded" />
-                        </div> <!-- /.Image -->
-                        <!-- Check -->
-                        <div class="col-xs-7" style="padding:0px">
-                          <div class="form-group">
-                            <div class="checkbox" style="margin:0px">
-                              <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_sansan" checked><strong>SanSan</strong></label>
-                            </div>
-                            <div class="input-group">
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_sansan" id="checkbox_the_valley" checked>The Valley</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_sansan" id="checkbox_breaker_bay" checked>Breaker Bay</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_sansan" id="checkbox_chrome_city" checked>Chrome City</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_sansan" id="checkbox_the_underway" checked>The Underway</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_sansan" id="checkbox_old_hollywood" checked>Old Hollywood</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_sansan" id="checkbox_the_universe_of_tomorrow" checked>The Universe of Tomorrow</label></div>
-                            </div>
-                          </div>
-                        </div>  <!-- /.Check -->
-                      </div>
-                    </div>  <!-- ./SanSan -->
-
-                    <!-- Mumbad -->
-                    <div class="col-sm-4">
-                      <div class="row">
-                        <!-- Image -->
-                        <!-- Image -->
-                        <div class="col-xs-5">
-                          <img src="images/05 Mumbad.png" alt="" class="img-responsive img-rounded" />
-                        </div> <!-- /.Image -->
-                        <!-- Check -->
-                        <div class="col-xs-7" style="padding:0px">
-                          <div class="form-group">
-                            <div class="checkbox" style="margin:0px">
-                              <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_mumbad" checked><strong>Mumbad</strong></label>
-                            </div>
-                            <div class="input-group">
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_mumbad" id="checkbox_khala_ghoda" checked>Khala Ghoda</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_mumbad" id="checkbox_business_first" checked>Business First</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_mumbad" id="checkbox_democracy_and_dogma" checked>Democracy and Dogma</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_mumbad" id="checkbox_salsette_island" checked>Salsette Island</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_mumbad" id="checkbox_the_liberated_mind" checked>The Liberated Mind</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_mumbad" id="checkbox_fear_the_masses" checked>Fear the Masses</label></div>
-                            </div>
-                          </div>
-                        </div>  <!-- /.Check -->
-                      </div>
-                    </div>  <!-- ./Mumbad -->
-
-                    <!-- Flashpoint -->
-                    <div class="col-sm-4">
-                      <div class="row">
-                        <!-- Image -->
-                        <div class="col-xs-5">
-                          <img src="images/06 Flashpoint.png" alt="" class="img-responsive img-rounded" />
-                        </div> <!-- /.Image -->
-                        <!-- Check -->
-                        <div class="col-xs-7" style="padding:0px">
-                          <div class="form-group">
-                            <div class="checkbox" style="margin:0px">
-                              <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_flashpoint" checked><strong>Flashpoint</strong></label>
-                            </div>
-                            <div class="input-group">
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_flashpoint" id="checkbox_23_seconds" checked>23 Seconds</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_flashpoint" id="checkbox_blood_money" checked>Blood Money</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_flashpoint" id="checkbox_escalation" checked>Escalation</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_flashpoint" id="checkbox_intervention" checked>Intervention</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_flashpoint" id="checkbox_martial_law" checked>Martial Law</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_flashpoint" id="checkbox_quorum" checked>Quorum</label></div>
-                            </div>
-                          </div>
-                        </div>  <!-- /.Check -->
-                      </div>
-                    </div>  <!-- ./Flashpoint -->
-
-
-                  </div>  <!-- ./Cycle2 -->
-
-                  <!-- Cycle3 -->
-                  <div class="row">
-
-                    <!-- Red Sand -->
-                    <div class="col-sm-4">
-                      <div class="row">
-                        <!-- Image -->
-                        <div class="col-xs-5">
-                          <img src="images/07 Red Sand.png" alt="" class="img-responsive img-rounded" />
-                        </div> <!-- /.Image -->
-                        <!-- Check -->
-                        <div class="col-xs-7" style="padding:0px">
-                          <div class="form-group" style="margin-bottom:0px">
-                            <div class="checkbox" style="margin:0px">
-                              <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_red_sand" checked><strong>Red Sand</strong></label>
-                            </div>
-                            <div class="input-group">
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_red_sand" id="checkbox_daedalus_complex" checked>Daedalus Complex</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_red_sand" id="checkbox_station_one" checked>Station One</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_red_sand" id="checkbox_earths_scion" checked>Earth's Scion</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_red_sand" id="checkbox_blood_and_water" checked>Blood and Water</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_red_sand" id="checkbox_free_mars" checked>Free Mars</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_red_sand" id="checkbox_crimson_dust" checked>Crimson Dust</label></div>
-                            </div>
-                          </div>
-                        </div>  <!-- /.Check -->
-                      </div>
-                    </div>  <!-- ./Red Sand -->
-
-                    <!-- Kitara -->
-                    <div class="col-sm-4">
-                      <div class="row">
-                        <!-- Image -->
-                        <div class="col-xs-5">
-                          <img src="images/08 Kitara.png" alt="" class="img-responsive img-rounded" />
-                        </div> <!-- /.Image -->
-                        <!-- Check -->
-                        <div class="col-xs-7" style="padding:0px">
-                          <div class="form-group" style="margin-bottom:0px">
-                            <div class="checkbox" style="margin:0px">
-                              <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_kitara" checked><strong>Kitara</strong></label>
-                            </div>
-                            <div class="input-group">
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_kitara" id="checkbox_sovereign_sight" checked>Sovereign Sight</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_kitara" id="checkbox_down_the_white_nile" checked>Down the White Nile</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_kitara" id="checkbox_council_of_the_crest" checked>Council of the Crest</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_kitara" id="checkbox_the_devil_and_the_dragon" checked>The Devil and the Dragon</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_kitara" id="checkbox_whispers_in_nalubaale" checked>Whispers in Nalubaale</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_kitara" id="checkbox_kampala_ascendent" checked>Kampala Ascendent</label></div>
-                            </div>
-                          </div>
-                        </div>  <!-- /.Check -->
-                      </div>
-                    </div>  <!-- ./Kitara -->
-
-                    <!-- Bottom right -->
-                    <div class="col-sm-4">
-                      <!-- Ashes -->
-                      <div class="row">
-                        <!-- Image -->
-                        <div class="col-xs-5">
-                          <img src="images/26 Ashes.png" alt="" class="img-responsive img-rounded" />
-                        </div> <!-- /.Image -->
-                        <!-- Check -->
-                        <div class="col-xs-7" style="padding:0px">
-                          <div class="form-group" style="margin-bottom:0px">
-                            <div class="checkbox" style="margin:0px">
-                              <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_ashes" checked><strong>Ashes</strong></label>
-                            </div>
-                            <div class="input-group">
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_ashes" id="checkbox_downfall" checked>Downfall</label></div>
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_ashes" id="checkbox_uprising" checked>Uprising</label></div>
-                            </div>
-                          </div>
-                        </div>  <!-- /.Check -->
-                      </div> <!-- ./Ashes -->
-
-                      <!-- Separator -->
-                      <div class="row">
+                  <!-- SanSan -->
+                  <div class="col-sm-4">
+                    <div class="row">
+                      <!-- Image -->
+                      <div class="col-xs-5">
+                        <img src="images/04 SanSan.png" alt="" class="img-responsive img-rounded" />
+                      </div> <!-- /.Image -->
+                      <!-- Check -->
+                      <div class="col-xs-7" style="padding:0px">
                         <div class="form-group">
-                        </div>
-                      </div> <!-- ./Separator -->
-
-                      <!-- Borealis -->
-                      <div class="row">
-                        <!-- Image -->
-                        <div class="col-xs-5">
-                          <img src="images/borealis.png" alt="" class="img-responsive img-rounded" />
-                        </div> <!-- /.Image -->
-                        <!-- Check -->
-                        <div class="col-xs-7" style="padding:0px">
-                          <div class="form-group" style="margin-bottom:0px">
-                            <div class="checkbox" style="margin:0px">
-                              <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_borealis" checked><strong>Borealis</strong></label>
-                            </div>
-                            <div class="input-group">
-                              <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_borealis" id="checkbox_midnight_sun_booster_pack" checked>Midnight Sun Booster Pack</label></div>
-                            </div>
+                          <div class="checkbox" style="margin:0px">
+                            <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_sansan"
+                                checked><strong>SanSan</strong></label>
                           </div>
-                        </div>  <!-- /.Check -->
-                      </div> <!-- ./Borealis -->
+                          <div class="input-group">
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_sansan"
+                                  id="checkbox_the_valley" checked>The Valley</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_sansan"
+                                  id="checkbox_breaker_bay" checked>Breaker Bay</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_sansan"
+                                  id="checkbox_chrome_city" checked>Chrome City</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_sansan"
+                                  id="checkbox_the_underway" checked>The Underway</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_sansan"
+                                  id="checkbox_old_hollywood" checked>Old Hollywood</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_sansan"
+                                  id="checkbox_the_universe_of_tomorrow" checked>The Universe of Tomorrow</label></div>
+                          </div>
+                        </div>
+                      </div> <!-- /.Check -->
+                    </div>
+                  </div> <!-- ./SanSan -->
 
-                      <!-- Separator -->
-                      <div class="row">
+                  <!-- Mumbad -->
+                  <div class="col-sm-4">
+                    <div class="row">
+                      <!-- Image -->
+                      <!-- Image -->
+                      <div class="col-xs-5">
+                        <img src="images/05 Mumbad.png" alt="" class="img-responsive img-rounded" />
+                      </div> <!-- /.Image -->
+                      <!-- Check -->
+                      <div class="col-xs-7" style="padding:0px">
                         <div class="form-group">
+                          <div class="checkbox" style="margin:0px">
+                            <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_mumbad"
+                                checked><strong>Mumbad</strong></label>
+                          </div>
+                          <div class="input-group">
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_mumbad"
+                                  id="checkbox_khala_ghoda" checked>Khala Ghoda</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_mumbad"
+                                  id="checkbox_business_first" checked>Business First</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_mumbad"
+                                  id="checkbox_democracy_and_dogma" checked>Democracy and Dogma</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_mumbad"
+                                  id="checkbox_salsette_island" checked>Salsette Island</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_mumbad"
+                                  id="checkbox_the_liberated_mind" checked>The Liberated Mind</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_mumbad"
+                                  id="checkbox_fear_the_masses" checked>Fear the Masses</label></div>
+                          </div>
                         </div>
-                      </div> <!-- ./Separator -->
+                      </div> <!-- /.Check -->
+                    </div>
+                  </div> <!-- ./Mumbad -->
 
-                      <!-- Buttons Check/Uncheck all -->
-                      <div class="row">
-                        <div class="col-sm-12">
-                          <div class="form-group">
-                            <div class="btn-group-horizontal">
-                              <button id="button_check_all" type="button" class="btn btn-default" style="text-align:left"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Check all</button>
-                              <button id="button_uncheck_all" type="button" class="btn btn-default" style="text-align:left"><span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span> Uncheck all</button>
+                  <!-- Flashpoint -->
+                  <div class="col-sm-4">
+                    <div class="row">
+                      <!-- Image -->
+                      <div class="col-xs-5">
+                        <img src="images/06 Flashpoint.png" alt="" class="img-responsive img-rounded" />
+                      </div> <!-- /.Image -->
+                      <!-- Check -->
+                      <div class="col-xs-7" style="padding:0px">
+                        <div class="form-group">
+                          <div class="checkbox" style="margin:0px">
+                            <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_flashpoint"
+                                checked><strong>Flashpoint</strong></label>
+                          </div>
+                          <div class="input-group">
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_flashpoint"
+                                  id="checkbox_23_seconds" checked>23 Seconds</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_flashpoint"
+                                  id="checkbox_blood_money" checked>Blood Money</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_flashpoint"
+                                  id="checkbox_escalation" checked>Escalation</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_flashpoint"
+                                  id="checkbox_intervention" checked>Intervention</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_flashpoint"
+                                  id="checkbox_martial_law" checked>Martial Law</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_flashpoint"
+                                  id="checkbox_quorum" checked>Quorum</label></div>
+                          </div>
+                        </div>
+                      </div> <!-- /.Check -->
+                    </div>
+                  </div> <!-- ./Flashpoint -->
+
+
+                </div> <!-- ./Cycle2 -->
+
+                <!-- Cycle3 -->
+                <div class="row">
+
+                  <!-- Red Sand -->
+                  <div class="col-sm-4">
+                    <div class="row">
+                      <!-- Image -->
+                      <div class="col-xs-5">
+                        <img src="images/07 Red Sand.png" alt="" class="img-responsive img-rounded" />
+                      </div> <!-- /.Image -->
+                      <!-- Check -->
+                      <div class="col-xs-7" style="padding:0px">
+                        <div class="form-group" style="margin-bottom:0px">
+                          <div class="checkbox" style="margin:0px">
+                            <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_red_sand"
+                                checked><strong>Red Sand</strong></label>
+                          </div>
+                          <div class="input-group">
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_red_sand"
+                                  id="checkbox_daedalus_complex" checked>Daedalus Complex</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_red_sand"
+                                  id="checkbox_station_one" checked>Station One</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_red_sand"
+                                  id="checkbox_earths_scion" checked>Earth's Scion</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_red_sand"
+                                  id="checkbox_blood_and_water" checked>Blood and Water</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_red_sand"
+                                  id="checkbox_free_mars" checked>Free Mars</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_red_sand"
+                                  id="checkbox_crimson_dust" checked>Crimson Dust</label></div>
+                          </div>
+                        </div>
+                      </div> <!-- /.Check -->
+                    </div>
+                  </div> <!-- ./Red Sand -->
+
+                  <!-- Kitara -->
+                  <div class="col-sm-4">
+                    <div class="row">
+                      <!-- Image -->
+                      <div class="col-xs-5">
+                        <img src="images/08 Kitara.png" alt="" class="img-responsive img-rounded" />
+                      </div> <!-- /.Image -->
+                      <!-- Check -->
+                      <div class="col-xs-7" style="padding:0px">
+                        <div class="form-group" style="margin-bottom:0px">
+                          <div class="checkbox" style="margin:0px">
+                            <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_kitara"
+                                checked><strong>Kitara</strong></label>
+                          </div>
+                          <div class="input-group">
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_kitara"
+                                  id="checkbox_sovereign_sight" checked>Sovereign Sight</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_kitara"
+                                  id="checkbox_down_the_white_nile" checked>Down the White Nile</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_kitara"
+                                  id="checkbox_council_of_the_crest" checked>Council of the Crest</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_kitara"
+                                  id="checkbox_the_devil_and_the_dragon" checked>The Devil and the Dragon</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_kitara"
+                                  id="checkbox_whispers_in_nalubaale" checked>Whispers in Nalubaale</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_kitara"
+                                  id="checkbox_kampala_ascendent" checked>Kampala Ascendent</label></div>
+                          </div>
+                        </div>
+                      </div> <!-- /.Check -->
+                    </div>
+                  </div> <!-- ./Kitara -->
+
+                  <!-- Bottom right -->
+                  <div class="col-sm-4">
+                    <!-- Ashes -->
+                    <div class="row">
+                      <!-- Image -->
+                      <div class="col-xs-5">
+                        <img src="images/26 Ashes.png" alt="" class="img-responsive img-rounded" />
+                      </div> <!-- /.Image -->
+                      <!-- Check -->
+                      <div class="col-xs-7" style="padding:0px">
+                        <div class="form-group" style="margin-bottom:0px">
+                          <div class="checkbox" style="margin:0px">
+                            <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_ashes"
+                                checked><strong>Ashes</strong></label>
+                          </div>
+                          <div class="input-group">
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_ashes"
+                                  id="checkbox_downfall" checked>Downfall</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_ashes"
+                                  id="checkbox_uprising" checked>Uprising</label></div>
+                          </div>
+                        </div>
+                      </div> <!-- /.Check -->
+                    </div> <!-- ./Ashes -->
+
+                    <!-- Separator -->
+                    <div class="row">
+                      <div class="form-group">
+                      </div>
+                    </div> <!-- ./Separator -->
+
+                    <!-- Borealis -->
+                    <div class="row">
+                      <!-- Image -->
+                      <div class="col-xs-5">
+                        <img src="images/borealis.png" alt="" class="img-responsive img-rounded" />
+                      </div> <!-- /.Image -->
+                      <!-- Check -->
+                      <div class="col-xs-7" style="padding:0px">
+                        <div class="form-group" style="margin-bottom:0px">
+                          <div class="checkbox" style="margin:0px">
+                            <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_borealis"
+                                checked><strong>Borealis</strong></label>
+                          </div>
+                          <div class="input-group">
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_borealis"
+                                  id="checkbox_midnight_sun_booster_pack" checked>Midnight Sun Booster Pack</label>
                             </div>
                           </div>
                         </div>
-                      </div>  <!-- ./Buttons Check/Uncheck all -->
-                    </div>  <!-- ./Bottom right -->
+                      </div> <!-- /.Check -->
+                    </div> <!-- ./Borealis -->
 
-                  </div>  <!-- ./Cycle3 -->
+                    <!-- Separator -->
+                    <div class="row">
+                      <div class="form-group">
+                      </div>
+                    </div> <!-- ./Separator -->
 
-                </div>  <!-- ./Panel Middle -->
-              </div>  <!-- ./Panel Middle -->
-            </div>  <!-- ./Panel Middle -->
+                    <!-- Buttons Check/Uncheck all -->
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="form-group">
+                          <div class="btn-group-horizontal">
+                            <button id="button_check_all" type="button" class="btn btn-default"
+                              style="text-align:left"><span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                              Check all</button>
+                            <button id="button_uncheck_all" type="button" class="btn btn-default"
+                              style="text-align:left"><span class="glyphicon glyphicon-unchecked"
+                                aria-hidden="true"></span> Uncheck all</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div> <!-- ./Buttons Check/Uncheck all -->
+                  </div> <!-- ./Bottom right -->
 
-          </div> <!-- ./Core Set, Deluxes and Generate -->
+                </div> <!-- ./Cycle3 -->
 
-        </div> <!-- /.Panel Right -->
+              </div> <!-- ./Panel Middle -->
+            </div> <!-- ./Panel Middle -->
+          </div> <!-- ./Panel Middle -->
 
-      </div> <!-- /.Body -->
-    </div> <!-- /.container -->
+        </div> <!-- ./Core Set, Deluxes and Generate -->
 
-    <!-- Bootstrap core JavaScript
+      </div> <!-- /.Panel Right -->
+
+    </div> <!-- /.Body -->
+  </div> <!-- /.container -->
+
+  <!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.0/mustache.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="dist/js/bootstrap.min.js"></script>
-    <script src="dist/js/jszip.min.js"></script>
-    <script src="dist/js/FileSaver.min.js"></script>
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.0/mustache.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="dist/js/bootstrap.min.js"></script>
+  <script src="dist/js/jszip.min.js"></script>
+  <script src="dist/js/FileSaver.min.js"></script>
 
-    <script src="js/ProcessingStatus.js"></script>
-    <script src="js/Side.js"></script>
-    <script src="js/CardType.js"></script>
+  <script src="js/ProcessingStatus.js"></script>
+  <script src="js/Side.js"></script>
+  <script src="js/CardType.js"></script>
 
-    <script src="js/Card.js"></script>
-    <script src="js/CardPool.js"></script>
-    <script src="js/Cards.js"></script>
-    <script src="js/Constraint.js"></script>
-    <script src="js/Constraints.js"></script>
-    <script src="js/Cycle.js"></script>
-    <script src="js/Cycles.js"></script>
-    <script src="js/Database.js"></script>
-    <script src="js/Sealed.js"></script>
-    <script src="js/Pack.js"></script>
-    <script src="js/Player.js"></script>
-    <script src="js/Set.js"></script>
-    <script src="js/Sets.js"></script>
-    <script src="js/View.js"></script>
-    <script>
-      $(function() {
+  <script src="js/Card.js"></script>
+  <script src="js/CardPool.js"></script>
+  <script src="js/Cards.js"></script>
+  <script src="js/Constraint.js"></script>
+  <script src="js/Constraints.js"></script>
+  <script src="js/Cycle.js"></script>
+  <script src="js/Cycles.js"></script>
+  <script src="js/Database.js"></script>
+  <script src="js/Sealed.js"></script>
+  <script src="js/Pack.js"></script>
+  <script src="js/Player.js"></script>
+  <script src="js/Set.js"></script>
+  <script src="js/Sets.js"></script>
+  <script src="js/View.js"></script>
+  <script>
+    $(function () {
 
-        // Global variables
-        var mView = new View(['cards', 'constraints', 'cycles', 'sets'], '3.3', '0');
+      // Global variables
+      var mView = new View(['cards', 'constraints', 'cycles', 'sets'], '3.3', '0');
 
-        /**
-          *
-          */
-        $('[data-toggle="tooltip"]').tooltip();
+      /**
+        *
+        */
+      $('[data-toggle="tooltip"]').tooltip();
 
-        /**
-          *
-          */
-        areAllCheckboxesChecked = function(checkboxValue) {
-          // Retrieve the list of the checkboxes with a value equal to the given checkboxValue
-          var checkboxes = $(':checkbox[value="' + checkboxValue + '"]');
-          // Create the result. Begin true if there is at least one checkbox
-          var bAreAllCheckboxesChecked = (checkboxes.length > 0);
-          // Check if all checkboxes are checked
-          for(iCheckbox = 0; iCheckbox < checkboxes.length; iCheckbox++)
-          {
-            bAreAllCheckboxesChecked &= checkboxes[iCheckbox].checked;
-          }
-          return bAreAllCheckboxesChecked;
+      /**
+        *
+        */
+      areAllCheckboxesChecked = function (checkboxValue) {
+        // Retrieve the list of the checkboxes with a value equal to the given checkboxValue
+        var checkboxes = $(':checkbox[value="' + checkboxValue + '"]');
+        // Create the result. Begin true if there is at least one checkbox
+        var bAreAllCheckboxesChecked = (checkboxes.length > 0);
+        // Check if all checkboxes are checked
+        for (iCheckbox = 0; iCheckbox < checkboxes.length; iCheckbox++) {
+          bAreAllCheckboxesChecked &= checkboxes[iCheckbox].checked;
         }
+        return bAreAllCheckboxesChecked;
+      }
 
-        /**
-          *
-          */
-        checkTitle = function(checkboxTitleId, checkboxItemsValue) {
-          if(areAllCheckboxesChecked(checkboxItemsValue))
-          {
-            $('#' + checkboxTitleId).prop("checked", true);
-          }
-          else
-          {
-            $('#' + checkboxTitleId).prop("checked", false);
-          }
+      /**
+        *
+        */
+      checkTitle = function (checkboxTitleId, checkboxItemsValue) {
+        if (areAllCheckboxesChecked(checkboxItemsValue)) {
+          $('#' + checkboxTitleId).prop("checked", true);
         }
-
-        /**
-          *
-          */
-        checkAllItems = function(checkboxTitleId, checkboxItemsValue) {
-          if($('#'+ checkboxTitleId).is(':checked'))
-          {
-            $(':checkbox[value="'+ checkboxItemsValue +'"]').prop("checked", true);
-          }
-          else
-          {
-            $(':checkbox[value="'+ checkboxItemsValue +'"]').prop("checked", false);
-          }
+        else {
+          $('#' + checkboxTitleId).prop("checked", false);
         }
+      }
 
-        /**
-          * Handler of the button on click event.
-          *
-          * return  void
-          */
-        $('#button_check_all').on('click', function(e) {
-          $('#radio_nb_core_set_3').prop("checked", true);
-          $(':checkbox[value="checkbox_cycle_title"]').prop("checked", true);
-          $(':checkbox[value^="checkbox_cycle_item"]').prop("checked", true);
-        });
+      /**
+        *
+        */
+      checkAllItems = function (checkboxTitleId, checkboxItemsValue) {
+        if ($('#' + checkboxTitleId).is(':checked')) {
+          $(':checkbox[value="' + checkboxItemsValue + '"]').prop("checked", true);
+        }
+        else {
+          $(':checkbox[value="' + checkboxItemsValue + '"]').prop("checked", false);
+        }
+      }
 
-        /**
-          * Handler of the button on click event.
-          *
-          * return  void
-          */
-        $('#button_uncheck_all').on('click', function(e) {
-          $('#radio_nb_core_set_0').prop("checked", true);
-          $('#radio_nb_revised_core_set_0').prop("checked", true);
-          $(':checkbox[value="checkbox_cycle_title"]').prop("checked", false);
-          $(':checkbox[value^="checkbox_cycle_item"]').prop("checked", false);
-        });
-
-        /**
-          *
-          */
-        $('#checkbox_deluxes').change(function() {checkAllItems(this.id, "checkbox_cycle_item_deluxes");});
-        $('#checkbox_nisei').change(function() {checkAllItems(this.id, "checkbox_cycle_item_nisei");});
-        $('#checkbox_genesis').change(function() {checkAllItems(this.id, "checkbox_cycle_item_genesis");});
-        $('#checkbox_spin').change(function() {checkAllItems(this.id, "checkbox_cycle_item_spin");});
-        $('#checkbox_lunar').change(function() {checkAllItems(this.id, "checkbox_cycle_item_lunar");});
-        $('#checkbox_sansan').change(function() {checkAllItems(this.id, "checkbox_cycle_item_sansan");});
-        $('#checkbox_mumbad').change(function() {checkAllItems(this.id, "checkbox_cycle_item_mumbad");});
-        $('#checkbox_flashpoint').change(function() {checkAllItems(this.id, "checkbox_cycle_item_flashpoint");});
-        $('#checkbox_red_sand').change(function() {checkAllItems(this.id, "checkbox_cycle_item_red_sand");});
-        $('#checkbox_kitara').change(function() {checkAllItems(this.id, "checkbox_cycle_item_kitara");});
-        $('#checkbox_ashes').change(function() {checkAllItems(this.id, "checkbox_cycle_item_ashes");});
-        $('#checkbox_borealis').change(function() {checkAllItems(this.id, "checkbox_cycle_item_borealis");});
-
-        /**
-          *
-          */
-        $(':checkbox[value="checkbox_cycle_item_deluxes"]').change(function() {checkTitle("checkbox_deluxes", this.value);});
-        $(':checkbox[value="checkbox_cycle_item_nisei"]').change(function() {checkTitle("checkbox_nisei", this.value);});
-        $(':checkbox[value="checkbox_cycle_item_genesis"]').change(function() {checkTitle("checkbox_genesis", this.value);});
-        $(':checkbox[value="checkbox_cycle_item_spin"]').change(function() {checkTitle("checkbox_spin", this.value);});
-        $(':checkbox[value="checkbox_cycle_item_lunar"]').change(function() {checkTitle("checkbox_lunar", this.value);});
-        $(':checkbox[value="checkbox_cycle_item_sansan"]').change(function() {checkTitle("checkbox_sansan", this.value);});
-        $(':checkbox[value="checkbox_cycle_item_mumbad"]').change(function() {checkTitle("checkbox_mumbad", this.value);});
-        $(':checkbox[value="checkbox_cycle_item_flashpoint"]').change(function() {checkTitle("checkbox_flashpoint", this.value);});
-        $(':checkbox[value="checkbox_cycle_item_red_sand"]').change(function() {checkTitle("checkbox_red_sand", this.value);});
-        $(':checkbox[value="checkbox_cycle_item_kitara"]').change(function() {checkTitle("checkbox_kitara", this.value);});
-        $(':checkbox[value="checkbox_cycle_item_ashes"]').change(function() {checkTitle("checkbox_ashes", this.value);});
-        $(':checkbox[value="checkbox_cycle_item_borealis"]').change(function() {checkTitle("checkbox_borealis", this.value);});
-
-        /**
-          * Handler of the button_generate_and_download on click event.
-          *
-          * return  void
-          */
-        $('#button_generate_and_download').on('click', function(e) {
-          var $btn = $(this).button('loading');
-          mView.generateAndDownloadSealed();
-          $btn.button('reset');
-        });
-
-        /**
-          * Handler of the button_generate_and_download on click event.
-          *
-          * return  void
-          */
-        $('#button_view_results').on('click', function(e) {
-          mView.viewSealedPacks();
-        });
-
-        /**
-          * Handler of the button_checker_check on click event.
-          *
-          * return  void
-          */
-        $('#button_checker_check').on('click', function(e) {
-          mView.checkAndGenerateReserve();
-        });
-
-        /**
-          * Handler of the button_checker_erase on click event.
-          *
-          * return  void
-          */
-        $('#button_checker_erase').on('click', function(e) {
-          $('#textarea_checker_status').val("");
-          $('#textarea_checker_reserve').val("");
-        });
-
+      /**
+        * Handler of the button on click event.
+        *
+        * return  void
+        */
+      $('#button_check_all').on('click', function (e) {
+        $('#radio_nb_core_set_3').prop("checked", true);
+        $(':checkbox[value="checkbox_cycle_title"]').prop("checked", true);
+        $(':checkbox[value^="checkbox_cycle_item"]').prop("checked", true);
       });
-    </script>
 
-    <script id="tmplVspTab" type="x-tmpl-mustache">
+      /**
+        * Handler of the button on click event.
+        *
+        * return  void
+        */
+      $('#button_uncheck_all').on('click', function (e) {
+        $('#radio_nb_core_set_0').prop("checked", true);
+        $('#radio_nb_revised_core_set_0').prop("checked", true);
+        $(':checkbox[value="checkbox_cycle_title"]').prop("checked", false);
+        $(':checkbox[value^="checkbox_cycle_item"]').prop("checked", false);
+      });
+
+      /**
+        *
+        */
+      $('#checkbox_deluxes').change(function () { checkAllItems(this.id, "checkbox_cycle_item_deluxes"); });
+      $('#checkbox_nisei').change(function () { checkAllItems(this.id, "checkbox_cycle_item_nisei"); });
+      $('#checkbox_genesis').change(function () { checkAllItems(this.id, "checkbox_cycle_item_genesis"); });
+      $('#checkbox_spin').change(function () { checkAllItems(this.id, "checkbox_cycle_item_spin"); });
+      $('#checkbox_lunar').change(function () { checkAllItems(this.id, "checkbox_cycle_item_lunar"); });
+      $('#checkbox_sansan').change(function () { checkAllItems(this.id, "checkbox_cycle_item_sansan"); });
+      $('#checkbox_mumbad').change(function () { checkAllItems(this.id, "checkbox_cycle_item_mumbad"); });
+      $('#checkbox_flashpoint').change(function () { checkAllItems(this.id, "checkbox_cycle_item_flashpoint"); });
+      $('#checkbox_red_sand').change(function () { checkAllItems(this.id, "checkbox_cycle_item_red_sand"); });
+      $('#checkbox_kitara').change(function () { checkAllItems(this.id, "checkbox_cycle_item_kitara"); });
+      $('#checkbox_ashes').change(function () { checkAllItems(this.id, "checkbox_cycle_item_ashes"); });
+      $('#checkbox_borealis').change(function () { checkAllItems(this.id, "checkbox_cycle_item_borealis"); });
+
+      /**
+        *
+        */
+      $(':checkbox[value="checkbox_cycle_item_deluxes"]').change(function () { checkTitle("checkbox_deluxes", this.value); });
+      $(':checkbox[value="checkbox_cycle_item_nisei"]').change(function () { checkTitle("checkbox_nisei", this.value); });
+      $(':checkbox[value="checkbox_cycle_item_genesis"]').change(function () { checkTitle("checkbox_genesis", this.value); });
+      $(':checkbox[value="checkbox_cycle_item_spin"]').change(function () { checkTitle("checkbox_spin", this.value); });
+      $(':checkbox[value="checkbox_cycle_item_lunar"]').change(function () { checkTitle("checkbox_lunar", this.value); });
+      $(':checkbox[value="checkbox_cycle_item_sansan"]').change(function () { checkTitle("checkbox_sansan", this.value); });
+      $(':checkbox[value="checkbox_cycle_item_mumbad"]').change(function () { checkTitle("checkbox_mumbad", this.value); });
+      $(':checkbox[value="checkbox_cycle_item_flashpoint"]').change(function () { checkTitle("checkbox_flashpoint", this.value); });
+      $(':checkbox[value="checkbox_cycle_item_red_sand"]').change(function () { checkTitle("checkbox_red_sand", this.value); });
+      $(':checkbox[value="checkbox_cycle_item_kitara"]').change(function () { checkTitle("checkbox_kitara", this.value); });
+      $(':checkbox[value="checkbox_cycle_item_ashes"]').change(function () { checkTitle("checkbox_ashes", this.value); });
+      $(':checkbox[value="checkbox_cycle_item_borealis"]').change(function () { checkTitle("checkbox_borealis", this.value); });
+
+      /**
+        * Handler of the button_generate_and_download on click event.
+        *
+        * return  void
+        */
+      $('#button_generate_and_download').on('click', function (e) {
+        var $btn = $(this).button('loading');
+        mView.generateAndDownloadSealed();
+        $btn.button('reset');
+      });
+
+      /**
+        * Handler of the button_generate_and_download on click event.
+        *
+        * return  void
+        */
+      $('#button_view_results').on('click', function (e) {
+        mView.viewSealedPacks();
+      });
+
+      /**
+        * Handler of the button_checker_check on click event.
+        *
+        * return  void
+        */
+      $('#button_checker_check').on('click', function (e) {
+        mView.checkAndGenerateReserve();
+      });
+
+      /**
+        * Handler of the button_checker_erase on click event.
+        *
+        * return  void
+        */
+      $('#button_checker_erase').on('click', function (e) {
+        $('#textarea_checker_status').val("");
+        $('#textarea_checker_reserve').val("");
+      });
+
+    });
+  </script>
+
+  <script id="tmplVspTab" type="x-tmpl-mustache">
       <li role="presentation" class="dropdown">
         <a href="#" class="dropdown-toggle" id="vspTab{{playerId}}" data-toggle="dropdown" aria-controls="vspTab{{playerId}}-contents" aria-expanded="false">{{playerName}} <span class="caret"></span></a>
         <ul class="dropdown-menu" aria-labelledby="vspTab{{playerId}}" id="vspTab{{playerId}}-contents">
@@ -1398,7 +1676,7 @@
       </li>
     </script>
 
-    <script id="tmplVspContent" type="x-tmpl-mustache">
+  <script id="tmplVspContent" type="x-tmpl-mustache">
       <div class="tab-pane fade" role="tabpanel" id="vspPane{{playerId}}{{side}}" aria-labelledby="vspTab{{playerId}}{{side}}">
         <div id="vspCard{{playerId}}{{side}}">
           </div>
@@ -1406,7 +1684,7 @@
       </div>
     </script>
 
-    <script id="tmplVspCard" type="x-tmpl-mustache">
+  <script id="tmplVspCard" type="x-tmpl-mustache">
       <div class="row">
         <div class="col-sm-4">
           <a href="https://netrunnerdb.com/en/card/{{id0}}" target="_blank"><img src="https://netrunnerdb.com/card_image/{{id0}}.png" alt="" class="img-responsive img-rounded" /></a>
@@ -1421,9 +1699,10 @@
       <p></p>
     </script>
 
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <!-- <script src="assets/js/vendor/holder.js"></script> -->
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
+  <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+  <!-- <script src="assets/js/vendor/holder.js"></script> -->
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+</body>
+
 </html>

@@ -19,7 +19,7 @@ function Constraint(nbCards, constraintJSON) {
 
 Constraint.prototype = {
 
-  clone : function() {
+  clone: function () {
     var clone = new Constraint(this.mNbCards, this.mConstraintJSON);
     clone.mNbCurrent = this.mNbCurrent;
     return clone;
@@ -28,35 +28,35 @@ Constraint.prototype = {
   /**
     * Constraint is met if its current number is greater than min
     */
-  isPartiallyMet : function() {
+  isPartiallyMet: function () {
     return (this.mNbCurrent >= this.mNbMin);
   },
 
   /**
     * Constraint is met if its current number is less than min
     */
-  isNotMet : function() {
+  isNotMet: function () {
     return (this.mNbCurrent < this.mNbMin);
   },
 
   /**
     * Constraint is completely met if its current number is equal to max
     */
-  isCompletelyMet : function() {
+  isCompletelyMet: function () {
     return (this.mNbCurrent >= this.mNbMax);
   },
 
   /**
     * Constraint is not completely met if its current number is less than max
     */
-  isNotCompletelyMet : function() {
+  isNotCompletelyMet: function () {
     return (!this.isCompletelyMet());
   },
 
   /**
     * Count the number of types of the constraint that are in the Card
     */
-  getNbSameTypes : function(card) {
+  getNbSameTypes: function (card) {
     var nbSameTypes = 0;
     // Count the number of types of the constraint that are in the Card
     for (var iConstraintType = 0; iConstraintType < this.mTypes.length; iConstraintType++) {
@@ -73,7 +73,7 @@ Constraint.prototype = {
   /**
     * Check if the types of the constraint are in the given card
     */
-  haveSameTypes : function(card) {
+  haveSameTypes: function (card) {
     // Get the number of same types between the constraint and the card
     var nbSameTypes = this.getNbSameTypes(card);
     // Check if the number of types found in the Card is equal to the number of types in the Constraint
@@ -85,7 +85,7 @@ Constraint.prototype = {
     *
     * return  true : The card meets the constraint, false : The constraint is already completely met or the card does not meet the constraint
     */
-  tryMeet : function(card) {
+  tryMeet: function (card) {
     if (this.isCompletelyMet()) {
       // The constraint is already completely met, don't check the card
       return false;
@@ -99,14 +99,14 @@ Constraint.prototype = {
   /**
     * Check if the given card is going to overcomplete the constraint
     */
-  isOvercompletedBy : function(card) {
+  isOvercompletedBy: function (card) {
     return (this.haveSameTypes(card) && this.isCompletelyMet());
   },
 
   /**
     * Check if the given card will not overcomplete the constraint
     */
-  isNotOvercompletedBy : function(card) {
+  isNotOvercompletedBy: function (card) {
     return (!this.isOvercompletedBy(card));
   },
 
@@ -115,23 +115,23 @@ Constraint.prototype = {
     *
     * return  void
     */
-  meet : function(card) {
+  meet: function (card) {
     // Check if the card contains the types of the constraint
     if (this.haveSameTypes(card)) {
-        // Meet the Constraint by incrementing its number
-        this.mNbCurrent++;
+      // Meet the Constraint by incrementing its number
+      this.mNbCurrent++;
     }
   },
-  
-    /**
-    * Get the types of the card as text. The types are delimited by commas.
-    */
-  getTextTypes : function() {
+
+  /**
+  * Get the types of the card as text. The types are delimited by commas.
+  */
+  getTextTypes: function () {
     var text = "";
     for (var iType = 0; iType < this.mTypes.length; iType++) {
       text += "[" + this.mTypes[iType] + "]";
       // Add a space after each Type, but not for the last Type
-      if (iType != this.mTypes.length-1) {
+      if (iType != this.mTypes.length - 1) {
         text += " ";
       }
     }

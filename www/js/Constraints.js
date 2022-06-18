@@ -8,9 +8,9 @@ console.log('Constraints.js loaded');
 function Constraints(nbCards, constraintsJSON, arePlayersNoobs) {
 
   // CONSTRUCTOR
-  this.mNbCards         = nbCards;
+  this.mNbCards = nbCards;
   this.mArePlayersNoobs = arePlayersNoobs;
-  this.mItems           = [];
+  this.mItems = [];
 
   for (iConstraint = 0; iConstraint < constraintsJSON.length; iConstraint++) {
     // Clone the constraints JSON
@@ -18,8 +18,7 @@ function Constraints(nbCards, constraintsJSON, arePlayersNoobs) {
     constraintJSON.min = constraintsJSON[iConstraint].min;
     constraintJSON.max = constraintsJSON[iConstraint].max;
     constraintJSON.types = constraintsJSON[iConstraint].types.slice(0);
-    if (this.mArePlayersNoobs)
-    {
+    if (this.mArePlayersNoobs) {
       constraintJSON.types.push("NEWBIE");
     }
     this.mItems.push(new Constraint(this.mNbCards, constraintJSON));
@@ -29,9 +28,9 @@ function Constraints(nbCards, constraintsJSON, arePlayersNoobs) {
 
 Constraints.prototype = {
 
-  clone : function() {
+  clone: function () {
     var clone = new Constraints(this.mNbCards, [], this.mArePlayersNoobs);
-    clone.mItems = this.mItems.map(function(constraint) {
+    clone.mItems = this.mItems.map(function (constraint) {
       return constraint.clone();
     });
     return clone;
@@ -44,7 +43,7 @@ Constraints.prototype = {
     *   - true : All constraints are met
     *   - false : At least one constraint is not met
     */
-  areMet : function() {
+  areMet: function () {
     var constraintsAreMet = true;
     // Check if all constraints are not met
     for (iConstraint = 0; iConstraint < this.mItems.length; iConstraint++) {
@@ -65,7 +64,7 @@ Constraints.prototype = {
     *   - true : At least one constraint is not met
     *   - false : All constraints are met
     */
-  areNotMet : function() {
+  areNotMet: function () {
     return !(this.areMet());
   },
 
@@ -74,10 +73,10 @@ Constraints.prototype = {
     *
     * return  true : The card meets all the constraints, false : The constraint is already completely met or the card does not meet the constraint
     */
-  AreNotOvercompletedBy : function(card) {
+  AreNotOvercompletedBy: function (card) {
     var areNotOvercompleted = false;
     for (iConstraint = 0; iConstraint < this.mItems.length; iConstraint++) {
-      if(this.mItems[iConstraint].isNotOvercompletedBy(card)) {
+      if (this.mItems[iConstraint].isNotOvercompletedBy(card)) {
         // This card will not overcomplete this constraint
         areNotOvercompleted = true;
       }
@@ -94,7 +93,7 @@ Constraints.prototype = {
     *
     * return  void
     */
-  meet : function(card) {
+  meet: function (card) {
     // Meet the constraints that matches with the specified Card
     for (iConstraint = 0; iConstraint < this.mItems.length; iConstraint++) {
       this.mItems[iConstraint].meet(card);

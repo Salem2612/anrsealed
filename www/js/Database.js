@@ -20,20 +20,20 @@ Database.prototype = {
     *
     * return  Cards
     */
-  cloneCards : function(side, cycleNo, setNo, type, isShared, nbSets) {
+  cloneCards: function (side, cycleNo, setNo, type, isShared, nbSets) {
     // Clone the Cards of the Database to not modify the Database
     var clonedCards = this.mCards.clone();
     // Create an empty pool of Cards
     var cards = new Cards([], this.mSets);
     // Put all Cards with the specified Cycle No and Set No and Side
-    cards.mItems = clonedCards.mItems.filter(function(card) {
+    cards.mItems = clonedCards.mItems.filter(function (card) {
       // Number of available real copies
       card.mNbAvailableCopies = nbSets * card.mNbOfficialCopies;
       // Maximum number of copies per player
       //  ! Share and ANRSealed : Boost to the maximum available number of copies
-      card.mNbMaxCopiesPerPlayer =  (isShared && (type == CardPool.TYPE_ANRSEALED) && (card.mNbCopiesANRSealed > 0)) ? card.mNbAvailableCopies :
-                                    (type == CardPool.TYPE_ANRSEALED) ? card.mNbCopiesANRSealed :
-                                    card.mNbAvailableCopies;
+      card.mNbMaxCopiesPerPlayer = (isShared && (type == CardPool.TYPE_ANRSEALED) && (card.mNbCopiesANRSealed > 0)) ? card.mNbAvailableCopies :
+        (type == CardPool.TYPE_ANRSEALED) ? card.mNbCopiesANRSealed :
+          card.mNbAvailableCopies;
       // Limit the maximum number of copies per player to 3
       card.mNbMaxCopiesPerPlayer = Math.min(card.mNbMaxCopiesPerPlayer, card.mNbMaxCopiesPerDeck);
       // Current number of available copies for one player

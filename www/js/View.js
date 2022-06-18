@@ -17,7 +17,7 @@ function View(jsons, versionMajor, versionMinor) {
   this.mVersionMajor = versionMajor;
   this.mVersionMinor = versionMinor;
   this.mVersion = versionMajor + '.' + versionMinor;
-  this.mJSONs = {nbFiles:jsons.length};
+  this.mJSONs = { nbFiles: jsons.length };
   for (var json of jsons) {
     // Request the JSON file asynchronously
     this.requestJSON('json/v' + this.mVersion + '/' + json + '.json', this.mJSONs, json, this.onFileLoaded, this);
@@ -33,7 +33,7 @@ View.prototype = {
     *
     * return  void
     */
-  onFileLoaded : function() {
+  onFileLoaded: function () {
     // Increment the number of JSON Files loaded
     this.mNbJSONsLoaded++;
     // Check if all files have been loaded
@@ -43,7 +43,7 @@ View.prototype = {
       this.mDatabase = new Database(this.mJSONs);
 
       // Set the text inputs selectable
-      $('input[type="text"]').on('click', function(e) {
+      $('input[type="text"]').on('click', function (e) {
         this.select();
       });
     }
@@ -60,21 +60,20 @@ View.prototype = {
     *
     * return  void
     */
-    requestJSON : function(databaseUrl, obj, fieldString, callback, view){
+  requestJSON: function (databaseUrl, obj, fieldString, callback, view) {
     // Request the Data Base from the given file path. The request is done asynchronously.
     $.ajax({
       url: databaseUrl,
-      beforeSend: function(xhr){
-        if (xhr.overrideMimeType)
-        {
+      beforeSend: function (xhr) {
+        if (xhr.overrideMimeType) {
           xhr.overrideMimeType("application/json");
         }
       },
-      async:true,
+      async: true,
       global: false,
       dataType: 'json',
-      data:fieldString,
-      success: function(data, status, request) {
+      data: fieldString,
+      success: function (data, status, request) {
         obj[fieldString] = data;
         callback.call(view);
       },
@@ -91,7 +90,7 @@ View.prototype = {
     *
     * return  void
     */
-  generateAndDownloadSealed : function() {
+  generateAndDownloadSealed: function () {
     // Generate the Sealed
     var generateStatus = this.generateSealed();
     $('#button_generate_and_download')[0].lastChild.nodeValue = " Generate & Download";
@@ -108,7 +107,7 @@ View.prototype = {
     *
     * return
     */
-  generateSealed : function() {
+  generateSealed: function () {
     var processingStatus = new ProcessingStatus();
 
     // Retrieve the type of the players from the view
@@ -125,7 +124,7 @@ View.prototype = {
 
     // Retrieve the number of cards from the view
     var nbCards = $('#radio_starter_30').is(':checked') ? 30 :
-                  $('#radio_starter_45').is(':checked') ? 45 : 0;
+      $('#radio_starter_45').is(':checked') ? 45 : 0;
 
     // Retrieve the number of boosters from the view
     var nbBoosters = $('#radio_boosters_8').is(':checked') ? parseInt($('#text_nb_boosters').val()) : 0;
@@ -134,86 +133,85 @@ View.prototype = {
     var useOneCardPool = $('#radio_ownership_one').is(':checked');
 
     // Retrieve the cardpool choice from the view
-    var cardpoolType  = $('#radio_cardpool_anrsealed').is(':checked') ? CardPool.TYPE_ANRSEALED :
-                        CardPool.TYPE_ALL_CARDS;
+    var cardpoolType = $('#radio_cardpool_anrsealed').is(':checked') ? CardPool.TYPE_ANRSEALED :
+      CardPool.TYPE_ALL_CARDS;
 
     // Retrieve the available sets of the view
-    var nbCoreSets =  $('#radio_nb_core_set_0').is(':checked') ? 0 :
-                      $('#radio_nb_core_set_1').is(':checked') ? 1 :
-                      $('#radio_nb_core_set_2').is(':checked') ? 2 :
-                      $('#radio_nb_core_set_3').is(':checked') ? 3 : 0;
+    var nbCoreSets = $('#radio_nb_core_set_0').is(':checked') ? 0 :
+      $('#radio_nb_core_set_1').is(':checked') ? 1 :
+        $('#radio_nb_core_set_2').is(':checked') ? 2 :
+          $('#radio_nb_core_set_3').is(':checked') ? 3 : 0;
     var nbRevisedCoreSets = $('#radio_nb_revised_core_set_0').is(':checked') ? 0 :
-                            $('#radio_nb_revised_core_set_1').is(':checked') ? 1 :
-                            $('#radio_nb_revised_core_set_2').is(':checked') ? 2 :
-                            $('#radio_nb_revised_core_set_3').is(':checked') ? 3 : 0;
+      $('#radio_nb_revised_core_set_1').is(':checked') ? 1 :
+        $('#radio_nb_revised_core_set_2').is(':checked') ? 2 :
+          $('#radio_nb_revised_core_set_3').is(':checked') ? 3 : 0;
     var sets = [
-      {"cycleNo" : 1,   "setNo" : 1, "nbSets" : nbCoreSets},
-      {"cycleNo" : 2,   "setNo" : 1, "nbSets" : $('#checkbox_what_lies_ahead').is(':checked') ? 1 : 0},
-      {"cycleNo" : 2,   "setNo" : 2, "nbSets" : $('#checkbox_trace_amount').is(':checked') ? 1 : 0},
-      {"cycleNo" : 2,   "setNo" : 3, "nbSets" : $('#checkbox_cyber_exodus').is(':checked') ? 1 : 0},
-      {"cycleNo" : 2,   "setNo" : 4, "nbSets" : $('#checkbox_a_study_in_static').is(':checked') ? 1 : 0},
-      {"cycleNo" : 2,   "setNo" : 5, "nbSets" : $('#checkbox_humanitys_shadow').is(':checked') ? 1 : 0},
-      {"cycleNo" : 2,   "setNo" : 6, "nbSets" : $('#checkbox_future_proof').is(':checked') ? 1 : 0},
-      {"cycleNo" : 3,   "setNo" : 1, "nbSets" : $('#checkbox_creation_and_control').is(':checked') ? 1 : 0},
-      {"cycleNo" : 4,   "setNo" : 1, "nbSets" : $('#checkbox_opening_move').is(':checked') ? 1 : 0},
-      {"cycleNo" : 4,   "setNo" : 2, "nbSets" : $('#checkbox_second_though').is(':checked') ? 1 : 0},
-      {"cycleNo" : 4,   "setNo" : 3, "nbSets" : $('#checkbox_mala_tempora').is(':checked') ? 1 : 0},
-      {"cycleNo" : 4,   "setNo" : 4, "nbSets" : $('#checkbox_true_colors').is(':checked') ? 1 : 0},
-      {"cycleNo" : 4,   "setNo" : 5, "nbSets" : $('#checkbox_fear_and_loathing').is(':checked') ? 1 : 0},
-      {"cycleNo" : 4,   "setNo" : 6, "nbSets" : $('#checkbox_double_time').is(':checked') ? 1 : 0},
-      {"cycleNo" : 5,   "setNo" : 1, "nbSets" : $('#checkbox_honor_and_profit').is(':checked') ? 1 : 0},
-      {"cycleNo" : 6,   "setNo" : 1, "nbSets" : $('#checkbox_upstalk').is(':checked') ? 1 : 0},
-      {"cycleNo" : 6,   "setNo" : 2, "nbSets" : $('#checkbox_the_spaces_between').is(':checked') ? 1 : 0},
-      {"cycleNo" : 6,   "setNo" : 3, "nbSets" : $('#checkbox_first_contact').is(':checked') ? 1 : 0},
-      {"cycleNo" : 6,   "setNo" : 4, "nbSets" : $('#checkbox_up_and_over').is(':checked') ? 1 : 0},
-      {"cycleNo" : 6,   "setNo" : 5, "nbSets" : $('#checkbox_all_that_remains').is(':checked') ? 1 : 0},
-      {"cycleNo" : 6,   "setNo" : 6, "nbSets" : $('#checkbox_the_source').is(':checked') ? 1 : 0},
-      {"cycleNo" : 7,   "setNo" : 1, "nbSets" : $('#checkbox_order_and_chaos').is(':checked') ? 1 : 0},
-      {"cycleNo" : 8,   "setNo" : 1, "nbSets" : $('#checkbox_the_valley').is(':checked') ? 1 : 0},
-      {"cycleNo" : 8,   "setNo" : 2, "nbSets" : $('#checkbox_breaker_bay').is(':checked') ? 1 : 0},
-      {"cycleNo" : 8,   "setNo" : 3, "nbSets" : $('#checkbox_chrome_city').is(':checked') ? 1 : 0},
-      {"cycleNo" : 8,   "setNo" : 4, "nbSets" : $('#checkbox_the_underway').is(':checked') ? 1 : 0},
-      {"cycleNo" : 8,   "setNo" : 5, "nbSets" : $('#checkbox_old_hollywood').is(':checked') ? 1 : 0},
-      {"cycleNo" : 8,   "setNo" : 6, "nbSets" : $('#checkbox_the_universe_of_tomorrow').is(':checked') ? 1 : 0},
-      {"cycleNo" : 9,   "setNo" : 1, "nbSets" : $('#checkbox_data_and_destiny').is(':checked') ? 1 : 0},
-      {"cycleNo" : 10,  "setNo" : 1, "nbSets" : $('#checkbox_khala_ghoda').is(':checked') ? 1 : 0},
-      {"cycleNo" : 10,  "setNo" : 2, "nbSets" : $('#checkbox_business_first').is(':checked') ? 1 : 0},
-      {"cycleNo" : 10,  "setNo" : 3, "nbSets" : $('#checkbox_democracy_and_dogma').is(':checked') ? 1 : 0},
-      {"cycleNo" : 10,  "setNo" : 4, "nbSets" : $('#checkbox_salsette_island').is(':checked') ? 1 : 0},
-      {"cycleNo" : 10,  "setNo" : 5, "nbSets" : $('#checkbox_the_liberated_mind').is(':checked') ? 1 : 0},
-      {"cycleNo" : 10,  "setNo" : 6, "nbSets" : $('#checkbox_fear_the_masses').is(':checked') ? 1 : 0},
-      {"cycleNo" : 11,  "setNo" : 1, "nbSets" : $('#checkbox_23_seconds').is(':checked') ? 1 : 0},
-      {"cycleNo" : 11,  "setNo" : 2, "nbSets" : $('#checkbox_blood_money').is(':checked') ? 1 : 0},
-      {"cycleNo" : 11,  "setNo" : 3, "nbSets" : $('#checkbox_escalation').is(':checked') ? 1 : 0},
-      {"cycleNo" : 11,  "setNo" : 4, "nbSets" : $('#checkbox_intervention').is(':checked') ? 1 : 0},
-      {"cycleNo" : 11,  "setNo" : 5, "nbSets" : $('#checkbox_martial_law').is(':checked') ? 1 : 0},
-      {"cycleNo" : 11,  "setNo" : 6, "nbSets" : $('#checkbox_quorum').is(':checked') ? 1 : 0},
-      {"cycleNo" : 12,  "setNo" : 1, "nbSets" : $('#checkbox_daedalus_complex').is(':checked') ? 1 : 0},
-      {"cycleNo" : 12,  "setNo" : 2, "nbSets" : $('#checkbox_station_one').is(':checked') ? 1 : 0},
-      {"cycleNo" : 12,  "setNo" : 3, "nbSets" : $('#checkbox_earths_scion').is(':checked') ? 1 : 0},
-      {"cycleNo" : 12,  "setNo" : 4, "nbSets" : $('#checkbox_blood_and_water').is(':checked') ? 1 : 0},
-      {"cycleNo" : 12,  "setNo" : 5, "nbSets" : $('#checkbox_free_mars').is(':checked') ? 1 : 0},
-      {"cycleNo" : 12,  "setNo" : 6, "nbSets" : $('#checkbox_crimson_dust').is(':checked') ? 1 : 0},
-      {"cycleNo" : 13,  "setNo" : 1, "nbSets" : $('#checkbox_terminal_directive').is(':checked') ? 1 : 0},
-      {"cycleNo" : 20,  "setNo" : 1, "nbSets" : nbRevisedCoreSets},
-      {"cycleNo" : 21,  "setNo" : 1, "nbSets" : $('#checkbox_sovereign_sight').is(':checked') ? 1 : 0},
-      {"cycleNo" : 21,  "setNo" : 2, "nbSets" : $('#checkbox_down_the_white_nile').is(':checked') ? 1 : 0},
-      {"cycleNo" : 21,  "setNo" : 3, "nbSets" : $('#checkbox_council_of_the_crest').is(':checked') ? 1 : 0},
-      {"cycleNo" : 21,  "setNo" : 4, "nbSets" : $('#checkbox_the_devil_and_the_dragon').is(':checked') ? 1 : 0},
-      {"cycleNo" : 21,  "setNo" : 5, "nbSets" : $('#checkbox_whispers_in_nalubaale').is(':checked') ? 1 : 0},
-      {"cycleNo" : 21,  "setNo" : 6, "nbSets" : $('#checkbox_kampala_ascendent').is(':checked') ? 1 : 0},
-      {"cycleNo" : 22,  "setNo" : 1, "nbSets" : $('#checkbox_reign_and_reverie').is(':checked') ? 1 : 0},
-      {"cycleNo" : 23,  "setNo" : 1, "nbSets" : $('#checkbox_magnum_opus').is(':checked') ? 1 : 0},
-      {"cycleNo" : 26,  "setNo" : 1, "nbSets" : $('#checkbox_downfall').is(':checked') ? 1 : 0},
-      {"cycleNo" : 29,  "setNo" : 1, "nbSets" : $('#checkbox_salvaged_memories').is(':checked') ? 1 : 0},
-      {"cycleNo" : 30,  "setNo" : 1, "nbSets" : $('#checkbox_system_gateway').is(':checked') ? 1 : 0},
-      {"cycleNo" : 31,  "setNo" : 1, "nbSets" : $('#checkbox_system_update_2021').is(':checked') ? 1 : 0},
-      {"cycleNo" : 32,  "setNo" : 1, "nbSets" : $('#checkbox_midnight_sun_booster_pack').is(':checked') ? 1 : 0}
+      { "cycleNo": 1, "setNo": 1, "nbSets": nbCoreSets },
+      { "cycleNo": 2, "setNo": 1, "nbSets": $('#checkbox_what_lies_ahead').is(':checked') ? 1 : 0 },
+      { "cycleNo": 2, "setNo": 2, "nbSets": $('#checkbox_trace_amount').is(':checked') ? 1 : 0 },
+      { "cycleNo": 2, "setNo": 3, "nbSets": $('#checkbox_cyber_exodus').is(':checked') ? 1 : 0 },
+      { "cycleNo": 2, "setNo": 4, "nbSets": $('#checkbox_a_study_in_static').is(':checked') ? 1 : 0 },
+      { "cycleNo": 2, "setNo": 5, "nbSets": $('#checkbox_humanitys_shadow').is(':checked') ? 1 : 0 },
+      { "cycleNo": 2, "setNo": 6, "nbSets": $('#checkbox_future_proof').is(':checked') ? 1 : 0 },
+      { "cycleNo": 3, "setNo": 1, "nbSets": $('#checkbox_creation_and_control').is(':checked') ? 1 : 0 },
+      { "cycleNo": 4, "setNo": 1, "nbSets": $('#checkbox_opening_move').is(':checked') ? 1 : 0 },
+      { "cycleNo": 4, "setNo": 2, "nbSets": $('#checkbox_second_though').is(':checked') ? 1 : 0 },
+      { "cycleNo": 4, "setNo": 3, "nbSets": $('#checkbox_mala_tempora').is(':checked') ? 1 : 0 },
+      { "cycleNo": 4, "setNo": 4, "nbSets": $('#checkbox_true_colors').is(':checked') ? 1 : 0 },
+      { "cycleNo": 4, "setNo": 5, "nbSets": $('#checkbox_fear_and_loathing').is(':checked') ? 1 : 0 },
+      { "cycleNo": 4, "setNo": 6, "nbSets": $('#checkbox_double_time').is(':checked') ? 1 : 0 },
+      { "cycleNo": 5, "setNo": 1, "nbSets": $('#checkbox_honor_and_profit').is(':checked') ? 1 : 0 },
+      { "cycleNo": 6, "setNo": 1, "nbSets": $('#checkbox_upstalk').is(':checked') ? 1 : 0 },
+      { "cycleNo": 6, "setNo": 2, "nbSets": $('#checkbox_the_spaces_between').is(':checked') ? 1 : 0 },
+      { "cycleNo": 6, "setNo": 3, "nbSets": $('#checkbox_first_contact').is(':checked') ? 1 : 0 },
+      { "cycleNo": 6, "setNo": 4, "nbSets": $('#checkbox_up_and_over').is(':checked') ? 1 : 0 },
+      { "cycleNo": 6, "setNo": 5, "nbSets": $('#checkbox_all_that_remains').is(':checked') ? 1 : 0 },
+      { "cycleNo": 6, "setNo": 6, "nbSets": $('#checkbox_the_source').is(':checked') ? 1 : 0 },
+      { "cycleNo": 7, "setNo": 1, "nbSets": $('#checkbox_order_and_chaos').is(':checked') ? 1 : 0 },
+      { "cycleNo": 8, "setNo": 1, "nbSets": $('#checkbox_the_valley').is(':checked') ? 1 : 0 },
+      { "cycleNo": 8, "setNo": 2, "nbSets": $('#checkbox_breaker_bay').is(':checked') ? 1 : 0 },
+      { "cycleNo": 8, "setNo": 3, "nbSets": $('#checkbox_chrome_city').is(':checked') ? 1 : 0 },
+      { "cycleNo": 8, "setNo": 4, "nbSets": $('#checkbox_the_underway').is(':checked') ? 1 : 0 },
+      { "cycleNo": 8, "setNo": 5, "nbSets": $('#checkbox_old_hollywood').is(':checked') ? 1 : 0 },
+      { "cycleNo": 8, "setNo": 6, "nbSets": $('#checkbox_the_universe_of_tomorrow').is(':checked') ? 1 : 0 },
+      { "cycleNo": 9, "setNo": 1, "nbSets": $('#checkbox_data_and_destiny').is(':checked') ? 1 : 0 },
+      { "cycleNo": 10, "setNo": 1, "nbSets": $('#checkbox_khala_ghoda').is(':checked') ? 1 : 0 },
+      { "cycleNo": 10, "setNo": 2, "nbSets": $('#checkbox_business_first').is(':checked') ? 1 : 0 },
+      { "cycleNo": 10, "setNo": 3, "nbSets": $('#checkbox_democracy_and_dogma').is(':checked') ? 1 : 0 },
+      { "cycleNo": 10, "setNo": 4, "nbSets": $('#checkbox_salsette_island').is(':checked') ? 1 : 0 },
+      { "cycleNo": 10, "setNo": 5, "nbSets": $('#checkbox_the_liberated_mind').is(':checked') ? 1 : 0 },
+      { "cycleNo": 10, "setNo": 6, "nbSets": $('#checkbox_fear_the_masses').is(':checked') ? 1 : 0 },
+      { "cycleNo": 11, "setNo": 1, "nbSets": $('#checkbox_23_seconds').is(':checked') ? 1 : 0 },
+      { "cycleNo": 11, "setNo": 2, "nbSets": $('#checkbox_blood_money').is(':checked') ? 1 : 0 },
+      { "cycleNo": 11, "setNo": 3, "nbSets": $('#checkbox_escalation').is(':checked') ? 1 : 0 },
+      { "cycleNo": 11, "setNo": 4, "nbSets": $('#checkbox_intervention').is(':checked') ? 1 : 0 },
+      { "cycleNo": 11, "setNo": 5, "nbSets": $('#checkbox_martial_law').is(':checked') ? 1 : 0 },
+      { "cycleNo": 11, "setNo": 6, "nbSets": $('#checkbox_quorum').is(':checked') ? 1 : 0 },
+      { "cycleNo": 12, "setNo": 1, "nbSets": $('#checkbox_daedalus_complex').is(':checked') ? 1 : 0 },
+      { "cycleNo": 12, "setNo": 2, "nbSets": $('#checkbox_station_one').is(':checked') ? 1 : 0 },
+      { "cycleNo": 12, "setNo": 3, "nbSets": $('#checkbox_earths_scion').is(':checked') ? 1 : 0 },
+      { "cycleNo": 12, "setNo": 4, "nbSets": $('#checkbox_blood_and_water').is(':checked') ? 1 : 0 },
+      { "cycleNo": 12, "setNo": 5, "nbSets": $('#checkbox_free_mars').is(':checked') ? 1 : 0 },
+      { "cycleNo": 12, "setNo": 6, "nbSets": $('#checkbox_crimson_dust').is(':checked') ? 1 : 0 },
+      { "cycleNo": 13, "setNo": 1, "nbSets": $('#checkbox_terminal_directive').is(':checked') ? 1 : 0 },
+      { "cycleNo": 20, "setNo": 1, "nbSets": nbRevisedCoreSets },
+      { "cycleNo": 21, "setNo": 1, "nbSets": $('#checkbox_sovereign_sight').is(':checked') ? 1 : 0 },
+      { "cycleNo": 21, "setNo": 2, "nbSets": $('#checkbox_down_the_white_nile').is(':checked') ? 1 : 0 },
+      { "cycleNo": 21, "setNo": 3, "nbSets": $('#checkbox_council_of_the_crest').is(':checked') ? 1 : 0 },
+      { "cycleNo": 21, "setNo": 4, "nbSets": $('#checkbox_the_devil_and_the_dragon').is(':checked') ? 1 : 0 },
+      { "cycleNo": 21, "setNo": 5, "nbSets": $('#checkbox_whispers_in_nalubaale').is(':checked') ? 1 : 0 },
+      { "cycleNo": 21, "setNo": 6, "nbSets": $('#checkbox_kampala_ascendent').is(':checked') ? 1 : 0 },
+      { "cycleNo": 22, "setNo": 1, "nbSets": $('#checkbox_reign_and_reverie').is(':checked') ? 1 : 0 },
+      { "cycleNo": 23, "setNo": 1, "nbSets": $('#checkbox_magnum_opus').is(':checked') ? 1 : 0 },
+      { "cycleNo": 26, "setNo": 1, "nbSets": $('#checkbox_downfall').is(':checked') ? 1 : 0 },
+      { "cycleNo": 29, "setNo": 1, "nbSets": $('#checkbox_salvaged_memories').is(':checked') ? 1 : 0 },
+      { "cycleNo": 30, "setNo": 1, "nbSets": $('#checkbox_system_gateway').is(':checked') ? 1 : 0 },
+      { "cycleNo": 31, "setNo": 1, "nbSets": $('#checkbox_system_update_2021').is(':checked') ? 1 : 0 },
+      { "cycleNo": 32, "setNo": 1, "nbSets": $('#checkbox_midnight_sun_booster_pack').is(':checked') ? 1 : 0 }
     ];
 
     //
-    for (var iGen = 0; (iGen < 20) && ((processingStatus.mValue == ProcessingStatus.NOT_DONE) || processingStatus.mValue == ProcessingStatus.KO); iGen++)
-    {
+    for (var iGen = 0; (iGen < 20) && ((processingStatus.mValue == ProcessingStatus.NOT_DONE) || processingStatus.mValue == ProcessingStatus.KO); iGen++) {
       // Reset the status
       processingStatus.reset();
 
@@ -227,12 +225,10 @@ View.prototype = {
       var cardPools = {};
       for (var side in Side) {
         var starterConstraints;
-        if (isModeSealed)
-        {
+        if (isModeSealed) {
           starterConstraints = new Constraints(nbCards, this.mJSONs.constraints[side].starter, arePlayersNoobs);
         }
-        else
-        {
+        else {
           starterConstraints = new Constraints(nbCards, this.mJSONs.constraints[side].deck, arePlayersNoobs);
         }
         var boosterConstraints = new Constraints(45, this.mJSONs.constraints[side].booster, arePlayersNoobs);
@@ -250,7 +246,7 @@ View.prototype = {
     return processingStatus.mValue;
   },
 
-  printStatus : function(processingStatus) {
+  printStatus: function (processingStatus) {
     // Print Date and Time
     var date = new Date();
     $('#textarea_status').val("[" + date.toLocaleDateString() + " " + date.toLocaleTimeString() + "]\n");
@@ -259,8 +255,7 @@ View.prototype = {
     if (ProcessingStatus.OK === processingStatus.mValue) {
       $('#textarea_status').val($('#textarea_status').val() + "Generating finished : " + processingStatus.mValue);
     }
-    else
-    {
+    else {
       $('#textarea_status').val($('#textarea_status').val() + "Generating finished : " + processingStatus.mValue + "\n> ERROR : " + processingStatus.mDetail + "\n\n");
     }
 
@@ -274,7 +269,7 @@ View.prototype = {
           var packStatus = (true === sealedPack.mConstraints.areMet()) ? ProcessingStatus.OK : ProcessingStatus.KO;
           if (packStatus === ProcessingStatus.KO) {
             var packName = ((this.mSealed.mNbStarters > 0) && (iPack < this.mSealed.mNbStarters)) ? ("Starter") : ("Booster " + (iPack - this.mSealed.mNbStarters + 1));
-            text += " - [Player " + (iPlayer+1) + " - " + side + " - " + packName + "] : " + packStatus + "\n";
+            text += " - [Player " + (iPlayer + 1) + " - " + side + " - " + packName + "] : " + packStatus + "\n";
             for (var iConstraint = 0; iConstraint < sealedPack.mConstraints.mItems.length; iConstraint++) {
               // Print Current Constraint
               var constraint = sealedPack.mConstraints.mItems[iConstraint];
@@ -282,7 +277,7 @@ View.prototype = {
                 text += "    - " + constraint.mNbCurrent + " / " + constraint.mNbMin + " ";
                 for (var iConstraintType = 0; iConstraintType < constraint.mTypes.length; iConstraintType++) {
                   text += constraint.mTypes[iConstraintType];
-                  if (iConstraintType < constraint.mTypes.length-1) {
+                  if (iConstraintType < constraint.mTypes.length - 1) {
                     text += ", ";
                   }
                 }
@@ -302,7 +297,7 @@ View.prototype = {
     *
     * return  void
     */
-  downloadSealed : function() {
+  downloadSealed: function () {
     // Download the Sealed
     this.mSealed.download();
   },
@@ -312,7 +307,7 @@ View.prototype = {
     *
     * return  void
     */
-  viewSealedPacks : function() {
+  viewSealedPacks: function () {
     // Render the modal
     var tabs = [];
     var contents = [];
@@ -343,12 +338,12 @@ View.prototype = {
           var sealedPack = sealedPacks[iPack];
           sealedPack.mCards.sortByName("EN");
           // Add copies of the cards
-          for (var iCard = 0; iCard < sealedPack.mCards.mItems.length; iCard+=1) {
+          for (var iCard = 0; iCard < sealedPack.mCards.mItems.length; iCard += 1) {
             // Retrieve the current Card
             var card = sealedPack.mCards.mItems[iCard];
             for (var iCopy = 0; iCopy < card.mNbCopies; iCopy++) {
-              row["id"+iCardInRow] = card.mId;
-              if ((iCardInRow == 2) || (content.rows.length*3+iCardInRow+1 == nbCards)) {
+              row["id" + iCardInRow] = card.mId;
+              if ((iCardInRow == 2) || (content.rows.length * 3 + iCardInRow + 1 == nbCards)) {
                 // Push the row when it is full or when there is no other cards to add
                 content.rows.push(row);
                 iCardInRow = 0;
@@ -375,7 +370,7 @@ View.prototype = {
     *
     * return  void
     */
-  renderTemplate : function(elementsToRender, templateIdentifier, targetIdentifier) {
+  renderTemplate: function (elementsToRender, templateIdentifier, targetIdentifier) {
     // Load the template
     var template = $(templateIdentifier).html();
     // Parse the template
@@ -383,7 +378,7 @@ View.prototype = {
     // Initialize the array that stores the renderings
     var renderings = [];
     // Render the elements one by one
-    for(iRendering = 0; iRendering < elementsToRender.length; iRendering++) {
+    for (iRendering = 0; iRendering < elementsToRender.length; iRendering++) {
       // Render the current content
       renderings[iRendering] = Mustache.render(template, elementsToRender[iRendering]);
     }
@@ -394,7 +389,7 @@ View.prototype = {
   /**
     * Check and Generate the Omnileague Reserve from the Checker window
     */
-  checkAndGenerateReserve : function(){
+  checkAndGenerateReserve: function () {
     // Retrieve the Sealed Pack text
     var sealedPackText = $('#textarea_checker_sealed_pack').val();
     // Parse the Sealed Pack text and create a Sealed Pack array
@@ -409,13 +404,13 @@ View.prototype = {
     var statusArray = [];
 
     // Browse the Deck array and check if each card is in the Sealed Pack array. If a card of the Deck is not in the Sealed Pack, add it into the Status array. Remove the card from the Sealed Pack array and add it to the Reserve array.
-    for(iDeckCard = 0; iDeckCard < deckArray.length; iDeckCard++) {
+    for (iDeckCard = 0; iDeckCard < deckArray.length; iDeckCard++) {
       // Retrieve the current card of the deck
       var deckCard = deckArray[iDeckCard];
 
       // Search the card of the Deck in the Sealed Pack. Mark the cardFound flag to true when found.
       var cardFound = false;
-      for(var iSealedPackCard = 0; iSealedPackCard < sealedPackArray.length; iSealedPackCard++) {
+      for (var iSealedPackCard = 0; iSealedPackCard < sealedPackArray.length; iSealedPackCard++) {
         // Retrieve the current card of the Sealed Pack
         var sealedPackCard = sealedPackArray[iSealedPackCard];
         // Compare the name of the deck card and sealed pack card
@@ -435,7 +430,7 @@ View.prototype = {
         if (deckCard.nb > sealedPackCard.nb) {
           // Too much copies of this card in the deck.
           // Add this card to the Status array
-          var statusCard = {name:deckCard.name, nbInDeck:deckCard.nb, nbInSealedPack:sealedPackCard.nb};
+          var statusCard = { name: deckCard.name, nbInDeck: deckCard.nb, nbInSealedPack: sealedPackCard.nb };
           statusArray.push(statusCard);
         }
         else if (deckCard.nb == sealedPackCard.nb) {
@@ -452,7 +447,7 @@ View.prototype = {
       else {
         // Card not found.
         // Add this card to the Status array
-        var statusCard = {name:deckCard.name, nbInDeck:deckCard.nb, nbInSealedPack:0};
+        var statusCard = { name: deckCard.name, nbInDeck: deckCard.nb, nbInSealedPack: 0 };
         statusArray.push(statusCard);
       }
     }
@@ -470,29 +465,29 @@ View.prototype = {
     }
   },
 
-  parseCardList : function(cardList) {
+  parseCardList: function (cardList) {
     var cardArray = [];
 
     // Parse each line of text and add the cards into the array
     var re = /^(\d+)(x|\s)\s*(\S.*)/;
     var lines = cardList.split('\n');
-    for(var iLine = 0; iLine < lines.length; iLine++){
+    for (var iLine = 0; iLine < lines.length; iLine++) {
       // Parse the current line
       var line = lines[iLine];
       var elems = line.match(re);
       if (elems != null) {
-        var card = {nb : parseInt(elems[1], 10), name : elems[3]};
+        var card = { nb: parseInt(elems[1], 10), name: elems[3] };
         cardArray.push(card);
       }
     }
     return cardArray;
   },
 
-  createCardList : function(cardArray) {
+  createCardList: function (cardArray) {
     var cardList = "";
 
     // Add each card into a line of Text
-    for(var iCard = 0; iCard < cardArray.length; iCard++) {
+    for (var iCard = 0; iCard < cardArray.length; iCard++) {
       // Retrieve the current card from the array
       var card = cardArray[iCard];
       // Add the text
@@ -501,7 +496,7 @@ View.prototype = {
     return cardList;
   },
 
-  createStatusText : function(statusArray) {
+  createStatusText: function (statusArray) {
     var statusText = "";
 
     // The first line of text is the global status of the check (Success or Fail)
@@ -515,7 +510,7 @@ View.prototype = {
     }
 
     // Add each card of the Status Array into a line of Text in the Status Text
-    for(var iCard = 0; iCard < statusArray.length; iCard++) {
+    for (var iCard = 0; iCard < statusArray.length; iCard++) {
       // Retrieve the current card from the Status array
       var card = statusArray[iCard];
       // Add the text

@@ -22,7 +22,7 @@ Cycles.prototype = {
   /**
     *
     */
-	getCycle : function(cycleNo) {
+  getCycle: function (cycleNo) {
     var cycle;
     // Search the Cycle and return it
     for (var iCycle = 0; iCycle < this.mItems.length; iCycle++) {
@@ -34,6 +34,6 @@ Cycles.prototype = {
       }
     }
     return cycle;
-	}
+  }
 
 };

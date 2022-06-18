@@ -10,7 +10,7 @@ function Cards(cardsJSON, sets) {
   // CONSTRUCTOR
   this.mItems = [];
   this.mAvailableCards = [];
-  this.mSets  = sets;
+  this.mSets = sets;
 
   // Create Card Objects from Card JSON
   for (var iCard = 0; iCard < cardsJSON.length; iCard++) {
@@ -24,9 +24,9 @@ function Cards(cardsJSON, sets) {
 
 Cards.prototype = {
 
-  clone : function() {
+  clone: function () {
     var clone = new Cards([], this.mSets);
-    clone.mItems = this.mItems.map(function(card) {
+    clone.mItems = this.mItems.map(function (card) {
       return card.clone();
     });
     return clone;
@@ -37,9 +37,9 @@ Cards.prototype = {
     *
     * return  Picked Card
     */
-  pickRandomCard : function(constraint, constraints) {
+  pickRandomCard: function (constraint, constraints) {
     // Filter (and return shallow copy of) the array of Cards to keep only Cards that meet the Constraint
-    this.mAvailableCards = this.mItems.filter(function(card) {
+    this.mAvailableCards = this.mItems.filter(function (card) {
       return ((card.mNbCopies > 0) && constraint.tryMeet(card) && constraints.AreNotOvercompletedBy(card));
     });
 
@@ -61,10 +61,10 @@ Cards.prototype = {
       this.mItems[iCard].mNbCopies--;
       this.mItems[iCard].mNbAvailableCopies--;
     }
-    return {"nbAvailableCopies" : nbAvailableCopies, "card" : card};
+    return { "nbAvailableCopies": nbAvailableCopies, "card": card };
   },
 
-  getNbAvailableCopies : function() {
+  getNbAvailableCopies: function () {
     var nbAvailableCopies = 0;
     for (var iCard = 0; iCard < this.mAvailableCards.length; iCard++) {
       nbAvailableCopies += this.mAvailableCards[iCard].mNbCopies;
@@ -79,7 +79,7 @@ Cards.prototype = {
     *
     * return  void
     */
-  add : function(card) {
+  add: function (card) {
     // Search the index of the specified Card
     var iCard = this.indexOf(card);
     // Check if the Card exists in the Array
@@ -98,9 +98,9 @@ Cards.prototype = {
     *
     * return  void
     */
-  sortByRarity : function(locale) {
+  sortByRarity: function (locale) {
     // Sort the Cards by Rarity
-    this.mItems.sort(function(card1, card2) {
+    this.mItems.sort(function (card1, card2) {
       var rarity1 = card1.getRarity();
       var rarity2 = card2.getRarity();
       /* Truth Table :
@@ -169,9 +169,9 @@ Cards.prototype = {
     *
     * return  void
     */
-  sortByName : function(locale) {
+  sortByName: function (locale) {
     // Sort the Cards by Name
-    this.mItems.sort(function(card1, card2) {
+    this.mItems.sort(function (card1, card2) {
       // Compare the names of the cards
       return card1.getName(locale).localeCompare(card2.getName(locale));
     });
@@ -182,9 +182,9 @@ Cards.prototype = {
     *
     * return  void
     */
-  sortByFactionThenTypeThenName : function(types, locale) {
+  sortByFactionThenTypeThenName: function (types, locale) {
     // Sort the Cards by Faction, then by Card Type, then by Name
-    this.mItems.sort(function(card1, card2) {
+    this.mItems.sort(function (card1, card2) {
       // Compare the factions of the cards, then the Types, then the names
       if (card1.mFaction < card2.mFaction) return -1;
       if (card1.mFaction > card2.mFaction) return 1;
@@ -199,9 +199,9 @@ Cards.prototype = {
     *
     * return  void
     */
-  sortByType : function(types) {
+  sortByType: function (types) {
     // Sort the Cards by Rarity
-    this.mItems.sort(function(card1, card2) {
+    this.mItems.sort(function (card1, card2) {
       // Compare the Types of the cards
       return card1.findType(types).localeCompare(card2.findType(types));
     });
@@ -212,9 +212,9 @@ Cards.prototype = {
     *
     * return  void
     */
-  sortByCardId : function(types) {
+  sortByCardId: function (types) {
     // Sort the Cards by Rarity
-    this.mItems.sort(function(card1, card2) {
+    this.mItems.sort(function (card1, card2) {
       // Compare the Types of the cards
       return card1.mId.localeCompare(card2.mId);
     });
@@ -225,7 +225,7 @@ Cards.prototype = {
     *
     * return  Index of the Card found in the Array. -1 if the Card does not exist in the Array.
     */
-  indexOf : function(card) {
+  indexOf: function (card) {
     var index = -1; // Initialize to "not found"
     // Check if the specified Card exists in the Array
     for (var iCard = 0; iCard < this.mItems.length; iCard++) {
@@ -243,7 +243,7 @@ Cards.prototype = {
     *
     * return  Number of copies of cards
     */
-  getNbCards : function() {
+  getNbCards: function () {
     var nbCards = 0;
     for (var iCard = 0; iCard < this.mItems.length; iCard++) {
       nbCards += this.mItems[iCard].mNbCopies;
