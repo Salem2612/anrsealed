@@ -202,7 +202,7 @@ View.prototype = {
         { "cycleNo": 29, "setNo": 1, "nbSets": 0 },
         { "cycleNo": 30, "setNo": 1, "nbSets": 0 },
         { "cycleNo": 31, "setNo": 1, "nbSets": 0 },
-        { "cycleNo": 32, "setNo": 1, "nbSets": 0 }
+        { "cycleNo": 33, "setNo": 1, "nbSets": 0 }
       ];
     }
     else {
@@ -276,7 +276,7 @@ View.prototype = {
         { "cycleNo": 29, "setNo": 1, "nbSets": $('#checkbox_salvaged_memories').is(':checked') ? 1 : 0 },
         { "cycleNo": 30, "setNo": 1, "nbSets": $('#checkbox_system_gateway').is(':checked') ? 1 : 0 },
         { "cycleNo": 31, "setNo": 1, "nbSets": $('#checkbox_system_update_2021').is(':checked') ? 1 : 0 },
-        { "cycleNo": 32, "setNo": 1, "nbSets": $('#checkbox_midnight_sun_booster_pack').is(':checked') ? 1 : 0 }
+        { "cycleNo": 33, "setNo": 1, "nbSets": $('#checkbox_midnight_sun').is(':checked') ? 1 : 0 }
       ];
     }
 

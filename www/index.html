@@ -55,7 +55,7 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
               aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v3.3.0</h4>
+          <h4 class="modal-title"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v3.4.0</h4>
         </div>
         <div class="modal-body">
           <div class="row">
@@ -105,9 +105,23 @@
 
                 <div class="panel">
                   <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog"
+                      href="#changeLogCollapse19" aria-expanded="true" aria-controls="changeLogCollapse19">[26 Jul 2022]
+                      v3.4 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
+                  <div id="changeLogCollapse19" class="panel-collapse collapse in" role="tabpanel"
+                    aria-labelledby="headingOne">
+                    <ul>
+                      <li>Remove the Midnight sun booter pack cards.</li>
+                      <li>Add the Midnight sun cards.</li>
+                      <li>Remove the BROKEN subtype from the CORP cards to allow more 3/2.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="panel">
+                  <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog"
                       href="#changeLogCollapse18" aria-expanded="true" aria-controls="changeLogCollapse18">[18 Jun 2022]
                       v3.3 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
-                  <div id="changeLogCollapse18" class="panel-collapse collapse in" role="tabpanel"
+                  <div id="changeLogCollapse18" class="panel-collapse collapse" role="tabpanel"
                     aria-labelledby="headingOne">
                     <ul>
                       <li>Add Salvaged Memories cards.</li>
@@ -479,7 +493,7 @@
 
           <h4><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Algorithm</h4>
           <p>All cards of a Sealed Pack are picked randomly by completing <b><a
-                href="https://github.com/Salem2612/anrsealed/blob/master/www/json/v3.3.0/constraints.json">constraints</a></b>.
+                href="https://github.com/Salem2612/anrsealed/blob/master/www/json/v3.4.0/constraints.json">constraints</a></b>.
             These constraints are given for the 45 cards format. For the 30 cards format, the constraints are 60% of the
             45 cards format.</p>
           </ul>
@@ -714,7 +728,7 @@
           <li><a href="#" data-toggle="modal" data-target="#modalHelp"><span class="glyphicon glyphicon-question-sign"
                 aria-hidden="true"></span> Help</a></li>
           <li><a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode"
-                aria-hidden="true"></span> v3.3</a></li>
+                aria-hidden="true"></span> v3.4</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div>
@@ -772,8 +786,8 @@
           <!-- Breaking News -->
           <h4><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> Breaking News</h4>
           <ul>
-            <li><b>[18 Jun 2020]</b> The version <b><a href="#" data-toggle="modal"
-                  data-target="#modalChanges">3.3</a></b> is now available.</li>
+            <li><b>[26 Jul 2020]</b> The version <b><a href="#" data-toggle="modal"
+                  data-target="#modalChanges">3.4</a></b> is now available.</li>
             <li><span class="glyphicon glyphicon-apple" aria-hidden="true"></span> Download doesn't work on
               <b>Safari</b>, please use <b>Chrome</b>.
             </li>
@@ -1452,7 +1466,7 @@
                           </div>
                           <div class="input-group">
                             <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_borealis"
-                                  id="checkbox_midnight_sun_booster_pack" checked>Midnight Sun Booster Pack</label>
+                                  id="checkbox_midnight_sun" checked>Midnight Sun</label>
                             </div>
                           </div>
                         </div>
@@ -1526,7 +1540,7 @@
     $(function () {
 
       // Global variables
-      var mView = new View(['cards', 'constraints', 'cycles', 'sets'], '3.3', '0');
+      var mView = new View(['cards', 'constraints', 'cycles', 'sets'], '3.4', '0');
 
       /**
         *
