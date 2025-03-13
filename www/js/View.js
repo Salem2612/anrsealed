@@ -203,7 +203,9 @@ View.prototype = {
         { "cycleNo": 30, "setNo": 1, "nbSets": 0 },
         { "cycleNo": 31, "setNo": 1, "nbSets": 0 },
         { "cycleNo": 33, "setNo": 1, "nbSets": 0 },
-        { "cycleNo": 33, "setNo": 2, "nbSets": 0 }
+        { "cycleNo": 33, "setNo": 2, "nbSets": 0 },
+        { "cycleNo": 34, "setNo": 1, "nbSets": 0 },
+        { "cycleNo": 34, "setNo": 2, "nbSets": 0 }
       ];
     }
     else {
@@ -278,7 +280,9 @@ View.prototype = {
         { "cycleNo": 30, "setNo": 1, "nbSets": $('#checkbox_system_gateway').is(':checked') ? 1 : 0 },
         { "cycleNo": 31, "setNo": 1, "nbSets": $('#checkbox_system_update_2021').is(':checked') ? 1 : 0 },
         { "cycleNo": 33, "setNo": 1, "nbSets": $('#checkbox_midnight_sun').is(':checked') ? 1 : 0 },
-        { "cycleNo": 33, "setNo": 2, "nbSets": $('#checkbox_parhelion').is(':checked') ? 1 : 0 }
+        { "cycleNo": 33, "setNo": 2, "nbSets": $('#checkbox_parhelion').is(':checked') ? 1 : 0 },
+        { "cycleNo": 34, "setNo": 1, "nbSets": $('#checkbox_the_automata_initiative').is(':checked') ? 1 : 0 },
+        { "cycleNo": 34, "setNo": 2, "nbSets": $('#checkbox_rebellion_without_rehearsal').is(':checked') ? 1 : 0 }
       ];
     }
 
