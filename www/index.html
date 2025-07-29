@@ -55,7 +55,7 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
               aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v3.7.0</h4>
+          <h4 class="modal-title"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> v3.8.0</h4>
         </div>
         <div class="modal-body">
           <div class="row">
@@ -105,9 +105,21 @@
 
                 <div class="panel">
                   <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog"
+                      href="#changeLogCollapse23" aria-expanded="true" aria-controls="changeLogCollapse23">[29 Jul 2025]
+                      v3.8 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
+                  <div id="changeLogCollapse23" class="panel-collapse collapse in" role="tabpanel"
+                    aria-labelledby="headingOne">
+                    <ul>
+                      <li>Add the Elevation cards.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="panel">
+                  <h4><a role="button" data-toggle="collapse" data-parent="#accordionChangeLog"
                       href="#changeLogCollapse22" aria-expanded="true" aria-controls="changeLogCollapse22">[10 Mar 2025]
                       v3.7 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h4>
-                  <div id="changeLogCollapse22" class="panel-collapse collapse in" role="tabpanel"
+                  <div id="changeLogCollapse22" class="panel-collapse collapse" role="tabpanel"
                     aria-labelledby="headingOne">
                     <ul>
                       <li>Add the Liberation cards.</li>
@@ -529,7 +541,7 @@
 
           <h4><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Algorithm</h4>
           <p>All cards of a Sealed Pack are picked randomly by completing <b><a
-                href="https://github.com/Salem2612/anrsealed/blob/master/www/json/v3.7.0/constraints.json">constraints</a></b>.
+                href="https://github.com/Salem2612/anrsealed/blob/master/www/json/v3.8.0/constraints.json">constraints</a></b>.
             These constraints are given for the 45 cards format. For the 30 cards format, the constraints are 60% of the
             45 cards format.</p>
           </ul>
@@ -732,8 +744,8 @@
                 class="caret"></a>
             <ul class="dropdown-menu">
               <li class="dropdown-header">Networks</li>
-              <li><a href="https://nullsignal.games/fr/" target="_blank"><span
-                    class="glyphicon glyphicon-globe" aria-hidden="true"></span> Null Signal Games
+              <li><a href="https://nullsignal.games/fr/" target="_blank"><span class="glyphicon glyphicon-globe"
+                    aria-hidden="true"></span> Null Signal Games
                   <small>(fr)</small></a></li>
             </ul>
           </li>
@@ -742,7 +754,7 @@
           <li><a href="#" data-toggle="modal" data-target="#modalHelp"><span class="glyphicon glyphicon-question-sign"
                 aria-hidden="true"></span> Help</a></li>
           <li><a href="#" data-toggle="modal" data-target="#modalChanges"><span class="glyphicon glyphicon-barcode"
-                aria-hidden="true"></span> v3.7</a></li>
+                aria-hidden="true"></span> v3.8</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div>
@@ -800,8 +812,8 @@
           <!-- Breaking News -->
           <h4><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> Breaking News</h4>
           <ul>
-            <li><b>[10 Mar 2023]</b> The version <b><a href="#" data-toggle="modal"
-                  data-target="#modalChanges">3.7</a></b> is now available.</li>
+            <li><b>[29 Jul 2025]</b> The version <b><a href="#" data-toggle="modal"
+                  data-target="#modalChanges">3.8</a></b> is now available.</li>
             <li><span class="glyphicon glyphicon-apple" aria-hidden="true"></span> Download doesn't work on
               <b>Safari</b>, please use <b>Chrome</b>.
             </li>
@@ -836,9 +848,8 @@
               <div class="form-group">
                 <div class="input-group" id="text_players">
                   <div class="radio">
-                    <label data-toggle="tooltip" data-placement="bottom"
-                      title="All the players know the game."><input type="radio" name="optradio_players"
-                        id="radio_players_hackers" checked>Hackers</label>
+                    <label data-toggle="tooltip" data-placement="bottom" title="All the players know the game."><input
+                        type="radio" name="optradio_players" id="radio_players_hackers" checked>Hackers</label>
                   </div>
                   <div class="radio">
                     <label data-toggle="tooltip" data-placement="bottom" title="Use only simple cards."><input
@@ -852,8 +863,8 @@
                 players</h4>
               <div class="form-group">
                 <div class="input-group">
-                  <input id="text_nb_players" type="text" class="form-control"
-                    placeholder="Enter the number of players" aria-describedby="text_nb_players_addon" value="2">
+                  <input id="text_nb_players" type="text" class="form-control" placeholder="Enter the number of players"
+                    aria-describedby="text_nb_players_addon" value="2">
                   <span class="input-group-addon" id="text_nb_players_addon">players</span>
                 </div>
               </div> <!-- /.Number of players -->
@@ -878,8 +889,8 @@
 
               <!-- Ownership -->
               <h4 style="margin-top:0px;margin-bottom:0px" data-toggle="tooltip" data-placement="bottom"
-                title="Select the owner of the cards."><span class="glyphicon glyphicon-home"
-                  aria-hidden="true"></span> Ownership</h4>
+                title="Select the owner of the cards."><span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                Ownership</h4>
               <div class="form-group">
                 <div class="input-group" id="text_ownership">
                   <div class="radio">
@@ -1002,13 +1013,126 @@
             <div class="row">
               <div class="col-sm-12 well well-sm">
 
+                <h4 style="margin-top:0px"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
+                  Null Signal Games</h4>
+                <!-- Line -->
+                <div class="row">
+
+                  <!-- Getting Started -->
+                  <div class="col-sm-3">
+                    <div class="row">
+                      <!-- Image -->
+                      <div class="col-xs-5">
+                        <img src="images/Getting Started.png" alt="" class="img-responsive img-rounded" />
+                      </div> <!-- /.Image -->
+                      <!-- Check -->
+                      <div class="col-xs-7" style="padding:0px">
+                        <div class="checkbox" style="margin:0px">
+                          <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_nsg_getting_started"
+                              checked><strong>Getting Started</strong></label>
+                        </div>
+                        <div class="input-group">
+                          <div class="checkbox"><label><input type="checkbox"
+                                value="checkbox_cycle_item_nsg_getting_started" id="checkbox_system_gateway"
+                                checked>System Gateway</label></div>
+                          <div class="checkbox"><label><input type="checkbox"
+                                value="checkbox_cycle_item_nsg_getting_started" id="checkbox_elevation"
+                                checked>Elevation</label></div>
+                        </div>
+                      </div> <!-- /.Check -->
+                    </div>
+                  </div> <!-- ./Getting Started -->
+
+                  <!-- Null Signal Games Expansion Packs -->
+                  <div class="col-sm-4">
+                    <div class="row">
+                      <!-- Image -->
+                      <div class="col-xs-4">
+                        <img src="images/NSG Expansion Packs.png" alt="" class="img-responsive img-rounded" />
+                      </div> <!-- /.Image -->
+                      <!-- Check -->
+                      <div class="col-xs-8" style="padding:0px">
+                        <div class="form-group" style="margin-bottom:0px">
+                          <div class="checkbox" style="margin:0px">
+                            <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_nsg_packs"
+                                checked><strong>Expansion Packs</strong></label>
+                          </div>
+                          <div class="input-group">
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_nsg_packs"
+                                  id="checkbox_downfall" checked>Downfall</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_nsg_packs"
+                                  id="checkbox_uprising" checked>Uprising</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_nsg_packs"
+                                  id="checkbox_midnight_sun" checked>Midnight Sun</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_nsg_packs"
+                                  id="checkbox_parhelion" checked>Parhelion</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_nsg_packs"
+                                  id="checkbox_the_automata_initiative" checked>The Automata Initiative</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_nsg_packs"
+                                  id="checkbox_rebellion_without_rehearsal" checked>Rebellion Without Rehearsal</label>
+                            </div>
+                          </div>
+                        </div>
+                      </div> <!-- /.Check -->
+                    </div>
+                  </div> <!-- ./Null Signal Games Expansion Packs -->
+
+
+                  <!-- Nisei Historical Sets -->
+                  <div class="col-sm-3">
+                    <div class="row">
+                      <!-- Image -->
+                      <div class="col-xs-4">
+                        <img src="images/nisei.png" alt="" class="img-responsive img-rounded" />
+                      </div> <!-- /.Image -->
+                      <!-- Check -->
+                      <div class="col-xs-8" style="padding:0px">
+                        <div class="form-group" style="margin-bottom:0px">
+                          <div class="checkbox" style="margin:0px">
+                            <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_nisei"
+                                checked><strong>Nisei Historical Sets</strong></label>
+                          </div>
+                          <div class="input-group">
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_nisei"
+                                  id="checkbox_system_update_2021" checked>System Update 2021</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_nisei"
+                                  id="checkbox_magnum_opus" checked>Magnum Opus</label></div>
+                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_nisei"
+                                  id="checkbox_salvaged_memories" checked>Salvaged Memories</label>
+                            </div>
+                          </div>
+                        </div>
+                      </div> <!-- /.Check -->
+                    </div>
+                  </div> <!-- ./Nisei Historical Sets -->
+
+                  <!-- Buttons Check/Uncheck all -->
+                  <div class="col-sm-2">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="form-group">
+                          <div class="btn-group-vertical" role="group">
+                            <button id="button_check_all" type="button" class="btn btn-default"
+                              style="text-align:left"><span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                              Check all</button>
+                            <button id="button_uncheck_all" type="button" class="btn btn-default"
+                              style="text-align:left"><span class="glyphicon glyphicon-unchecked"
+                                aria-hidden="true"></span> Uncheck all</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div> <!-- ./Buttons Check/Uncheck all -->
+
+                </div> <!-- ./Line -->
+
                 <!-- Line -->
                 <div class="row">
 
                   <!-- Core Set -->
                   <div class="col-sm-3">
-                    <h4 style="margin-top:0px"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Core
-                      Set</h4>
+                    <h4 style="margin-top:0px"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> FFG
+                      Core Set</h4>
                     <div class="row">
                       <!-- Image -->
                       <div class="col-xs-6">
@@ -1040,7 +1164,7 @@
                   <!-- Revised Core Set -->
                   <div class="col-sm-3">
                     <h4 style="margin-top:0px"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-                      Revised Core</h4>
+                      FFG Revised Core</h4>
                     <div class="row">
                       <!-- Image -->
                       <div class="col-xs-6">
@@ -1075,7 +1199,7 @@
                   <!-- Deluxes -->
                   <div class="col-sm-3">
                     <h4 style="margin-top:0px"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-                      Deluxes</h4>
+                      FFG Deluxes</h4>
                     <div class="row">
                       <!-- Image -->
                       <div class="col-xs-5">
@@ -1105,133 +1229,6 @@
                     </div>
                   </div> <!-- ./Deluxes -->
 
-                  <!-- Buttons Check/Uncheck all -->
-                  <div class="col-sm-3">
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <div class="form-group">
-                          <div class="btn-group" role="group">
-                            <button id="button_check_all" type="button" class="btn btn-default"
-                              style="text-align:left"><span class="glyphicon glyphicon-check" aria-hidden="true"></span>
-                              Check all</button>
-                            <button id="button_uncheck_all" type="button" class="btn btn-default"
-                              style="text-align:left"><span class="glyphicon glyphicon-unchecked"
-                                aria-hidden="true"></span> Uncheck all</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div> <!-- ./Buttons Check/Uncheck all -->
-
-                </div> <!-- ./Line -->
-
-                <h4 style="margin-top:0px"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-                  Null Signal Games Expansions</h4>
-                <!-- Line -->
-                <div class="row">
-
-                  <!-- Null Signal Games -->
-                  <div class="col-sm-3">
-                    <div class="row">
-                      <!-- Image -->
-                      <div class="col-xs-4">
-                        <img src="images/nisei.png" alt="" class="img-responsive img-rounded" />
-                      </div> <!-- /.Image -->
-                      <!-- Check -->
-                      <div class="col-xs-8" style="padding:0px">
-                        <div class="checkbox" style="margin:0px">
-                          <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_nisei"
-                              checked><strong>Null Signal Games</strong></label>
-                        </div>
-                        <div class="input-group">
-                          <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_nisei"
-                                id="checkbox_magnum_opus" checked>Magnum Opus</label></div>
-                          <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_nisei"
-                                id="checkbox_salvaged_memories" checked>Salvaged Memories</label></div>
-                          <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_nisei"
-                                id="checkbox_system_gateway" checked>System Gateway</label></div>
-                          <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_nisei"
-                                id="checkbox_system_update_2021" checked>System Update 2021</label></div>
-                        </div>
-                      </div> <!-- /.Check -->
-                    </div>
-                  </div> <!-- ./Null Signal Games -->
-
-                  <!-- Ashes -->
-                  <div class="col-sm-3">
-                    <div class="row">
-                      <!-- Image -->
-                      <div class="col-xs-4">
-                        <img src="images/ashes.png" alt="" class="img-responsive img-rounded" />
-                      </div> <!-- /.Image -->
-                      <!-- Check -->
-                      <div class="col-xs-8" style="padding:0px">
-                        <div class="form-group" style="margin-bottom:0px">
-                          <div class="checkbox" style="margin:0px">
-                            <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_ashes"
-                                checked><strong>Ashes</strong></label>
-                          </div>
-                          <div class="input-group">
-                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_ashes"
-                                  id="checkbox_downfall" checked>Downfall</label></div>
-                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_ashes"
-                                  id="checkbox_uprising" checked>Uprising</label></div>
-                          </div>
-                        </div>
-                      </div> <!-- /.Check -->
-                    </div>
-                  </div> <!-- ./Ashes -->
-
-                  <!-- Borealis -->
-                  <div class="col-sm-3">
-                    <div class="row">
-                      <!-- Image -->
-                      <div class="col-xs-4">
-                        <img src="images/borealis.png" alt="" class="img-responsive img-rounded" />
-                      </div> <!-- /.Image -->
-                      <!-- Check -->
-                      <div class="col-xs-8" style="padding:0px">
-                        <div class="form-group" style="margin-bottom:0px">
-                          <div class="checkbox" style="margin:0px">
-                            <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_borealis"
-                                checked><strong>Borealis</strong></label>
-                          </div>
-                          <div class="input-group">
-                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_borealis"
-                                  id="checkbox_midnight_sun" checked>Midnight Sun</label></div>
-                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_borealis"
-                                  id="checkbox_parhelion" checked>Parhelion</label></div>
-                          </div>
-                        </div>
-                      </div> <!-- /.Check -->
-                    </div>
-                  </div> <!-- ./Borealis -->
-
-                  <!-- Liberation -->
-                  <div class="col-sm-3">
-                    <div class="row">
-                      <!-- Image -->
-                      <div class="col-xs-4">
-                        <img src="images/liberation.png" alt="" class="img-responsive img-rounded" />
-                      </div> <!-- /.Image -->
-                      <!-- Check -->
-                      <div class="col-xs-8" style="padding:0px">
-                        <div class="form-group" style="margin-bottom:0px">
-                          <div class="checkbox" style="margin:0px">
-                            <label><input type="checkbox" value="checkbox_cycle_title" id="checkbox_liberation"
-                                checked><strong>Liberation</strong></label>
-                          </div>
-                          <div class="input-group">
-                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_liberation"
-                                  id="checkbox_the_automata_initiative" checked>The Automata Initiative</label></div>
-                            <div class="checkbox"><label><input type="checkbox" value="checkbox_cycle_item_liberation"
-                                  id="checkbox_rebellion_without_rehearsal" checked>Rebellion Without Rehearsal</label></div>
-                          </div>
-                        </div>
-                      </div> <!-- /.Check -->
-                    </div>
-                  </div> <!-- ./Liberation -->
-
                 </div> <!-- ./Line -->
 
                 <!-- Separator -->
@@ -1241,7 +1238,7 @@
                 </div> <!-- ./Separator -->
 
                 <h4 style="margin-top:0px"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-                  Original Expansions</h4>
+                  FFG Data Packs</h4>
                 <!-- Line -->
                 <div class="row">
 
@@ -1557,7 +1554,7 @@
     $(function () {
 
       // Global variables
-      var mView = new View(['cards', 'constraints', 'cycles', 'sets'], '3.7', '0');
+      var mView = new View(['cards', 'constraints', 'cycles', 'sets'], '3.8', '0');
 
       /**
         *
@@ -1630,7 +1627,6 @@
         *
         */
       $('#checkbox_deluxes').change(function () { checkAllItems(this.id, "checkbox_cycle_item_deluxes"); });
-      $('#checkbox_nisei').change(function () { checkAllItems(this.id, "checkbox_cycle_item_nisei"); });
       $('#checkbox_genesis').change(function () { checkAllItems(this.id, "checkbox_cycle_item_genesis"); });
       $('#checkbox_spin').change(function () { checkAllItems(this.id, "checkbox_cycle_item_spin"); });
       $('#checkbox_lunar').change(function () { checkAllItems(this.id, "checkbox_cycle_item_lunar"); });
@@ -1639,15 +1635,14 @@
       $('#checkbox_flashpoint').change(function () { checkAllItems(this.id, "checkbox_cycle_item_flashpoint"); });
       $('#checkbox_red_sand').change(function () { checkAllItems(this.id, "checkbox_cycle_item_red_sand"); });
       $('#checkbox_kitara').change(function () { checkAllItems(this.id, "checkbox_cycle_item_kitara"); });
-      $('#checkbox_ashes').change(function () { checkAllItems(this.id, "checkbox_cycle_item_ashes"); });
-      $('#checkbox_borealis').change(function () { checkAllItems(this.id, "checkbox_cycle_item_borealis"); });
-      $('#checkbox_liberation').change(function () { checkAllItems(this.id, "checkbox_cycle_item_liberation"); });
+      $('#checkbox_nsg_getting_started').change(function () { checkAllItems(this.id, "checkbox_cycle_item_nsg_getting_started"); });
+      $('#checkbox_nsg_packs').change(function () { checkAllItems(this.id, "checkbox_cycle_item_nsg_packs"); });
+      $('#checkbox_nisei').change(function () { checkAllItems(this.id, "checkbox_cycle_item_nisei"); });
 
       /**
         *
         */
       $(':checkbox[value="checkbox_cycle_item_deluxes"]').change(function () { checkTitle("checkbox_deluxes", this.value); });
-      $(':checkbox[value="checkbox_cycle_item_nisei"]').change(function () { checkTitle("checkbox_nisei", this.value); });
       $(':checkbox[value="checkbox_cycle_item_genesis"]').change(function () { checkTitle("checkbox_genesis", this.value); });
       $(':checkbox[value="checkbox_cycle_item_spin"]').change(function () { checkTitle("checkbox_spin", this.value); });
       $(':checkbox[value="checkbox_cycle_item_lunar"]').change(function () { checkTitle("checkbox_lunar", this.value); });
@@ -1656,9 +1651,9 @@
       $(':checkbox[value="checkbox_cycle_item_flashpoint"]').change(function () { checkTitle("checkbox_flashpoint", this.value); });
       $(':checkbox[value="checkbox_cycle_item_red_sand"]').change(function () { checkTitle("checkbox_red_sand", this.value); });
       $(':checkbox[value="checkbox_cycle_item_kitara"]').change(function () { checkTitle("checkbox_kitara", this.value); });
-      $(':checkbox[value="checkbox_cycle_item_ashes"]').change(function () { checkTitle("checkbox_ashes", this.value); });
-      $(':checkbox[value="checkbox_cycle_item_borealis"]').change(function () { checkTitle("checkbox_borealis", this.value); });
-      $(':checkbox[value="checkbox_cycle_item_liberation"]').change(function () { checkTitle("checkbox_liberation", this.value); });
+      $(':checkbox[value="checkbox_cycle_item_nsg_getting_started"]').change(function () { checkTitle("checkbox_nsg_getting_started", this.value); });
+      $(':checkbox[value="checkbox_cycle_item_nsg_packs"]').change(function () { checkTitle("checkbox_nsg_packs", this.value); });
+      $(':checkbox[value="checkbox_cycle_item_nisei"]').change(function () { checkTitle("checkbox_nisei", this.value); });
 
       /**
         * Handler of the button_generate_and_download on click event.
