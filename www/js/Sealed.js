@@ -74,7 +74,7 @@ Sealed.prototype = {
     // Generate and Zip the Players files
     for (var iPlayer = 0; iPlayer < this.mNbPlayers; iPlayer++) {
       var player = this.mPlayers[iPlayer];
-      for (var locale of ["EN", "FR"]) {
+      for (var locale of ["EN", "FR", "DE"]) {
         for (var side in Side) {
           for (var iPack = 0; iPack < (this.mNbStarters + this.mNbBoosters); iPack++) {
             // Retrieve the Pack and its names

@@ -13,6 +13,7 @@ function Set(setJSON, cycle) {
   this.mSetNo = setJSON.setNo;    // Identifier of the set
   this.mNameEn = setJSON.nameEn;   // Name of the set (English)
   this.mNameFr = setJSON.nameFr;   // Name of the set (French)
+  this.mNameDe = setJSON.nameDe;   // Name of the set (German)
   this.mType = setJSON.type;     // Type of the set (CORE_SET, DELUXE, DATA_PACK)
 
 }//end Set
@@ -39,6 +40,9 @@ Set.prototype = {
     // French Name
     if (("FR" == locale) && ("" != this.mNameFr)) {
       name = this.mNameFr;
+    }
+    else if (("DE" == locale) && ("" != this.NameDe)) {
+      name = this.mNameDe;
     }
 
     return name;

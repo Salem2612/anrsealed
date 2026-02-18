@@ -11,6 +11,7 @@ function Cycle(cycleJSON) {
   this.mCycleNo = cycleJSON.cycleNo;
   this.mNameEn = cycleJSON.nameEn;
   this.mNameFr = cycleJSON.nameFr;
+  this.mNameDe = cycleJSON.nameDe;
   this.mType = cycleJSON.type;
 
 }//end Cycle
@@ -26,6 +27,9 @@ Cycle.prototype = {
     // French Name
     if (("FR" == locale) && ("" != this.mNameFr)) {
       name = this.mNameFr;
+    }
+    else if (("DE" == locale) && ("" != this.NameDe)) {
+      name = this.mNameDe;
     }
 
     return name;

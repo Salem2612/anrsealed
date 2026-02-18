@@ -15,6 +15,7 @@ function Card(cardJSON, set) {
   this.mCardNo = cardJSON.cardNo;
   this.mNameEn = cardJSON.nameEn;
   this.mNameFr = cardJSON.nameFr;
+  this.mNameDe = cardJSON.nameDe;
   this.mSide = cardJSON.side;
   this.mFaction = cardJSON.faction;
   this.mTypes = cardJSON.types;
@@ -38,6 +39,7 @@ Card.prototype = {
         'cardNo': this.mCardNo,
         'nameEn': this.mNameEn,
         'nameFr': this.mNameFr,
+        'nameDe': this.mNameDe,
         'side': this.mSide,
         'faction': this.mFaction,
         'types': this.mTypes,
@@ -116,6 +118,9 @@ Card.prototype = {
     // French Name
     if (("FR" == locale) && ("" != this.mNameFr)) {
       name = this.mNameFr;
+    }
+    else if (("DE" == locale) && ("" != this.mNameDe)) {
+      name = this.mNameDe;
     }
 
     return name;
